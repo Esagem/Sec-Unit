@@ -1,0 +1,8 @@
+comp5700-venv/
+__pycache__/
+*.pyc
+.pytest_cache/
+outputs/
+*.egg-info/
+build/
+dist/

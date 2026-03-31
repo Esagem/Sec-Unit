@@ -1,0 +1,9 @@
+transformers>=4.45.0
+torch>=2.1.0
+accelerate>=0.25.0
+pypdf>=3.17.0
+pyyaml>=6.0
+pandas>=2.0.0
+pyinstaller>=6.0.0
+datasets>=2.14.0
+evaluate>=0.4.0
