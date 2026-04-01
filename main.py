@@ -102,6 +102,47 @@ def run_task1(pdf1_path: str, pdf2_path: str, pipe, output_dir: str = "outputs")
     return all_results
 
 
+def run_task2(
+    yaml_path_1: str, yaml_path_2: str, output_dir: str = "outputs"
+) -> dict:
+    """
+    Run Task 2 for a pair of YAML files produced by Task 1.
+    Compares element names and requirements, writes two TEXT files.
+    Returns a dict with paths to the output files.
+    """
+    from task2.comparator import (
+        load_yaml_files,
+        compare_element_names,
+        compare_element_requirements,
+    )
+
+    print(f"\n{'='*60}")
+    print(f"Task 2: {os.path.basename(yaml_path_1)} vs {os.path.basename(yaml_path_2)}")
+    print(f"{'='*60}")
+
+    kdes_1, kdes_2 = load_yaml_files(yaml_path_1, yaml_path_2)
+
+    base1 = os.path.splitext(os.path.basename(yaml_path_1))[0]
+    base2 = os.path.splitext(os.path.basename(yaml_path_2))[0]
+    combo = f"{base1}_vs_{base2}"
+
+    names_path = compare_element_names(
+        kdes_1,
+        kdes_2,
+        output_path=os.path.join(output_dir, f"diff_names_{combo}.txt"),
+    )
+    print(f"  [+] Element name differences: {names_path}")
+
+    reqs_path = compare_element_requirements(
+        kdes_1,
+        kdes_2,
+        output_path=os.path.join(output_dir, f"diff_reqs_{combo}.txt"),
+    )
+    print(f"  [+] Requirement differences:  {reqs_path}")
+
+    return {"names_diff_path": names_path, "reqs_diff_path": reqs_path}
+
+
 def main():
     parser = argparse.ArgumentParser(description="CIS Benchmark Security Pipeline")
     parser.add_argument("pdf1", nargs="?", help="Path to first PDF")
