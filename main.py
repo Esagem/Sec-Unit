@@ -143,6 +143,45 @@ def run_task2(
     return {"names_diff_path": names_path, "reqs_diff_path": reqs_path}
 
 
+def run_task3(
+    names_diff_path: str,
+    reqs_diff_path: str,
+    yamls_path: str = "project-yamls.zip",
+    output_dir: str = "outputs",
+) -> str:
+    """
+    Run Task 3: determine controls, execute Kubescape, generate CSV.
+    Returns the path to the output CSV file.
+    """
+    from task3.executor import (
+        load_diff_files,
+        determine_controls,
+        run_kubescape,
+        generate_csv,
+    )
+
+    print(f"\n{'='*60}")
+    print("Task 3: Executor")
+    print(f"{'='*60}")
+
+    names_content, reqs_content = load_diff_files(names_diff_path, reqs_diff_path)
+
+    controls_path = determine_controls(
+        names_content,
+        reqs_content,
+        output_path=os.path.join(output_dir, "controls.txt"),
+    )
+    print(f"  [+] Controls file: {controls_path}")
+
+    df = run_kubescape(controls_path, yamls_path=yamls_path)
+    print(f"  [+] Kubescape scan complete: {len(df)} rows")
+
+    csv_path = generate_csv(df, output_path=os.path.join(output_dir, "scan_results.csv"))
+    print(f"  [+] CSV report: {csv_path}")
+
+    return csv_path
+
+
 def main():
     parser = argparse.ArgumentParser(description="CIS Benchmark Security Pipeline")
     parser.add_argument("pdf1", nargs="?", help="Path to first PDF")
