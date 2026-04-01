@@ -14,6 +14,25 @@ import argparse
 import os
 import sys
 import itertools
+import warnings
+import logging
+warnings.filterwarnings("ignore")
+logging.disable(logging.CRITICAL)
+
+from rich.progress import (
+    Progress,
+    SpinnerColumn,
+    BarColumn,
+    TextColumn,
+    TimeElapsedColumn,
+    TimeRemainingColumn,
+    TaskProgressColumn,
+)
+from rich.console import Console
+from rich.panel import Panel
+from rich import print as rprint
+
+console = Console()
 
 # ---------------------------------------------------------------------------
 # Input combinations as defined by the project spec
@@ -35,71 +54,121 @@ PROMPT_TYPES = ["zero_shot", "few_shot", "chain_of_thought"]
 
 def get_model_pipeline():
     """Load the Gemma-3-1B pipeline. Called once, shared across runs."""
-    from transformers import pipeline
+    import transformers
+    from transformers import pipeline, GenerationConfig
     import torch
 
-    print("[*] Loading Gemma-3-1B model (this may take a minute)...")
-    pipe = pipeline(
-        "text-generation",
-        model="google/gemma-3-1b-it",
-        device="cuda" if torch.cuda.is_available() else "cpu",
-        torch_dtype=torch.float16,
-    )
-    print("[+] Model loaded.")
+    transformers.logging.set_verbosity_error()
+
+    with console.status("[bold cyan]Loading Gemma-3-1B model…[/bold cyan]", spinner="dots2"):
+        pipe = pipeline(
+            "text-generation",
+            model="google/gemma-3-1b-it",
+            device="cuda" if torch.cuda.is_available() else "cpu",
+            dtype=torch.float16,
+        )
+        pipe.model.generation_config = GenerationConfig(do_sample=False, max_new_tokens=2048)
+        pipe.model = torch.compile(pipe.model)
+
+    console.print("[bold green]✓[/bold green] Model loaded.")
     return pipe
 
 
-def run_task1(pdf1_path: str, pdf2_path: str, pipe, output_dir: str = "outputs"):
+def _detect_batch_size() -> int:
+    """
+    Estimate a safe starting batch size based on free VRAM.
+    Falls back to 1 on CPU or if VRAM cannot be queried.
+    """
+    try:
+        import torch
+        if not torch.cuda.is_available():
+            return 1
+        free_bytes, _ = torch.cuda.mem_get_info()
+        free_gb = free_bytes / 1024 ** 3
+        # ~1.5 GB per sequence is a conservative estimate for Gemma-3-1B
+        # with 2048-token KV cache at fp16
+        batch = max(1, int(free_gb // 1.5))
+        console.print(f"[dim]GPU free VRAM: {free_gb:.1f} GB → starting batch size: {batch}[/dim]")
+        return batch
+    except Exception:
+        return 1
+
+
+def _run_with_fallback(pipe, all_messages: list, batch_size: int) -> tuple[list, int]:
+    """
+    Run the pipeline with the given batch_size, halving on OOM until batch_size=1.
+    Returns (outputs, final_batch_size) so the caller can persist the new size.
+    """
+    import torch
+    while batch_size >= 1:
+        try:
+            outputs = pipe(all_messages, batch_size=batch_size)
+            return outputs, batch_size
+        except torch.cuda.OutOfMemoryError:
+            torch.cuda.empty_cache()
+            batch_size = max(1, batch_size // 2)
+            console.print(f"[yellow]⚠ OOM — reducing batch size to {batch_size}[/yellow]")
+            if batch_size == 1:
+                outputs = pipe(all_messages, batch_size=1)
+                return outputs, 1
+    return pipe(all_messages, batch_size=1), 1
+
+
+def run_task1(pdf1_path: str, pdf2_path: str, pipe, output_dir: str = "outputs", pbar=None,
+              batch_size: int = 1):
     """
     Run Task 1 for a single pair of PDFs across all 3 prompt types.
+    Batches all 6 prompts into a single pipeline call for GPU efficiency.
     Returns a list of result dicts.
     """
     from task1.extractor import (
         load_documents,
-        extract_kdes,
+        build_messages,
+        save_kde_result,
         collect_llm_output,
     )
-
-    print(f"\n{'='*60}")
-    print(f"Task 1: {os.path.basename(pdf1_path)} + {os.path.basename(pdf2_path)}")
-    print(f"{'='*60}")
 
     # Load documents
     text_1, text_2 = load_documents(pdf1_path, pdf2_path)
     doc1_name = os.path.splitext(os.path.basename(pdf1_path))[0]
     doc2_name = os.path.splitext(os.path.basename(pdf2_path))[0]
 
-    all_results = []
-
-    # Run each prompt type on each document
+    # Build all 6 prompts upfront
+    jobs = []  # list of (messages, prompt_text, prompt_type, doc_name)
     for prompt_type in PROMPT_TYPES:
-        print(f"\n  [{prompt_type}] Processing {doc1_name}...")
-        result_1 = extract_kdes(
-            document_text=text_1,
-            prompt_type=prompt_type,
-            pipe=pipe,
-            doc_name=f"{doc1_name}-{prompt_type}",
-            output_dir=output_dir,
-        )
-        all_results.append(result_1)
+        for doc_name, text in [(doc1_name, text_1), (doc2_name, text_2)]:
+            messages, prompt_text = build_messages(text, prompt_type)
+            jobs.append((messages, prompt_text, prompt_type, doc_name))
 
-        print(f"  [{prompt_type}] Processing {doc2_name}...")
-        result_2 = extract_kdes(
-            document_text=text_2,
+    if pbar is not None:
+        progress, task = pbar
+        progress.update(task, description=f"[bold cyan]{doc1_name} vs {doc2_name}[/bold cyan]")
+
+    # Batched pipeline call with automatic OOM fallback
+    all_messages = [j[0] for j in jobs]
+    outputs, batch_size = _run_with_fallback(pipe, all_messages, batch_size)
+
+    # Post-process each result
+    all_results = []
+    for i, (_, prompt_text, prompt_type, doc_name) in enumerate(jobs):
+        raw_response = outputs[i][0]["generated_text"][-1]["content"]
+        result = save_kde_result(
+            raw_response=raw_response,
+            prompt_text=prompt_text,
             prompt_type=prompt_type,
-            pipe=pipe,
-            doc_name=f"{doc2_name}-{prompt_type}",
+            doc_name=f"{doc_name}-{prompt_type}",
             output_dir=output_dir,
         )
-        all_results.append(result_2)
+        all_results.append(result)
+        if pbar is not None:
+            progress.advance(task)
 
     # Collect all LLM outputs into a single text file
     combo_name = f"{doc1_name}_vs_{doc2_name}"
     output_txt = os.path.join(output_dir, f"llm_output_{combo_name}.txt")
     collect_llm_output(all_results, output_path=output_txt)
-    print(f"\n  [+] LLM output log: {output_txt}")
 
-    return all_results
+    return all_results, batch_size
 
 
 def run_task2(
@@ -210,17 +279,54 @@ def main():
     args = parser.parse_args()
     os.makedirs(args.output_dir, exist_ok=True)
 
+    console.print(Panel.fit(
+        "[bold cyan]CIS Benchmark Security Pipeline[/bold cyan]\n"
+        "[dim]Gemma-3-1B · KDE Extraction · Kubescape Analysis[/dim]",
+        border_style="cyan",
+    ))
+
     # Load model once
     pipe = get_model_pipeline()
+    batch_size = _detect_batch_size()
+
+    progress = Progress(
+        SpinnerColumn(spinner_name="dots2", style="bold magenta"),
+        TextColumn("[bold blue]{task.description}"),
+        BarColumn(bar_width=40, style="cyan", complete_style="bold green", finished_style="bold green"),
+        TaskProgressColumn(),
+        TextColumn("[dim]·[/dim]"),
+        TimeElapsedColumn(),
+        TextColumn("[dim]eta[/dim]"),
+        TimeRemainingColumn(),
+        console=console,
+        transient=False,
+    )
 
     if args.all:
-        # Run all 9 combinations
-        for pdf1_name, pdf2_name in INPUT_COMBOS:
-            pdf1 = os.path.join(args.inputs_dir, pdf1_name)
-            pdf2 = os.path.join(args.inputs_dir, pdf2_name)
-            run_task1(pdf1, pdf2, pipe, output_dir=args.output_dir)
+        total_calls = len(INPUT_COMBOS) * len(PROMPT_TYPES) * 2
+        with progress:
+            task = progress.add_task("[cyan]Extracting KDEs…", total=total_calls)
+            for pdf1_name, pdf2_name in INPUT_COMBOS:
+                pdf1 = os.path.join(args.inputs_dir, pdf1_name)
+                pdf2 = os.path.join(args.inputs_dir, pdf2_name)
+                _, batch_size = run_task1(
+                    pdf1, pdf2, pipe,
+                    output_dir=args.output_dir,
+                    pbar=(progress, task),
+                    batch_size=batch_size,
+                )
+        console.print("[bold green]✓ All runs complete.[/bold green]")
     elif args.pdf1 and args.pdf2:
-        run_task1(args.pdf1, args.pdf2, pipe, output_dir=args.output_dir)
+        total_calls = len(PROMPT_TYPES) * 2
+        with progress:
+            task = progress.add_task("[cyan]Extracting KDEs…", total=total_calls)
+            run_task1(
+                args.pdf1, args.pdf2, pipe,
+                output_dir=args.output_dir,
+                pbar=(progress, task),
+                batch_size=batch_size,
+            )
+        console.print("[bold green]✓ Done.[/bold green]")
     else:
         parser.print_help()
         sys.exit(1)

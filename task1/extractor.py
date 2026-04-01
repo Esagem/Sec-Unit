@@ -187,7 +187,7 @@ def extract_kdes(
         ]
     ]
 
-    output = pipe(messages, max_new_tokens=max_new_tokens)
+    output = pipe(messages)
     raw_response = output[0][0]["generated_text"][-1]["content"]
 
     # --- Parse response into nested dict ------------------------------------
@@ -244,6 +244,67 @@ def collect_llm_output(
             f.write("=" * 70 + "\n\n")
 
     return output_path
+
+
+# ---------------------------------------------------------------------------
+# Batch-friendly helpers
+# ---------------------------------------------------------------------------
+def build_messages(document_text: str, prompt_type: str) -> tuple[list, str]:
+    """
+    Build the messages list and prompt text for a single doc+prompt_type pair
+    without calling the pipeline. Used for batched inference.
+
+    Returns:
+        (messages, prompt_text) where messages is ready to pass to pipe().
+    """
+    prompt_builders = {
+        "zero_shot": construct_zero_shot_prompt,
+        "few_shot": construct_few_shot_prompt,
+        "chain_of_thought": construct_chain_of_thought_prompt,
+    }
+    if prompt_type not in prompt_builders:
+        raise ValueError(
+            f"Invalid prompt_type '{prompt_type}'. "
+            f"Must be one of: {list(prompt_builders.keys())}"
+        )
+    truncated = _truncate_to_recommendations(document_text)
+    prompt_text = prompt_builders[prompt_type](truncated)
+    messages = [
+        {
+            "role": "system",
+            "content": [{"type": "text", "text": "You are a helpful security document analyzer."}],
+        },
+        {
+            "role": "user",
+            "content": [{"type": "text", "text": prompt_text}],
+        },
+    ]
+    return messages, prompt_text
+
+
+def save_kde_result(
+    raw_response: str,
+    prompt_text: str,
+    prompt_type: str,
+    doc_name: str,
+    output_dir: str = "outputs",
+) -> dict:
+    """
+    Parse a raw LLM response into KDEs, write the YAML file, and return
+    the result dict. Used after batched inference to post-process outputs.
+    """
+    kdes = _parse_kdes_from_response(raw_response)
+    os.makedirs(output_dir, exist_ok=True)
+    yaml_path = os.path.join(output_dir, f"{doc_name}-kdes.yaml")
+    with open(yaml_path, "w") as f:
+        yaml.dump(kdes, f, default_flow_style=False, sort_keys=False)
+    return {
+        "kdes": kdes,
+        "raw_response": raw_response,
+        "prompt_used": prompt_text,
+        "prompt_type": prompt_type,
+        "yaml_path": yaml_path,
+    }
 
 
 # ===========================================================================
