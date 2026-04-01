@@ -107,7 +107,8 @@ class TestCompareElementNames(unittest.TestCase):
             )
 
             self.assertTrue(os.path.exists(result_path))
-            content = open(result_path).read()
+            with open(result_path) as f:
+                content = f.read()
 
             # "Kubelet" is only in A, "Pod Security" is only in B
             self.assertIn("Kubelet", content)
@@ -123,7 +124,8 @@ class TestCompareElementNames(unittest.TestCase):
                 SAMPLE_KDES_IDENTICAL, SAMPLE_KDES_IDENTICAL, output_path=out_path
             )
 
-            content = open(out_path).read()
+            with open(out_path) as f:
+                content = f.read()
             self.assertIn("NO DIFFERENCES IN REGARDS TO ELEMENT NAMES", content)
 
 
@@ -139,7 +141,8 @@ class TestCompareElementRequirements(unittest.TestCase):
             )
 
             self.assertTrue(os.path.exists(result_path))
-            content = open(result_path).read()
+            with open(result_path) as f:
+                content = f.read()
 
             # Requirements unique to A
             self.assertIn("Kubelet,Ensure Anonymous Auth is Not Enabled", content)
@@ -157,7 +160,8 @@ class TestCompareElementRequirements(unittest.TestCase):
                 SAMPLE_KDES_IDENTICAL, SAMPLE_KDES_IDENTICAL, output_path=out_path
             )
 
-            content = open(out_path).read()
+            with open(out_path) as f:
+                content = f.read()
             self.assertIn("NO DIFFERENCES IN REGARDS TO ELEMENT REQUIREMENTS", content)
 
 

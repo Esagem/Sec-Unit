@@ -192,7 +192,8 @@ class TestCollectLLMOutput(unittest.TestCase):
 
             self.assertTrue(os.path.exists(result_path))
 
-            content = open(result_path).read()
+            with open(result_path) as f:
+                content = f.read()
             self.assertIn("*LLM Name*", content)
             self.assertIn("google/gemma-3-1b-it", content)
             self.assertIn("*Prompt Type*", content)
