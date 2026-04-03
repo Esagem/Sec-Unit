@@ -109,11 +109,15 @@ class TestRunKubescape(unittest.TestCase):
     def test_runs_kubescape_with_controls(self, mock_run):
         """Mocks Kubescape execution and verifies DataFrame output."""
         mock_results = {
+            "resources": [
+                {
+                    "resourceID": "res-001",
+                    "source": {"relativePath": "deployment.yaml"},
+                }
+            ],
             "results": [
                 {
-                    "rawResource": {
-                        "source": {"relativePath": "deployment.yaml"}
-                    },
+                    "resourceID": "res-001",
                     "controls": [
                         {
                             "controlID": "C-0057",
@@ -129,7 +133,7 @@ class TestRunKubescape(unittest.TestCase):
                         },
                     ],
                 }
-            ]
+            ],
         }
 
         mock_run.return_value = MagicMock(returncode=0, stderr="")
@@ -137,9 +141,9 @@ class TestRunKubescape(unittest.TestCase):
         with tempfile.TemporaryDirectory() as tmpdir:
             controls_path = _write_file("C-0057\n", tmpdir, "controls.txt")
 
-            # Write mock kubescape results JSON
-            results_json_path = "kubescape_results.json"
-            with open(results_json_path, "w") as f:
+            # Simulate kubescape writing to CWD (relative path)
+            results_json_tmp = "kubescape_results.json"
+            with open(results_json_tmp, "w") as f:
                 json.dump(mock_results, f)
 
             try:
@@ -157,9 +161,67 @@ class TestRunKubescape(unittest.TestCase):
                 self.assertIn("All Resources", df.columns)
                 self.assertIn("Compliance score", df.columns)
                 self.assertGreater(len(df), 0)
+                self.assertEqual(df["FilePath"].iloc[0], "deployment.yaml")
             finally:
-                if os.path.exists(results_json_path):
-                    os.unlink(results_json_path)
+                if os.path.exists(results_json_tmp):
+                    os.unlink(results_json_tmp)
+
+
+class TestRunKubescapeFilePath(unittest.TestCase):
+    """Test that FilePath is populated from resources[] array, not rawResource."""
+
+    @patch("task3.executor.subprocess.run")
+    def test_filepath_populated_from_resources_array(self, mock_run):
+        """FilePath column must come from data['resources'][*].source.relativePath."""
+        mock_results = {
+            "resources": [
+                {
+                    "resourceID": "abc-123",
+                    "source": {"relativePath": "namespace/pod.yaml"},
+                }
+            ],
+            "results": [
+                {
+                    "resourceID": "abc-123",
+                    "controls": [
+                        {
+                            "controlID": "C-0044",
+                            "name": "Container securityContext",
+                            "severity": {"scoreFactor": 5},
+                            "status": {"status": "failed"},
+                        }
+                    ],
+                }
+            ],
+        }
+
+        mock_run.return_value = MagicMock(returncode=0, stderr="")
+
+        with tempfile.TemporaryDirectory() as tmpdir:
+            controls_path = _write_file("C-0044\n", tmpdir, "controls.txt")
+
+            # Simulate kubescape writing to CWD (relative path)
+            results_json_tmp = "kubescape_results.json"
+            with open(results_json_tmp, "w") as f:
+                json.dump(mock_results, f)
+
+            try:
+                scan_dir = os.path.join(tmpdir, "yamls")
+                os.makedirs(scan_dir, exist_ok=True)
+
+                df = run_kubescape(
+                    controls_path, yamls_path=scan_dir, kubescape_cmd="kubescape"
+                )
+
+                self.assertIsInstance(df, pd.DataFrame)
+                self.assertIn("FilePath", df.columns)
+                self.assertTrue(
+                    (df["FilePath"] == "namespace/pod.yaml").any(),
+                    "FilePath must be sourced from resources[] array",
+                )
+            finally:
+                if os.path.exists(results_json_tmp):
+                    os.unlink(results_json_tmp)
 
 
 class TestGenerateCSV(unittest.TestCase):

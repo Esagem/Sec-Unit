@@ -187,12 +187,18 @@ def run_kubescape(
     with open(controls_path, "r") as f:
         controls_content = f.read().strip()
 
+    output_dir = os.path.dirname(os.path.abspath(controls_path))
+    # Kubescape requires a relative path for --output on some platforms;
+    # we write to CWD then move to the per-combo output directory.
+    results_json_tmp = "kubescape_results.json"
+    results_json = os.path.join(output_dir, "kubescape_results.json")
+
     # Build the kubescape command
     cmd = [kubescape_cmd, "scan"]
 
     if "NO DIFFERENCES FOUND" in controls_content:
         # Run with all controls
-        cmd += [scan_target, "--format", "json", "--output", "kubescape_results.json"]
+        cmd += [scan_target, "--format", "json", "--output", results_json_tmp]
     else:
         # Run only on the specific controls
         control_ids = [
@@ -202,13 +208,13 @@ def run_kubescape(
         ]
         controls_arg = ",".join(control_ids)
         cmd += [
-            "--controls",
+            "control",
             controls_arg,
             scan_target,
             "--format",
             "json",
             "--output",
-            "kubescape_results.json",
+            results_json_tmp,
         ]
 
     result = subprocess.run(cmd, capture_output=True, text=True)
@@ -221,22 +227,25 @@ def run_kubescape(
 
     # Parse JSON results into a DataFrame
     import json
+    import shutil
 
-    results_file = "kubescape_results.json"
-    if not os.path.isfile(results_file):
+    if not os.path.isfile(results_json_tmp):
         raise RuntimeError("Kubescape did not produce a results file.")
 
-    with open(results_file, "r") as f:
+    shutil.move(results_json_tmp, results_json)
+
+    with open(results_json, "r") as f:
         data = json.load(f)
+
+    resource_map = {
+        r["resourceID"]: r.get("source", {}).get("relativePath", "")
+        for r in data.get("resources", [])
+        if "resourceID" in r
+    }
 
     rows = []
     for resource_result in data.get("results", []):
-        file_path = ""
-        raw_resource = resource_result.get("rawResource", {})
-        if isinstance(raw_resource, dict):
-            source = raw_resource.get("source", {})
-            if isinstance(source, dict):
-                file_path = source.get("relativePath", "")
+        file_path = resource_map.get(resource_result.get("resourceID", ""), "")
 
         for control_result in resource_result.get("controls", []):
             control_name = control_result.get("name", "")

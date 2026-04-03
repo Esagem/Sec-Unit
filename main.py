@@ -315,7 +315,37 @@ def main():
                     pbar=(progress, task),
                     batch_size=batch_size,
                 )
+        console.print("[bold green]✓ Task 1 complete.[/bold green]")
+
+        if not args.task1:
+            console.print("\n[bold cyan]Running Task 2: KDE Comparison…[/bold cyan]")
+            for pdf1_name, pdf2_name in INPUT_COMBOS:
+                doc1 = os.path.splitext(pdf1_name)[0]
+                doc2 = os.path.splitext(pdf2_name)[0]
+                for prompt_type in PROMPT_TYPES:
+                    yaml1 = os.path.join(args.output_dir, f"{doc1}-{prompt_type}-kdes.yaml")
+                    yaml2 = os.path.join(args.output_dir, f"{doc2}-{prompt_type}-kdes.yaml")
+                    if os.path.exists(yaml1) and os.path.exists(yaml2):
+                        run_task2(yaml1, yaml2, output_dir=args.output_dir)
+            console.print("[bold green]✓ Task 2 complete.[/bold green]")
+
+            console.print("\n[bold cyan]Running Task 3: Kubescape Analysis…[/bold cyan]")
+            for pdf1_name, pdf2_name in INPUT_COMBOS:
+                doc1 = os.path.splitext(pdf1_name)[0]
+                doc2 = os.path.splitext(pdf2_name)[0]
+                combo = f"{doc1}-zero_shot-kdes_vs_{doc2}-zero_shot-kdes"
+                names_diff = os.path.join(args.output_dir, f"diff_names_{combo}.txt")
+                reqs_diff = os.path.join(args.output_dir, f"diff_reqs_{combo}.txt")
+                combo_out = os.path.join(args.output_dir, f"{doc1}_vs_{doc2}")
+                os.makedirs(combo_out, exist_ok=True)
+                try:
+                    run_task3(names_diff, reqs_diff, output_dir=combo_out)
+                except Exception as e:
+                    console.print(f"[yellow]⚠ Task 3 skipped for {doc1} vs {doc2}: {e}[/yellow]")
+            console.print("[bold green]✓ Task 3 complete.[/bold green]")
+
         console.print("[bold green]✓ All runs complete.[/bold green]")
+
     elif args.pdf1 and args.pdf2:
         total_calls = len(PROMPT_TYPES) * 2
         with progress:
@@ -326,7 +356,32 @@ def main():
                 pbar=(progress, task),
                 batch_size=batch_size,
             )
-        console.print("[bold green]✓ Done.[/bold green]")
+        console.print("[bold green]✓ Task 1 complete.[/bold green]")
+
+        if not args.task1:
+            doc1 = os.path.splitext(os.path.basename(args.pdf1))[0]
+            doc2 = os.path.splitext(os.path.basename(args.pdf2))[0]
+
+            console.print("\n[bold cyan]Running Task 2: KDE Comparison…[/bold cyan]")
+            for prompt_type in PROMPT_TYPES:
+                yaml1 = os.path.join(args.output_dir, f"{doc1}-{prompt_type}-kdes.yaml")
+                yaml2 = os.path.join(args.output_dir, f"{doc2}-{prompt_type}-kdes.yaml")
+                if os.path.exists(yaml1) and os.path.exists(yaml2):
+                    run_task2(yaml1, yaml2, output_dir=args.output_dir)
+            console.print("[bold green]✓ Task 2 complete.[/bold green]")
+
+            console.print("\n[bold cyan]Running Task 3: Kubescape Analysis…[/bold cyan]")
+            combo = f"{doc1}-zero_shot-kdes_vs_{doc2}-zero_shot-kdes"
+            names_diff = os.path.join(args.output_dir, f"diff_names_{combo}.txt")
+            reqs_diff = os.path.join(args.output_dir, f"diff_reqs_{combo}.txt")
+            combo_out = os.path.join(args.output_dir, f"{doc1}_vs_{doc2}")
+            os.makedirs(combo_out, exist_ok=True)
+            try:
+                run_task3(names_diff, reqs_diff, output_dir=combo_out)
+            except Exception as e:
+                console.print(f"[yellow]⚠ Task 3 skipped: {e}[/yellow]")
+            console.print("[bold green]✓ Done.[/bold green]")
+
     else:
         parser.print_help()
         sys.exit(1)

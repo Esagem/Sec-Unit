@@ -97,15 +97,15 @@ def build_chain_of_thought_prompt(document_text: str) -> str:
     """
     return f"""Analyze the following CIS Benchmark security requirements document to extract Key Data Elements (KDEs).
 
-Follow these steps carefully:
+Follow these phases carefully:
 
-Step 1: Read through the document and identify all major section headings. These represent security control areas such as "Control Plane Components", "Worker Node Configuration", "Logging", "Policies", etc.
+Phase 1: Read through the document and identify all major section headings. These represent security control areas such as "Control Plane Components", "Worker Node Configuration", "Logging", "Policies", etc.
 
-Step 2: For each major section, identify the specific recommendations or requirements listed under it. These typically start with numbered items like "3.1.1 Ensure that..." or "4.2.3 Restrict...".
+Phase 2: For each major section, identify the specific recommendations or requirements listed under it. These typically start with numbered items like "3.1.1 Ensure that..." or "4.2.3 Restrict...".
 
-Step 3: Group the requirements under their parent section. Each parent section becomes a Key Data Element (KDE) with a name and a list of requirements.
+Phase 3: Group the requirements under their parent section. Each parent section becomes a Key Data Element (KDE) with a name and a list of requirements.
 
-Step 4: Format the results as YAML with this exact structure:
+Phase 4: Format the results as YAML with this exact structure:
 element1:
   name: "<section name>"
   requirements:
@@ -115,4 +115,4 @@ element1:
 DOCUMENT TEXT:
 {document_text}
 
-Now, work through the steps and provide your final YAML output. Respond ONLY with the YAML output after your reasoning."""
+Now work through the phases mentally, then output ONLY the final YAML. Do not include any reasoning, phases, or explanation in your response — only the YAML."""

@@ -340,11 +340,13 @@ def _parse_kdes_from_response(response: str) -> dict:
     # --- Attempt 1: Direct YAML parse (if model returned valid YAML) --------
     # Strip markdown code fences if present
     cleaned = response.strip()
-    if cleaned.startswith("```"):
+    if "```" in cleaned:
         lines = cleaned.split("\n")
-        # Remove first and last fence lines
-        lines = [l for l in lines if not l.strip().startswith("```")]
-        cleaned = "\n".join(lines)
+        fence_indices = [i for i, l in enumerate(lines) if l.strip().startswith("```")]
+        if len(fence_indices) >= 2:
+            cleaned = "\n".join(lines[fence_indices[0] + 1 : fence_indices[-1]])
+        elif len(fence_indices) == 1:
+            cleaned = "\n".join(lines[fence_indices[0] + 1 :])
 
     try:
         parsed = yaml.safe_load(cleaned)
@@ -376,7 +378,7 @@ def _parse_kdes_from_response(response: str) -> dict:
             # Treat subsequent non-empty lines as requirements
             if stripped.startswith("- "):
                 stripped = stripped[2:]
-            if stripped:
+            if stripped and stripped not in current_element["requirements"]:
                 current_element["requirements"].append(stripped)
 
     # If heuristic also found nothing, store the raw response as a single element
@@ -416,6 +418,8 @@ def _normalize_kdes(data: dict) -> dict:
                 reqs = [reqs]
             elif not isinstance(reqs, list):
                 reqs = [str(reqs)]
+            reqs = list(dict.fromkeys(reqs))
+            reqs = [r for r in reqs if r and str(r).strip() and str(r).strip().lower() != "none"]
             normalized[elem_key] = {"name": str(name), "requirements": reqs}
         elif isinstance(value, list):
             normalized[elem_key] = {"name": str(key), "requirements": value}

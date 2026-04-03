@@ -105,8 +105,8 @@ class TestConstructChainOfThoughtPrompt(unittest.TestCase):
 
         self.assertIsInstance(prompt, str)
         self.assertIn(sample_text, prompt)
-        self.assertIn("Step 1", prompt)
-        self.assertIn("Step 2", prompt)
+        self.assertIn("Phase 1", prompt)
+        self.assertIn("Phase 2", prompt)
 
 
 class TestExtractKDEs(unittest.TestCase):
@@ -200,6 +200,44 @@ class TestCollectLLMOutput(unittest.TestCase):
             self.assertIn("zero_shot", content)
             self.assertIn("few_shot", content)
             self.assertIn("*LLM Output*", content)
+
+
+class TestFenceStripping(unittest.TestCase):
+    """Test that _parse_kdes_from_response correctly strips fences with preamble text."""
+
+    def test_extracts_yaml_between_fences_with_preamble(self):
+        """Response with text before opening fence should still parse correctly."""
+        from task1.extractor import _parse_kdes_from_response
+
+        response = (
+            "Here is the extracted YAML output:\n"
+            "```yaml\n"
+            "element1:\n"
+            "  name: \"Logging\"\n"
+            "  requirements:\n"
+            "    - \"Enable audit Logs\"\n"
+            "```\n"
+        )
+        result = _parse_kdes_from_response(response)
+        self.assertIn("element1", result)
+        self.assertEqual(result["element1"]["name"], "Logging")
+        self.assertNotEqual(result["element1"]["name"], "Unparsed LLM Output")
+
+    def test_extracts_yaml_between_fences_no_preamble(self):
+        """Standard response starting directly with fence should parse correctly."""
+        from task1.extractor import _parse_kdes_from_response
+
+        response = (
+            "```yaml\n"
+            "element1:\n"
+            "  name: \"Pod Security\"\n"
+            "  requirements:\n"
+            "    - \"Enforce restricted standards\"\n"
+            "```\n"
+        )
+        result = _parse_kdes_from_response(response)
+        self.assertIn("element1", result)
+        self.assertEqual(result["element1"]["name"], "Pod Security")
 
 
 if __name__ == "__main__":
