@@ -359,6 +359,9 @@ def main():
                     f.write('\n'.join(sorted(merged_names)) + '\n' if merged_names else "NO DIFFERENCES IN REGARDS TO ELEMENT NAMES\n")
                 with open(merged_reqs_path, "w", encoding="utf-8") as f:
                     f.write('\n'.join(sorted(merged_reqs)) + '\n' if merged_reqs else "NO DIFFERENCES IN REGARDS TO ELEMENT REQUIREMENTS\n")
+                if not merged_names and not merged_reqs:
+                    console.print(f"[dim]  ⏭ {doc1} vs {doc2}: no differences — skipping Kubescape[/dim]")
+                    continue
                 try:
                     run_task3(merged_names_path, merged_reqs_path, output_dir=combo_out)
                 except Exception as e:
@@ -416,10 +419,13 @@ def main():
                 f.write('\n'.join(sorted(merged_names)) + '\n' if merged_names else "NO DIFFERENCES IN REGARDS TO ELEMENT NAMES\n")
             with open(merged_reqs_path, "w", encoding="utf-8") as f:
                 f.write('\n'.join(sorted(merged_reqs)) + '\n' if merged_reqs else "NO DIFFERENCES IN REGARDS TO ELEMENT REQUIREMENTS\n")
-            try:
-                run_task3(merged_names_path, merged_reqs_path, output_dir=combo_out)
-            except Exception as e:
-                console.print(f"[yellow]⚠ Task 3 skipped: {e}[/yellow]")
+            if not merged_names and not merged_reqs:
+                console.print("[dim]  ⏭ No differences — skipping Kubescape[/dim]")
+            else:
+                try:
+                    run_task3(merged_names_path, merged_reqs_path, output_dir=combo_out)
+                except Exception as e:
+                    console.print(f"[yellow]⚠ Task 3 skipped: {e}[/yellow]")
             console.print("[bold green]✓ Done.[/bold green]")
 
     else:
