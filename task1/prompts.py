@@ -87,7 +87,7 @@ Now extract all KDEs from this document:
 DOCUMENT TEXT:
 {document_text}
 
-Respond ONLY with the YAML output. Do not include any other text."""
+Respond ONLY with the YAML output. Begin your response with 'element1:' — do not write any text before the YAML."""
 
 
 def build_chain_of_thought_prompt(document_text: str) -> str:
@@ -95,24 +95,22 @@ def build_chain_of_thought_prompt(document_text: str) -> str:
     Chain-of-thought prompt: instructs the model to reason step-by-step
     before producing the final structured output.
     """
-    return f"""Analyze the following CIS Benchmark security requirements document to extract Key Data Elements (KDEs).
+    return f"""Analyze the following CIS Benchmark document and extract Key Data Elements (KDEs).
 
-Follow these phases carefully:
+Before writing your answer, think through:
+- What are the major security section headings in this document? (e.g. "Kubelet", "Logging", "Pod Security Standards")
+- What specific requirements (numbered items like "3.1.1 Ensure...") appear under each section?
+- How should requirements be grouped under their parent section name?
 
-Phase 1: Read through the document and identify all major section headings. These represent security control areas such as "Control Plane Components", "Worker Node Configuration", "Logging", "Policies", etc.
-
-Phase 2: For each major section, identify the specific recommendations or requirements listed under it. These typically start with numbered items like "3.1.1 Ensure that..." or "4.2.3 Restrict...".
-
-Phase 3: Group the requirements under their parent section. Each parent section becomes a Key Data Element (KDE) with a name and a list of requirements.
-
-Phase 4: Format the results as YAML with this exact structure:
+Output ONLY the YAML below — no preamble, no reasoning, no markdown fences:
 element1:
   name: "<section name>"
   requirements:
     - "<requirement text>"
+element2:
+  name: "<section name>"
+  requirements:
     - "<requirement text>"
 
 DOCUMENT TEXT:
-{document_text}
-
-Now work through the phases mentally, then output ONLY the final YAML. Do not include any reasoning, phases, or explanation in your response — only the YAML."""
+{document_text}"""

@@ -105,8 +105,8 @@ class TestConstructChainOfThoughtPrompt(unittest.TestCase):
 
         self.assertIsInstance(prompt, str)
         self.assertIn(sample_text, prompt)
-        self.assertIn("Phase 1", prompt)
-        self.assertIn("Phase 2", prompt)
+        self.assertIn("think through", prompt)
+        self.assertIn("Output ONLY", prompt)
 
 
 class TestExtractKDEs(unittest.TestCase):
@@ -238,6 +238,88 @@ class TestFenceStripping(unittest.TestCase):
         result = _parse_kdes_from_response(response)
         self.assertIn("element1", result)
         self.assertEqual(result["element1"]["name"], "Pod Security")
+
+
+class TestPartialRecovery(unittest.TestCase):
+    """Test that _parse_kdes_from_response recovers valid elements from truncated output."""
+
+    def test_recovers_complete_elements_before_truncation(self):
+        """Complete elements before a truncated final element should be recovered."""
+        from task1.extractor import _parse_kdes_from_response
+
+        # Simulates model hitting token limit mid-string in element2
+        truncated_response = (
+            'element1:\n'
+            '  name: "Logging"\n'
+            '  requirements:\n'
+            '    - "Enable audit logs"\n'
+            'element2:\n'
+            '  name: "Kubelet"\n'
+            '  requirements:\n'
+            '    - "Ensure anonymous auth is not enabled\n'
+        )
+        result = _parse_kdes_from_response(truncated_response)
+        self.assertIn("element1", result)
+        self.assertEqual(result["element1"]["name"], "Logging")
+        self.assertNotIn("Unparsed LLM Output",
+                         [v.get("name") for v in result.values() if isinstance(v, dict)])
+
+
+class TestElementNameValidation(unittest.TestCase):
+    """_normalize_kdes must reject garbage element names and single-word requirements."""
+
+    def test_rejects_non_ascii_element_name(self):
+        """Elements with non-ASCII names must be dropped."""
+        from task1.extractor import _parse_kdes_from_response
+        response = 'element1:\n  name: "\u0BBE\u0BB0\u0BC1"\n  requirements:\n    - "Ensure X is set"\n'
+        result = _parse_kdes_from_response(response)
+        names = [v.get("name") for v in result.values() if isinstance(v, dict)]
+        self.assertNotIn("\u0BBE\u0BB0\u0BC1", names)
+
+    def test_rejects_placeholder_name_kdes(self):
+        """Elements named 'KDEs' must be dropped."""
+        from task1.extractor import _parse_kdes_from_response
+        response = 'element1:\n  name: "KDEs"\n  requirements:\n    - "Ensure X is set"\n'
+        result = _parse_kdes_from_response(response)
+        names = [v.get("name") for v in result.values() if isinstance(v, dict)]
+        self.assertNotIn("KDEs", names)
+
+    def test_rejects_meta_commentary_element_name(self):
+        """Elements with meta-commentary names (> 60 chars or containing 'helpful') must be dropped."""
+        from task1.extractor import _parse_kdes_from_response
+        long_name = "A helpful security document analyzer would identify the following KDEs"
+        response = f'element1:\n  name: "{long_name}"\n  requirements:\n    - "Ensure X is set"\n'
+        result = _parse_kdes_from_response(response)
+        names = [v.get("name") for v in result.values() if isinstance(v, dict)]
+        self.assertNotIn(long_name, names)
+
+    def test_rejects_single_word_requirements(self):
+        """Single-word entries like '3' and 'Automated' must be filtered from requirements."""
+        from task1.extractor import _normalize_kdes
+        data = {
+            "element1": {
+                "name": "Logging",
+                "requirements": ["Enable audit logs", "3", "Automated", "Manual"],
+            }
+        }
+        result = _normalize_kdes(data)
+        reqs = result["element1"]["requirements"]
+        self.assertIn("Enable audit logs", reqs)
+        self.assertNotIn("3", reqs)
+        self.assertNotIn("Automated", reqs)
+        self.assertNotIn("Manual", reqs)
+
+    def test_valid_element_names_pass_through(self):
+        """Legitimate CIS section names must not be filtered."""
+        from task1.extractor import _normalize_kdes
+        data = {
+            "element1": {"name": "Control Plane Components", "requirements": ["Ensure X is set"]},
+            "element2": {"name": "Kubelet", "requirements": ["Ensure Y is enabled"]},
+        }
+        result = _normalize_kdes(data)
+        names = [v["name"] for v in result.values()]
+        self.assertIn("Control Plane Components", names)
+        self.assertIn("Kubelet", names)
 
 
 if __name__ == "__main__":

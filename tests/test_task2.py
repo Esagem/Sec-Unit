@@ -128,6 +128,39 @@ class TestCompareElementNames(unittest.TestCase):
                 content = f.read()
             self.assertIn("NO DIFFERENCES IN REGARDS TO ELEMENT NAMES", content)
 
+    def test_ignores_unparsed_llm_output_elements(self):
+        """Elements named 'Unparsed LLM Output' must not appear in name diffs."""
+        kdes_unparsed = {
+            "element1": {"name": "Unparsed LLM Output", "requirements": ["raw escaped yaml..."]}
+        }
+        kdes_clean = {
+            "element1": {"name": "Logging", "requirements": ["Enable audit logs"]}
+        }
+        with tempfile.TemporaryDirectory() as tmpdir:
+            out_path = os.path.join(tmpdir, "diff_names.txt")
+            result_path = compare_element_names(kdes_unparsed, kdes_clean, output_path=out_path)
+            with open(result_path) as f:
+                content = f.read()
+            self.assertNotIn("Unparsed LLM Output", content)
+
+    def test_ignores_garbage_element_names(self):
+        """Non-ASCII names, placeholder 'KDEs', and meta-commentary must not appear in name diffs."""
+        kdes_garbage = {
+            "element1": {"name": "KDEs", "requirements": ["Enable audit logs"]},
+            "element2": {"name": "\u0BBE\u0BB0\u0BC1", "requirements": ["Enable audit logs"]},
+            "element3": {"name": "A helpful security document analyzer would identify the following KDEs",
+                         "requirements": ["Enable audit logs"]},
+        }
+        kdes_clean = {"element1": {"name": "Logging", "requirements": ["Enable audit logs"]}}
+        with tempfile.TemporaryDirectory() as tmpdir:
+            out_path = os.path.join(tmpdir, "diff_names.txt")
+            result_path = compare_element_names(kdes_garbage, kdes_clean, output_path=out_path)
+            with open(result_path, encoding="utf-8") as f:
+                content = f.read()
+            self.assertNotIn("KDEs", content)
+            self.assertNotIn("\u0BBE\u0BB0\u0BC1", content)
+            self.assertNotIn("helpful", content)
+
 
 class TestCompareElementRequirements(unittest.TestCase):
     """Test 3: compare_element_requirements"""
@@ -163,6 +196,50 @@ class TestCompareElementRequirements(unittest.TestCase):
             with open(out_path) as f:
                 content = f.read()
             self.assertIn("NO DIFFERENCES IN REGARDS TO ELEMENT REQUIREMENTS", content)
+
+    def test_fuzzy_dedup_collapses_near_duplicate_requirements(self):
+        """Requirements with different leading verbs but same substance should not appear in diffs."""
+        kdes_a = {
+            "element1": {
+                "name": "RBAC",
+                "requirements": [
+                    "Avoid use of the Bind, Impersonate and Escalate permissions",
+                    "Ensure that the --eventRecordQPS argument is set to 0 or a level",
+                ],
+            },
+        }
+        kdes_b = {
+            "element1": {
+                "name": "RBAC",
+                "requirements": [
+                    "Limit use of the Bind, Impersonate and Escalate permissions",
+                    "Ensure that the --eventRecordQPS argument is set to 0 or a level which ensures appropriate event capture",
+                ],
+            },
+        }
+        with tempfile.TemporaryDirectory() as tmpdir:
+            out_path = os.path.join(tmpdir, "diff_reqs.txt")
+            compare_element_requirements(kdes_a, kdes_b, output_path=out_path)
+            with open(out_path) as f:
+                content = f.read()
+            # "Bind, Impersonate and Escalate" requirements differ only in leading verb —
+            # fuzzy dedup should collapse them
+            self.assertNotIn("Bind, Impersonate", content)
+
+    def test_ignores_unparsed_llm_output_requirements(self):
+        """Elements named 'Unparsed LLM Output' must not appear in requirement diffs."""
+        kdes_unparsed = {
+            "element1": {"name": "Unparsed LLM Output", "requirements": ["raw escaped yaml..."]}
+        }
+        kdes_clean = {
+            "element1": {"name": "Logging", "requirements": ["Enable audit logs"]}
+        }
+        with tempfile.TemporaryDirectory() as tmpdir:
+            out_path = os.path.join(tmpdir, "diff_reqs.txt")
+            result_path = compare_element_requirements(kdes_unparsed, kdes_clean, output_path=out_path)
+            with open(result_path) as f:
+                content = f.read()
+            self.assertNotIn("Unparsed LLM Output", content)
 
 
 if __name__ == "__main__":

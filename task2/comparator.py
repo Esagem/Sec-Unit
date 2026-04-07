@@ -6,7 +6,91 @@ differences in element names and requirements between two documents.
 """
 
 import os
+import re
+from difflib import SequenceMatcher
+
 import yaml
+
+_INVALID_KDE_NAMES = {"unparsed llm output", "kdes", "none"}
+_INVALID_KDE_FRAGMENTS = {"helpful", "analyzer", "identify", "following"}
+
+# Leading verbs that CIS benchmarks use interchangeably
+_LEADING_VERB_RE = re.compile(
+    r'^(Ensure that the|Ensure that|Ensure the|Ensure|Verify that the|Verify that|'
+    r'Verify the|Verify|Confirm that|Confirm|Avoid use of the|Avoid use of|'
+    r'Limit use of the|Limit use of|Minimize|Enable|Disable)\s+',
+    re.IGNORECASE,
+)
+
+
+def _normalize_req(req: str) -> str:
+    """Return a canonical form of a requirement for fuzzy comparison."""
+    s = req.strip().rstrip(".")
+    # Strip leading CIS verb phrase
+    s = _LEADING_VERB_RE.sub("", s)
+    # Collapse whitespace and lowercase
+    s = " ".join(s.lower().split())
+    return s
+
+
+def _fuzzy_dedup_pairs(
+    pairs_1: set[tuple[str, str]],
+    pairs_2: set[tuple[str, str]],
+    threshold: float = 0.85,
+) -> set[tuple[str, str]]:
+    """
+    Symmetric difference of (name, requirement) pairs, but treats two
+    requirements under the same element name as identical when their
+    normalized forms match or their similarity ratio exceeds *threshold*.
+    """
+    # Exact symmetric difference first
+    only_1 = pairs_1 - pairs_2
+    only_2 = pairs_2 - pairs_1
+    if not only_1 or not only_2:
+        return only_1 | only_2
+
+    # Group by element name for efficient comparison
+    from collections import defaultdict
+    by_name_1: dict[str, list[str]] = defaultdict(list)
+    by_name_2: dict[str, list[str]] = defaultdict(list)
+    for name, req in only_1:
+        by_name_1[name].append(req)
+    for name, req in only_2:
+        by_name_2[name].append(req)
+
+    matched_1: set[tuple[str, str]] = set()
+    matched_2: set[tuple[str, str]] = set()
+
+    for name in by_name_1:
+        if name not in by_name_2:
+            continue
+        for r1 in by_name_1[name]:
+            n1 = _normalize_req(r1)
+            for r2 in by_name_2[name]:
+                if (name, r2) in matched_2:
+                    continue
+                n2 = _normalize_req(r2)
+                # Exact normalized match or high similarity
+                if n1 == n2 or SequenceMatcher(None, n1, n2).ratio() >= threshold:
+                    matched_1.add((name, r1))
+                    matched_2.add((name, r2))
+                    break
+
+    return (only_1 - matched_1) | (only_2 - matched_2)
+
+
+def _is_valid_kde_name(name: str) -> bool:
+    """Return True only for plausible CIS section names."""
+    s = str(name).strip()
+    if not s.isascii():
+        return False
+    if len(s) > 60:
+        return False
+    if s.lower() in _INVALID_KDE_NAMES:
+        return False
+    if any(frag in s.lower() for frag in _INVALID_KDE_FRAGMENTS):
+        return False
+    return True
 
 
 # ---------------------------------------------------------------------------
@@ -36,7 +120,7 @@ def load_yaml_files(yaml_path_1: str, yaml_path_2: str) -> tuple[dict, dict]:
         if not (path.lower().endswith(".yaml") or path.lower().endswith(".yml")):
             raise ValueError(f"Expected a YAML file, got: {path}")
 
-        with open(path, "r") as f:
+        with open(path, "r", encoding="utf-8") as f:
             try:
                 data = yaml.safe_load(f)
             except yaml.YAMLError as e:
@@ -70,15 +154,17 @@ def compare_element_names(
     Returns:
         The path to the written output file.
     """
-    names_1 = {v["name"] for v in kdes_1.values() if isinstance(v, dict) and "name" in v}
-    names_2 = {v["name"] for v in kdes_2.values() if isinstance(v, dict) and "name" in v}
+    names_1 = {v["name"] for v in kdes_1.values()
+               if isinstance(v, dict) and "name" in v and _is_valid_kde_name(v["name"])}
+    names_2 = {v["name"] for v in kdes_2.values()
+               if isinstance(v, dict) and "name" in v and _is_valid_kde_name(v["name"])}
 
     # Symmetric difference: names in one but not the other
     diff = names_1.symmetric_difference(names_2)
 
     os.makedirs(os.path.dirname(output_path) or ".", exist_ok=True)
 
-    with open(output_path, "w") as f:
+    with open(output_path, "w", encoding="utf-8") as f:
         if not diff:
             f.write("NO DIFFERENCES IN REGARDS TO ELEMENT NAMES\n")
         else:
@@ -112,22 +198,22 @@ def compare_element_requirements(
     # Build sets of (name, requirement) tuples from each file
     pairs_1 = set()
     for v in kdes_1.values():
-        if isinstance(v, dict) and "name" in v and "requirements" in v:
+        if isinstance(v, dict) and "name" in v and "requirements" in v and _is_valid_kde_name(v["name"]):
             for req in v["requirements"]:
                 pairs_1.add((v["name"], str(req)))
 
     pairs_2 = set()
     for v in kdes_2.values():
-        if isinstance(v, dict) and "name" in v and "requirements" in v:
+        if isinstance(v, dict) and "name" in v and "requirements" in v and _is_valid_kde_name(v["name"]):
             for req in v["requirements"]:
                 pairs_2.add((v["name"], str(req)))
 
-    # Symmetric difference: pairs present in one but not the other
-    diff = pairs_1.symmetric_difference(pairs_2)
+    # Fuzzy symmetric difference: collapses near-duplicate requirements
+    diff = _fuzzy_dedup_pairs(pairs_1, pairs_2)
 
     os.makedirs(os.path.dirname(output_path) or ".", exist_ok=True)
 
-    with open(output_path, "w") as f:
+    with open(output_path, "w", encoding="utf-8") as f:
         if not diff:
             f.write("NO DIFFERENCES IN REGARDS TO ELEMENT REQUIREMENTS\n")
         else:

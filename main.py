@@ -50,6 +50,7 @@ INPUT_COMBOS = [
 ]
 
 PROMPT_TYPES = ["zero_shot", "few_shot", "chain_of_thought"]
+_CONSENSUS_MIN = 2  # A diff line must appear in at least this many prompt types
 
 
 def get_model_pipeline():
@@ -67,7 +68,7 @@ def get_model_pipeline():
             device="cuda" if torch.cuda.is_available() else "cpu",
             dtype=torch.float16,
         )
-        pipe.model.generation_config = GenerationConfig(do_sample=False, max_new_tokens=2048)
+        pipe.model.generation_config = GenerationConfig(do_sample=False, max_new_tokens=3072)
         pipe.model = torch.compile(pipe.model)
 
     console.print("[bold green]✓[/bold green] Model loaded.")
@@ -87,7 +88,7 @@ def _detect_batch_size() -> int:
         free_gb = free_bytes / 1024 ** 3
         # ~1.5 GB per sequence is a conservative estimate for Gemma-3-1B
         # with 2048-token KV cache at fp16
-        batch = max(1, int(free_gb // 1.5))
+        batch = max(1, int(free_gb // 2.0))
         console.print(f"[dim]GPU free VRAM: {free_gb:.1f} GB → starting batch size: {batch}[/dim]")
         return batch
     except Exception:
@@ -333,13 +334,33 @@ def main():
             for pdf1_name, pdf2_name in INPUT_COMBOS:
                 doc1 = os.path.splitext(pdf1_name)[0]
                 doc2 = os.path.splitext(pdf2_name)[0]
-                combo = f"{doc1}-zero_shot-kdes_vs_{doc2}-zero_shot-kdes"
-                names_diff = os.path.join(args.output_dir, f"diff_names_{combo}.txt")
-                reqs_diff = os.path.join(args.output_dir, f"diff_reqs_{combo}.txt")
                 combo_out = os.path.join(args.output_dir, f"{doc1}_vs_{doc2}")
                 os.makedirs(combo_out, exist_ok=True)
+                from collections import Counter
+                name_counts: Counter[str] = Counter()
+                req_counts: Counter[str] = Counter()
+                for pt in PROMPT_TYPES:
+                    combo_pt = f"{doc1}-{pt}-kdes_vs_{doc2}-{pt}-kdes"
+                    nf = os.path.join(args.output_dir, f"diff_names_{combo_pt}.txt")
+                    rf = os.path.join(args.output_dir, f"diff_reqs_{combo_pt}.txt")
+                    for path, counter in [(nf, name_counts), (rf, req_counts)]:
+                        if os.path.exists(path):
+                            content = open(path, encoding="utf-8").read().strip()
+                            if "NO DIFFERENCES" not in content:
+                                for line in content.split('\n'):
+                                    if line.strip():
+                                        counter[line.strip()] += 1
+                # Only keep lines that at least _CONSENSUS_MIN prompt types agree on
+                merged_names = {l for l, c in name_counts.items() if c >= _CONSENSUS_MIN}
+                merged_reqs = {l for l, c in req_counts.items() if c >= _CONSENSUS_MIN}
+                merged_names_path = os.path.join(combo_out, "merged_diff_names.txt")
+                merged_reqs_path = os.path.join(combo_out, "merged_diff_reqs.txt")
+                with open(merged_names_path, "w", encoding="utf-8") as f:
+                    f.write('\n'.join(sorted(merged_names)) + '\n' if merged_names else "NO DIFFERENCES IN REGARDS TO ELEMENT NAMES\n")
+                with open(merged_reqs_path, "w", encoding="utf-8") as f:
+                    f.write('\n'.join(sorted(merged_reqs)) + '\n' if merged_reqs else "NO DIFFERENCES IN REGARDS TO ELEMENT REQUIREMENTS\n")
                 try:
-                    run_task3(names_diff, reqs_diff, output_dir=combo_out)
+                    run_task3(merged_names_path, merged_reqs_path, output_dir=combo_out)
                 except Exception as e:
                     console.print(f"[yellow]⚠ Task 3 skipped for {doc1} vs {doc2}: {e}[/yellow]")
             console.print("[bold green]✓ Task 3 complete.[/bold green]")
@@ -371,13 +392,32 @@ def main():
             console.print("[bold green]✓ Task 2 complete.[/bold green]")
 
             console.print("\n[bold cyan]Running Task 3: Kubescape Analysis…[/bold cyan]")
-            combo = f"{doc1}-zero_shot-kdes_vs_{doc2}-zero_shot-kdes"
-            names_diff = os.path.join(args.output_dir, f"diff_names_{combo}.txt")
-            reqs_diff = os.path.join(args.output_dir, f"diff_reqs_{combo}.txt")
             combo_out = os.path.join(args.output_dir, f"{doc1}_vs_{doc2}")
             os.makedirs(combo_out, exist_ok=True)
+            from collections import Counter
+            name_counts: Counter[str] = Counter()
+            req_counts: Counter[str] = Counter()
+            for pt in PROMPT_TYPES:
+                combo_pt = f"{doc1}-{pt}-kdes_vs_{doc2}-{pt}-kdes"
+                nf = os.path.join(args.output_dir, f"diff_names_{combo_pt}.txt")
+                rf = os.path.join(args.output_dir, f"diff_reqs_{combo_pt}.txt")
+                for path, counter in [(nf, name_counts), (rf, req_counts)]:
+                    if os.path.exists(path):
+                        content = open(path, encoding="utf-8").read().strip()
+                        if "NO DIFFERENCES" not in content:
+                            for line in content.split('\n'):
+                                if line.strip():
+                                    counter[line.strip()] += 1
+            merged_names = {l for l, c in name_counts.items() if c >= _CONSENSUS_MIN}
+            merged_reqs = {l for l, c in req_counts.items() if c >= _CONSENSUS_MIN}
+            merged_names_path = os.path.join(combo_out, "merged_diff_names.txt")
+            merged_reqs_path = os.path.join(combo_out, "merged_diff_reqs.txt")
+            with open(merged_names_path, "w", encoding="utf-8") as f:
+                f.write('\n'.join(sorted(merged_names)) + '\n' if merged_names else "NO DIFFERENCES IN REGARDS TO ELEMENT NAMES\n")
+            with open(merged_reqs_path, "w", encoding="utf-8") as f:
+                f.write('\n'.join(sorted(merged_reqs)) + '\n' if merged_reqs else "NO DIFFERENCES IN REGARDS TO ELEMENT REQUIREMENTS\n")
             try:
-                run_task3(names_diff, reqs_diff, output_dir=combo_out)
+                run_task3(merged_names_path, merged_reqs_path, output_dir=combo_out)
             except Exception as e:
                 console.print(f"[yellow]⚠ Task 3 skipped: {e}[/yellow]")
             console.print("[bold green]✓ Done.[/bold green]")

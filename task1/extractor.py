@@ -6,6 +6,7 @@ extracting Key Data Elements (KDEs) via Gemma-3-1B, and logging output.
 """
 
 import os
+import re
 import yaml
 import datetime
 from pypdf import PdfReader
@@ -176,7 +177,7 @@ def extract_kdes(
                 "content": [
                     {
                         "type": "text",
-                        "text": "You are a helpful security document analyzer.",
+                        "text": "You are a YAML formatter. Output only valid YAML. Do not write any text before or after the YAML block.",
                     }
                 ],
             },
@@ -197,8 +198,8 @@ def extract_kdes(
     os.makedirs(output_dir, exist_ok=True)
     yaml_filename = f"{doc_name}-kdes.yaml"
     yaml_path = os.path.join(output_dir, yaml_filename)
-    with open(yaml_path, "w") as f:
-        yaml.dump(kdes, f, default_flow_style=False, sort_keys=False)
+    with open(yaml_path, "w", encoding="utf-8") as f:
+        yaml.dump(kdes, f, default_flow_style=False, sort_keys=False, allow_unicode=True)
 
     return {
         "kdes": kdes,
@@ -231,7 +232,7 @@ def collect_llm_output(
     """
     os.makedirs(os.path.dirname(output_path) or ".", exist_ok=True)
 
-    with open(output_path, "w") as f:
+    with open(output_path, "w", encoding="utf-8") as f:
         f.write(f"LLM Output Collection — {datetime.datetime.now().isoformat()}\n")
         f.write("=" * 70 + "\n\n")
 
@@ -296,8 +297,8 @@ def save_kde_result(
     kdes = _parse_kdes_from_response(raw_response)
     os.makedirs(output_dir, exist_ok=True)
     yaml_path = os.path.join(output_dir, f"{doc_name}-kdes.yaml")
-    with open(yaml_path, "w") as f:
-        yaml.dump(kdes, f, default_flow_style=False, sort_keys=False)
+    with open(yaml_path, "w", encoding="utf-8") as f:
+        yaml.dump(kdes, f, default_flow_style=False, sort_keys=False, allow_unicode=True)
     return {
         "kdes": kdes,
         "raw_response": raw_response,
@@ -310,7 +311,7 @@ def save_kde_result(
 # ===========================================================================
 # Internal helpers
 # ===========================================================================
-def _truncate_to_recommendations(text: str, max_chars: int = 6000) -> str:
+def _truncate_to_recommendations(text: str, max_chars: int = 4500) -> str:
     """
     Attempts to isolate the 'Recommendations' section from a CIS Benchmark
     document and truncates to fit within the model's practical context.
@@ -355,6 +356,21 @@ def _parse_kdes_from_response(response: str) -> dict:
     except yaml.YAMLError:
         pass
 
+    # --- Attempt 1b: Partial recovery — truncate at last complete element ----
+    lines_cleaned = cleaned.split("\n")
+    element_starts = [
+        i for i, l in enumerate(lines_cleaned) if re.match(r'^element\d+:', l.strip())
+    ]
+    if len(element_starts) >= 2:
+        for cutoff in reversed(element_starts[1:]):
+            partial = "\n".join(lines_cleaned[:cutoff])
+            try:
+                parsed = yaml.safe_load(partial)
+                if isinstance(parsed, dict) and parsed:
+                    return _normalize_kdes(parsed)
+            except yaml.YAMLError:
+                continue
+
     # --- Attempt 2: Heuristic line-by-line parsing --------------------------
     kdes = {}
     current_element = None
@@ -378,7 +394,7 @@ def _parse_kdes_from_response(response: str) -> dict:
             # Treat subsequent non-empty lines as requirements
             if stripped.startswith("- "):
                 stripped = stripped[2:]
-            if stripped and stripped not in current_element["requirements"]:
+            if stripped and stripped not in current_element["requirements"] and len(stripped.split()) >= 2:
                 current_element["requirements"].append(stripped)
 
     # If heuristic also found nothing, store the raw response as a single element
@@ -393,10 +409,26 @@ def _parse_kdes_from_response(response: str) -> dict:
 
 def _looks_like_element_header(line: str) -> bool:
     """Check if a line looks like a CIS benchmark section header."""
-    import re
-
     # Matches patterns like "3.2.1 Ensure..." or "1.1 Enable..."
     return bool(re.match(r"^\d+(\.\d+)+ ", line))
+
+
+_INVALID_NAME_FRAGMENTS = {"helpful", "analyzer", "identify", "following", "document"}
+_PLACEHOLDER_NAMES = {"kdes", "none"}
+
+
+def _is_valid_element_name(name: str) -> bool:
+    """Return True only for plausible CIS section names."""
+    s = str(name).strip()
+    if not s.isascii():
+        return False
+    if len(s) > 60:
+        return False
+    if s.lower() in _PLACEHOLDER_NAMES:
+        return False
+    if any(frag in s.lower() for frag in _INVALID_NAME_FRAGMENTS):
+        return False
+    return True
 
 
 def _normalize_kdes(data: dict) -> dict:
@@ -418,9 +450,17 @@ def _normalize_kdes(data: dict) -> dict:
                 reqs = [reqs]
             elif not isinstance(reqs, list):
                 reqs = [str(reqs)]
+            reqs = [re.sub(r'\s*\((Manual|Automated)\)\s*$', '', str(r)).strip() for r in reqs]
+            # Strip leading CIS section numbers (e.g. "3.2.6 Ensure..." → "Ensure...")
+            reqs = [re.sub(r'^\d+(\.\d+)+\s+', '', r).strip() for r in reqs]
             reqs = list(dict.fromkeys(reqs))
-            reqs = [r for r in reqs if r and str(r).strip() and str(r).strip().lower() != "none"]
-            normalized[elem_key] = {"name": str(name), "requirements": reqs}
+            # Reject short noise and truncated fragments
+            reqs = [r for r in reqs if len(str(r).strip().split()) >= 3]
+            # Reject requirements that end mid-phrase (trailing article/preposition)
+            _FRAG_ENDINGS = {"the", "a", "an", "of", "for", "in", "with", "by", "to", "that", "from", "which", "and", "or", "not", "is"}
+            reqs = [r for r in reqs if r.strip().split()[-1].lower() not in _FRAG_ENDINGS]
+            if _is_valid_element_name(name):
+                normalized[elem_key] = {"name": str(name), "requirements": reqs}
         elif isinstance(value, list):
             normalized[elem_key] = {"name": str(key), "requirements": value}
         else:
@@ -429,4 +469,14 @@ def _normalize_kdes(data: dict) -> dict:
                 "requirements": [str(value)],
             }
 
-    return normalized
+    # Merge elements sharing the same name (combines and deduplicates requirements)
+    seen: dict[str, dict] = {}
+    for elem_val in normalized.values():
+        name = elem_val["name"]
+        if name in seen:
+            combined = list(dict.fromkeys(seen[name]["requirements"] + elem_val["requirements"]))
+            seen[name]["requirements"] = combined
+        else:
+            seen[name] = elem_val
+    # Drop elements with no requirements (empty extraction artifacts)
+    return {f"element{i+1}": v for i, v in enumerate(seen.values()) if v["requirements"]}

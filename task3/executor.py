@@ -77,7 +77,7 @@ def load_diff_files(
         if not os.path.isfile(path):
             raise FileNotFoundError(f"Diff file not found: {path}")
 
-        with open(path, "r") as f:
+        with open(path, "r", encoding="utf-8") as f:
             content = f.read()
 
         if not content.strip():
@@ -115,7 +115,7 @@ def determine_controls(
     os.makedirs(os.path.dirname(output_path) or ".", exist_ok=True)
 
     if no_name_diff and no_req_diff:
-        with open(output_path, "w") as f:
+        with open(output_path, "w", encoding="utf-8") as f:
             f.write("NO DIFFERENCES FOUND\n")
         return output_path
 
@@ -184,7 +184,7 @@ def run_kubescape(
             zf.extractall(extracted_dir)
         scan_target = extracted_dir
 
-    with open(controls_path, "r") as f:
+    with open(controls_path, "r", encoding="utf-8") as f:
         controls_content = f.read().strip()
 
     output_dir = os.path.dirname(os.path.abspath(controls_path))
@@ -234,7 +234,7 @@ def run_kubescape(
 
     shutil.move(results_json_tmp, results_json)
 
-    with open(results_json, "r") as f:
+    with open(results_json, "r", encoding="utf-8") as f:
         data = json.load(f)
 
     resource_map = {
