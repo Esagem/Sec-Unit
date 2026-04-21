@@ -1,0 +1,3 @@
+Logging,ABSENT-IN-cis-r4-zero_shot-kdes,PRESENT-IN-cis-r2-zero_shot-kdes,NA
+Worker Nodes,ABSENT-IN-cis-r4-zero_shot-kdes,PRESENT-IN-cis-r2-zero_shot-kdes,NA
+Control Plane Components,ABSENT-IN-cis-r2-zero_shot-kdes,PRESENT-IN-cis-r4-zero_shot-kdes,NA

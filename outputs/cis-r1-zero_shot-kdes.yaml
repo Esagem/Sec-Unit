@@ -1,0 +1,16 @@
+element1:
+  name: Control Plane Components
+  requirements:
+  - Enable audit Logs
+  - Ensure that the kubeconfig file permissions are set to 644 or more restrictive
+  - Ensure that the kubelet kubeconfig file ownership is set to root:root
+  - Ensure that the kubelet configuration file has permissions set to 644 or more
+    restrictive
+  - Ensure that the kubelet configuration file ownership is set to root:root
+  - Ensure that the --authorization-mode argument is not set to AlwaysAllow
+  - Ensure that the --read-only-port is disabled
+  - Ensure that the --streaming-connection-idle-timeout argument is not set to 0
+  - Ensure that the --protect-kernel-defaults argument is set to true
+  - Ensure that the --make-iptables-util-chains argument is set to true
+  - Ensure that the --hostname-override argument is not set
+  - Ensure that the --eventRecordQPS argument is set to 0

@@ -1,0 +1,16 @@
+element1:
+  name: Control Plane Components
+  requirements:
+  - Ensure that the cluster-admin role is only used where required
+  - Minimize access to secrets
+  - Minimize wildcard use in Roles and ClusterRoles
+  - Minimize access to create pods
+  - Ensure that default service accounts are not actively used.
+  - Ensure that Service Account Tokens are only mounted where necessary
+  - Avoid use of the Bind, Impersonate and Escalate permissions in the Kubernetes
+element2:
+  name: Control Plane Configuration
+  requirements:
+  - Enable audit Logs
+  - Ensure that the kubeconfig file permissions are set to 644 or more restrictive
+  - Ensure that the kubelet kubeconfig file ownership is set to root:root

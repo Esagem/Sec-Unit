@@ -1,0 +1,14 @@
+element1:
+  name: Control Plane Components
+  requirements:
+  - Ensure that the kubeconfig file permissions are set to 644 or more restrictive
+  - Ensure that the kubelet kubeconfig file ownership is set to root:root
+  - Ensure that the kubelet configuration file has permissions set to 644 or more
+    restrictive
+  - Ensure that the kubelet configuration file ownership is set to root:root
+  - Ensure that the Anonymous Auth is Not Enabled
+  - Ensure that the --authorization-mode argument is not set to AlwaysAllow
+  - Ensure that a Client CA File is Configured
+  - Ensure that the --read-only-port is disabled
+  - Ensure that the --streaming-connection-idle-timeout argument is not set to 0
+  - Ensure that the --make-iptables-util-chains argument is set to true

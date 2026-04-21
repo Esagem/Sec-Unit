@@ -1,0 +1,4 @@
+Control Plane Configuration
+Kubelet
+Logging
+Pod Security Standards

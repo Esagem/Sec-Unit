@@ -1,0 +1,16 @@
+Control Plane Components,ABSENT-IN-cis-r4-zero_shot-kdes,PRESENT-IN-cis-r1-zero_shot-kdes,Ensure that the --authorization-mode argument is not set to AlwaysAllow
+Control Plane Components,ABSENT-IN-cis-r4-zero_shot-kdes,PRESENT-IN-cis-r1-zero_shot-kdes,Ensure that the --eventRecordQPS argument is set to 0
+Control Plane Components,ABSENT-IN-cis-r4-zero_shot-kdes,PRESENT-IN-cis-r1-zero_shot-kdes,Ensure that the --hostname-override argument is not set
+Control Plane Components,ABSENT-IN-cis-r4-zero_shot-kdes,PRESENT-IN-cis-r1-zero_shot-kdes,Ensure that the --make-iptables-util-chains argument is set to true
+Control Plane Components,ABSENT-IN-cis-r4-zero_shot-kdes,PRESENT-IN-cis-r1-zero_shot-kdes,Ensure that the --protect-kernel-defaults argument is set to true
+Control Plane Components,ABSENT-IN-cis-r4-zero_shot-kdes,PRESENT-IN-cis-r1-zero_shot-kdes,Ensure that the --read-only-port is disabled
+Control Plane Components,ABSENT-IN-cis-r4-zero_shot-kdes,PRESENT-IN-cis-r1-zero_shot-kdes,Ensure that the --streaming-connection-idle-timeout argument is not set to 0
+Control Plane Components,ABSENT-IN-cis-r4-zero_shot-kdes,PRESENT-IN-cis-r1-zero_shot-kdes,Ensure that the kubeconfig file permissions are set to 644 or more restrictive
+Control Plane Components,ABSENT-IN-cis-r1-zero_shot-kdes,PRESENT-IN-cis-r4-zero_shot-kdes,Ensure audit logs are collected and managed
+Control Plane Components,ABSENT-IN-cis-r1-zero_shot-kdes,PRESENT-IN-cis-r4-zero_shot-kdes,Ensure that Service Account Tokens are only mounted where necessary
+Control Plane Components,ABSENT-IN-cis-r1-zero_shot-kdes,PRESENT-IN-cis-r4-zero_shot-kdes,Ensure that default service accounts are not actively used.
+Control Plane Components,ABSENT-IN-cis-r1-zero_shot-kdes,PRESENT-IN-cis-r4-zero_shot-kdes,Ensure that the cluster-admin role is only used where required
+Control Plane Components,ABSENT-IN-cis-r1-zero_shot-kdes,PRESENT-IN-cis-r4-zero_shot-kdes,Limit use of the Bind, Impersonate and Escalate permissions in the Kubernetes cluster
+Control Plane Components,ABSENT-IN-cis-r1-zero_shot-kdes,PRESENT-IN-cis-r4-zero_shot-kdes,Minimize access to create pods
+Control Plane Components,ABSENT-IN-cis-r1-zero_shot-kdes,PRESENT-IN-cis-r4-zero_shot-kdes,Minimize access to secrets
+Control Plane Components,ABSENT-IN-cis-r1-zero_shot-kdes,PRESENT-IN-cis-r4-zero_shot-kdes,Minimize wildcard use in Roles and ClusterRoles

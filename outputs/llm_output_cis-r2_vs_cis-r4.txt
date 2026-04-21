@@ -1,0 +1,507 @@
+LLM Output Collection — 2026-04-20T21:18:03.178942
+======================================================================
+
+--- Run 1 ---
+
+*LLM Name*
+google/gemma-3-1b-it
+
+*Prompt Used*
+Analyze the following CIS Benchmark security requirements document.
+
+Identify all Key Data Elements (KDEs). A Key Data Element is a distinct security control or configuration area (e.g., "Logging", "Kubelet Configuration", "Network Policies"). Each KDE may map to one or more specific requirements or recommendations.
+
+For each KDE, provide:
+- name: The name of the key data element
+- requirements: A list of specific requirements or recommendations that belong to this element
+
+Format your response as YAML with this structure:
+element1:
+  name: "<element name>"
+  requirements:
+    - "<requirement 1>"
+    - "<requirement 2>"
+element2:
+  name: "<element name>"
+  requirements:
+    - "<requirement 1>"
+
+DOCUMENT TEXT:
+1 Control Plane Components .................................................................................................. 15 
+2 Control Plane Configuration ................................................................................................ 15 
+2.1 Logging ............................................................................................................................................ 16 
+2.1.1 Enable audit Logs (Automated) ........................................................................................ 17 
+2.1.2 Ensure audit logs are collected and managed (Manual).................................................. 20 
+Page 3 
+Internal Only - General 
+3 Worker Nodes ........................................................................................................................ 22 
+3.1 Worker Node Configuration Files ................................................................................................. 23 
+3.1.1 Ensure that the kubeconfig file permissions are set to 644 or more restrictive 
+(Automated) ............................................................................................................................... 24 
+3.1.2 Ensure that the kubelet kubeconfig file ownership is set to root:root (Automated).......... 27 
+3.1.3 Ensure that the kubelet configuration file has permissions set to 644 or more restrictive 
+(Automated) ............................................................................................................................... 30 
+3.1.4 Ensure that the kubelet configuration file ownership is set to root:root (Automated) ...... 33 
+3.2 Kubelet ............................................................................................................................................. 36 
+3.2.1 Ensure that the Anonymous Auth is Not Enabled (Automated) ....................................... 37 
+3.2.2 Ensure that the --authorization-mode argument is not set to AlwaysAllow (Automated) 41 
+3.2.3 Ensure that a Client CA File is Configured (Automated).................................................. 45 
+3.2.4 Ensure that the --read-only-port is disabled (Automated) ................................................ 48 
+3.2.5 Ensure that the --streaming-connection-idle-timeout argument is not set to 0 
+(Automated) ............................................................................................................................... 50 
+3.2.6 Ensure that the --make-iptables-util-chains argument is set to true (Automated) ........... 53 
+3.2.7 Ensure that the --eventRecordQPS argument is set to 0 or a level which ensures 
+appropriate event capture (Automated)..................................................................................... 56 
+3.2.8 Ensure that the --rotate-certificates argument is not present or is set to true (Automated)
+ ................................................................................................................................................... 58 
+3.2.9 Ensure that the RotateKubeletServerCertificate argument is set to true (Automated) .... 60 
+4 Policies ................................................................................................................................... 63 
+4.1 RBAC and Service Accounts......................................................................................................... 64 
+4.1.1 Ensure that the cluster-admin role is only used where required (Automated) ................. 65 
+4.1.2 Minimize access to secrets (Automated) ......................................................................... 67 
+4.1.3 Minimize wildcard use in Roles and ClusterRoles (Automated) ...................................... 69 
+4.1.4 Minimize access to create pods (Automated) .................................................................. 71 
+4.1.5 Ensure that default service accounts are not actively used. (Automated) ....................... 73 
+4.1.6 Ensure that Service Account Tokens are only mounted where necessary (Automated) 75 
+4.1.7 Cluster Access Manager API to streamline and enhance the management of access 
+controls within EKS clusters (Automated) ................................................................................. 77 
+4.1.8 Limit use of the Bind, Impersonate and Escalate permissions in the Kubernetes cluster 
+(Manual) ........................................................................................................................
+
+[... truncated ...]
+
+Respond ONLY with the YAML output. Do not include any other text.
+
+*Prompt Type*
+zero_shot
+
+*LLM Output*
+```yaml
+element1:
+  name: Logging
+  requirements:
+    - Enable audit Logs (Automated)
+    - Ensure audit logs are collected and managed (Manual)
+element2:
+  name: Worker Nodes
+  requirements:
+    - Ensure that the kubeconfig file permissions are set to 644 or more restrictive (Automated)
+    - Ensure that the kubelet kubeconfig file ownership is set to root:root (Automated)
+    - Ensure that the kubelet configuration file has permissions set to 644 or more restrictive (Automated)
+    - Ensure that the kubelet configuration file ownership is set to root:root (Automated)
+    - Ensure that the kubelet configuration file has permissions set to 644 or more restrictive (Automated)
+    - Ensure that the kubelet configuration file ownership is set to root:root (Automated)
+    - Ensure that the kubelet configuration file ownership is set to root:root (Automated)
+    - Ensure that the kubelet configuration file ownership is set to root:root (Automated)
+    - Ensure that the kubelet configuration file ownership is set to root:root (Automated)
+    -
+
+======================================================================
+
+--- Run 2 ---
+
+*LLM Name*
+google/gemma-3-1b-it
+
+*Prompt Used*
+Analyze the following CIS Benchmark security requirements document.
+
+Identify all Key Data Elements (KDEs). A Key Data Element is a distinct security control or configuration area (e.g., "Logging", "Kubelet Configuration", "Network Policies"). Each KDE may map to one or more specific requirements or recommendations.
+
+For each KDE, provide:
+- name: The name of the key data element
+- requirements: A list of specific requirements or recommendations that belong to this element
+
+Format your response as YAML with this structure:
+element1:
+  name: "<element name>"
+  requirements:
+    - "<requirement 1>"
+    - "<requirement 2>"
+element2:
+  name: "<element name>"
+  requirements:
+    - "<requirement 1>"
+
+DOCUMENT TEXT:
+1 Control Plane Components ................................................................................................ 15 2 Control Plane Configuration ............................................................................................... 15 2.1 Logging .......................................................................................................................................... 16 2.1.1 Enable audit Logs (Automated) ....................................................................................... 17 2.1.2 Ensure audit logs are collected and managed (Manual) ................................................. 20 
+Page 3 Internal Only - General 
+3 Worker Nodes ...................................................................................................................... 22 3.1 Worker Node Configuration Files ................................................................................................ 23 3.1.1 Ensure that the kubeconfig file permissions are set to 644 or more restrictive (Automated) .............................................................................................................................. 24 3.1.2 Ensure that the kubelet kubeconfig file ownership is set to root:root (Automated) ......... 27 3.1.3 Ensure that the kubelet configuration file has permissions set to 644 or more restrictive (Automated) .............................................................................................................................. 30 3.1.4 Ensure that the kubelet configuration file ownership is set to root:root (Automated) ...... 33 3.2 Kubelet ........................................................................................................................................... 36 3.2.1 Ensure that the Anonymous Auth is Not Enabled (Automated) ...................................... 37 3.2.2 Ensure that the --authorization-mode argument is not set to AlwaysAllow (Automated) 40 3.2.3 Ensure that a Client CA File is Configured (Automated) ................................................. 44 3.2.4 Ensure that the --read-only-port is disabled (Automated) ............................................... 47 3.2.5 Ensure that the --streaming-connection-idle-timeout argument is not set to 0 (Automated) .............................................................................................................................. 49 3.2.6 Ensure that the --make-iptables-util-chains argument is set to true (Automated) ........... 52 3.2.7 Ensure that the --eventRecordQPS argument is set to 0 or a level which ensures appropriate event capture (Automated) .................................................................................... 55 3.2.8 Ensure that the --rotate-certificates argument is not present or is set to true (Automated) ................................................................................................................................................. 57 3.2.9 Ensure that the RotateKubeletServerCertificate argument is set to true (Automated) .... 59 4 Policies ................................................................................................................................. 61 4.1 RBAC and Service Accounts ....................................................................................................... 62 4.1.1 Ensure that the cluster-admin role is only used where required (Manual) ...................... 63 4.1.2 Minimize access to secrets (Manual) .............................................................................. 65 4.1.3 Minimize wildcard use in Roles and ClusterRoles (Manual) ........................................... 67 4.1.4 Minimize access to create pods (Manual) ....................................................................... 69 4.1.5 Ensure that default service accounts are not actively used. (Manual) ............................ 71 4.1.6 Ensure that Service Account Tokens are only mounted where necessary (Manual) ...... 73 4.1.7 Cluster Access Manager API to streamline and enhance the management of access controls within EKS clusters (Automated) ................................................................................ 75 4.1.8 Limit use of the Bind, Impersonate and Escalate permissions in the Kubernetes cluster (Manual) ................................................................................................................................... 79 4.1.9 Minimize access to creat
+
+[... truncated ...]
+
+Respond ONLY with the YAML output. Do not include any other text.
+
+*Prompt Type*
+zero_shot
+
+*LLM Output*
+```yaml
+element1:
+  name: Control Plane Components
+  requirements:
+    - Enable audit Logs (Automated)
+    - Ensure audit logs are collected and managed (Manual)
+    - Ensure that the kubelet kubeconfig file ownership is set to root:root (Automated)
+    - Ensure that the kubelet configuration file has permissions set to 644 or more restrictive (Automated)
+    - Ensure that the kubelet configuration file ownership is set to root:root (Automated)
+    - Limit use of the Bind, Impersonate and Escalate permissions in the Kubernetes cluster (Manual)
+```
+
+======================================================================
+
+--- Run 3 ---
+
+*LLM Name*
+google/gemma-3-1b-it
+
+*Prompt Used*
+Analyze a CIS Benchmark security requirements document and extract Key Data Elements (KDEs). A KDE is a distinct security control area with its associated requirements.
+
+Here are examples of correct KDE extraction:
+
+EXAMPLE INPUT:
+"3.1 Worker Node Configuration Files
+3.1.1 Ensure that the kubeconfig file permissions are set to 644 or more restrictive
+3.1.2 Ensure that the kubelet kubeconfig file ownership is set to root:root
+3.2 Kubelet
+3.2.1 Ensure that the Anonymous Auth is Not Enabled"
+
+EXAMPLE OUTPUT:
+element1:
+  name: "Worker Node Configuration Files"
+  requirements:
+    - "Ensure that the kubeconfig file permissions are set to 644 or more restrictive"
+    - "Ensure that the kubelet kubeconfig file ownership is set to root:root"
+element2:
+  name: "Kubelet"
+  requirements:
+    - "Ensure that the Anonymous Auth is Not Enabled"
+
+EXAMPLE INPUT:
+"2.1 Logging
+2.1.1 Enable audit Logs
+4.1 Pod Security Standards
+4.1.1 Ensure that the cluster has at least one active policy control mechanism in place
+4.1.2 Ensure that the default namespace is not used"
+
+EXAMPLE OUTPUT:
+element1:
+  name: "Logging"
+  requirements:
+    - "Enable audit Logs"
+element2:
+  name: "Pod Security Standards"
+  requirements:
+    - "Ensure that the cluster has at least one active policy control mechanism in place"
+    - "Ensure that the default namespace is not used"
+
+Now extract all KDEs from this document:
+
+DOCUMENT TEXT:
+1 Control Plane Components .................................................................................................. 15 
+2 Control Plane Configuration ................................................................................................ 15 
+2.1 Logging ............................................................................................................................................ 16 
+2.1.1 Enable audit Logs (Automated) ........................................................................................ 17 
+2.1.2 Ensure audit logs are collected and managed (Manual).................................................. 20 
+Page 3 
+Internal Only - General 
+3 Worker Nodes ........................................................................................................................ 22 
+3.1 Worker Node Configuration Files ................................................................................................. 23 
+3.1.1 Ensure that the kubeconfig file permissions are set to 644 or more restrictive 
+(Automated) ............................................................................................................................... 24 
+3.1.2 Ensure that the kubelet kubeconfig file ownership is set to root:root (Automated).......... 27 
+3.1.3 Ensure that the kubelet configuration file has permissions set to 644 or more restrictive 
+(Automated) ............................................................................................................................... 30 
+3.1.4 Ensure that the kubelet configuration file ownership is set to root:root (Automated) ...... 33 
+3.2 Kubelet ............................................................................................................................................. 36 
+3.2.1 Ensure that the Anonymous Auth is Not Enabled (Automated) ....................................... 37 
+3.2.2 Ensure that the --authorization-mode argument is not set to AlwaysAllow (Automated) 41 
+3.2.3 Ensure that a Client CA File is Configured (Automated).................................................. 45 
+3.2.4 Ensure that the --read-only-port is disabled (Automated) ................................................ 48 
+3.2.5 Ensure that the --streaming-connection-idle-timeout argument is not set to 0 
+(Automated) ............................................................................................................................... 50 
+3.2.6 Ensure that the --make-iptables-util-chains argument is set to true (Automated) ........... 53 
+3.2.7 Ensure that the --eventRecordQPS argument is set to 0 or a level which ensures 
+appropriate event capture (Automated)..................................................................................... 56 
+3.2.8 Ensure that the --rotate-certificates argument is not present or is set to true (Automated)
+ ................................................................................................................................................... 58 
+3.2.9 Ensure that the RotateKubeletServerCertificate argument is set to true (Automated) .... 60 
+4 Policies ................................................................................................................................... 63 
+4.1 RBAC and Service Accounts......................................................................................................... 64 
+4.1.1 Ensure that the cluster-admin role is only used where required (Automated) ................. 65 
+4.1.2 Minimize access to secrets (Automated) ......................................................................... 67 
+4.1.3 Minimize wildcard use in Roles and ClusterRoles (Automated) ...................................... 69 
+4.1.4 Minimize access to create pods (Automated) .................................................................. 71 
+4.1.5 Ensure that default service accounts are not actively used. (Automated) ....................... 73 
+4.1.6 Ensure that Service Account Tokens are only mounted where necessary (Automated) 75 
+4.1.7 Cluster Access Manager API to streamline and enhance the management of access 
+controls within EKS clusters (Automated) ................................................................................. 77 
+4.1.8 Limit use of the Bind, Impersonate and Escalate permissions in the Kubernetes cluster 
+(Manual) ........................................................................................................................
+
+[... truncated ...]
+
+Respond ONLY with the YAML output. Begin your response with 'element1:' — do not write any text before the YAML.
+
+*Prompt Type*
+few_shot
+
+*LLM Output*
+element1:
+  name: "Control Plane Components"
+  requirements:
+    - "Ensure that the kubeconfig file permissions are set to 644 or more restrictive"
+    - "Ensure that the kubelet kubeconfig file ownership is set to root:root"
+element2:
+  name: "Kubelet"
+  requirements:
+    - "Ensure that the Anonymous Auth is Not Enabled"
+element3:
+  name: "Kubelet Configuration File"
+  requirements:
+    - "Ensure that the kubelet configuration file has permissions set to 644 or more restrictive"
+element4:
+  name: "Logging"
+  requirements:
+    - "Enable audit Logs"
+element5:
+  name: "Pod Security Standards"
+  requirements:
+    - "Ensure that the cluster has at least one active policy control mechanism in place"
+    - "Ensure that the default namespace is not used"
+element6:
+  name: "Worker Nodes"
+  requirements:
+    - "Ensure that the kubeconfig file permissions are set to 644 or more restrictive"
+    - "Ensure that the kubelet kubeconfig file ownership is set to
+
+======================================================================
+
+--- Run 4 ---
+
+*LLM Name*
+google/gemma-3-1b-it
+
+*Prompt Used*
+Analyze a CIS Benchmark security requirements document and extract Key Data Elements (KDEs). A KDE is a distinct security control area with its associated requirements.
+
+Here are examples of correct KDE extraction:
+
+EXAMPLE INPUT:
+"3.1 Worker Node Configuration Files
+3.1.1 Ensure that the kubeconfig file permissions are set to 644 or more restrictive
+3.1.2 Ensure that the kubelet kubeconfig file ownership is set to root:root
+3.2 Kubelet
+3.2.1 Ensure that the Anonymous Auth is Not Enabled"
+
+EXAMPLE OUTPUT:
+element1:
+  name: "Worker Node Configuration Files"
+  requirements:
+    - "Ensure that the kubeconfig file permissions are set to 644 or more restrictive"
+    - "Ensure that the kubelet kubeconfig file ownership is set to root:root"
+element2:
+  name: "Kubelet"
+  requirements:
+    - "Ensure that the Anonymous Auth is Not Enabled"
+
+EXAMPLE INPUT:
+"2.1 Logging
+2.1.1 Enable audit Logs
+4.1 Pod Security Standards
+4.1.1 Ensure that the cluster has at least one active policy control mechanism in place
+4.1.2 Ensure that the default namespace is not used"
+
+EXAMPLE OUTPUT:
+element1:
+  name: "Logging"
+  requirements:
+    - "Enable audit Logs"
+element2:
+  name: "Pod Security Standards"
+  requirements:
+    - "Ensure that the cluster has at least one active policy control mechanism in place"
+    - "Ensure that the default namespace is not used"
+
+Now extract all KDEs from this document:
+
+DOCUMENT TEXT:
+1 Control Plane Components ................................................................................................ 15 2 Control Plane Configuration ............................................................................................... 15 2.1 Logging .......................................................................................................................................... 16 2.1.1 Enable audit Logs (Automated) ....................................................................................... 17 2.1.2 Ensure audit logs are collected and managed (Manual) ................................................. 20 
+Page 3 Internal Only - General 
+3 Worker Nodes ...................................................................................................................... 22 3.1 Worker Node Configuration Files ................................................................................................ 23 3.1.1 Ensure that the kubeconfig file permissions are set to 644 or more restrictive (Automated) .............................................................................................................................. 24 3.1.2 Ensure that the kubelet kubeconfig file ownership is set to root:root (Automated) ......... 27 3.1.3 Ensure that the kubelet configuration file has permissions set to 644 or more restrictive (Automated) .............................................................................................................................. 30 3.1.4 Ensure that the kubelet configuration file ownership is set to root:root (Automated) ...... 33 3.2 Kubelet ........................................................................................................................................... 36 3.2.1 Ensure that the Anonymous Auth is Not Enabled (Automated) ...................................... 37 3.2.2 Ensure that the --authorization-mode argument is not set to AlwaysAllow (Automated) 40 3.2.3 Ensure that a Client CA File is Configured (Automated) ................................................. 44 3.2.4 Ensure that the --read-only-port is disabled (Automated) ............................................... 47 3.2.5 Ensure that the --streaming-connection-idle-timeout argument is not set to 0 (Automated) .............................................................................................................................. 49 3.2.6 Ensure that the --make-iptables-util-chains argument is set to true (Automated) ........... 52 3.2.7 Ensure that the --eventRecordQPS argument is set to 0 or a level which ensures appropriate event capture (Automated) .................................................................................... 55 3.2.8 Ensure that the --rotate-certificates argument is not present or is set to true (Automated) ................................................................................................................................................. 57 3.2.9 Ensure that the RotateKubeletServerCertificate argument is set to true (Automated) .... 59 4 Policies ................................................................................................................................. 61 4.1 RBAC and Service Accounts ....................................................................................................... 62 4.1.1 Ensure that the cluster-admin role is only used where required (Manual) ...................... 63 4.1.2 Minimize access to secrets (Manual) .............................................................................. 65 4.1.3 Minimize wildcard use in Roles and ClusterRoles (Manual) ........................................... 67 4.1.4 Minimize access to create pods (Manual) ....................................................................... 69 4.1.5 Ensure that default service accounts are not actively used. (Manual) ............................ 71 4.1.6 Ensure that Service Account Tokens are only mounted where necessary (Manual) ...... 73 4.1.7 Cluster Access Manager API to streamline and enhance the management of access controls within EKS clusters (Automated) ................................................................................ 75 4.1.8 Limit use of the Bind, Impersonate and Escalate permissions in the Kubernetes cluster (Manual) ................................................................................................................................... 79 4.1.9 Minimize access to creat
+
+[... truncated ...]
+
+Respond ONLY with the YAML output. Begin your response with 'element1:' — do not write any text before the YAML.
+
+*Prompt Type*
+few_shot
+
+*LLM Output*
+element1:
+  name: "Control Plane Components"
+  requirements:
+    - "3.1 Worker Node Configuration Files"
+    - "3.1.1 Ensure that the kubeconfig file permissions are set to 644 or more restrictive"
+    - "3.1.2 Ensure that the kubelet kubeconfig file ownership is set to root:root"
+    - "3.2 Kubelet"
+    - "3.2.1 Ensure that the Anonymous Auth is Not Enabled"
+element2:
+  name: "Control Plane Configuration"
+  requirements:
+    - "2.1 Logging"
+    - "2.1.1 Enable audit Logs"
+    - "2.1.2 Ensure audit logs are collected and managed (Manual)"
+element3:
+  name: "Internal Only - General"
+  requirements:
+    - "3.2 Kubelet"
+element4:
+  name: "Policies"
+  requirements:
+    - "4.1 RBAC and Service Accounts"
+    - "4.1.1 Ensure that the cluster-admin role is only used where required"
+    - "4.1.2 Minimize
+
+======================================================================
+
+--- Run 5 ---
+
+*LLM Name*
+google/gemma-3-1b-it
+
+*Prompt Used*
+Analyze the following CIS Benchmark document and extract Key Data Elements (KDEs).
+
+Before writing your answer, think through:
+- What are the major security section headings in this document? (e.g. "Kubelet", "Logging", "Pod Security Standards")
+- What specific requirements (numbered items like "3.1.1 Ensure...") appear under each section?
+- How should requirements be grouped under their parent section name?
+
+Output ONLY the YAML below — no preamble, no reasoning, no markdown fences:
+element1:
+  name: "<section name>"
+  requirements:
+    - "<requirement text>"
+element2:
+  name: "<section name>"
+  requirements:
+    - "<requirement text>"
+
+DOCUMENT TEXT:
+1 Control Plane Components .................................................................................................. 15 
+2 Control Plane Configuration ................................................................................................ 15 
+2.1 Logging ............................................................................................................................................ 16 
+2.1.1 Enable audit Logs (Automated) ........................................................................................ 17 
+2.1.2 Ensure audit logs are collected and managed (Manual).................................................. 20 
+Page 3 
+Internal Only - General 
+3 Worker Nodes ........................................................................................................................ 22 
+3.1 Worker Node Configuration Files ................................................................................................. 23 
+3.1.1 Ensure that the kubeconfig file permissions are set to 644 or more restrictive 
+(Automated) ............................................................................................................................... 24 
+3.1.2 Ensure that the kubelet kubeconfig file ownership is set to root:root (Automated).......... 27 
+3.1.3 Ensure that the kubelet configuration file has permissions set to 644 or more restrictive 
+(Automated) ............................................................................................................................... 30 
+3.1.4 Ensure that the kubelet configuration file ownership is set to root:root (Automated) ...... 33 
+3.2 Kubelet ............................................................................................................................................. 36 
+3.2.1 Ensure that the Anonymous Auth is Not Enabled (Automated) ....................................... 37 
+3.2.2 Ensure that the --authorization-mode argument is not set to AlwaysAllow (Automated) 41 
+3.2.3 Ensure that a Client CA File is Configured (Automated).................................................. 45 
+3.2.4 Ensure that the --read-only-port is disabled (Automated) ................................................ 48 
+3.2.5 Ensure that the --streaming-connection-idle-timeout argument is not set to 0 
+(Automated) ............................................................................................................................... 50 
+3.2.6 Ensure that the --make-iptables-util-chains argument is set to true (Automated) ........... 53 
+3.2.7 Ensure that the --eventRecordQPS argument is set to 0 or a level which ensures 
+appropriate event capture (Automated)..................................................................................... 56 
+3.2.8 Ensure that the --rotate-certificates argument is not present or is set to true (Automated)
+ ................................................................................................................................................... 58 
+3.2.9 Ensure that the RotateKubeletServerCertificate argument is set to true (Automated) .... 60 
+4 Policies ................................................................................................................................... 63 
+4.1 RBAC and Service Accounts......................................................................................................... 64 
+4.1.1 Ensure that the cluster-admin role is only used where required (Automated) ................. 65 
+4.1.2 Minimize access to secrets (Automated) ......................................................................... 67 
+4.1.3 Minimize wildcard use in Roles and ClusterRoles (Automated) ...................................... 69 
+4.1.4 Minimize access to create pods (Automated) .................................................................. 71 
+4.1.5 Ensure that default service accounts are not actively used. (Automated) ....................... 73 
+4.1.6 Ensure that Service Account Tokens are only mounted where necessary (Automated) 75 
+4.1.7 Cluster Access Manager API to streamline and enhance the management of access 
+controls within EKS clusters (Automated) ................................................................................. 77 
+4.1.8 Limit use of the Bind, Impersonate and Escalate permissions in the Kubernetes cluster 
+(Manual) ........................................................................................................................
+
+[... truncated ...]
+
+*Prompt Type*
+chain_of_thought
+
+*LLM Output*
+```yaml
+element1:
+  name: Control Plane Components
+  requirements:
+    - 3.1.1 Ensure that the kubeconfig file permissions are set to 644 or more restrictive
+    - 3.1.2 Ensure that the kubelet kubeconfig file ownership is set to root:root
+    - 3.1.3 Ensure that the kubelet configuration file has permissions set to 644 or more restrictive
+    - 3.1.4 Ensure that the kubelet configuration file ownership is set to root:root
+    - 3.2.1 Ensure that the Anonymous Auth is Not Enabled
+    - 3.2.2 Ensure that the --authorization-mode argument is not set to AlwaysAllow
+    - 3.2.3 Ensure that a Client CA File is Configured
+    - 3.2.4 Ensure that the --read-only-port is disabled
+    - 3.2.5 Ensure that the --streaming-connection-idle-timeout argument is not set to 0
+    - 3.2.6 Ensure that the --make-iptables-util-chains argument is set to true
+    - 3.2.
+
+======================================================================
+
+--- Run 6 ---
+
+*LLM Name*
+google/gemma-3-1b-it
+
+*Prompt Used*
+Analyze the following CIS Benchmark document and extract Key Data Elements (KDEs).
+
+Before writing your answer, think through:
+- What are the major security section headings in this document? (e.g. "Kubelet", "Logging", "Pod Security Standards")
+- What specific requirements (numbered items like "3.1.1 Ensure...") appear under each section?
+- How should requirements be grouped under their parent section name?
+
+Output ONLY the YAML below — no preamble, no reasoning, no markdown fences:
+element1:
+  name: "<section name>"
+  requirements:
+    - "<requirement text>"
+element2:
+  name: "<section name>"
+  requirements:
+    - "<requirement text>"
+
+DOCUMENT TEXT:
+1 Control Plane Components ................................................................................................ 15 2 Control Plane Configuration ............................................................................................... 15 2.1 Logging .......................................................................................................................................... 16 2.1.1 Enable audit Logs (Automated) ....................................................................................... 17 2.1.2 Ensure audit logs are collected and managed (Manual) ................................................. 20 
+Page 3 Internal Only - General 
+3 Worker Nodes ...................................................................................................................... 22 3.1 Worker Node Configuration Files ................................................................................................ 23 3.1.1 Ensure that the kubeconfig file permissions are set to 644 or more restrictive (Automated) .............................................................................................................................. 24 3.1.2 Ensure that the kubelet kubeconfig file ownership is set to root:root (Automated) ......... 27 3.1.3 Ensure that the kubelet configuration file has permissions set to 644 or more restrictive (Automated) .............................................................................................................................. 30 3.1.4 Ensure that the kubelet configuration file ownership is set to root:root (Automated) ...... 33 3.2 Kubelet ........................................................................................................................................... 36 3.2.1 Ensure that the Anonymous Auth is Not Enabled (Automated) ...................................... 37 3.2.2 Ensure that the --authorization-mode argument is not set to AlwaysAllow (Automated) 40 3.2.3 Ensure that a Client CA File is Configured (Automated) ................................................. 44 3.2.4 Ensure that the --read-only-port is disabled (Automated) ............................................... 47 3.2.5 Ensure that the --streaming-connection-idle-timeout argument is not set to 0 (Automated) .............................................................................................................................. 49 3.2.6 Ensure that the --make-iptables-util-chains argument is set to true (Automated) ........... 52 3.2.7 Ensure that the --eventRecordQPS argument is set to 0 or a level which ensures appropriate event capture (Automated) .................................................................................... 55 3.2.8 Ensure that the --rotate-certificates argument is not present or is set to true (Automated) ................................................................................................................................................. 57 3.2.9 Ensure that the RotateKubeletServerCertificate argument is set to true (Automated) .... 59 4 Policies ................................................................................................................................. 61 4.1 RBAC and Service Accounts ....................................................................................................... 62 4.1.1 Ensure that the cluster-admin role is only used where required (Manual) ...................... 63 4.1.2 Minimize access to secrets (Manual) .............................................................................. 65 4.1.3 Minimize wildcard use in Roles and ClusterRoles (Manual) ........................................... 67 4.1.4 Minimize access to create pods (Manual) ....................................................................... 69 4.1.5 Ensure that default service accounts are not actively used. (Manual) ............................ 71 4.1.6 Ensure that Service Account Tokens are only mounted where necessary (Manual) ...... 73 4.1.7 Cluster Access Manager API to streamline and enhance the management of access controls within EKS clusters (Automated) ................................................................................ 75 4.1.8 Limit use of the Bind, Impersonate and Escalate permissions in the Kubernetes cluster (Manual) ................................................................................................................................... 79 4.1.9 Minimize access to creat
+
+[... truncated ...]
+
+*Prompt Type*
+chain_of_thought
+
+*LLM Output*
+element1:
+  name: "Control Plane Components"
+  requirements:
+    - "3.1.1 Ensure that the kubeconfig file permissions are set to 644 or more restrictive"
+    - "3.1.2 Ensure that the kubelet kubeconfig file ownership is set to root:root"
+    - "3.1.3 Ensure that the kubelet configuration file has permissions set to 644 or more restrictive"
+    - "3.1.4 Ensure that the kubelet configuration file ownership is set to root:root"
+    - "3.2.3 Ensure that the --read-only-port is disabled"
+    - "3.2.4 Ensure that --streaming-connection-idle-timeout is not set to 0"
+    - "3.2.5 Ensure that --make-iptables-util-chains is not set to true"
+    - "3.2.6 Ensure that --eventRecordQPS is not set to 0"
+    - "3.2.7 Ensure that --rotate-certificates is not present or set to true"
+    - "3.2.8 Ensure that the RotateKubeletServer
+
+======================================================================
+

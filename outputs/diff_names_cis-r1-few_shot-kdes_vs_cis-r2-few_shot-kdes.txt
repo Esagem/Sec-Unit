@@ -1,0 +1,6 @@
+Control Plane Configuration
+Kubelet
+Kubelet Configuration File
+Logging
+Pod Security Standards
+Worker Nodes

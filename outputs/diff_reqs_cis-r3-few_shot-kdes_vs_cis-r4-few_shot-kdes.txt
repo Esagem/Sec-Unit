@@ -1,0 +1,4 @@
+Kubelet Configuration,ABSENT-IN-cis-r4-few_shot-kdes,PRESENT-IN-cis-r3-few_shot-kdes,NA
+Logging,ABSENT-IN-cis-r3-few_shot-kdes,PRESENT-IN-cis-r4-few_shot-kdes,NA
+Pod Security Standards,ABSENT-IN-cis-r3-few_shot-kdes,PRESENT-IN-cis-r4-few_shot-kdes,NA
+Worker Nodes,ABSENT-IN-cis-r3-few_shot-kdes,PRESENT-IN-cis-r4-few_shot-kdes,NA

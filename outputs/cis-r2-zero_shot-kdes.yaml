@@ -1,0 +1,13 @@
+element1:
+  name: Logging
+  requirements:
+  - Enable audit Logs
+  - Ensure audit logs are collected and managed
+element2:
+  name: Worker Nodes
+  requirements:
+  - Ensure that the kubeconfig file permissions are set to 644 or more restrictive
+  - Ensure that the kubelet kubeconfig file ownership is set to root:root
+  - Ensure that the kubelet configuration file has permissions set to 644 or more
+    restrictive
+  - Ensure that the kubelet configuration file ownership is set to root:root

@@ -1,0 +1,2 @@
+Control Plane Components,ABSENT-IN-cis-r4-chain_of_thought-kdes,PRESENT-IN-cis-r1-chain_of_thought-kdes,NA
+Control Plane Configuration,ABSENT-IN-cis-r4-chain_of_thought-kdes,PRESENT-IN-cis-r1-chain_of_thought-kdes,NA
