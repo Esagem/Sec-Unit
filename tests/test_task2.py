@@ -166,31 +166,38 @@ class TestCompareElementRequirements(unittest.TestCase):
     """Test 3: compare_element_requirements"""
 
     def test_detects_requirement_differences(self):
-        """Detects requirements that differ across the two files."""
+        """Detects name-only and requirement differences in spec-mandated format."""
         with tempfile.TemporaryDirectory() as tmpdir:
             out_path = os.path.join(tmpdir, "diff_reqs.txt")
             result_path = compare_element_requirements(
-                SAMPLE_KDES_A, SAMPLE_KDES_B, output_path=out_path
+                SAMPLE_KDES_A, SAMPLE_KDES_B,
+                file_1_name="doc_a", file_2_name="doc_b",
+                output_path=out_path,
             )
 
             self.assertTrue(os.path.exists(result_path))
             with open(result_path) as f:
                 content = f.read()
 
-            # Requirements unique to A
-            self.assertIn("Kubelet,Ensure Anonymous Auth is Not Enabled", content)
-            self.assertIn("Logging,Ensure audit logs are stored", content)
-            # Requirements unique to B
-            self.assertIn("Pod Security,Enforce restricted pod security standards", content)
+            # Name-only diffs: Kubelet only in A, Pod Security only in B
+            self.assertIn("Kubelet,ABSENT-IN-doc_b,PRESENT-IN-doc_a,NA", content)
+            self.assertIn("Pod Security,ABSENT-IN-doc_a,PRESENT-IN-doc_b,NA", content)
+            # Requirement diff: "Ensure audit logs are stored" only in A under Logging
+            self.assertIn(
+                "Logging,ABSENT-IN-doc_b,PRESENT-IN-doc_a,Ensure audit logs are stored",
+                content,
+            )
             # Shared requirement should NOT appear
-            self.assertNotIn("Logging,Enable audit Logs\n", content)
+            self.assertNotIn("Logging,ABSENT-IN-doc_b,PRESENT-IN-doc_a,Enable audit Logs\n", content)
 
     def test_reports_no_differences_when_identical(self):
         """Reports no differences when both files have the same requirements."""
         with tempfile.TemporaryDirectory() as tmpdir:
             out_path = os.path.join(tmpdir, "diff_reqs.txt")
             compare_element_requirements(
-                SAMPLE_KDES_IDENTICAL, SAMPLE_KDES_IDENTICAL, output_path=out_path
+                SAMPLE_KDES_IDENTICAL, SAMPLE_KDES_IDENTICAL,
+                file_1_name="doc_a", file_2_name="doc_b",
+                output_path=out_path,
             )
 
             with open(out_path) as f:
@@ -219,7 +226,11 @@ class TestCompareElementRequirements(unittest.TestCase):
         }
         with tempfile.TemporaryDirectory() as tmpdir:
             out_path = os.path.join(tmpdir, "diff_reqs.txt")
-            compare_element_requirements(kdes_a, kdes_b, output_path=out_path)
+            compare_element_requirements(
+                kdes_a, kdes_b,
+                file_1_name="doc_a", file_2_name="doc_b",
+                output_path=out_path,
+            )
             with open(out_path) as f:
                 content = f.read()
             # "Bind, Impersonate and Escalate" requirements differ only in leading verb —
@@ -236,7 +247,11 @@ class TestCompareElementRequirements(unittest.TestCase):
         }
         with tempfile.TemporaryDirectory() as tmpdir:
             out_path = os.path.join(tmpdir, "diff_reqs.txt")
-            result_path = compare_element_requirements(kdes_unparsed, kdes_clean, output_path=out_path)
+            result_path = compare_element_requirements(
+                kdes_unparsed, kdes_clean,
+                file_1_name="doc_a", file_2_name="doc_b",
+                output_path=out_path,
+            )
             with open(result_path) as f:
                 content = f.read()
             self.assertNotIn("Unparsed LLM Output", content)

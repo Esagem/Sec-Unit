@@ -6,7 +6,6 @@ Kubescape controls, running Kubescape scans, and generating CSV reports.
 """
 
 import os
-import re
 import subprocess
 import zipfile
 import pandas as pd
@@ -197,8 +196,14 @@ def run_kubescape(
     cmd = [kubescape_cmd, "scan"]
 
     if "NO DIFFERENCES FOUND" in controls_content:
-        # Run with all controls
-        cmd += [scan_target, "--format", "json", "--output", results_json_tmp]
+        # Run with all controls: scan every framework Kubescape ships with
+        cmd += [
+            "framework",
+            "nsa,mitre,cis-v1.23-t1.0.1,cis-v1.24-t1.0.0,cis-eks-t1.2.0,cis-aks-t1.2.0",
+            scan_target,
+            "--format", "json",
+            "--output", results_json_tmp,
+        ]
     else:
         # Run only on the specific controls
         control_ids = [

@@ -13,7 +13,6 @@ Usage:
 import argparse
 import os
 import sys
-import itertools
 import warnings
 import logging
 warnings.filterwarnings("ignore")
@@ -30,7 +29,6 @@ from rich.progress import (
 )
 from rich.console import Console
 from rich.panel import Panel
-from rich import print as rprint
 
 console = Console()
 
@@ -206,6 +204,8 @@ def run_task2(
     reqs_path = compare_element_requirements(
         kdes_1,
         kdes_2,
+        file_1_name=base1,
+        file_2_name=base2,
         output_path=os.path.join(output_dir, f"diff_reqs_{combo}.txt"),
     )
     print(f"  [+] Requirement differences:  {reqs_path}")

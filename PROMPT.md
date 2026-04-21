@@ -1,6 +1,6 @@
 # PROMPT.md — Prompts Used for KDE Extraction
 
-## Zero-Shot
+## zero-shot
 
 ```
 Analyze the following CIS Benchmark security requirements document.
@@ -28,7 +28,7 @@ DOCUMENT TEXT:
 Respond ONLY with the YAML output. Do not include any other text.
 ```
 
-## Few-Shot
+## few-shot
 
 ```
 Analyze a CIS Benchmark security requirements document and extract Key Data Elements (KDEs). A KDE is a distinct security control area with its associated requirements.
@@ -79,7 +79,7 @@ DOCUMENT TEXT:
 Respond ONLY with the YAML output. Do not include any other text.
 ```
 
-## Chain-of-Thought
+## chain-of-thought
 
 ```
 Analyze the following CIS Benchmark security requirements document to extract Key Data Elements (KDEs).

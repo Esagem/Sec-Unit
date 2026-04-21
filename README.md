@@ -16,11 +16,23 @@ This project uses **[Gemma-3-1B-it](https://huggingface.co/google/gemma-3-1b-it)
 
 ## Requirements
 
-- Python 3.13
+- Python 3.12+
 - CUDA-capable GPU strongly recommended (falls back to CPU automatically)
 - For CUDA: install PyTorch with the appropriate CUDA index (see Setup)
+- `kubescape` CLI on PATH (for Task 3)
 
 ## Setup
+
+The easiest path is `./run.sh`, which creates the venv, installs `requirements.txt`,
+and runs the full pipeline:
+
+```bash
+./run.sh                             # All 9 input combinations
+./run.sh inputs/cis-r1.pdf inputs/cis-r2.pdf   # Single pair
+./run.sh --build                     # Build PyInstaller binary only
+```
+
+Manual setup:
 
 ```bash
 python -m venv comp5700-venv
@@ -75,11 +87,19 @@ python main.py --all --inputs-dir data/ --output-dir results/
 
 Outputs are written to `outputs/` (gitignored).
 
-### Running with the Binary
+### Running with the PyInstaller Binary
+
+The binary is not committed (~2.4 GB — PyTorch + CUDA libs). Build it once:
 
 ```bash
-./dist/sec-unit --all
-./dist/sec-unit inputs/cis-r1.pdf inputs/cis-r2.pdf
+./run.sh --build          # creates dist/sec-unit.exe (Windows) or dist/sec-unit (Linux/macOS)
+```
+
+Then run it:
+
+```bash
+./dist/sec-unit.exe --all
+./dist/sec-unit.exe inputs/cis-r1.pdf inputs/cis-r2.pdf
 ```
 
 ## GPU & Batch Size
