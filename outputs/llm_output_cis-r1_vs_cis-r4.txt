@@ -1,4 +1,4 @@
-LLM Output Collection — 2026-04-20T21:16:21.587512
+LLM Output Collection — 2026-04-21T20:16:17.719871
 ======================================================================
 
 --- Run 1 ---
@@ -102,6 +102,7 @@ element1:
   requirements:
     - Enable audit Logs (Automated)
     - Ensure audit logs are collected and managed (Manual)
+    - Ensure that the kubeconfig file permissions are set to 644 or more restrictive (Automated)
     - Ensure that the kubelet kubeconfig file ownership is set to root:root (Automated)
     - Ensure that the kubelet configuration file has permissions set to 644 or more restrictive (Automated)
     - Ensure that the kubelet configuration file ownership is set to root:root (Automated)
@@ -283,13 +284,16 @@ element4:
   requirements:
     - "Ensure that the Anonymous Auth is Not Enabled"
 element5:
-  name: "Policies"
+  name: "Logging"
   requirements:
-    - "Ensure that the cluster-admin role is only used where required"
-    - "Minimize access to secrets (Manual)"
-    - "Minimize wildcard use in Roles and ClusterRoles (Manual)"
-    - "Minimize access to create pods (Manual)"
-    - "Ensure that default service accounts are
+    - "Enable audit Logs"
+element6:
+  name: "Pod Security Standards"
+  requirements:
+    - "Ensure that the cluster has at least one active policy control mechanism in place"
+    - "Ensure that the default namespace is not used"
+element7:
+  name:
 
 ======================================================================
 
@@ -338,13 +342,6 @@ element1:
     - 4.1.6 Ensure that Service Account Tokens are only mounted where necessary (Manual)
     - 4.1.7 Avoid use of the Bind, Impersonate and Escalate permissions in the Kubernetes
 
-element2:
-  name: Control Plane Configuration
-  requirements:
-    - 2.1.1 Enable audit Logs (Manual)
-    - 2.1.2 Ensure that the kubeconfig file permissions are set to 644 or more restrictive (Manual)
-    - 2.1.3 Ensure that the kubelet kubeconfig file ownership is set to root:root (Manual)
-    - 2.1.4 Ensure
 
 ======================================================================
 
@@ -388,15 +385,16 @@ element1:
     - "3.1.1 Ensure that the Anonymous Auth is Not Enabled (Automated)"
     - "3.1.2 Ensure that the --authorization-mode argument is not set to AlwaysAllow"
     - "3.1.3 Ensure that a Client CA File is Configured"
-    - "3.2.4 Ensure that the --read-only-port is disabled"
-    - "3.2.5 Ensure that the --streaming-connection-idle-timeout argument is not set to 0"
-    - "3.2.6 Ensure that the --make-iptables-util-chains argument is set to true"
-    - "3.2.7 Ensure that the --eventRecordQPS argument is not set to 0 or a level which ensures appropriate event capture"
-    - "3.2.8 Ensure that the --rotate-certificates argument is not present or is set to true"
-    - "3.2.9 Ensure that the RotateKubeletServerCertificate argument is set to true"
+    - "3.2.3 Ensure that the --read-only-port is disabled"
+    - "3.2.4 Ensure that the --streaming-connection-idle-timeout argument is not set to 0"
+    - "3.2.5 Ensure that the --make-iptables-util-chains argument is set to true"
+    - "3.2.6 Ensure that the --eventRecordQPS argument is not set to 0 or a level which ensures appropriate event capture"
+    - "3.2.7 Ensure that the --rotate-certificates argument is not present or is set to true"
+    - "3.2.8 Ensure that the RotateKubeletServerCertificate argument is set to true"
 element2:
-  name: "Control Plane Configuration"
+  name: "Logging"
   requirements:
+    
 
 ======================================================================
 

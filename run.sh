@@ -28,8 +28,8 @@ else
 fi
 
 echo "[+] Installing dependencies"
-pip install --quiet --upgrade pip
-pip install --quiet -r requirements.txt
+python -m pip install --quiet --upgrade pip
+python -m pip install --quiet -r requirements.txt
 
 if [[ "${1:-}" == "--build" ]]; then
   echo "[+] Building PyInstaller binary"

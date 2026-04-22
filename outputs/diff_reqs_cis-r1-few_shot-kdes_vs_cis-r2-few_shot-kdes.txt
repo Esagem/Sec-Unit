@@ -1,8 +1,9 @@
 Control Plane Configuration,ABSENT-IN-cis-r2-few_shot-kdes,PRESENT-IN-cis-r1-few_shot-kdes,NA
 Worker Nodes,ABSENT-IN-cis-r2-few_shot-kdes,PRESENT-IN-cis-r1-few_shot-kdes,NA
 Kubelet,ABSENT-IN-cis-r1-few_shot-kdes,PRESENT-IN-cis-r2-few_shot-kdes,NA
-Kubelet Configuration File,ABSENT-IN-cis-r1-few_shot-kdes,PRESENT-IN-cis-r2-few_shot-kdes,NA
+Kubelet Configuration,ABSENT-IN-cis-r1-few_shot-kdes,PRESENT-IN-cis-r2-few_shot-kdes,NA
 Logging,ABSENT-IN-cis-r1-few_shot-kdes,PRESENT-IN-cis-r2-few_shot-kdes,NA
 Pod Security Standards,ABSENT-IN-cis-r1-few_shot-kdes,PRESENT-IN-cis-r2-few_shot-kdes,NA
+RBAC and Service Accounts,ABSENT-IN-cis-r1-few_shot-kdes,PRESENT-IN-cis-r2-few_shot-kdes,NA
 Control Plane Components,ABSENT-IN-cis-r2-few_shot-kdes,PRESENT-IN-cis-r1-few_shot-kdes,Ensure that the kubelet configuration file has permissions set to 644 or more restrictive
 Control Plane Components,ABSENT-IN-cis-r2-few_shot-kdes,PRESENT-IN-cis-r1-few_shot-kdes,Ensure that the kubelet configuration file ownership is set to root:root

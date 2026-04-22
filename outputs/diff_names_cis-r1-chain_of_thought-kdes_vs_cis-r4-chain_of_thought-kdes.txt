@@ -1,2 +1,1 @@
 Control Plane Components
-Control Plane Configuration

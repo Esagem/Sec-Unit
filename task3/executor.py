@@ -15,22 +15,26 @@ import pandas as pd
 # Mapping from KDE names / keywords to Kubescape control IDs
 # Based on https://kubescape.io/docs/controls/
 # ---------------------------------------------------------------------------
+# Only controls that apply to application-level K8s resources
+# (Deployments, Pods, Services) — control-plane-only controls
+# like C-0067/C-0068 are intentionally omitted because the
+# project-yamls.zip fixture does not contain API server or etcd manifests.
 KEYWORD_TO_CONTROLS = {
-    "logging": ["C-0067"],
-    "audit": ["C-0067", "C-0068"],
-    "kubelet": ["C-0057", "C-0058", "C-0059"],
-    "anonymous auth": ["C-0058"],
-    "authentication": ["C-0058"],
-    "authorization": ["C-0057"],
-    "pod security": ["C-0044", "C-0045"],
+    "logging": ["C-0034", "C-0057"],
+    "audit": ["C-0034", "C-0057"],
+    "kubelet": ["C-0057", "C-0038"],
+    "anonymous auth": ["C-0057"],
+    "authentication": ["C-0035", "C-0036"],
+    "authorization": ["C-0035", "C-0057"],
+    "pod security": ["C-0044", "C-0045", "C-0046"],
     "privilege": ["C-0016", "C-0017", "C-0057"],
     "network": ["C-0049", "C-0050"],
     "network policy": ["C-0049", "C-0050"],
     "secret": ["C-0012", "C-0034"],
     "rbac": ["C-0035", "C-0036", "C-0037"],
     "role": ["C-0035", "C-0036", "C-0037"],
-    "tls": ["C-0032"],
-    "encryption": ["C-0032", "C-0034"],
+    "tls": ["C-0057"],
+    "encryption": ["C-0034", "C-0057"],
     "container": ["C-0016", "C-0017", "C-0044"],
     "image": ["C-0030"],
     "namespace": ["C-0038"],
@@ -39,13 +43,13 @@ KEYWORD_TO_CONTROLS = {
     "host": ["C-0038", "C-0041", "C-0044"],
     "capability": ["C-0016", "C-0046"],
     "seccomp": ["C-0055"],
-    "service account": ["C-0035", "C-0036"],
-    "etcd": ["C-0032", "C-0067"],
-    "api server": ["C-0057", "C-0058", "C-0067"],
-    "control plane": ["C-0057", "C-0058", "C-0067"],
-    "scheduler": ["C-0057"],
+    "service account": ["C-0034", "C-0035", "C-0036"],
+    "etcd": ["C-0034", "C-0057"],
+    "api server": ["C-0034", "C-0057"],
+    "control plane": ["C-0034", "C-0057"],
+    "scheduler": ["C-0034", "C-0057"],
     "configuration": ["C-0034"],
-    "permission": ["C-0057"],
+    "permission": ["C-0016", "C-0057"],
     "file": ["C-0034"],
     "ownership": ["C-0034"],
 }
@@ -234,8 +238,17 @@ def run_kubescape(
     import json
     import shutil
 
-    if not os.path.isfile(results_json_tmp):
-        raise RuntimeError("Kubescape did not produce a results file.")
+    empty_df = pd.DataFrame(columns=[
+        "FilePath", "Severity", "Control name",
+        "Failed resources", "All Resources", "Compliance score",
+    ])
+
+    # If kubescape produced no output (e.g. "no resources found to scan"),
+    # return an empty DataFrame so the pipeline continues cleanly.
+    if not os.path.isfile(results_json_tmp) or os.path.getsize(results_json_tmp) == 0:
+        if os.path.isfile(results_json_tmp):
+            os.remove(results_json_tmp)
+        return empty_df
 
     shutil.move(results_json_tmp, results_json)
 

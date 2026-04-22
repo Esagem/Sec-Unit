@@ -1,4 +1,4 @@
-LLM Output Collection — 2026-04-20T21:15:49.488291
+LLM Output Collection — 2026-04-21T20:16:03.647769
 ======================================================================
 
 --- Run 1 ---
@@ -39,6 +39,7 @@ Respond ONLY with the YAML output. Do not include any other text.
 zero_shot
 
 *LLM Output*
+```yaml
 element1:
   name: Control Plane Components
   requirements:
@@ -53,7 +54,7 @@ element1:
     - Ensure that the --protect-kernel-defaults argument is set to true (Automated)
     - Ensure that the --make-iptables-util-chains argument is set to true (Automated)
     - Ensure that the --hostname-override argument is not set (Manual)
-    - Ensure that the --eventRecordQPS argument is set to 0 or a level
+    - Ensure that the --eventRecordQPS argument is set to 0
 
 ======================================================================
 
@@ -225,6 +226,7 @@ element1:
 element2:
   name: "Control Plane Configuration"
   requirements:
+    - "Enable audit Logs"
     - "Ensure that the cluster has at least one active policy control mechanism in place"
     - "Ensure that the default namespace is not used"
 element3:
@@ -236,7 +238,7 @@ element4:
   name: "Kubelet"
   requirements:
     - "Ensure that the Anonymous Auth is Not Enabled (Automated)"
-    - "Ensure that a Client CA File is Config
+    - "
 
 ======================================================================
 
@@ -351,17 +353,20 @@ element3:
   name: "Kubelet Configuration"
   requirements:
     - "Ensure that the kubelet configuration file has permissions set to 644 or more restrictive"
-    - "Ensure that the --authorization-mode argument is not set to AlwaysAllow"
+    - "Ensure that the kubelet configuration file ownership is set to root:root"
 element4:
-  name: "Kubelet"
+  name: "Logging"
   requirements:
-    - "Ensure that the --streaming-connection-idle-timeout argument is not set to 0"
-    - "Ensure that the --make-iptables-util-chains argument is set to true"
+    - "Enable audit Logs"
 element5:
-  name: "Kubelet"
+  name: "Pod Security Standards"
   requirements:
-    - "Ensure that the --eventRecordQPS argument is set to 0 or a level which ensures appropriate event capture"
-    
+    - "Ensure that the cluster has at least one active policy control mechanism in place"
+    - "Ensure that the default namespace is not used"
+element6:
+  name: "RBAC and Service Accounts"
+  requirements:
+    - "Ensure that the cluster-admin role is only used where required"
 
 ======================================================================
 

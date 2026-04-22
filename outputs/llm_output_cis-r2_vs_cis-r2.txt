@@ -1,4 +1,4 @@
-LLM Output Collection — 2026-04-20T21:17:00.855559
+LLM Output Collection — 2026-04-21T20:16:31.264692
 ======================================================================
 
 --- Run 1 ---
@@ -82,14 +82,31 @@ element1:
   requirements:
     - Enable audit Logs (Automated)
     - Ensure audit logs are collected and managed (Manual)
-  element2:
-    name: Worker Node Configuration Files
-    requirements:
-      - Ensure that the kubeconfig file permissions are set to 644 or more restrictive (Automated)
-      - Ensure that the kubelet kubeconfig file ownership is set to root:root (Automated)
-      - Ensure that the kubelet configuration file has permissions set to 644 or more restrictive (Automated)
-      - Ensure that the kubelet configuration file ownership is set to root:root (Automated)
-```
+  requirements:
+    - Automated
+    - Manual
+
+element2:
+  name: Worker Node Configuration Files
+  requirements:
+    - Ensure that the kubeconfig file permissions are set to 644 or more restrictive (Automated)
+    - Ensure that the kubelet kubeconfig file ownership is set to root:root (Automated)
+    - Ensure that the kubelet configuration file has permissions set to 644 or more restrictive (Automated)
+    - Ensure that the kubelet configuration file ownership is set to root:root (Automated)
+    - Ensure that the kubelet configuration file ownership is set to root:root (Automated)
+  requirements:
+    - Automated
+    - Automated
+    - Automated
+    - Automated
+    - Automated
+    - Automated
+
+element3:
+  name: Kubelet
+  requirements:
+    - Ensure that the Anonymous Auth is Not Enabled (Automated)
+    - Ensure that the --authorization-mode argument is not set to AlwaysAllow (Autom
 
 ======================================================================
 
@@ -184,7 +201,7 @@ element2:
     - Ensure that the kubelet configuration file ownership is set to root:root (Automated)
   
 element3:
-  name: Internal Only - General
+  name: Worker Node Configuration Files
   requirements:
     - Ensure that the Anonymous Auth is Not Enabled (Automated)
     - Ensure that the --authorization-mode argument is not set to AlwaysAllow (Automated)
@@ -430,9 +447,10 @@ element2:
   requirements:
     - "Ensure that the Anonymous Auth is Not Enabled"
 element3:
-  name: "Kubelet Configuration File"
+  name: "Kubelet Configuration"
   requirements:
     - "Ensure that the kubelet configuration file has permissions set to 644 or more restrictive"
+    - "Ensure that the kubelet configuration file ownership is set to root:root"
 element4:
   name: "Logging"
   requirements:
@@ -443,10 +461,9 @@ element5:
     - "Ensure that the cluster has at least one active policy control mechanism in place"
     - "Ensure that the default namespace is not used"
 element6:
-  name: "Worker Nodes"
+  name: "RBAC and Service Accounts"
   requirements:
-    - "Ensure that the kubeconfig file permissions are set to 644 or more restrictive"
-    - "Ensure that the kubelet kubeconfig file ownership is set to
+    - "Ensure that the cluster-admin role is only used where required"
 
 ======================================================================
 
@@ -528,14 +545,13 @@ element1:
     - 3.1.1 Ensure that the kubeconfig file permissions are set to 644 or more restrictive
     - 3.1.2 Ensure that the kubelet kubeconfig file ownership is set to root:root
     - 3.1.3 Ensure that the kubelet configuration file has permissions set to 644 or more restrictive
-    - 3.1.4 Ensure that the kubelet configuration file ownership is set to root:root
     - 3.2.1 Ensure that the Anonymous Auth is Not Enabled
     - 3.2.2 Ensure that the --authorization-mode argument is not set to AlwaysAllow
     - 3.2.3 Ensure that a Client CA File is Configured
     - 3.2.4 Ensure that the --read-only-port is disabled
     - 3.2.5 Ensure that the --streaming-connection-idle-timeout argument is not set to 0
     - 3.2.6 Ensure that the --make-iptables-util-chains argument is set to true
-    - 3.2.
+    - 3.2.7 Ensure that the --eventRecordQPS argument is set to 0 or a level which ensures appropriate event capture
 
 ======================================================================
 

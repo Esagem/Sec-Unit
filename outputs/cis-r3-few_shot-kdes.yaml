@@ -12,4 +12,17 @@ element3:
   requirements:
   - Ensure that the kubelet configuration file has permissions set to 644 or more
     restrictive
-  - Ensure that the --authorization-mode argument is not set to AlwaysAllow
+  - Ensure that the kubelet configuration file ownership is set to root:root
+element4:
+  name: Logging
+  requirements:
+  - Enable audit Logs
+element5:
+  name: Pod Security Standards
+  requirements:
+  - Ensure that the cluster has at least one active policy control mechanism in place
+  - Ensure that the default namespace is not used
+element6:
+  name: RBAC and Service Accounts
+  requirements:
+  - Ensure that the cluster-admin role is only used where required

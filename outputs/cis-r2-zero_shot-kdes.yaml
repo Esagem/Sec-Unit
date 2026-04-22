@@ -11,3 +11,4 @@ element2:
   - Ensure that the kubelet configuration file has permissions set to 644 or more
     restrictive
   - Ensure that the kubelet configuration file ownership is set to root:root
+  - Ensure that the kube

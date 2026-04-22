@@ -1,1 +1,1 @@
-NO DIFFERENCES IN REGARDS TO ELEMENT REQUIREMENTS
+Worker Nodes,ABSENT-IN-cis-r3-zero_shot-kdes,PRESENT-IN-cis-r2-zero_shot-kdes,Ensure that the kube

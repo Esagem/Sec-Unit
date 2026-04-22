@@ -1,4 +1,4 @@
-LLM Output Collection — 2026-04-20T21:19:23.644289
+LLM Output Collection — 2026-04-21T20:17:26.152374
 ======================================================================
 
 --- Run 1 ---
@@ -150,7 +150,6 @@ element1:
     - Minimize wildcard use in Roles and ClusterRoles (Manual)
     - Minimize access to create pods (Manual)
     - Ensure that default service accounts are not actively used. (Manual)
-    - Ensure that Service Account Tokens are only mounted where necessary (Manual)
     - Limit use of the Bind, Impersonate and Escalate permissions in the Kubernetes cluster (Manual)
 ```
 
@@ -267,17 +266,20 @@ element3:
   name: "Kubelet Configuration"
   requirements:
     - "Ensure that the kubelet configuration file has permissions set to 644 or more restrictive"
-    - "Ensure that the --authorization-mode argument is not set to AlwaysAllow"
+    - "Ensure that the kubelet configuration file ownership is set to root:root"
 element4:
-  name: "Kubelet Policies"
+  name: "Logging"
+  requirements:
+    - "Enable audit Logs"
+element5:
+  name: "Pod Security Standards"
+  requirements:
+    - "Ensure that the cluster has at least one active policy control mechanism in place"
+    - "Ensure that the default namespace is not used"
+element6:
+  name: "RBAC and Service Accounts"
   requirements:
     - "Ensure that the cluster-admin role is only used where required"
-    - "Minimize access to secrets"
-    - "Minimize wildcard use in Roles and ClusterRoles"
-    - "Minimize access to create pods"
-    - "Ensure that default service accounts are not actively used"
-    - "Ensure that Service Account Tokens are only mounted where necessary"
-    - "Limit use of the Bind, Imperson
 
 ======================================================================
 
@@ -361,16 +363,13 @@ element4:
   requirements:
     - "Ensure that the Anonymous Auth is Not Enabled"
 element5:
-  name: "Logging"
+  name: "Policies"
   requirements:
-    - "Enable audit Logs"
-element6:
-  name: "Pod Security Standards"
-  requirements:
-    - "Ensure that the cluster has at least one active policy control mechanism in place"
-    - "Ensure that the default namespace is not used"
-element7:
-  name:
+    - "Ensure that the cluster-admin role is only used where required"
+    - "Minimize access to secrets (Manual)"
+    - "Minimize wildcard use in Roles and ClusterRoles (Manual)"
+    - "Minimize access to create pods (Manual)"
+    - "Ensure that default service accounts are
 
 ======================================================================
 
@@ -505,11 +504,11 @@ element1:
     - "3.1.3 Ensure that the kubelet configuration file has permissions set to 644 or more restrictive"
     - "3.1.4 Ensure that the kubelet configuration file ownership is set to root:root"
     - "3.2.3 Ensure that the --read-only-port is disabled"
-    - "3.2.4 Ensure that the --make-iptables-util-chains argument is not set to true"
-    - "3.2.5 Ensure that the --eventRecordQPS argument is not set to 0"
-    - "3.2.6 Ensure that the --rotate-certificates argument is not present or is set to true"
-    - "3.2.7 Ensure that the RotateKubeletServerCertificate argument is set to true"
-    - "4.1.6 Ensure that default
+    - "3.2.4 Ensure that --streaming-connection-idle-timeout is not set to 0"
+    - "3.2.5 Ensure that --make-iptables-util-chains is not set to true"
+    - "3.2.6 Ensure that --eventRecordQPS is set to 0 or a level which ensures appropriate event capture"
+    - "3.2.7 Ensure that --rotate-certificates is not present or is set to true"
+    - "3.2.8
 
 ======================================================================
 

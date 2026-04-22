@@ -1,4 +1,1 @@
-Kubelet Configuration
-Kubelet Configuration File
-Logging
-Pod Security Standards
+NO DIFFERENCES IN REGARDS TO ELEMENT NAMES

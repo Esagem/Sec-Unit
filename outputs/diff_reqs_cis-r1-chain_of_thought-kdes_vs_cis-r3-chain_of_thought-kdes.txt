@@ -1,4 +1,3 @@
-Control Plane Configuration,ABSENT-IN-cis-r3-chain_of_thought-kdes,PRESENT-IN-cis-r1-chain_of_thought-kdes,NA
 Control Plane Components,ABSENT-IN-cis-r3-chain_of_thought-kdes,PRESENT-IN-cis-r1-chain_of_thought-kdes,Avoid use of the Bind, Impersonate and Escalate permissions in the Kubernetes
 Control Plane Components,ABSENT-IN-cis-r3-chain_of_thought-kdes,PRESENT-IN-cis-r1-chain_of_thought-kdes,Ensure that Service Account Tokens are only mounted where necessary
 Control Plane Components,ABSENT-IN-cis-r3-chain_of_thought-kdes,PRESENT-IN-cis-r1-chain_of_thought-kdes,Ensure that default service accounts are not actively used.

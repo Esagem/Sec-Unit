@@ -1,3 +1,2 @@
-Control Plane Configuration
 Logging
 Worker Nodes
