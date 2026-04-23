@@ -1,2 +1,5 @@
+Amazon ECR Identity-Based Policies
+Cluster Access Manager API
+Extensible Admission Control
+Kubernetes API
 Logging
-Worker Nodes

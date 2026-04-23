@@ -1,9 +1,21 @@
-Control Plane Configuration,ABSENT-IN-cis-r2-few_shot-kdes,PRESENT-IN-cis-r1-few_shot-kdes,NA
-Worker Nodes,ABSENT-IN-cis-r2-few_shot-kdes,PRESENT-IN-cis-r1-few_shot-kdes,NA
-Kubelet,ABSENT-IN-cis-r1-few_shot-kdes,PRESENT-IN-cis-r2-few_shot-kdes,NA
-Kubelet Configuration,ABSENT-IN-cis-r1-few_shot-kdes,PRESENT-IN-cis-r2-few_shot-kdes,NA
-Logging,ABSENT-IN-cis-r1-few_shot-kdes,PRESENT-IN-cis-r2-few_shot-kdes,NA
-Pod Security Standards,ABSENT-IN-cis-r1-few_shot-kdes,PRESENT-IN-cis-r2-few_shot-kdes,NA
-RBAC and Service Accounts,ABSENT-IN-cis-r1-few_shot-kdes,PRESENT-IN-cis-r2-few_shot-kdes,NA
-Control Plane Components,ABSENT-IN-cis-r2-few_shot-kdes,PRESENT-IN-cis-r1-few_shot-kdes,Ensure that the kubelet configuration file has permissions set to 644 or more restrictive
-Control Plane Components,ABSENT-IN-cis-r2-few_shot-kdes,PRESENT-IN-cis-r1-few_shot-kdes,Ensure that the kubelet configuration file ownership is set to root:root
+Change Default Passwords,ABSENT-IN-cis-r2-few_shot-kdes,PRESENT-IN-cis-r1-few_shot-kdes,NA
+Container Optimized OS,ABSENT-IN-cis-r2-few_shot-kdes,PRESENT-IN-cis-r1-few_shot-kdes,NA
+Extensible Admission Control,ABSENT-IN-cis-r2-few_shot-kdes,PRESENT-IN-cis-r1-few_shot-kdes,NA
+Kubernetes API,ABSENT-IN-cis-r2-few_shot-kdes,PRESENT-IN-cis-r1-few_shot-kdes,NA
+Logging,ABSENT-IN-cis-r2-few_shot-kdes,PRESENT-IN-cis-r1-few_shot-kdes,NA
+Secrets Management,ABSENT-IN-cis-r2-few_shot-kdes,PRESENT-IN-cis-r1-few_shot-kdes,NA
+Server-Side Encryption,ABSENT-IN-cis-r2-few_shot-kdes,PRESENT-IN-cis-r1-few_shot-kdes,NA
+3.2.4 Ensure that the --read-only-port is disabled,ABSENT-IN-cis-r1-few_shot-kdes,PRESENT-IN-cis-r2-few_shot-kdes,NA
+Anonymous Auth is Not Enabled,ABSENT-IN-cis-r1-few_shot-kdes,PRESENT-IN-cis-r2-few_shot-kdes,NA
+Authentication and Authorization,ABSENT-IN-cis-r1-few_shot-kdes,PRESENT-IN-cis-r2-few_shot-kdes,NA
+Cluster Access Manager API,ABSENT-IN-cis-r1-few_shot-kdes,PRESENT-IN-cis-r2-few_shot-kdes,NA
+Establish Secure Configurations,ABSENT-IN-cis-r1-few_shot-kdes,PRESENT-IN-cis-r2-few_shot-kdes,NA
+Internal Only - General,ABSENT-IN-cis-r1-few_shot-kdes,PRESENT-IN-cis-r2-few_shot-kdes,NA
+Streaming Connection Idle Timeout,ABSENT-IN-cis-r1-few_shot-kdes,PRESENT-IN-cis-r2-few_shot-kdes,NA
+Kubelet,ABSENT-IN-cis-r2-few_shot-kdes,PRESENT-IN-cis-r1-few_shot-kdes,Ensure that the kubelet configuration file has permissions set to 644 or more restrictive
+Kubelet,ABSENT-IN-cis-r2-few_shot-kdes,PRESENT-IN-cis-r1-few_shot-kdes,Ensure that the kubelet kubeconfig file permissions are set to 644 or more restrictive
+Kubelet,ABSENT-IN-cis-r1-few_shot-kdes,PRESENT-IN-cis-r2-few_shot-kdes,Ensure that the kubelet is configured to use a valid kubeconfig file
+Pod Security Standards,ABSENT-IN-cis-r2-few_shot-kdes,PRESENT-IN-cis-r1-few_shot-kdes,Use secure network management and communication protocols (e.g., 802.1X, Wi-Fi Protected Access 2 (WPA2) Enterprise or greater)
+Worker Node Configuration Files,ABSENT-IN-cis-r2-few_shot-kdes,PRESENT-IN-cis-r1-few_shot-kdes,Minimize the admission of containers wishing to share the host IPC namespace
+Worker Node Configuration Files,ABSENT-IN-cis-r1-few_shot-kdes,PRESENT-IN-cis-r2-few_shot-kdes,Ensure that the kubelet configuration file has permissions set to 644 or more restrictive
+Worker Node Configuration Files,ABSENT-IN-cis-r1-few_shot-kdes,PRESENT-IN-cis-r2-few_shot-kdes,Ensure that the kubelet configuration file ownership is set to root:root

@@ -1,1 +1,38 @@
-Control Plane Components,ABSENT-IN-cis-r4-chain_of_thought-kdes,PRESENT-IN-cis-r1-chain_of_thought-kdes,NA
+Amazon ECR Identity-Based Policies,ABSENT-IN-cis-r4-chain_of_thought-kdes,PRESENT-IN-cis-r1-chain_of_thought-kdes,NA
+IAM Identity-Based Policies,ABSENT-IN-cis-r4-chain_of_thought-kdes,PRESENT-IN-cis-r1-chain_of_thought-kdes,NA
+Image Scanning,ABSENT-IN-cis-r4-chain_of_thought-kdes,PRESENT-IN-cis-r1-chain_of_thought-kdes,NA
+Kernel Configuration,ABSENT-IN-cis-r4-chain_of_thought-kdes,PRESENT-IN-cis-r1-chain_of_thought-kdes,NA
+Kubelet Configuration,ABSENT-IN-cis-r4-chain_of_thought-kdes,PRESENT-IN-cis-r1-chain_of_thought-kdes,NA
+Kubelet Configuration File,ABSENT-IN-cis-r4-chain_of_thought-kdes,PRESENT-IN-cis-r1-chain_of_thought-kdes,NA
+Kubelet Configuration File Permissions,ABSENT-IN-cis-r4-chain_of_thought-kdes,PRESENT-IN-cis-r1-chain_of_thought-kdes,NA
+Kubelet Service Configuration,ABSENT-IN-cis-r4-chain_of_thought-kdes,PRESENT-IN-cis-r1-chain_of_thought-kdes,NA
+Kubernetes Cluster,ABSENT-IN-cis-r4-chain_of_thought-kdes,PRESENT-IN-cis-r1-chain_of_thought-kdes,NA
+Network Security,ABSENT-IN-cis-r4-chain_of_thought-kdes,PRESENT-IN-cis-r1-chain_of_thought-kdes,NA
+PSP has allowedCapabilities Set by Default,ABSENT-IN-cis-r4-chain_of_thought-kdes,PRESENT-IN-cis-r1-chain_of_thought-kdes,NA
+Safeguard,ABSENT-IN-cis-r4-chain_of_thought-kdes,PRESENT-IN-cis-r1-chain_of_thought-kdes,NA
+Security Context,ABSENT-IN-cis-r4-chain_of_thought-kdes,PRESENT-IN-cis-r1-chain_of_thought-kdes,NA
+EphemeralContainers,ABSENT-IN-cis-r1-chain_of_thought-kdes,PRESENT-IN-cis-r4-chain_of_thought-kdes,NA
+IAM Authenticator,ABSENT-IN-cis-r1-chain_of_thought-kdes,PRESENT-IN-cis-r4-chain_of_thought-kdes,NA
+explicitly require API server access,ABSENT-IN-cis-r1-chain_of_thought-kdes,PRESENT-IN-cis-r4-chain_of_thought-kdes,NA
+Kubelet,ABSENT-IN-cis-r4-chain_of_thought-kdes,PRESENT-IN-cis-r1-chain_of_thought-kdes,Ensure that the Kubelet is configured to properly manage the cluster network.
+Kubelet,ABSENT-IN-cis-r4-chain_of_thought-kdes,PRESENT-IN-cis-r1-chain_of_thought-kdes,Ensure that the Kubelet is configured to properly manage the cluster's resource limits.
+Kubelet,ABSENT-IN-cis-r4-chain_of_thought-kdes,PRESENT-IN-cis-r1-chain_of_thought-kdes,Ensure that the Kubelet is configured to properly manage the cluster's security policies.
+Kubelet,ABSENT-IN-cis-r4-chain_of_thought-kdes,PRESENT-IN-cis-r1-chain_of_thought-kdes,Ensure that the Kubelet pod has a strong security posture
+Kubelet,ABSENT-IN-cis-r4-chain_of_thought-kdes,PRESENT-IN-cis-r1-chain_of_thought-kdes,Ensure that the Kubelet service is configured to correctly handle pod security standards.
+Kubelet,ABSENT-IN-cis-r4-chain_of_thought-kdes,PRESENT-IN-cis-r1-chain_of_thought-kdes,Ensure that the kubelet configuration file has permissions set to 644 or more restrictive
+Kubelet,ABSENT-IN-cis-r4-chain_of_thought-kdes,PRESENT-IN-cis-r1-chain_of_thought-kdes,Ensure that the kubelet kubeconfig file ownership is set to root:root
+Kubelet,ABSENT-IN-cis-r4-chain_of_thought-kdes,PRESENT-IN-cis-r1-chain_of_thought-kdes,Implement a least privilege approach for the Kubelet
+Kubelet,ABSENT-IN-cis-r4-chain_of_thought-kdes,PRESENT-IN-cis-r1-chain_of_thought-kdes,Restrict access to the Kubelet pod to only authorized users and services
+Kubelet,ABSENT-IN-cis-r4-chain_of_thought-kdes,PRESENT-IN-cis-r1-chain_of_thought-kdes,Verify that the Kubelet service is configured to correctly handle pod security standards.
+Kubelet,ABSENT-IN-cis-r1-chain_of_thought-kdes,PRESENT-IN-cis-r4-chain_of_thought-kdes,Ensure AmazonEKSNetworkingPolicy is Enabled
+Kubelet,ABSENT-IN-cis-r1-chain_of_thought-kdes,PRESENT-IN-cis-r4-chain_of_thought-kdes,Ensure AmazonEKSNetworkingPolicy is set as appropriate
+Kubelet,ABSENT-IN-cis-r1-chain_of_thought-kdes,PRESENT-IN-cis-r4-chain_of_thought-kdes,Ensure cluster-admin role is only used where required
+Kubelet,ABSENT-IN-cis-r1-chain_of_thought-kdes,PRESENT-IN-cis-r4-chain_of_thought-kdes,Ensure clusters are created with Private Endpoint Enabled
+Kubelet,ABSENT-IN-cis-r1-chain_of_thought-kdes,PRESENT-IN-cis-r4-chain_of_thought-kdes,Ensure that local logging has been enabled on all systems and networking devices.
+Kubelet,ABSENT-IN-cis-r1-chain_of_thought-kdes,PRESENT-IN-cis-r4-chain_of_thought-kdes,Ensure that logging, per the enterprise’s audit log management process, has been enabled across enterprise assets.
+Kubelet,ABSENT-IN-cis-r1-chain_of_thought-kdes,PRESENT-IN-cis-r4-chain_of_thought-kdes,Ensure that system logging to include detailed information such as an event source, date, user, timestamp, source addresses, destination addresses, and other useful elements.
+Kubelet,ABSENT-IN-cis-r1-chain_of_thought-kdes,PRESENT-IN-cis-r4-chain_of_thought-kdes,Ensure that the Kubelet is configured to allow privileged containers to access the host's PID namespace.
+Kubelet,ABSENT-IN-cis-r1-chain_of_thought-kdes,PRESENT-IN-cis-r4-chain_of_thought-kdes,Ensure that the Kubelet service is configured to allow privileged containers to run.
+Kubelet,ABSENT-IN-cis-r1-chain_of_thought-kdes,PRESENT-IN-cis-r4-chain_of_thought-kdes,Implement a mechanism for monitoring the Kubelet service for security events.
+Kubelet,ABSENT-IN-cis-r1-chain_of_thought-kdes,PRESENT-IN-cis-r4-chain_of_thought-kdes,Implement audit logging for Kubelet events.
+Kubelet,ABSENT-IN-cis-r1-chain_of_thought-kdes,PRESENT-IN-cis-r4-chain_of_thought-kdes,Verify that the Kubelet is configured to allow privileged containers to access network interfaces.

@@ -1,3 +1,20 @@
-Control Plane Components
-Logging
-Worker Nodes
+Amazon ECR Identity-Based Policies
+Amazon ECR Resource-Based Policies
+Anonymous Auth
+Audit Logs
+Cluster Access Manager API
+Control Plane Configuration
+Create Administrative Boundaries
+Encryption at Rest
+Extensible Admission Control
+General Policies
+IAM Authenticator for Kubernetes
+Kubelet Event Record Policy
+Kubernetes API
+Manage Network Boundaries
+Pod Identity
+Policies
+RBAC and Service Accounts
+Secure Pods
+Worker Node Configuration
+aws eks update-cluster-config

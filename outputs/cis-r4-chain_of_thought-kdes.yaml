@@ -1,14 +1,41 @@
 element1:
-  name: Unparsed LLM Output
+  name: Kubelet
   requirements:
-  - "element1:\n  name: \"Control Plane Components\"\n  requirements:\n    - \"3.1.1\
-    \ Ensure that the kubeconfig file permissions are set to 644 or more restrictive\"\
-    \n    - \"3.1.2 Ensure that the kubelet kubeconfig file ownership is set to root:root\"\
-    \n    - \"3.1.3 Ensure that the kubelet configuration file has permissions set\
-    \ to 644 or more restrictive\"\n    - \"3.1.4 Ensure that the kubelet configuration\
-    \ file ownership is set to root:root\"\n    - \"3.2.3 Ensure that the --read-only-port\
-    \ is disabled\"\n    - \"3.2.4 Ensure that --streaming-connection-idle-timeout\
-    \ is not set to 0\"\n    - \"3.2.5 Ensure that --make-iptables-util-chains is\
-    \ not set to true\"\n    - \"3.2.6 Ensure that --eventRecordQPS is set to 0 or\
-    \ a level which ensures appropriate event capture\"\n    - \"3.2.7 Ensure that\
-    \ --rotate-certificates is not present or is set to true\"\n    - \"3.2.8"
+  - Ensure that logging, per the enterprise’s audit log management process, has been
+    enabled across enterprise assets.
+  - Ensure that local logging has been enabled on all systems and networking devices.
+  - Ensure that system logging to include detailed information such as an event source,
+    date, user, timestamp, source addresses, destination addresses, and other useful
+    elements.
+  - Ensure that the Kubelet service is configured to allow privileged containers to
+    run.
+  - Implement audit logging for Kubelet events.
+  - Verify that the Kubelet is configured to allow privileged containers to access
+    network interfaces.
+  - Ensure that the Kubelet is configured to allow privileged containers to access
+    the host's PID namespace.
+  - Implement a mechanism for monitoring the Kubelet service for security events.
+  - Ensure clusters are created with Private Endpoint Enabled
+  - Ensure AmazonEKSNetworkingPolicy is Enabled
+  - Ensure AmazonEKSNetworkingPolicy is set as appropriate
+  - Ensure cluster-admin role is only used where required
+element2:
+  name: explicitly require API server access
+  requirements:
+  - 'References: 1. https://kubernetes.io/docs/tasks/configure-pod-container/configure-service-account/'
+element3:
+  name: EphemeralContainers
+  requirements:
+  - Ensure that the EphemeralContainers service is configured to allow privileged
+    containers to run.
+  - Implement audit logging for EphemeralContainers events.
+  - Verify that the EphemeralContainers service is configured to allow privileged
+    containers to access network interfaces.
+  - Ensure that the EphemeralContainers service is configured to allow privileged
+    containers to access the host's PID namespace.
+  - Implement a mechanism for monitoring the EphemeralContainers service for security
+    events.
+element4:
+  name: IAM Authenticator
+  requirements:
+  - Ensure that all Namespaces have Network Policies defined.

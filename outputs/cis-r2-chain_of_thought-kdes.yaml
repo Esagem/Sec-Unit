@@ -1,10 +1,6 @@
 element1:
-  name: Control Plane Components
+  name: Kubelet
   requirements:
-  - Ensure that the kubeconfig file permissions are set to 644 or more restrictive
-  - Ensure that the kubelet kubeconfig file ownership is set to root:root
-  - Ensure that the kubelet configuration file has permissions set to 644 or more
-    restrictive
   - Ensure that the Anonymous Auth is Not Enabled
   - Ensure that the --authorization-mode argument is not set to AlwaysAllow
   - Ensure that a Client CA File is Configured
@@ -13,3 +9,72 @@ element1:
   - Ensure that the --make-iptables-util-chains argument is set to true
   - Ensure that the --eventRecordQPS argument is set to 0 or a level which ensures
     appropriate event capture
+  - Ensure that the --rotate-certificates argument is not present or is set to true
+  - 'Native Support in Kubernetes Versions: Starting from Kubernetes 1.23, the Cluster
+    Access Manager API is fully supported and designed to replace the aws-auth ConfigMap
+    method.'
+  - 'Modern Approach for Pod Identity: When combined with IAM Roles for Service Accounts
+    (IRSA) or the new Pod Identity feature, the API supports a more dynamic and secure
+    model for assigning permissions to pods, making it easier to implement least-privilege
+    access.'
+  - Ensure that the Kubelet is configured to monitor the cluster's health
+  - Verify that the Kubelet is configured to monitor the cluster's health
+  - Ensure the Use of Dedicated Administrative Accounts
+  - Ensure that all users with administrative account access use a dedicated or secondary
+    account for elevated activities.
+element2:
+  name: General
+  requirements:
+  - Establish and Maintain an Audit Log Management Process
+  - Collect Audit Logs
+  - Review and Update Documentation Annually, or when Significant Enterprise Changes
+    Occur
+  - Ensure that the kubelet kubeconfig file permissions are set to 644 or more restrictive
+  - Configure Data Access Control Lists
+  - Ensure that the kubelet configuration file has permissions set to 644 or more
+    restrictive
+  - Ensure that the kubelet kubeconfig file ownership is set to root:root
+  - Ensure that the kubelet kubeconfig file has permissions set to 644 or more restrictive
+  - Ensure that the kubelet kubeconfig file is owned by root:root
+element3:
+  name: Kubelet Configuration
+  requirements:
+  - Ensure that Anonymous Authentication is not enabled
+  - Ensure that Webhook Authentication is enabled
+  - Ensure that Authorization Mode is set to Webhook
+  - Ensure that a Client CA File is Configured
+  - Ensure that the --streaming-connection-idle-timeout argument is not set to 0
+element4:
+  name: Kubelet Service Configuration
+  requirements:
+  - Verify that the --authorization-mode argument is not set to AlwaysAllow
+  - Verify that the --authentication-mode argument is not set to AlwaysAllow
+  - Verify that the --read-only-port argument is not set to 0
+  - Verify that the --streaming-connection-idle-timeout argument is not set to 0
+element5:
+  name: Pod Security Standards (PSS)
+  requirements:
+  - '{''Minimize the admission of containers wishing to share the host IPC namespace
+    (Automated)'': ''Do not generally permit containers to be run with the hostNetwork
+    flag set to true.''}'
+  - '{''Restrict Administrator Privileges to Dedicated Administrator Accounts'': ''Restrict
+    administrator privileges to dedicated administrator accounts on enterprise assets.''}'
+element6:
+  name: Logging
+  requirements:
+  - Implement a centralized logging system
+  - Ensure that the logging system is properly configured
+element7:
+  name: Pod Security Standards
+  requirements:
+  - Apply Pod Security Standards
+  - Ensure that Pod Security Standards are applied
+element8:
+  name: Networking
+  requirements:
+  - Implement network policies
+  - Ensure that network policies are implemented
+element10:
+  name: AWS EKS Key Management Service
+  requirements:
+  - This section contains recommendations relating to using AWS EKS Key Management.

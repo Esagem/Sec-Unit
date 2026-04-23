@@ -1,3 +1,5 @@
-Control Plane Components
-Logging
-Worker Nodes
+AWS EKS Key Management Service
+CNI Plugin
+Cluster Access Manager API
+Image Scanning
+Implement and Manage a Firewall on Servers

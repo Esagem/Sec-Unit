@@ -1,5 +1,10 @@
-Kubelet Configuration
-Logging
-Pod Security Standards
-RBAC and Service Accounts
-Worker Nodes
+AWS EKS Key Management Service
+Anonymous Auth is Not Enabled
+CIS Controls: Controls Version Control IG 1 IG 2 IG 3
+CNI Plugin
+Establish Secure Configurations
+Host Network Namespace
+Image Scanning
+Implement and Manage a Firewall on Servers
+Service Account Tokens
+Streaming Connection Idle Timeout

@@ -132,27 +132,38 @@ def run_task1(pdf1_path: str, pdf2_path: str, pipe, output_dir: str = "outputs",
     doc1_name = os.path.splitext(os.path.basename(pdf1_path))[0]
     doc2_name = os.path.splitext(os.path.basename(pdf2_path))[0]
 
-    # Build all 6 prompts upfront
-    jobs = []  # list of (messages, prompt_text, prompt_type, doc_name)
+    # Each (prompt, doc) job may expand into multiple chunks. We flatten all
+    # chunks across all 6 jobs into a single batched pipeline call, then
+    # regroup the responses per (prompt, doc) before parsing + merging.
+    chunk_jobs: list[tuple[list, str]] = []          # (messages, prompt_text) per chunk
+    group_indices: list[tuple[str, str, str, list[int]]] = []
+    # (prompt_type, doc_name, representative_prompt_text, [indices into chunk_jobs])
+
     for prompt_type in PROMPT_TYPES:
         for doc_name, text in [(doc1_name, text_1), (doc2_name, text_2)]:
-            messages, prompt_text = build_messages(text, prompt_type)
-            jobs.append((messages, prompt_text, prompt_type, doc_name))
+            chunk_msgs = build_messages(text, prompt_type)
+            indices = []
+            for messages, prompt_text in chunk_msgs:
+                indices.append(len(chunk_jobs))
+                chunk_jobs.append((messages, prompt_text))
+            group_indices.append((prompt_type, doc_name, chunk_msgs[0][1], indices))
 
     if pbar is not None:
         progress, task = pbar
         progress.update(task, description=f"[bold cyan]{doc1_name} vs {doc2_name}[/bold cyan]")
 
     # Batched pipeline call with automatic OOM fallback
-    all_messages = [j[0] for j in jobs]
+    all_messages = [j[0] for j in chunk_jobs]
     outputs, batch_size = _run_with_fallback(pipe, all_messages, batch_size)
 
-    # Post-process each result
+    # Regroup: collect each group's per-chunk responses, merge into one YAML
     all_results = []
-    for i, (_, prompt_text, prompt_type, doc_name) in enumerate(jobs):
-        raw_response = outputs[i][0]["generated_text"][-1]["content"]
+    for prompt_type, doc_name, prompt_text, indices in group_indices:
+        raw_responses = [
+            outputs[i][0]["generated_text"][-1]["content"] for i in indices
+        ]
         result = save_kde_result(
-            raw_response=raw_response,
+            raw_response=raw_responses,
             prompt_text=prompt_text,
             prompt_type=prompt_type,
             doc_name=f"{doc_name}-{prompt_type}",

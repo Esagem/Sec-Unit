@@ -1,1 +1,21 @@
-NO DIFFERENCES IN REGARDS TO ELEMENT NAMES
+AWS EKS Key Management Service
+Amazon ECR Identity-Based Policies
+CIS Amazon Elastic Kubernetes Service (EKS) Benchmark
+Cluster Access Manager API
+IAM Identity-Based Policies
+Image Scanning
+Implement and Manage a Firewall on Servers
+Kernel Configuration
+Kubelet Configuration File Permissions
+Kubelet Configuration Parameters
+Kubelet Service Configuration
+Kubernetes Cluster
+Logging
+Network Security
+PSP has allowedCapabilities Set by Default
+Pod Security Standards
+Pod Security Standards (PSS)
+Safeguard
+Security Configuration
+Security Context
+Version Control IG

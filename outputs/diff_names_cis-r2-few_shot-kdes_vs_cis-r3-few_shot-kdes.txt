@@ -1,1 +1,7 @@
-NO DIFFERENCES IN REGARDS TO ELEMENT NAMES
+3.2.4 Ensure that the --read-only-port is disabled
+AWS EKS Key Management Service
+Authentication and Authorization
+Cluster Access Manager API
+Host Network Namespace
+Image Scanning
+Logging

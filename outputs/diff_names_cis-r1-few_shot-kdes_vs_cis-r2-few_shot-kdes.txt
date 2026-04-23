@@ -1,7 +1,14 @@
-Control Plane Configuration
-Kubelet
-Kubelet Configuration
+3.2.4 Ensure that the --read-only-port is disabled
+Anonymous Auth is Not Enabled
+Authentication and Authorization
+Change Default Passwords
+Cluster Access Manager API
+Container Optimized OS
+Establish Secure Configurations
+Extensible Admission Control
+Internal Only - General
+Kubernetes API
 Logging
-Pod Security Standards
-RBAC and Service Accounts
-Worker Nodes
+Secrets Management
+Server-Side Encryption
+Streaming Connection Idle Timeout

@@ -1,2 +1,11 @@
-Control Plane Configuration
-Kubelet
+CIS Controls: Controls Version Control IG 1 IG 2 IG 3
+CNI Plugin
+Change Default Passwords
+Container Optimized OS
+Extensible Admission Control
+Implement and Manage a Firewall on Servers
+Internal Only - General
+Kubernetes API
+Secrets Management
+Server-Side Encryption
+Service Account Tokens

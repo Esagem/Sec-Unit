@@ -1,1 +1,30 @@
-NO DIFFERENCES IN REGARDS TO ELEMENT NAMES
+Amazon EKS Control Plane Logging
+Audit Method 1
+Audit Method 2
+CNI Plugin
+Container Security
+Control Plane Configuration
+Create Administrative Boundaries
+Customer Master Keys
+Encryption at Rest
+Explicitly require API server access
+Extensible Admission Control
+Firewall
+Firewall on Servers
+General Policies
+IAM Authenticator for Kubernetes
+Internal Only - General
+Kubelet Configuration
+Kubelet Event Record Policy
+Kubernetes API
+Kubernetes Secrets
+Manage Network Boundaries
+Pod Security Policy
+Policies
+RBAC and Service Accounts
+RotateKubeletClientCertificate
+RotateKubeletServerCertificate
+Secrets Management
+Segment the Network Based on Sensitivity
+Worker Node Configuration
+aws eks update-cluster-config

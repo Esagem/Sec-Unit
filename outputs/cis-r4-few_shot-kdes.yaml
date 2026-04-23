@@ -1,14 +1,61 @@
 element1:
-  name: Control Plane Components
+  name: Worker Node Configuration Files
   requirements:
   - Ensure that the kubeconfig file permissions are set to 644 or more restrictive
   - Ensure that the kubelet kubeconfig file ownership is set to root:root
+  - Ensure that the kubelet configuration file has permissions set to 644 or more
+    restrictive
+  - Ensure that the kubelet configuration file permissions are set to 644 or more
+    restrictive
 element2:
   name: Kubelet
   requirements:
   - Ensure that the Anonymous Auth is Not Enabled
+  - Ensure that the --authorization-mode argument is not set to AlwaysAllow
+  - Ensure that the --default-namespace is not used
 element3:
-  name: Worker Nodes
+  name: Pod Security Standards
   requirements:
-  - Ensure that the kubeconfig file permissions are set to 644 or more restrictive
-  - Ensure that the kubelet kubeconfig file ownership is set to root:root
+  - Ensure that the cluster has at least one active policy control mechanism in place
+  - Ensure that the default namespace is not used
+element4:
+  name: Logging
+  requirements:
+  - Enable audit Logs
+  - Establish and Maintain an Audit Log Management Process
+  - Collect Audit Logs
+  - Enable System Logging
+  - Enable Detailed Logging
+  - Verify that the audit logs are being collected and managed
+element5:
+  name: 'CIS Controls: Controls Version Control IG 1 IG 2 IG 3'
+  requirements:
+  - Ensure that the cluster has at least one active policy control mechanism in place
+  - Ensure that the default namespace is not used
+  - 'Enable Kubelet authentication using certificates. Example implementations can
+    include: Transport Layer Security (TLS) and Open Secure Shell (OpenSSH).'
+element6:
+  name: Service Account Tokens
+  requirements:
+  - Ensure that Service Account Tokens are only mounted where necessary
+  - Ensure that all pods get a service account token mounted in them.
+element7:
+  name: CNI Plugin
+  requirements:
+  - Ensure that the CNI plugin in use supports network policies
+  - Perform application updates on enterprise assets through automated patch management
+    on a monthly, or more frequent, basis.
+element8:
+  name: Implement and Manage a Firewall on Servers
+  requirements:
+  - Implement and manage a firewall on servers, where supported.
+  - Enforce network-based URL filters to limit an enterprise asset from connecting
+    to potentially malicious or unapproved websites.
+  - Enforce network-based URL filters that limit a system's ability to connect to
+    websites not approved by the organization.
+element9:
+  name: Internal Only - General
+  requirements:
+  - Ensure that the EKS cluster endpoint is private
+  - Ensure that the cluster endpoint is specified
+  - Ensure that the cluster endpoint is configured with CIDR blocks

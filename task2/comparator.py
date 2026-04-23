@@ -12,8 +12,24 @@ from difflib import SequenceMatcher
 
 import yaml
 
-_INVALID_KDE_NAMES = {"unparsed llm output", "kdes", "none"}
+_INVALID_KDE_NAMES = {
+    "unparsed llm output", "kdes", "none",
+    # CIS per-control sub-headings — not KDEs themselves
+    "title", "description", "profile applicability", "assessment status",
+    "rationale", "rationale statement", "audit", "audit procedure",
+    "remediation", "remediation procedure", "impact", "default value",
+    "references", "cis controls",
+}
 _INVALID_KDE_FRAGMENTS = {"helpful", "analyzer", "identify", "following"}
+_KDE_IMPERATIVE_VERB_RE = re.compile(
+    r'^(ensure|verify|confirm|disable|enable|configure|minimize|avoid|limit|restrict|prefer|apply|use)\b',
+    re.IGNORECASE,
+)
+_KDE_NOISE_PATTERNS = [
+    re.compile(r'^page\s+\d+', re.IGNORECASE),
+    re.compile(r'^recommendation\s+\d', re.IGNORECASE),
+    re.compile(r'^element\s*\d+$', re.IGNORECASE),
+]
 
 # Leading verbs that CIS benchmarks use interchangeably
 _LEADING_VERB_RE = re.compile(
@@ -37,11 +53,16 @@ def _is_valid_kde_name(name: str) -> bool:
     s = str(name).strip()
     if not s.isascii():
         return False
-    if len(s) > 60:
+    if len(s) < 3 or len(s) > 60:
         return False
-    if s.lower() in _INVALID_KDE_NAMES:
+    low = s.lower()
+    if low in _INVALID_KDE_NAMES:
         return False
-    if any(frag in s.lower() for frag in _INVALID_KDE_FRAGMENTS):
+    if any(frag in low for frag in _INVALID_KDE_FRAGMENTS):
+        return False
+    if _KDE_IMPERATIVE_VERB_RE.match(s):
+        return False
+    if any(p.search(s) for p in _KDE_NOISE_PATTERNS):
         return False
     return True
 

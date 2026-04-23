@@ -1,1 +1,2 @@
-NO DIFFERENCES IN REGARDS TO ELEMENT NAMES
+Cluster Access Manager API
+Image Scanning

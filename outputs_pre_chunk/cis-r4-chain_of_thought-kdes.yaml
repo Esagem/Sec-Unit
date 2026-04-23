@@ -1,0 +1,13 @@
+element1:
+  name: Kubelet
+  requirements:
+  - Ensure that the Anonymous Auth is Not Enabled
+  - Ensure that the --authorization-mode argument is not set to AlwaysAllow
+  - Ensure that a Client CA File is Configured
+  - Ensure that the --read-only-port is disabled
+  - Ensure that the --streaming-connection-idle-timeout argument is not set to 0
+  - Ensure that the --make-iptables-util-chains argument is set to true
+  - Ensure that the --eventRecordQPS argument is set to 0 or a level which ensures
+    appropriate event capture
+  - Ensure that the --rotate-certificates argument is not present or is set to true
+  - Ensure that the RotateKubeletServerCertificate argument is set to true

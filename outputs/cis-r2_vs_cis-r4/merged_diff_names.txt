@@ -1,3 +1,4 @@
-Control Plane Components
+CNI Plugin
+Cluster Access Manager API
+Kubelet Configuration
 Logging
-Worker Nodes

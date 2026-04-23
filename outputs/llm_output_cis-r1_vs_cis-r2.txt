@@ -1,4 +1,4 @@
-LLM Output Collection — 2026-04-21T20:15:50.036340
+LLM Output Collection — 2026-04-22T21:56:27.515135
 ======================================================================
 
 --- Run 1 ---
@@ -27,11 +27,25 @@ element2:
     - "<requirement 1>"
 
 DOCUMENT TEXT:
-1 Control Plane Components ................................................................................................ 12 2 Control Plane Configuration .............................................................................................. 13 2.1 Logging .......................................................................................................................................... 14 2.1.1 Enable audit Logs (Manual) ................................................................................................................ 15 3 Worker Nodes ...................................................................................................................... 17 3.1 Worker Node Configuration Files ................................................................................................ 19 3.1.1 Ensure that the kubeconfig file permissions are set to 644 or more restrictive (Manual) ................... 20 3.1.2 Ensure that the kubelet kubeconfig file ownership is set to root:root (Manual) .................................. 22 3.1.3 Ensure that the kubelet configuration file has permissions set to 644 or more restrictive (Manual) ... 24 3.1.4 Ensure that the kubelet configuration file ownership is set to root:root (Manual) ............................... 26 3.2 Kubelet ........................................................................................................................................... 28 3.2.1 Ensure that the Anonymous Auth is Not Enabled (Automated) .......................................................... 29 
+CIS Amazon Elastic Kubernetes Service (EKS) Benchmark v1.2.0 - 11-23-2022   
+Page 1 
+Terms of Use Please see the below link for our current terms of use: https://www.cisecurity.org/cis-securesuite/cis-securesuite-membership-terms-of-use/ 
+Page 2 
+Table of Contents Terms of Use .................................................................................................................. 1 Table of Contents ........................................................................................................... 2 Overview ......................................................................................................................... 5 Intended Audience ................................................................................................................... 5 Consensus Guidance .............................................................................................................. 6 Typographical Conventions .................................................................................................... 7 Recommendation Definitions ....................................................................................... 8 Title ............................................................................................................................................ 8 Assessment Status .................................................................................................................. 8 Automated ............................................................................................................................................. 8 Manual .................................................................................................................................................... 8 Profile ........................................................................................................................................ 8 Description ............................................................................................................................... 8 Rationale Statement ................................................................................................................. 8 Impact Statement ..................................................................................................................... 9 Audit Procedure ....................................................................................................................... 9 Remediation Procedure ........................................................................................................... 9 Default Value ............................................................................................................................ 9 References ................................................................................................................................ 9 CIS Critical Security Controls® (CIS Controls®) .................................................................... 9 Additional Information ............................................................................................................. 9 Profile Definitions .................................................................................................................. 10 Acknowledgements ............................................................................................................... 11 Recommendations ....................................................................................................... 12 1 Control Plane Components ................................................................................................ 12 2 Control Plane Configuration .............................................................................................. 13 2.1 Logging .......................................................................................................................................... 14 2.1.1 Enable audit Logs (Manual) ................................................................................................................ 15 3 Worker Nodes ...................................................................................................................... 17 3.1 Worker Node Configuration Files ................................................................................................ 19 3.1.1 Ensure that the kubeconfig file permissions are set to 644 or more restrictive (Manual) ................... 20 3.1.2 Ensure that the kubelet kubeconfig file ownership is set to root:root (Manual) .................................. 22 3.1.3 Ensure that the kubelet configuration file has permissions set to 644 or more restrictive (Manual) ... 24 3.1.4 Ensure that the kubelet configuration file ownership is set to root:root (Manual) ............................... 26 3.2 Kubelet ........................................................................................................................................... 28 3.2.1 Ensure that the Anonymous Auth is Not Enabled (Automated) .......................................................... 29 
 Page 3 
-3.2.2 Ensure that the --authorization-mode argument is not set to AlwaysAllow (Automated) .................... 33 3.2.3 Ensure that a Client CA File is Configured (Manual) .......................................................................... 37 3.2.4 Ensure that the --read-only-port is disabled (Manual) ........................................................................ 40 3.2.5 Ensure that the --streaming-connection-idle-timeout argument is not set to 0 (Automated) .............. 42 3.2.6 Ensure that the --protect-kernel-defaults argument is set to true (Automated) .................................. 45 3.2.7 Ensure that the --make-iptables-util-chains argument is set to true (Automated) .............................. 48 3.2.8 Ensure that the --hostname-override argument is not set (Manual) ................................................... 51 3.2.9 Ensure that the --eventRecordQPS argument is set to 0 or a level which ensures appropriate event capture (Automated) .................................................................................................................................... 53 3.2.10 Ensure that the --rotate-certificates argument is not present or is set to true (Manual) ................... 56 3.2.11 Ensure that the RotateKubeletServerCertificate argument is set to true (Automated) ..................... 58 3.3 Container Optimized OS ............................................................................................................... 61 3.3.1 Prefer using a container-optimized OS when possible (Manual) ........................................................ 62 4 Policies ................................................................................................................................. 64 4.1 RBAC and Service Accounts ....................................................................................................... 65 4.1.1 Ensure that the cluster-admin role is only used where required (Manual) ......................................... 66 4.1.2 Minimize access to secrets (Manual) ................................................................................................. 68 4.1.3 Minimize wildcard use in Roles and ClusterRoles (Manual) ............................................................... 70 4.1.4 Minimize access to create pods (Manual) .......................................................................................... 72 4.1.5 Ensure that default service accounts are not actively used. (Manual) ............................................... 74 4.1.6 Ensure that Service Account Tokens are only mounted where necessary (Manual) ......................... 76 4.1.7 Avoid use of system:masters group (Manual) .................................................................................... 78 4.1.8 Limit use of the Bind, Impersonate and Escalate permissions in the Kubernetes
-
-[... truncated ...]
+3.2.2 Ensure that the --authorization-mode argument is not set to AlwaysAllow (Automated) .................... 33 3.2.3 Ensure that a Client CA File is Configured (Manual) .......................................................................... 37 3.2.4 Ensure that the --read-only-port is disabled (Manual) ........................................................................ 40 3.2.5 Ensure that the --streaming-connection-idle-timeout argument is not set to 0 (Automated) .............. 42 3.2.6 Ensure that the --protect-kernel-defaults argument is set to true (Automated) .................................. 45 3.2.7 Ensure that the --make-iptables-util-chains argument is set to true (Automated) .............................. 48 3.2.8 Ensure that the --hostname-override argument is not set (Manual) ................................................... 51 3.2.9 Ensure that the --eventRecordQPS argument is set to 0 or a level which ensures appropriate event capture (Automated) .................................................................................................................................... 53 3.2.10 Ensure that the --rotate-certificates argument is not present or is set to true (Manual) ................... 56 3.2.11 Ensure that the RotateKubeletServerCertificate argument is set to true (Automated) ..................... 58 3.3 Container Optimized OS ............................................................................................................... 61 3.3.1 Prefer using a container-optimized OS when possible (Manual) ........................................................ 62 4 Policies ................................................................................................................................. 64 4.1 RBAC and Service Accounts ....................................................................................................... 65 4.1.1 Ensure that the cluster-admin role is only used where required (Manual) ......................................... 66 4.1.2 Minimize access to secrets (Manual) ................................................................................................. 68 4.1.3 Minimize wildcard use in Roles and ClusterRoles (Manual) ............................................................... 70 4.1.4 Minimize access to create pods (Manual) .......................................................................................... 72 4.1.5 Ensure that default service accounts are not actively used. (Manual) ............................................... 74 4.1.6 Ensure that Service Account Tokens are only mounted where necessary (Manual) ......................... 76 4.1.7 Avoid use of system:masters group (Manual) .................................................................................... 78 4.1.8 Limit use of the Bind, Impersonate and Escalate permissions in the Kubernetes cluster (Manual) ... 80 4.2 Pod Security Policies .................................................................................................................... 82 4.2.1 Minimize the admission of privileged containers (Automated) ........................................................... 83 4.2.2 Minimize the admission of containers wishing to share the host process ID namespace (Automated) ..................................................................................................................................................................... 86 4.2.3 Minimize the admission of containers wishing to share the host IPC namespace (Automated) ........ 88 4.2.4 Minimize the admission of containers wishing to share the host network namespace (Automated) .. 90 4.2.5 Minimize the admission of containers with allowPrivilegeEscalation (Automated) ............................. 92 4.2.6 Minimize the admission of root containers (Automated) ..................................................................... 94 4.2.7 Minimize the admission of containers with added capabilities (Manual) ............................................ 96 4.2.8 Minimize the admission of containers with capabilities assigned (Automated) .................................. 98 4.3 CNI Plugin .................................................................................................................................... 100 4.3.1 Ensure CNI plugin supports network policies. (Manual) ................................................................... 101 4.3.2 Ensure that all Namespaces have Network Policies defined (Manual) ............................................ 103 4.4 Secrets Management .................................................................................................................. 105 4.4.1 Prefer using secrets as files over secrets as environment variables (Manual) ................................. 106 4.4.2 Consider external secret storage (Manual) ...................................................................................... 108 4.5 Extensible Admission Control ................................................................................................... 109 4.6 General Policies .......................................................................................................................... 110 4.6.1 Create administrative boundaries between resources using namespaces (Manual) ....................... 111 4.6.2 Apply Security Context to Your Pods and Containers (Manual) ....................................................... 113 4.6.3 The default namespace should not be used (Manual) ..................................................................... 116 5 Managed services ............................................................................................................. 117 5.1 Image Registry and Image Scanning ........................................................................................ 118 5.1.1 Ensure Image Vulnerability Scanning using Amazon ECR image scanning or a third party provider (Manual) .................................................................................................................................................... 119 5.1.2 Minimize user access to Amazon ECR (Manual) ............................................................................. 122 5.1.3 Minimize cluster access to read-only for Amazon ECR (Manual) .................................................... 125 5.1.4 Minimize Container Registries to only those approved (Manual) ..................................................... 127 
+Page 4 
+5.2 Identity and Access Management (IAM) ................................................................................... 129 5.2.1 Prefer using dedicated EKS Service Accounts (Manual) ................................................................. 130 5.3 AWS EKS Key Management Service ......................................................................................... 132 5.3.1 Ensure Kubernetes Secrets are encrypted using Customer Master Keys (CMKs) managed in AWS KMS (Manual) ............................................................................................................................................ 133 5.4 Cluster Networking ..................................................................................................................... 135 5.4.1 Restrict Access to the Control Plane Endpoint (Manual) .................................................................. 136 5.4.2 Ensure clusters are created with Private Endpoint Enabled and Public Access Disabled (Manual) 139 5.4.3 Ensure clusters are created with Private Nodes (Manual) ............................................................... 141 5.4.4 Ensure Network Policy is Enabled and set as appropriate (Manual) ................................................ 142 5.4.5 Encrypt traffic to HTTPS load balancers with TLS certificates (Manual) .......................................... 144 5.5 Authentication and Authorization ............................................................................................. 145 5.5.1 Manage Kubernetes RBAC users with AWS IAM Authenticator for Kubernetes (Manual) .............. 146 5.6 Other Cluster Configurations ..................................................................................................... 148 5.6.1 Consider Fargate for running untrusted workloads (Manual) ........................................................... 149 Appendix: Summary Table ........................................................................................ 151 Appendix: CIS Controls v7 IG 1 Mapped Recommendations ................................ 156 Appendix: CIS Controls v7 IG 2 Mapped Recommendations ................................ 158 Appendix: CIS Controls v7 IG 3 Mapped Recommendations ................................ 161 Appendix: CIS Controls v7 Unmapped Recommendations ................................... 164 Appendix: CIS Controls v8 IG 1 Mapped Recommendations ................................ 165 Appendix: CIS Controls v8 IG 2 Mapped Recommendations ................................ 167 Appendix: CIS Controls v8 IG 3 Mapped Recommendations ................................ 170 Appendix: CIS Controls v8 Unmapped Recommendations ................................... 173 Appendix: Change History ........................................................................................ 174 	 
+Page 5 
+Overview All CIS Benchmarks focus on technical configuration settings used to maintain and/or increase the security of the addressed technology, and they should be used in conjunction with other essential cyber hygiene tasks like: • Monitoring the base operating system for vulnerabilities and quickly updating with the latest security patches  • Monitoring applications and libraries for vulnerabilities and quickly updating with the latest security patches In the end, the CIS Benchmarks are designed as a key component of a comprehensive cybersecurity program.   This document provides prescriptive guidance for running Amazon Elastic Kubernetes Service (EKS) following recommended security controls. This benchmark only includes controls which can be modified by an end user of Amazon EKS. To obtain the latest version of this guide, please visit www.cisecurity.org. If you have questions, comments, or have identified ways to improve this guide, please write us at support@cisecurity.org.  Intended Audience This document is intended for cluster administrators, security specialists, auditors, and any personnel who plan to develop, deploy, assess, or secure solutions that incorporate Amazon EKS using managed and self-managed nodes. Customers using Amazon EKS on AWS Fargate are not responsible for node management. Hence, this document is not scoped for Amazon EKS on AWS Fargate customers.    
+Page 6 
+Consensus Guidance This CIS Benchmark was created using a consensus review process comprised of a global community of subject matter experts. The process combines real world experience with data-based information to create technology specific guidance to assist users to secure their environments. Consensus participants provide perspective from a diverse set of backgrounds including consulting, software development, audit and compliance, security research, operations, government, and legal.  Each CIS Benchmark undergoes two phases of consensus review. The first phase occurs during initial Benchmark development. During this phase, subject matter experts convene to discuss, create, and test working drafts of the Benchmark. This discussion occurs until consensus has been reached on Benchmark recommendations. The second phase begins after the Benchmark has been published. During this phase, all feedback provided by the Internet community is reviewed by the consensus team for incorporation in the Benchmark. If you are interested in participating in the consensus process, please visit https://workbench.cisecurity.org/.   
+Page 7 
+Typographical Conventions The following typographical conventions are used throughout this guide: Convention Meaning 
+Stylized Monospace font Used for blocks of code, command, and script examples. Text should be interpreted exactly as presented. Monospace font Used for inline code, commands, or examples. Text should be interpreted exactly as presented.  <italic font in brackets> Italic texts set in angle brackets denote a variable requiring substitution for a real value. Italic font Used to denote the title of a book, article, or other publication. Note Additional information or caveats 
+Page 8 
+Recommendation Definitions The following defines the various components included in a CIS recommendation as applicable.  If any of the components are not applicable it will be noted or the component will not be included in the recommendation.    Title Concise description for the recommendation's intended configuration.  Assessment Status An assessment status is included for every recommendation. The assessment status indicates whether the given recommendation can be automated or requires manual steps to implement. Both statuses are equally important and are determined and supported as defined below:  Automated Represents recommendations for which assessment of a technical control can be fully automated and validated to a pass/fail state. Recommendations will include the necessary information to implement automation. Manual Represents recommendations for which assessment of a technical control cannot be fully automated and requires all or some manual steps to validate that the configured state is set as expected. The expected state can vary depending on the environment. Profile A collection of recommendations for securing a technology or a supporting platform. Most benchmarks include at least a Level 1 and Level 2 Profile. Level 2 extends Level 1 recommendations and is not a standalone profile. The Profile Definitions section in the benchmark provides the definitions as they pertain to the recommendations included for the technology.  Description Detailed information pertaining to the setting with which the recommendation is concerned. In some cases, the description will include the recommended value. Rationale Statement Detailed reasoning for the recommendation to provide the user a clear and concise understanding on the importance of the recommendation. 
+Page 9 
 
 Respond ONLY with the YAML output. Do not include any other text.
 
@@ -41,20 +55,327 @@ zero_shot
 *LLM Output*
 ```yaml
 element1:
-  name: Control Plane Components
+  name: Enable audit Logs (Manual)
+  requirements:
+    - Ensure that the kubelet kubeconfig file permissions are set to 644 or more restrictive (Manual)
+    - Ensure that the kubelet configuration file has permissions set to 644 or more restrictive (Manual)
+    - Ensure that the kubelet configuration file has permissions set to 644 or more restrictive (Manual)
+    - Ensure that the kubelet configuration file has permissions set to 644 or more restrictive (Manual)
+element2:
+  name: Ensure that the kubeconfig file permissions are set to 644 or more restrictive (Manual)
+  requirements:
+    - Ensure that the kubeconfig file permissions are set to 644 or more restrictive (Manual)
+    - Ensure that the kubeconfig file permissions are set to 644 or more restrictive (Manual)
+    - Ensure that the kubeconfig file permissions are set to 644 or more restrictive (Manual)
+    - Ensure that the kubeconfig file permissions are set to 644 or more restrictive (Manual)
+element3:
+  name: Ensure that the kubelet kubeconfig
+
+---CHUNK---
+
+```yaml
+element1:
+  name: Control Plane Configuration
   requirements:
     - Enable audit Logs (Manual)
-    - Ensure that the kubeconfig file permissions are set to 644 or more restrictive (Manual)
-    - Ensure that the kubelet kubeconfig file ownership is set to root:root (Manual)
-    - Ensure that the kubelet configuration file has permissions set to 644 or more restrictive (Manual)
-    - Ensure that the kubelet configuration file ownership is set to root:root (Manual)
-    - Ensure that the --authorization-mode argument is not set to AlwaysAllow (Automated)
-    - Ensure that the --read-only-port is disabled (Manual)
-    - Ensure that the --streaming-connection-idle-timeout argument is not set to 0 (Automated)
-    - Ensure that the --protect-kernel-defaults argument is set to true (Automated)
-    - Ensure that the --make-iptables-util-chains argument is set to true (Automated)
-    - Ensure that the --hostname-override argument is not set (Manual)
-    - Ensure that the --eventRecordQPS argument is set to 0
+    - Ensure that all options are toggled to 'Enabled'
+    - Configure Data Access Control Lists
+    - Ensure that the kubelet configuration file has permissions set to 644 or more restrictive
+    - Ensure that the kubelet configuration file ownership is set to root:root
+    - Configure Data Access Control Lists
+    - Ensure that the kubelet configuration file has permissions set to 644 or more restrictive
+    - Ensure that the kubelet configuration file ownership is set to root:root
+element2:
+  name: Worker Node Configuration
+  requirements:
+    - Ensure that the kubeconfig file permissions are set to 644 or more restrictive
+    - Maintain secure images or templates for all systems in the enterprise based on the organization’s approved configuration standards.
+    - Ensure that the kubelet configuration file has permissions set to 644 or more restrictive
+    - Ensure that the kubelet configuration file has permissions set to 644 or more restrictive
+element3:
+  name: Kubelet
+  requirements:
+    - Check for the existence of
+
+---CHUNK---
+
+```yaml
+element1:
+  name: Anonymous Auth
+  requirements:
+    - Not enabled
+  recommendations: []
+element2:
+  name: Kubelet Configuration
+  requirements:
+    - Ensure Anonymous Auth is not enabled (Automated)
+    - Verify Anonymous Authentication is not enabled
+    - Check for the existence of command line arguments as well as configuration file entries when auditing Kubelet configuration.
+  recommendations: []
+element3:
+  name: Authorization Mode
+  requirements:
+    - Enable Webhook Authentication
+    - Enable Authorization Mode
+  recommendations: []
+element4:
+  name: Client CA File
+  requirements:
+    - Enable Kubelet certificate authentication
+  recommendations: []
+element5:
+  name: Read-Only Port
+  requirements:
+    - Disable Read-Only Port
+  recommendations: []
+element6:
+  name: Network Management
+  requirements:
+    - Use secure network management and communication protocols (e.g., 802.1X, Wi-Fi Protected Access 2 (WPA2) Enterprise or greater).
+  recommendations: []
+element7:
+  name: K
+
+---CHUNK---
+
+```yaml
+element1:
+  name: "Logging"
+  requirements:
+    - "Ensure proper logging configuration"
+    - "Implement centralized logging"
+element2:
+  name: "Network Management"
+  requirements:
+    - "Use secure network management protocols"
+    - "Implement network policy enforcement"
+element3:
+  name: "Security Configuration"
+  requirements:
+    - "Implement standard hardening configuration templates"
+    - "Securely manage network infrastructure"
+element4:
+  name: "Kubelet Configuration"
+  requirements:
+    - "Use secure network management and communication protocols"
+    - "Ensure Only Approved Ports, Protocols and Services Are Running"
+    - "Use Secure Network Management and Communication Protocols"
+element5:
+  name: "Event Monitoring"
+  requirements:
+    - "Capture all events"
+    - "Ensure appropriate event capture"
+```
+
+---CHUNK---
+
+```yaml
+element1:
+  name: "RBAC and Service Accounts"
+  requirements:
+    - "Ensure that the cluster-admin role is only used where required"
+    - "Restrict administrator privileges to dedicated administrator accounts on enterprise assets"
+    - "Minimize access to secrets stored within the Kubernetes cluster"
+    - "Establish and Maintain a Secure Configuration Process"
+    - "Minimize wildcard use in Roles and ClusterRoles"
+element2:
+  name: "Restrict Administrator Privileges to Dedicated Administrator Accounts"
+  requirements:
+    - "Conduct general computing activities, such as internet browsing, email, and productivity suite use, from the user’s primary, non-privileged account"
+    - "Use dedicated or secondary account for elevated activities"
+    - "Remove get, list and watch access to secret objects in the cluster"
+element3:
+  name: "Establish and Maintain a Secure Configuration Process"
+  requirements:
+    - "Review and update documentation annually, or when significant enterprise changes occur that could impact this"
+    - "Establish and maintain a secure configuration process for enterprise assets (end-user devices, including portable and mobile, non-computing/IoT devices, and servers)"
+
+---CHUNK---
+
+```yaml
+element1:
+  name: Minimize access to create pods
+  requirements:
+    - Manual profile applicability
+    - Profile Applicability:
+      - Level 1 Description: Ability to create pods in a namespace can provide opportunities for privilege escalation
+      - Rationale: Ability to create pods in a cluster opens up possibilities for privilege escalation
+      - Audit: Review users with pod object creation access
+      - Remediation: Remove create access to pod objects in the cluster
+    - Profile Applicability:
+      - Level 1 Description: Access to create pods should be restricted to the smallest possible group of users
+      - Rationale: Access to create pods should be restricted to minimize risk
+      - Audit: Review users who have create access to pod objects in the Kubernetes API
+    - Profile Applicability:
+      - Level 1 Description: Minimize access to create pods (Manual)
+      - Rationale: Limit access to pod objects to the smallest possible group of users
+      - Audit: Remove create access to pod objects in the cluster
+    - Profile Applicability:
+      - Level 1 Description: Minimize access to create pods (Manual)
+      - Rationale: Limit access to pod objects to the smallest possible group
+
+---CHUNK---
+
+```yaml
+element1:
+  name: Restrict Administrator Privileges to Dedicated Administrator Accounts
+  requirements:
+    - Implement a PSP as described in the Kubernetes documentation, ensuring that privileged is enabled.
+    - Create a PSP as described in the Kubernetes documentation, ensuring that privileged is enabled.
+    - Create a PSP as described in the Kubernetes documentation, ensuring that privileged is enabled.
+    - Create a PSP as described in the Kubernetes documentation, ensuring that privileged is enabled.
+  
+element2:
+  name: Restrict Administrator Privileges to Dedicated Administrator Accounts on Enterprise Assets
+  requirements:
+    - Restrict administrator privileges to dedicated administrator accounts on enterprise assets.
+    - Restrict administrator privileges to dedicated administrator accounts on enterprise assets.
+    - Restrict administrator privileges to dedicated administrator accounts on enterprise assets.
+    - Restrict administrator privileges to dedicated administrator accounts on enterprise assets.
+  
+element3:
+  name: Minimize the admission of containers with allowPrivilegeEscalation (Automated)
+  requirements:
+    - Profile Applicability: •  Level 1 Description: Do not generally permit containers to be run with the allowPrivilegeEscalation flag set to true.
+    - Profile Applicability
+
+---CHUNK---
+
+```yaml
+element1:
+  name: Encryption at Rest
+  requirements:
+    - Encrypt Sensitive Information at Rest
+    - Encrypt all sensitive information at rest using a tool that requires a secondary authentication mechanism not integrated into the operating system, in order to access the information.
+element2:
+  name: Extensible Admission Control
+  requirements:
+    - Use namespaces to isolate your Kubernetes objects.
+    - Use namespaces to isolate your Kubernetes objects.
+    - Use namespaces to isolate your Kubernetes objects.
+    - Use namespaces to isolate your Kubernetes objects.
+element3:
+  name: General Policies
+  requirements:
+    - Establish and Maintain Dedicated Computing Resources for All Administrative Work.
+    - Establish and Maintain Dedicated Computing Resources for All Administrative Work.
+    - Establish and Maintain Dedicated Computing Resources for All Administrative Work.
+    - Establish and Maintain Dedicated Computing Resources for All Administrative Work.
+element4:
+  name:  Manage Network Boundaries
+  requirements:
+    - Establish and Maintain Dedicated Computing Resources for All Administrative Work.
+    - Establish and Maintain Dedicated Computing Resources for All Administrative Work.
+    - Establish and Maintain Dedicated Computing Resources for All Administrative Work.
+    - Establish and Maintain Dedicated Computing Resources
+
+---CHUNK---
+
+```yaml
+element1:
+  name: Restrict Administrator Privileges to Dedicated Administrator Accounts
+  requirements:
+    - Restrict administrator privileges to dedicated administrator accounts on enterprise assets.
+    - Conduct general computing activities, such as internet browsing, email, and productivity suite use, from the user’s primary, non-privileged account.
+    - Implement Endpoint Private Access to restrict access to the Kubernetes API from outside the node network if it is not required.
+  
+element2:
+  name: Ensure the Use of Dedicated Administrative Accounts
+  requirements:
+    - Ensure that all users with administrative account access use a dedicated or secondary account for elevated activities.
+    - This account should only be used for administrative activities and not internet browsing, email, or similar activities.
+    - Implement Endpoint Private Access to restrict access to the Kubernetes API from outside the node network if it is not required.
+  
+element3:
+  name: Minimize Cluster Access to Read-Only for Amazon ECR (Manual) Profile Applicability
+  requirements:
+    - Configure the Cluster Service Account with Storage Object Viewer Role to only allow read-only access to Amazon ECR.
+    - Rationale: The Cluster Service Account does not require administrative access
+
+---CHUNK---
+
+```yaml
+element1:
+  name: aws eks update-cluster-config
+  requirements:
+    - Implement and Manage a Firewall on Servers
+    - Implement and Manage a Firewall on Servers
+    - Ensure Only Approved Ports, Protocols and Services Are Running
+    - Ensure that only network ports, protocols and services listening on a system with validated business needs, are running on each system.
+    - Ensure that only network ports, protocols and services listening on a system with validated business needs, are running on each system.
+    - Ensure that only network ports, protocols and services listening on a system with validated business needs, are running on each system.
+    - Ensure that only network ports, protocols and services listening on a system with validated business needs, are running on each system.
+    - Ensure that only network ports, protocols and services listening on a system with validated business needs, are running on each system.
+    - Ensure that only network ports, protocols and services listening on a system with validated business needs, are running on each system.
+    - Ensure that only network ports, protocols and services listening on a system with validated business needs, are running on each system.
+    - Ensure that only network ports, protocols and services listening
+
+---CHUNK---
+
+```yaml
+element1:
+  name: Logging
+  requirements:
+    - Minimize the admission of containers with allowPrivilegeEscalation
+    - Minimize the admission of containers wishing to share the host process ID namespace
+    - Minimize the admission of containers wishing to share the host IPC namespace
+    - Minimize the admission of containers wishing to share the host network namespace
+    - Minimize the admission of containers with allowPrivilegeEscalation
+    - Minimize the admission of root containers
+element2:
+  name: Kubernetes Secrets
+  requirements:
+    - Ensure Image Vulnerability Scanning using Amazon ECR image scanning or a third party provider
+    - Minimize user access to Amazon ECR
+    - Minimize cluster access to read-only for Amazon ECR
+    - Minimize Container Registries to only those approved
+```
+
+---CHUNK---
+
+```yaml
+element1:
+  name:.spec.privileged field
+  requirements:
+    - set to false
+```
+
+```yaml
+element2:
+  name: PSP has allowedCapabilities Set by Default
+  requirements:
+    - combined with 4.2.9
+```
+
+```yaml
+element3:
+  name: recommendation 4.2.7 combined with 4.2.9
+  requirements:
+    - recommendation 4.2.7
+    - recommendation 4.2.9
+```
+
+```yaml
+element4:
+  name: recommendation 4.2.7 combined with 4.2.9
+  requirements:
+    - recommendation 4.2.7
+    - recommendation 4.2.9
+```
+
+```yaml
+element5:
+  name: recommendation 4.2.7 combined with 4.2.9
+  requirements:
+    - recommendation 4.2.7
+    - recommendation 4.2.9
+```
+
+```yaml
+element6:
+  name: recommendation 4.2.7 combined with 4.2.9
+  requirements:
+    - recommendation 4.2
 
 ======================================================================
 
@@ -84,6 +405,58 @@ element2:
     - "<requirement 1>"
 
 DOCUMENT TEXT:
+ 
+Internal Only - General 
+CIS Amazon Elastic 
+Kubernetes Service (EKS) 
+Benchmark 
+v1.6.0 - 12-23-2024 
+  
+Page 1 
+Internal Only - General 
+Terms of Use 
+Please see the below link for our current terms of use: 
+https://www.cisecurity.org/cis-securesuite/cis-securesuite-membership-terms-of-use/ 
+ 
+For information on referencing and/or citing CIS Benchmarks in 3rd party documentation 
+(including using portions of Benchmark Recommendations) please contact CIS Legal 
+(CISLegal@cisecurity.org) and request guidance on copyright usage.  
+NOTE:  It is NEVER acceptable to host a CIS Benchmark in ANY format (PDF, etc.) 
+on a 3rd party (non-CIS owned) site. 
+Page 2 
+Internal Only - General 
+Table of Contents 
+Terms of Use ..................................................................................................................... 1 
+Table of Contents ............................................................................................................. 2 
+Overview ............................................................................................................................ 5 
+Important Usage Information .................................................................................................... 5 
+Key Stakeholders.................................................................................................................................... 5 
+Apply the Correct Version of a Benchmark ......................................................................................... 6 
+Exceptions ............................................................................................................................................... 6 
+Remediation ............................................................................................................................................ 7 
+Summary.................................................................................................................................................. 7 
+Target Technology Details ........................................................................................................ 8 
+Intended Audience ..................................................................................................................... 8 
+Consensus Guidance ................................................................................................................. 9 
+Typographical Conventions .................................................................................................... 10 
+Recommendation Definitions ....................................................................................... 11 
+Title ............................................................................................................................................. 11 
+Assessment Status .................................................................................................................. 11 
+Automated ............................................................................................................................................. 11 
+Manual.................................................................................................................................................... 11 
+Profile ......................................................................................................................................... 11 
+Description ................................................................................................................................ 11 
+Rationale Statement ................................................................................................................. 11 
+Impact Statement...................................................................................................................... 12 
+Audit Procedure ........................................................................................................................ 12 
+Remediation Procedure ........................................................................................................... 12 
+Default Value ............................................................................................................................. 12 
+References ................................................................................................................................ 12 
+CIS Critical Security Controls® (CIS Controls®) .................................................................... 12 
+Additional Information ............................................................................................................. 12 
+Profile Definitions ..................................................................................................................... 13 
+Acknowledgements .................................................................................................................. 14 
+Recommendations ......................................................................................................... 15 
 1 Control Plane Components .................................................................................................. 15 
 2 Control Plane Configuration ................................................................................................ 15 
 2.1 Logging ............................................................................................................................................ 16 
@@ -123,9 +496,140 @@ appropriate event capture (Automated)...........................................
 4.1.7 Cluster Access Manager API to streamline and enhance the management of access 
 controls within EKS clusters (Automated) ................................................................................. 77 
 4.1.8 Limit use of the Bind, Impersonate and Escalate permissions in the Kubernetes cluster 
-(Manual) ........................................................................................................................
-
-[... truncated ...]
+(Manual) ..................................................................................................................................... 81 
+4.2 Pod Security Standards ................................................................................................................. 83 
+4.2.1 Minimize the admission of privileged containers (Automated) ......................................... 84 
+4.2.2 Minimize the admission of containers wishing to share the host process ID namespace 
+(Automated) ............................................................................................................................... 87 
+4.2.3 Minimize the admission of containers wishing to share the host IPC namespace 
+(Automated) ............................................................................................................................... 89 
+4.2.4 Minimize the admission of containers wishing to share the host network namespace 
+(Automated) ............................................................................................................................... 91 
+4.2.5 Minimize the admission of containers with allowPrivilegeEscalation (Automated) .......... 93 
+4.3 CNI Plugin ........................................................................................................................................ 96 
+4.3.1 Ensure CNI plugin supports network policies. (Manual) .................................................. 97 
+4.3.2 Ensure that all Namespaces have Network Policies defined (Automated) ...................... 99 
+4.4 Secrets Management .................................................................................................................... 101 
+4.4.1 Prefer using secrets as files over secrets as environment variables (Automated) ........ 102 
+4.4.2 Consider external secret storage (Manual) .................................................................... 104 
+4.5 General Policies ............................................................................................................................ 106 
+4.5.1 Create administrative boundaries between resources using namespaces (Manual) .... 107 
+4.5.2 The default namespace should not be used (Automated) ............................................. 109 
+5 Managed services ............................................................................................................... 110 
+5.1 Image Registry and Image Scanning.......................................................................................... 111 
+5.1.1 Ensure Image Vulnerability Scanning using Amazon ECR image scanning or a third 
+party provider (Automated) ...................................................................................................... 112 
+Page 4 
+Internal Only - General 
+5.1.2 Minimize user access to Amazon ECR (Manual) ........................................................... 115 
+5.1.3 Minimize cluster access to read-only for Amazon ECR (Manual) .................................. 118 
+5.1.4 Minimize Container Registries to only those approved (Manual) .................................. 120 
+5.2 Identity and Access Management (IAM)..................................................................................... 122 
+5.2.1 Prefer using dedicated EKS Service Accounts (Automated) ......................................... 123 
+5.3 AWS EKS Key Management Service .......................................................................................... 125 
+5.3.1 Ensure Kubernetes Secrets are encrypted using Customer Master Keys (CMKs) 
+managed in AWS KMS (Manual) ............................................................................................ 126 
+5.4 Cluster Networking ....................................................................................................................... 128 
+5.4.1 Restrict Access to the Control Plane Endpoint (Automated) ......................................... 129 
+5.4.2 Ensure clusters are created with Private Endpoint Enabled and Public Access Disabled 
+(Automated) ............................................................................................................................. 132 
+5.4.3 Ensure clusters are created with Private Nodes (Automated) ....................................... 134 
+5.4.4 Ensure Network Policy is Enabled and set as appropriate (Automated) ....................... 136 
+5.4.5 Encrypt traffic to HTTPS load balancers with TLS certificates (Manual) ....................... 138 
+5.5 Authentication and Authorization ............................................................................................... 139 
+5.5.1 Manage Kubernetes RBAC users with AWS IAM Authenticator for Kubernetes or 
+Upgrade to AWS CLI v1.16.156 or greater (Manual) .............................................................. 140 
+Appendix: Summary Table .......................................................................................... 142 
+Appendix: CIS Controls v7 IG 1 Mapped Recommendations ................................. 147 
+Appendix: CIS Controls v7 IG 2 Mapped Recommendations ................................. 149 
+Appendix: CIS Controls v7 IG 3 Mapped Recommendations ................................. 152 
+Appendix: CIS Controls v7 Unmapped Recommendations .................................... 155 
+Appendix: CIS Controls v8 IG 1 Mapped Recommendations ................................. 156 
+Appendix: CIS Controls v8 IG 2 Mapped Recommendations ................................. 158 
+Appendix: CIS Controls v8 IG 3 Mapped Recommendations ................................. 161 
+Appendix: CIS Controls v8 Unmapped Recommendations .................................... 164 
+Appendix: Change History .......................................................................................... 165 
+ 
+ 
+  
+Page 5 
+Internal Only - General 
+Overview 
+All CIS Benchmarks™ (Benchmarks) focus on technical configuration settings used to 
+maintain and/or increase the security of the addressed technology, and they should be 
+used in conjunction with other essential cyber hygiene tasks like: 
+• Monitoring the base operating system and applications for vulnerabilities and 
+quickly updating with the latest security patches. 
+• End-point protection (Antivirus software, Endpoint Detection and Response 
+(EDR), etc.). 
+• Logging and monitoring user and system activity. 
+In the end, the Benchmarks are designed to be a key component of a comprehensive 
+cybersecurity program.  
+Important Usage Information 
+All Benchmarks are available free for non-commercial use from the CIS Website. They 
+can be used to manually assess and remediate systems and applications. In lieu of 
+manual assessment and remediation, there are several tools available to assist with 
+assessment: 
+• CIS Configuration Assessment Tool (CIS-CAT® Pro Assessor) 
+• CIS Benchmarks™ Certified 3rd Party Tooling 
+These tools make the hardening process much more scalable for large numbers of 
+systems and applications.  
+NOTE:  Some tooling focuses only on the Benchmark Recommendations that can 
+be fully automated (skipping ones marked Manual). It is important that ALL 
+Recommendations (Automated and Manual) be addressed since all are 
+important for properly securing systems and are typically in scope for 
+audits.  
+Key Stakeholders 
+Cybersecurity is a collaborative effort, and cross functional cooperation is imperative 
+within an organization to discuss, test, and deploy Benchmarks in an effective and 
+efficient way. The Benchmarks are developed to be best practice configuration 
+guidelines applicable to a wide range of use cases. In some organizations, exceptions 
+to specific Recommendations will be needed, and this team should work to prioritize the 
+problematic Recommendations based on several factors like risk, time, cost, and labor. 
+These exceptions should be properly categorized and documented for auditing 
+purposes. 
+Page 6 
+Internal Only - General 
+ 
+Apply the Correct Version of a Benchmark 
+Benchmarks are developed and tested for a specific set of products and versions and 
+applying an incorrect Benchmark to a system can cause the resulting pass/fail score to 
+be incorrect. This is due to the assessment of settings that do not apply to the target 
+systems. To assure the correct Benchmark is being assessed:  
+• Deploy the Benchmark applicable to the way settings are managed in the 
+environment: An example of this is the Microsoft Windows family of 
+Benchmarks, which have separate Benchmarks for Group Policy, Intune, and 
+Stand-alone systems based upon how system management is deployed. 
+Applying the wrong Benchmark in this case will give invalid results. 
+• Use the most recent version of a Benchmark: This is true for all Benchmarks, 
+but especially true for cloud technologies. Cloud technologies change frequently 
+and using an older version of a Benchmark may have invalid methods for 
+auditing and remediation. 
+Exceptions 
+The guidance items in the Benchmarks are called recommendations and not 
+requirements, and exceptions to some of them are expected and acceptable. The 
+Benchmarks strive to be a secure baseline, or starting point, for a specific technology, 
+with known issues identified during Benchmark development are documented in the 
+Impact section of each Recommendation. In addition, organizational, system specific 
+requirements, or local site policy may require changes as well, or an exception to a 
+Recommendation or group of Recommendations (e.g. A Benchmark could Recommend 
+that a Web server not be installed on the system, but if a system's primary purpose is to 
+function as a Webserver, there should be a documented exception to this 
+Recommendation for that specific server). 
+In the end, exceptions to some Benchmark Recommendations are common and 
+acceptable, and should be handled as follows: 
+• The reasons for the exception should be reviewed cross-functionally and be well 
+documented for audit purposes. 
+• A plan should be developed for mitigating, or eliminating, the exception in the 
+future, if applicable. 
+• If the organization decides to accept the risk of this exception (not work toward 
+mitigation or elimination), this should be documented for audit purposes. 
+It is the responsibility of the organization to determine their overall security policy, and 
+which settings are applicable to their unique needs based on the overall risk profile for 
+the organization. 
+Page 7 
+Internal Only - General 
+Remediation 
 
 Respond ONLY with the YAML output. Do not include any other text.
 
@@ -133,25 +637,361 @@ Respond ONLY with the YAML output. Do not include any other text.
 zero_shot
 
 *LLM Output*
+element1:
+  name: Logging
+  requirements:
+    - Enable audit Logs (Automated)
+    - Ensure audit logs are collected and managed (Manual)
+    - Ensure that the kubelet kubeconfig file permissions are set to 644 or more restrictive (Automated)
+    - Ensure that the kubelet configuration file has permissions set to 644 or more restrictive (Automated)
+    - Ensure that the kubelet configuration file ownership is set to root:root (Automated)
+    - Ensure that the --streaming-connection-idle-timeout argument is not set to 0 (Automated)
+    - Ensure that the --make-iptables-util-chains argument is set to true (Automated)
+    - Ensure that the --eventRecordQPS argument is set to 0 or a level which ensures appropriate event capture (Automated)
+    - Ensure that the --rotate-certificates argument is not present or is set to true (Automated)
+    - Ensure that the RotateKubeletServerCertificate argument is set to true (Automated)
+  element2:
+    name: Worker Nodes
+    requirements:
+      - Ensure CNI plugin supports network policies. (
+
+---CHUNK---
+
 ```yaml
 element1:
   name: Logging
   requirements:
     - Enable audit Logs (Automated)
     - Ensure audit logs are collected and managed (Manual)
+    - Enable Detailed Logging
 element2:
-  name: Worker Nodes
+  name: Audit Policy
   requirements:
-    - Ensure that the kubeconfig file permissions are set to 644 or more restrictive (Automated)
-    - Ensure that the kubelet kubeconfig file ownership is set to root:root (Automated)
-    - Ensure that the kubelet configuration file has permissions set to 644 or more restrictive (Automated)
-    - Ensure that the kubelet configuration file ownership is set to root:root (Automated)
-    - Ensure that the kubelet configuration file ownership is set to root:root (Automated)
-    - Ensure that the kubelet configuration file ownership is set to root:root (Automated)
-    - Ensure that the kubelet configuration file ownership is set to root:root (Automated)
-    - Ensure that the kubelet configuration file ownership is set to root:root (Automated)
-    - Ensure that the kubelet configuration file ownership is set to root:root (Automated)
-    - Ensure that the kube
+    - Level 1
+    - Level 2
+    - Level 3
+```
+
+---CHUNK---
+
+```yaml
+element1:
+  name: Anonymous Auth
+  requirements:
+    - Disable anonymous requests to the Kubelet server.
+  description: 
+    - Audit Method 1: Kubelets can accept configuration via a configuration file and in some cases via command line arguments. It is important to note that parameters provided as command line arguments will override their counterpart parameters in the configuration file (see --config details in the Kubelet CLI Reference for more info, where you can also find out which configuration parameters can be supplied as a command line argument).
+    - With this in mind, it is important to check for the existence of command line arguments 
+      as well as configuration file entries when auditing Kubelet configuration.
+  impact: 
+    - This configuration might have a slight impact on usability for users who rely on 
+      anonymous access for certain functions or quick troubleshooting.
+  audit:
+    method1: 
+      - kubelets can accept configuration via a configuration file and in some cases via command line arguments. 
+      - It is important to note that parameters provided as command line arguments will override their counterpart parameters in the 
+        configuration file (see --config details in the Kubelet CLI
+
+---CHUNK---
+
+```yaml
+element1:
+  name: Logging
+  requirements:
+    - Enable logging to monitor cluster activity.
+    - Configure log rotation to prevent disk space issues.
+element2:
+  name: Network Policies
+  requirements:
+    - Implement network policies to restrict traffic flow.
+    - Configure network policies to enforce security boundaries.
+element3:
+  name: Audit Method 2
+  requirements:
+    - Use kubectl to proxy requests to the API.
+    - Verify that webhook authentication is enabled.
+    - Verify that authorization mode is set to Webhook.
+element4:
+  name: Remediation Method 1
+  requirements:
+    - If configuring via the Kubelet config file, locate the kubelet-config.json file
+      and set the --read-only-port argument to 0.
+    - If modifying the Kubelet config file, edit the kubelet-config.json file
+      and set the --read-only-port argument to 0.
+    - If using executable arguments, edit the kubelet service file on each worker node
+      and add the --read-only-port argument to the KUBELET_ARGS variable string.
+
+---CHUNK---
+
+```yaml
+element1:
+  name: ensure_streaming_connection_idle_timeout
+  requirements:
+    - verify_streaming_connection_idle_timeout_argument
+    - verify_streaming_connection_idle_timeout_value
+element2:
+  name: configure_kubelet_config_streaming_connection_idle_timeout
+  requirements:
+    - set_streaming_connection_idle_timeout_value
+    - set_streaming_connection_idle_timeout_value
+element3:
+  name: configure_kubelet_config_streaming_connection_idle_timeout
+  requirements:
+    - set_streaming_connection_idle_timeout_value
+    - set_streaming_connection_idle_timeout_value
+element4:
+  name: verify_kubelet_configuration_changes
+  requirements:
+    - verify_kubelet_configuration_changes
+```
+
+---CHUNK---
+
+```yaml
+element1:
+  name: Cluster Access Manager API
+  requirements:
+    - Ensure that all users with administrative account access uses a dedicated or 
+      secondary account for elevated activities. This account should only be used for 
+      administrative activities and not internet browsing, email, or similar activities.
+    - Minimize access to secrets (Automated)
+    - Restrict Administrator Privileges to Dedicated Administrator Accounts on 
+      enterprise assets. Conduct general computing activities, such as internet 
+      browsing, email, and productivity suite use, from the user’s primary, non-privileged 
+      account.
+    - Ensure that all users with administrative account access use a dedicated or 
+      secondary account for elevated activities. This account should only be used for 
+      administrative activities and not internet browsing, email, or similar activities.
+    - Minimize access to create pods (Automated)
+    - Uninstall or Disable Unnecessary Services on enterprise assets and software, 
+      such as an unused file sharing service, web application module, or service 
+      function.
+    - Ensure that Service Account Tokens are only mounted where necessary (Automated)
+    - Cluster Access Manager API to streamline and enhance the
+
+---CHUNK---
+
+YAML:
+element1:
+  name: Logging
+  requirements:
+    - Kubernetes 1.23+ Cluster Access Manager API
+    - Logging configuration
+    - Audit logs
+element2:
+  name: Pod Identity
+  requirements:
+    - IAM Roles for Service Accounts (IRSA)
+    - Pod Identity feature
+element3:
+  name: Network Policies
+  requirements:
+    - Network Policies
+    - Kubernetes RBAC
+element4:
+  name: Security Standards
+  requirements:
+    - v8
+    - Uninstall or Disable Unnecessary Services on Enterprise Assets
+    - Enforce Access Control to Data through Automated Tools
+    - Limit use of the Bind, Impersonate and Escalate permissions in the Kubernetes cluster (Manual)
+    - Minimize the admission of containers wishing to share the host process ID namespace (Automated)
+    - Minimize the admission of containers wishing to share the host IPC namespace (Automated)
+    - Minimize the admission of containers wishing to share the host network namespace (Automated)
+    - Restrict Administrator Privileges to Dedicated Administrator Accounts
+    - Minimize the admission of containers with allowPrivilegeEscalation (Automated)
+
+---CHUNK---
+
+```yaml
+element1:
+  name: Restrict Administrator Privileges to Dedicated Administrator Accounts
+  requirements:
+    - Ensure that all users with administrative account access use a dedicated or secondary account for elevated activities.
+    - Conduct general computing activities, such as internet browsing, email, and productivity suite use, from the user’s primary, non-privileged account.
+element2:
+  name: Minimize the admission of containers with allowPrivilegeEscalation (Automated)
+  requirements:
+    - Profile Applicability: Level 1
+    - Description: Do not generally permit containers to be run with the allowPrivilegeEscalation flag set to true. Allowing this right can lead to a process running a container getting more rights than it started with.
+    - It’s important to note that these rights are still constrained by the overall container sandbox, and this setting does not relate to the use of privileged containers.
+    - Justification: A container running with the allowPrivilegeEscalation flag set to true may have processes that can gain more privileges than their parent.
+    - There should be at least one admission control policy defined which does not permit containers to allow privilege escalation.
+    - The option exists (
+
+---CHUNK---
+
+```yaml
+element1:
+  name: Logging
+  requirements:
+    - Enable Logging
+    - Configure Log Sources
+    - Implement Log Retention
+    - Ensure Log Security
+element2:
+  name: Kubelet Configuration
+  requirements:
+    - Configure Kubelet
+    - Configure NodePort
+    - Configure Service Discovery
+    - Implement Node Security
+element3:
+  name: Network Policies
+  requirements:
+    - Implement Network Policies
+    - Enable VPC Peering
+    - Configure Network Access Control Lists (NACLs)
+    - Implement Network Segmentation
+element4:
+  name: Image Scanning
+  requirements:
+    - Enable Image Scanning
+    - Configure Scanning Configuration
+    - Implement Regular Scanning
+    - Monitor Scanning Results
+element5:
+  name: Version Control
+  requirements:
+    - Implement Version Control
+    - Enable Branching Strategies
+    - Implement Code Review
+    - Enforce Code Quality
+element6:
+  name: IAM
+  requirements:
+    - Implement IAM Roles
+    - Enforce Least Privilege
+    - Monitor IAM Policies
+    - Automate IAM Access
+element7:
+  name: Container Registry
+  requirements:
+
+---CHUNK---
+
+```yaml
+element1:
+  name: Use Dedicated Administrative Accounts
+  requirements:
+    - Ensure all users with administrative account access use a dedicated or secondary account for elevated activities.
+    - Enable Endpoint Private Access to restrict access to the cluster's control plane to only authorized IPs.
+    - Restrict access to the Kubernetes public API server to only authorized IPs.
+    - Configure Public Endpoint to be disabled.
+element2:
+  name: Encrypt Sensitive Data at Rest
+  requirements:
+    - Encrypt sensitive data at rest on servers, applications, and databases containing sensitive data.
+    - Implement and manage a firewall on servers, where supported.
+    - Ensure only network ports, protocols, and services listening on a system with validated business needs, are running on each system.
+    - Use secure network management and communication protocols (e.g., 802.1X, Wi-Fi Protected Access 2 (WPA2) Enterprise or greater).
+element3:
+  name: Implement and Manage a Firewall on Servers
+  requirements:
+    - Implement and manage a firewall on servers, where supported.
+    - Configure Virtual Firewall, Operating System Firewall, or Third-party Firewall Agent.
+
+---CHUNK---
+
+```yaml
+element1:
+  name: Logging
+  requirements:
+    - Enabled audit Logs (Automated)
+    - Ensure audit logs are collected and managed
+  
+  name: Kubelet
+  requirements:
+    - Ensure that the kubelet worker node configuration files are set to 644 or more restrictive
+  
+  name: Network Policies
+  requirements:
+    - Restrict Access to the Control Plane Endpoint
+  
+  name: Authentication and Authorization
+  requirements:
+    - Ensure that the cluster-admin role is only used where required
+  
+  name: Pod Security Standards
+  requirements:
+    - Minimize the admission of privileged containers
+  
+  name: Image Vulnerability Scanning
+  requirements:
+    - Ensure CNI plugin supports network policies.
+  
+  name: Secret Management
+  requirements:
+    - Prefer using secrets as files over secrets as environment variables
+  
+  name: Identity and Access Management
+  requirements:
+    - Minimize access to secrets
+  
+  name: Cluster Access Manager API
+  requirements:
+    - Limit use of the Bind, Impersonate and Escalate permissions in the Kubernetes cluster
+  
+  name:  Cluster
+
+---CHUNK---
+
+```yaml
+element1:
+  name: Client CA File is Configured
+  requirements:
+    - Disabled
+    - Disabled
+    - Disabled
+    - Disabled
+    - Disabled
+  element2:
+    name: Correctly
+    requirements:
+      - Yes
+      - Yes
+      - Yes
+      - Yes
+      - Yes
+  element3:
+    name: Yes No
+    requirements:
+      - Yes
+      - No
+  element4:
+    name: Correctly
+    requirements:
+      - Correctly
+      - Yes
+      - Yes
+  element5:
+    name: Correctly
+    requirements:
+      - Correctly
+      - Yes
+      - Yes
+  element6:
+    name: Correctly
+    requirements:
+      - Correctly
+      - Yes
+      - Yes
+  element7:
+    name: Correctly
+    requirements:
+      - Correctly
+      - Yes
+      - Yes
+  element8:
+    name: Correctly
+    requirements:
+      - Correctly
+      - Yes
+      - Yes
+  element9:
+    name: Correctly
+    requirements:
+      -
 
 ======================================================================
 
@@ -204,11 +1044,25 @@ element2:
 Now extract all KDEs from this document:
 
 DOCUMENT TEXT:
-1 Control Plane Components ................................................................................................ 12 2 Control Plane Configuration .............................................................................................. 13 2.1 Logging .......................................................................................................................................... 14 2.1.1 Enable audit Logs (Manual) ................................................................................................................ 15 3 Worker Nodes ...................................................................................................................... 17 3.1 Worker Node Configuration Files ................................................................................................ 19 3.1.1 Ensure that the kubeconfig file permissions are set to 644 or more restrictive (Manual) ................... 20 3.1.2 Ensure that the kubelet kubeconfig file ownership is set to root:root (Manual) .................................. 22 3.1.3 Ensure that the kubelet configuration file has permissions set to 644 or more restrictive (Manual) ... 24 3.1.4 Ensure that the kubelet configuration file ownership is set to root:root (Manual) ............................... 26 3.2 Kubelet ........................................................................................................................................... 28 3.2.1 Ensure that the Anonymous Auth is Not Enabled (Automated) .......................................................... 29 
+CIS Amazon Elastic Kubernetes Service (EKS) Benchmark v1.2.0 - 11-23-2022   
+Page 1 
+Terms of Use Please see the below link for our current terms of use: https://www.cisecurity.org/cis-securesuite/cis-securesuite-membership-terms-of-use/ 
+Page 2 
+Table of Contents Terms of Use .................................................................................................................. 1 Table of Contents ........................................................................................................... 2 Overview ......................................................................................................................... 5 Intended Audience ................................................................................................................... 5 Consensus Guidance .............................................................................................................. 6 Typographical Conventions .................................................................................................... 7 Recommendation Definitions ....................................................................................... 8 Title ............................................................................................................................................ 8 Assessment Status .................................................................................................................. 8 Automated ............................................................................................................................................. 8 Manual .................................................................................................................................................... 8 Profile ........................................................................................................................................ 8 Description ............................................................................................................................... 8 Rationale Statement ................................................................................................................. 8 Impact Statement ..................................................................................................................... 9 Audit Procedure ....................................................................................................................... 9 Remediation Procedure ........................................................................................................... 9 Default Value ............................................................................................................................ 9 References ................................................................................................................................ 9 CIS Critical Security Controls® (CIS Controls®) .................................................................... 9 Additional Information ............................................................................................................. 9 Profile Definitions .................................................................................................................. 10 Acknowledgements ............................................................................................................... 11 Recommendations ....................................................................................................... 12 1 Control Plane Components ................................................................................................ 12 2 Control Plane Configuration .............................................................................................. 13 2.1 Logging .......................................................................................................................................... 14 2.1.1 Enable audit Logs (Manual) ................................................................................................................ 15 3 Worker Nodes ...................................................................................................................... 17 3.1 Worker Node Configuration Files ................................................................................................ 19 3.1.1 Ensure that the kubeconfig file permissions are set to 644 or more restrictive (Manual) ................... 20 3.1.2 Ensure that the kubelet kubeconfig file ownership is set to root:root (Manual) .................................. 22 3.1.3 Ensure that the kubelet configuration file has permissions set to 644 or more restrictive (Manual) ... 24 3.1.4 Ensure that the kubelet configuration file ownership is set to root:root (Manual) ............................... 26 3.2 Kubelet ........................................................................................................................................... 28 3.2.1 Ensure that the Anonymous Auth is Not Enabled (Automated) .......................................................... 29 
 Page 3 
-3.2.2 Ensure that the --authorization-mode argument is not set to AlwaysAllow (Automated) .................... 33 3.2.3 Ensure that a Client CA File is Configured (Manual) .......................................................................... 37 3.2.4 Ensure that the --read-only-port is disabled (Manual) ........................................................................ 40 3.2.5 Ensure that the --streaming-connection-idle-timeout argument is not set to 0 (Automated) .............. 42 3.2.6 Ensure that the --protect-kernel-defaults argument is set to true (Automated) .................................. 45 3.2.7 Ensure that the --make-iptables-util-chains argument is set to true (Automated) .............................. 48 3.2.8 Ensure that the --hostname-override argument is not set (Manual) ................................................... 51 3.2.9 Ensure that the --eventRecordQPS argument is set to 0 or a level which ensures appropriate event capture (Automated) .................................................................................................................................... 53 3.2.10 Ensure that the --rotate-certificates argument is not present or is set to true (Manual) ................... 56 3.2.11 Ensure that the RotateKubeletServerCertificate argument is set to true (Automated) ..................... 58 3.3 Container Optimized OS ............................................................................................................... 61 3.3.1 Prefer using a container-optimized OS when possible (Manual) ........................................................ 62 4 Policies ................................................................................................................................. 64 4.1 RBAC and Service Accounts ....................................................................................................... 65 4.1.1 Ensure that the cluster-admin role is only used where required (Manual) ......................................... 66 4.1.2 Minimize access to secrets (Manual) ................................................................................................. 68 4.1.3 Minimize wildcard use in Roles and ClusterRoles (Manual) ............................................................... 70 4.1.4 Minimize access to create pods (Manual) .......................................................................................... 72 4.1.5 Ensure that default service accounts are not actively used. (Manual) ............................................... 74 4.1.6 Ensure that Service Account Tokens are only mounted where necessary (Manual) ......................... 76 4.1.7 Avoid use of system:masters group (Manual) .................................................................................... 78 4.1.8 Limit use of the Bind, Impersonate and Escalate permissions in the Kubernetes
-
-[... truncated ...]
+3.2.2 Ensure that the --authorization-mode argument is not set to AlwaysAllow (Automated) .................... 33 3.2.3 Ensure that a Client CA File is Configured (Manual) .......................................................................... 37 3.2.4 Ensure that the --read-only-port is disabled (Manual) ........................................................................ 40 3.2.5 Ensure that the --streaming-connection-idle-timeout argument is not set to 0 (Automated) .............. 42 3.2.6 Ensure that the --protect-kernel-defaults argument is set to true (Automated) .................................. 45 3.2.7 Ensure that the --make-iptables-util-chains argument is set to true (Automated) .............................. 48 3.2.8 Ensure that the --hostname-override argument is not set (Manual) ................................................... 51 3.2.9 Ensure that the --eventRecordQPS argument is set to 0 or a level which ensures appropriate event capture (Automated) .................................................................................................................................... 53 3.2.10 Ensure that the --rotate-certificates argument is not present or is set to true (Manual) ................... 56 3.2.11 Ensure that the RotateKubeletServerCertificate argument is set to true (Automated) ..................... 58 3.3 Container Optimized OS ............................................................................................................... 61 3.3.1 Prefer using a container-optimized OS when possible (Manual) ........................................................ 62 4 Policies ................................................................................................................................. 64 4.1 RBAC and Service Accounts ....................................................................................................... 65 4.1.1 Ensure that the cluster-admin role is only used where required (Manual) ......................................... 66 4.1.2 Minimize access to secrets (Manual) ................................................................................................. 68 4.1.3 Minimize wildcard use in Roles and ClusterRoles (Manual) ............................................................... 70 4.1.4 Minimize access to create pods (Manual) .......................................................................................... 72 4.1.5 Ensure that default service accounts are not actively used. (Manual) ............................................... 74 4.1.6 Ensure that Service Account Tokens are only mounted where necessary (Manual) ......................... 76 4.1.7 Avoid use of system:masters group (Manual) .................................................................................... 78 4.1.8 Limit use of the Bind, Impersonate and Escalate permissions in the Kubernetes cluster (Manual) ... 80 4.2 Pod Security Policies .................................................................................................................... 82 4.2.1 Minimize the admission of privileged containers (Automated) ........................................................... 83 4.2.2 Minimize the admission of containers wishing to share the host process ID namespace (Automated) ..................................................................................................................................................................... 86 4.2.3 Minimize the admission of containers wishing to share the host IPC namespace (Automated) ........ 88 4.2.4 Minimize the admission of containers wishing to share the host network namespace (Automated) .. 90 4.2.5 Minimize the admission of containers with allowPrivilegeEscalation (Automated) ............................. 92 4.2.6 Minimize the admission of root containers (Automated) ..................................................................... 94 4.2.7 Minimize the admission of containers with added capabilities (Manual) ............................................ 96 4.2.8 Minimize the admission of containers with capabilities assigned (Automated) .................................. 98 4.3 CNI Plugin .................................................................................................................................... 100 4.3.1 Ensure CNI plugin supports network policies. (Manual) ................................................................... 101 4.3.2 Ensure that all Namespaces have Network Policies defined (Manual) ............................................ 103 4.4 Secrets Management .................................................................................................................. 105 4.4.1 Prefer using secrets as files over secrets as environment variables (Manual) ................................. 106 4.4.2 Consider external secret storage (Manual) ...................................................................................... 108 4.5 Extensible Admission Control ................................................................................................... 109 4.6 General Policies .......................................................................................................................... 110 4.6.1 Create administrative boundaries between resources using namespaces (Manual) ....................... 111 4.6.2 Apply Security Context to Your Pods and Containers (Manual) ....................................................... 113 4.6.3 The default namespace should not be used (Manual) ..................................................................... 116 5 Managed services ............................................................................................................. 117 5.1 Image Registry and Image Scanning ........................................................................................ 118 5.1.1 Ensure Image Vulnerability Scanning using Amazon ECR image scanning or a third party provider (Manual) .................................................................................................................................................... 119 5.1.2 Minimize user access to Amazon ECR (Manual) ............................................................................. 122 5.1.3 Minimize cluster access to read-only for Amazon ECR (Manual) .................................................... 125 5.1.4 Minimize Container Registries to only those approved (Manual) ..................................................... 127 
+Page 4 
+5.2 Identity and Access Management (IAM) ................................................................................... 129 5.2.1 Prefer using dedicated EKS Service Accounts (Manual) ................................................................. 130 5.3 AWS EKS Key Management Service ......................................................................................... 132 5.3.1 Ensure Kubernetes Secrets are encrypted using Customer Master Keys (CMKs) managed in AWS KMS (Manual) ............................................................................................................................................ 133 5.4 Cluster Networking ..................................................................................................................... 135 5.4.1 Restrict Access to the Control Plane Endpoint (Manual) .................................................................. 136 5.4.2 Ensure clusters are created with Private Endpoint Enabled and Public Access Disabled (Manual) 139 5.4.3 Ensure clusters are created with Private Nodes (Manual) ............................................................... 141 5.4.4 Ensure Network Policy is Enabled and set as appropriate (Manual) ................................................ 142 5.4.5 Encrypt traffic to HTTPS load balancers with TLS certificates (Manual) .......................................... 144 5.5 Authentication and Authorization ............................................................................................. 145 5.5.1 Manage Kubernetes RBAC users with AWS IAM Authenticator for Kubernetes (Manual) .............. 146 5.6 Other Cluster Configurations ..................................................................................................... 148 5.6.1 Consider Fargate for running untrusted workloads (Manual) ........................................................... 149 Appendix: Summary Table ........................................................................................ 151 Appendix: CIS Controls v7 IG 1 Mapped Recommendations ................................ 156 Appendix: CIS Controls v7 IG 2 Mapped Recommendations ................................ 158 Appendix: CIS Controls v7 IG 3 Mapped Recommendations ................................ 161 Appendix: CIS Controls v7 Unmapped Recommendations ................................... 164 Appendix: CIS Controls v8 IG 1 Mapped Recommendations ................................ 165 Appendix: CIS Controls v8 IG 2 Mapped Recommendations ................................ 167 Appendix: CIS Controls v8 IG 3 Mapped Recommendations ................................ 170 Appendix: CIS Controls v8 Unmapped Recommendations ................................... 173 Appendix: Change History ........................................................................................ 174 	 
+Page 5 
+Overview All CIS Benchmarks focus on technical configuration settings used to maintain and/or increase the security of the addressed technology, and they should be used in conjunction with other essential cyber hygiene tasks like: • Monitoring the base operating system for vulnerabilities and quickly updating with the latest security patches  • Monitoring applications and libraries for vulnerabilities and quickly updating with the latest security patches In the end, the CIS Benchmarks are designed as a key component of a comprehensive cybersecurity program.   This document provides prescriptive guidance for running Amazon Elastic Kubernetes Service (EKS) following recommended security controls. This benchmark only includes controls which can be modified by an end user of Amazon EKS. To obtain the latest version of this guide, please visit www.cisecurity.org. If you have questions, comments, or have identified ways to improve this guide, please write us at support@cisecurity.org.  Intended Audience This document is intended for cluster administrators, security specialists, auditors, and any personnel who plan to develop, deploy, assess, or secure solutions that incorporate Amazon EKS using managed and self-managed nodes. Customers using Amazon EKS on AWS Fargate are not responsible for node management. Hence, this document is not scoped for Amazon EKS on AWS Fargate customers.    
+Page 6 
+Consensus Guidance This CIS Benchmark was created using a consensus review process comprised of a global community of subject matter experts. The process combines real world experience with data-based information to create technology specific guidance to assist users to secure their environments. Consensus participants provide perspective from a diverse set of backgrounds including consulting, software development, audit and compliance, security research, operations, government, and legal.  Each CIS Benchmark undergoes two phases of consensus review. The first phase occurs during initial Benchmark development. During this phase, subject matter experts convene to discuss, create, and test working drafts of the Benchmark. This discussion occurs until consensus has been reached on Benchmark recommendations. The second phase begins after the Benchmark has been published. During this phase, all feedback provided by the Internet community is reviewed by the consensus team for incorporation in the Benchmark. If you are interested in participating in the consensus process, please visit https://workbench.cisecurity.org/.   
+Page 7 
+Typographical Conventions The following typographical conventions are used throughout this guide: Convention Meaning 
+Stylized Monospace font Used for blocks of code, command, and script examples. Text should be interpreted exactly as presented. Monospace font Used for inline code, commands, or examples. Text should be interpreted exactly as presented.  <italic font in brackets> Italic texts set in angle brackets denote a variable requiring substitution for a real value. Italic font Used to denote the title of a book, article, or other publication. Note Additional information or caveats 
+Page 8 
+Recommendation Definitions The following defines the various components included in a CIS recommendation as applicable.  If any of the components are not applicable it will be noted or the component will not be included in the recommendation.    Title Concise description for the recommendation's intended configuration.  Assessment Status An assessment status is included for every recommendation. The assessment status indicates whether the given recommendation can be automated or requires manual steps to implement. Both statuses are equally important and are determined and supported as defined below:  Automated Represents recommendations for which assessment of a technical control can be fully automated and validated to a pass/fail state. Recommendations will include the necessary information to implement automation. Manual Represents recommendations for which assessment of a technical control cannot be fully automated and requires all or some manual steps to validate that the configured state is set as expected. The expected state can vary depending on the environment. Profile A collection of recommendations for securing a technology or a supporting platform. Most benchmarks include at least a Level 1 and Level 2 Profile. Level 2 extends Level 1 recommendations and is not a standalone profile. The Profile Definitions section in the benchmark provides the definitions as they pertain to the recommendations included for the technology.  Description Detailed information pertaining to the setting with which the recommendation is concerned. In some cases, the description will include the recommended value. Rationale Statement Detailed reasoning for the recommendation to provide the user a clear and concise understanding on the importance of the recommendation. 
+Page 9 
 
 Respond ONLY with the YAML output. Begin your response with 'element1:' — do not write any text before the YAML.
 
@@ -217,27 +1071,280 @@ few_shot
 
 *LLM Output*
 element1:
-  name: "Control Plane Components"
+  name: "Title"
+  requirements:
+    - "Concise description for the intended configuration."
+    - "Automated"
+  element2:
+    name: "Assessment Status"
+    requirements:
+      - "Automated"
+  element3:
+    name: "Profile"
+    requirements:
+      - "Automated"
+  element4:
+    name: "Rationale Statement"
+    requirements:
+      - "Detailed reasoning for the recommendation."
+      - "Recommended Value"
+  element5:
+    name: "Recommendation Definition"
+    requirements:
+      - "Concise description for the setting with which the recommendation is concerned."
+      - "Level 1 and Level 2"
+  element6:
+    name: "Alignment"
+    requirements:
+      - "Automated"
+
+
+---CHUNK---
+
+element1:
+  name: "Kubelet"
+  requirements:
+    - "Ensure that the Anonymous Auth is Not Enabled"
+
+
+---CHUNK---
+
+element1:
+  name: "Ensure that the kubeconfig file permissions are set to 644 or more restrictive"
   requirements:
     - "Ensure that the kubeconfig file permissions are set to 644 or more restrictive"
     - "Ensure that the kubelet kubeconfig file ownership is set to root:root"
-    - "Ensure that the kubelet configuration file has permissions set to 644 or more restrictive"
-    - "Ensure that the kubelet configuration file ownership is set to root:root"
 element2:
-  name: "Control Plane Configuration"
+  name: "Ensure that the Anonymous Auth is Not Enabled"
+  requirements:
+    - "Ensure that Anonymous Auth is Not Enabled"
+element3:
+  name: "Disable Anonymous Auth is Not Enabled"
+  requirements:
+    - "Ensure that Anonymous Auth is Not Enabled"
+element4:
+  name: "Enable Audit Logs"
+  requirements:
+    - "Enable audit Logs"
+element5:
+  name: "Enable Audit Logs"
+  requirements:
+    - "Enable audit Logs"
+element6:
+  name: "Enable Audit Logs"
+  requirements:
+    - "Enable audit Logs"
+element7:
+  name: "Enable Audit Logs"
+  requirements:
+    - "Enable audit Logs"
+element8:
+  name: "Enable Audit Logs"
+  requirements:
+
+
+---CHUNK---
+
+element1:
+  name: "Worker Node Configuration Files"
+  requirements:
+    - "Ensure that the kubeconfig file permissions are set to 644 or more restrictive"
+    - "Ensure that the kubelet kubeconfig file ownership is set to root:root"
+    - "Ensure that the --read-only-port=0 For each remediation: Based on your system, restart the kubelet service and check status systemctl daemon-reload systemctl restart kubelet.service systemctl status kubelet -l Default Value: See the Amazon EKS documentation for the default value."
+element2:
+  name: "Kubelet"
+  requirements:
+    - "Ensure that the Anonymous Auth is Not Enabled"
+element3:
+  name: "Logging"
+  requirements:
+    - "Enable audit Logs"
+    - "Ensure that the cluster has at least one active policy control mechanism in place"
+    - "Ensure that the default namespace is not used"
+element4:
+  name: "Pod Security Standards"
+  requirements:
+    - "Use secure network management and communication protocols (e.g., 802.1X, Wi-Fi Protected Access 
+
+---CHUNK---
+
+element1:
+  name: "Kubernetes API"
+  requirements:
+    - "Minimize wildcard use in Roles and ClusterRoles"
+    - "Establish and Maintain a Secure Configuration Process"
+    - "Use Unique Passwords"
+    - "Use a container-optimized OS when possible"
+    - "Restrict Administrator Privileges to Dedicated Administrator Accounts"
+    - "Minimize access to secrets"
+    - "Establish and Maintain a Secure Configuration Process"
+    - "Use Unique Passwords"
+    - "Use a container-optimized OS when possible"
+    - "Restrict Administrator Privileges to Dedicated Administrator Accounts"
+    - "Minimize access to secrets"
+    - "Restrict Administrator Privileges to Dedicated Administrator Accounts"
+    - "Minimize wildcard use in Roles and ClusterRoles"
+    - "Establish and Maintain a Secure Configuration Process"
+    - "Use Unique Passwords"
+    - "Use a container-optimized OS when possible"
+    - "Restrict Administrator Privileges to Dedicated Administrator Accounts"
+    - "Minimize access to secrets"
+    - "Restrict Administrator Privileges to Dedicated Administrator Accounts"
+    - "Minimize wildcard use in Roles and ClusterRoles"
+    - "Establish and Maintain
+
+---CHUNK---
+
+element1:
+  name: "Worker Node Configuration Files"
+  requirements:
+    - "Ensure that the kubeconfig file permissions are set to 644 or more restrictive"
+    - "Ensure that the kubelet kubeconfig file ownership is set to root:root"
+    - "Minimize the admission of containers wishing to share the host IPC namespace"
+element2:
+  name: "Kubelet"
+  requirements:
+    - "Ensure that the Anonymous Auth is Not Enabled"
+element3:
+  name: "Pod Security Standards"
+  requirements:
+    - "Use unique passwords for all enterprise assets."
+    - "Use unique passwords for all enterprise assets."
+    - "Use unique passwords for all enterprise assets."
+    - "Use unique passwords for all enterprise assets."
+    - "Use unique passwords for all enterprise assets."
+    - "Use unique passwords for all enterprise assets."
+    - "Use unique passwords for all enterprise assets."
+    - "Use unique passwords for all enterprise assets."
+    - "Use unique passwords for all enterprise assets."
+    - "Use unique passwords for all enterprise assets."
+    - "Use unique passwords for all enterprise assets."
+
+
+---CHUNK---
+
+element1:
+  name: "Secrets Management"
+  requirements:
+    - "Consider external secret storage and management systems, instead of using Kubernetes Secrets directly"
+    - "Encrypt sensitive data in transit"
+    - "Consider the use of an external secrets storage and management system, instead of using Kubernetes Secrets directly"
+    - "Encrypt sensitive data at rest on servers, applications, and databases containing sensitive data."
+
+
+---CHUNK---
+
+element1:
+  name: "Server-Side Encryption"
+  requirements:
+    - "Ensure that the kubeconfig file permissions are set to 644 or more restrictive"
+    - "Ensure that the kubelet kubeconfig file ownership is set to root:root"
+    - "Enable audit Logs"
+    - "Encrypt Sensitive Information at Rest"
+    - "Enable Application-Layer Encryption"
+    - "Ensure that the cluster has at least one active policy control mechanism in place"
+    - "Ensure that the default namespace is not used"
+    - "Restrict Administrator Privileges to Dedicated Administrator Accounts"
+element2:
+  name: "Pod Security Standards"
+  requirements:
+    - "Ensure that the cluster has at least one active policy control mechanism in place"
+    - "Ensure that the default namespace is not used"
+    - "Enable Audit Logs"
+    - "Run the below command and review the namespaces created in the cluster.kubectl get namespaces"
+element3:
+  name: "Extensible Admission Control"
+  requirements:
+    - "Ensure that the cluster has at least one active policy control mechanism in place"
+    - "Ensure that the default namespace
+
+---CHUNK---
+
+element1:
+  name: "Cluster Networking"
+  requirements:
+    - "Ensure that the cluster has at least one active policy control mechanism in place"
+    - "Ensure that the default namespace is not used"
+
+
+---CHUNK---
+
+element1:
+  name: "Worker Node Configuration Files"
+  requirements:
+    - "Ensure that the kubeconfig file permissions are set to 644 or more restrictive"
+    - "Ensure that the kubelet kubeconfig file ownership is set to root:root"
+    - "Ensure that the kubelet configuration file permissions are set to 644 or more restrictive"
+element2:
+  name: "Kubelet"
+  requirements:
+    - "Ensure that the Anonymous Auth is Not Enabled"
+element3:
+  name: "Container Optimized OS"
+  requirements:
+    - "Prefer using a container-optimized OS when possible"
+element4:
+  name: "Network Policy"
+  requirements:
+    - "Ensure that the cluster has at least one active policy control mechanism in place"
+    - "Ensure that the default namespace is not used"
+element5:
+  name: "Managed services"
+  requirements:
+    - "Consider Fargate for running untrusted workloads"
+
+
+---CHUNK---
+
+element1:
+  name: "Worker Node Configuration Files"
+  requirements:
+    - "Ensure that the kubeconfig file permissions are set to 644 or more restrictive"
+    - "Ensure that the kubelet kubeconfig file ownership is set to root:root"
+element2:
+  name: "Kubelet"
+  requirements:
+    - "Ensure that the Anonymous Auth is Not Enabled"
+element3:
+  name: "Pod Security Standards"
+  requirements:
+    - "Ensure that the cluster has at least one active policy control mechanism in place"
+    - "Ensure that the default namespace is not used"
+element4:
+  name: "4.2.8 Minimize the admission of containers with capabilities assigned"
+  requirements:
+    - "Minimize the admission of containers with capabilities assigned"
+element5:
+  name: "4.2.7 Minimize the admission of containers with capabilities assigned"
+  requirements:
+    - "Minimize the admission of containers with capabilities assigned"
+element6:
+  name: "4.2.9 Ensure that the --eventRecordQPS argument is not set to 0"
+  requirements:
+    - "
+
+---CHUNK---
+
+element1:
+  name: "Logging"
+  requirements:
+    - "Enable audit Logs"
+element2:
+  name: "Pod Security Standards"
   requirements:
     - "Ensure that the cluster has at least one active policy control mechanism in place"
     - "Ensure that the default namespace is not used"
 element3:
-  name: "Worker Nodes"
+  name: "Recommendations"
   requirements:
-    - "Ensure that the kubeconfig file permissions are set to 644 or more restrictive (Manual)"
-    - "Ensure that the kubelet kubeconfig file ownership is set to root:root (Manual)"
-element4:
-  name: "Kubelet"
-  requirements:
-    - "Ensure that the Anonymous Auth is Not Enabled (Automated)"
-    - "Ensure that a Client CA File is Config
+    - "3.3.1 description updated"
+    - "3.2.6 audit procedure updated"
+    - "3.2.1, 3.2.2, 3.2.3 updated"
+    - "3.2.10 updated the default value"
+    - "3.2.1, 3.2.2, 3.2.3 updated to reflect authentication vs authorization"
+    - "5.2.1 updated to reflect EKS specifics"
+    - "9/01/2022 1.2.0 Ticket #15533 recommendation 5.4.4 updated recommendation for EKS specifics"
+    - "9/01/2022 1.2.0
 
 ======================================================================
 
@@ -290,6 +1397,58 @@ element2:
 Now extract all KDEs from this document:
 
 DOCUMENT TEXT:
+ 
+Internal Only - General 
+CIS Amazon Elastic 
+Kubernetes Service (EKS) 
+Benchmark 
+v1.6.0 - 12-23-2024 
+  
+Page 1 
+Internal Only - General 
+Terms of Use 
+Please see the below link for our current terms of use: 
+https://www.cisecurity.org/cis-securesuite/cis-securesuite-membership-terms-of-use/ 
+ 
+For information on referencing and/or citing CIS Benchmarks in 3rd party documentation 
+(including using portions of Benchmark Recommendations) please contact CIS Legal 
+(CISLegal@cisecurity.org) and request guidance on copyright usage.  
+NOTE:  It is NEVER acceptable to host a CIS Benchmark in ANY format (PDF, etc.) 
+on a 3rd party (non-CIS owned) site. 
+Page 2 
+Internal Only - General 
+Table of Contents 
+Terms of Use ..................................................................................................................... 1 
+Table of Contents ............................................................................................................. 2 
+Overview ............................................................................................................................ 5 
+Important Usage Information .................................................................................................... 5 
+Key Stakeholders.................................................................................................................................... 5 
+Apply the Correct Version of a Benchmark ......................................................................................... 6 
+Exceptions ............................................................................................................................................... 6 
+Remediation ............................................................................................................................................ 7 
+Summary.................................................................................................................................................. 7 
+Target Technology Details ........................................................................................................ 8 
+Intended Audience ..................................................................................................................... 8 
+Consensus Guidance ................................................................................................................. 9 
+Typographical Conventions .................................................................................................... 10 
+Recommendation Definitions ....................................................................................... 11 
+Title ............................................................................................................................................. 11 
+Assessment Status .................................................................................................................. 11 
+Automated ............................................................................................................................................. 11 
+Manual.................................................................................................................................................... 11 
+Profile ......................................................................................................................................... 11 
+Description ................................................................................................................................ 11 
+Rationale Statement ................................................................................................................. 11 
+Impact Statement...................................................................................................................... 12 
+Audit Procedure ........................................................................................................................ 12 
+Remediation Procedure ........................................................................................................... 12 
+Default Value ............................................................................................................................. 12 
+References ................................................................................................................................ 12 
+CIS Critical Security Controls® (CIS Controls®) .................................................................... 12 
+Additional Information ............................................................................................................. 12 
+Profile Definitions ..................................................................................................................... 13 
+Acknowledgements .................................................................................................................. 14 
+Recommendations ......................................................................................................... 15 
 1 Control Plane Components .................................................................................................. 15 
 2 Control Plane Configuration ................................................................................................ 15 
 2.1 Logging ............................................................................................................................................ 16 
@@ -329,9 +1488,140 @@ appropriate event capture (Automated)...........................................
 4.1.7 Cluster Access Manager API to streamline and enhance the management of access 
 controls within EKS clusters (Automated) ................................................................................. 77 
 4.1.8 Limit use of the Bind, Impersonate and Escalate permissions in the Kubernetes cluster 
-(Manual) ........................................................................................................................
-
-[... truncated ...]
+(Manual) ..................................................................................................................................... 81 
+4.2 Pod Security Standards ................................................................................................................. 83 
+4.2.1 Minimize the admission of privileged containers (Automated) ......................................... 84 
+4.2.2 Minimize the admission of containers wishing to share the host process ID namespace 
+(Automated) ............................................................................................................................... 87 
+4.2.3 Minimize the admission of containers wishing to share the host IPC namespace 
+(Automated) ............................................................................................................................... 89 
+4.2.4 Minimize the admission of containers wishing to share the host network namespace 
+(Automated) ............................................................................................................................... 91 
+4.2.5 Minimize the admission of containers with allowPrivilegeEscalation (Automated) .......... 93 
+4.3 CNI Plugin ........................................................................................................................................ 96 
+4.3.1 Ensure CNI plugin supports network policies. (Manual) .................................................. 97 
+4.3.2 Ensure that all Namespaces have Network Policies defined (Automated) ...................... 99 
+4.4 Secrets Management .................................................................................................................... 101 
+4.4.1 Prefer using secrets as files over secrets as environment variables (Automated) ........ 102 
+4.4.2 Consider external secret storage (Manual) .................................................................... 104 
+4.5 General Policies ............................................................................................................................ 106 
+4.5.1 Create administrative boundaries between resources using namespaces (Manual) .... 107 
+4.5.2 The default namespace should not be used (Automated) ............................................. 109 
+5 Managed services ............................................................................................................... 110 
+5.1 Image Registry and Image Scanning.......................................................................................... 111 
+5.1.1 Ensure Image Vulnerability Scanning using Amazon ECR image scanning or a third 
+party provider (Automated) ...................................................................................................... 112 
+Page 4 
+Internal Only - General 
+5.1.2 Minimize user access to Amazon ECR (Manual) ........................................................... 115 
+5.1.3 Minimize cluster access to read-only for Amazon ECR (Manual) .................................. 118 
+5.1.4 Minimize Container Registries to only those approved (Manual) .................................. 120 
+5.2 Identity and Access Management (IAM)..................................................................................... 122 
+5.2.1 Prefer using dedicated EKS Service Accounts (Automated) ......................................... 123 
+5.3 AWS EKS Key Management Service .......................................................................................... 125 
+5.3.1 Ensure Kubernetes Secrets are encrypted using Customer Master Keys (CMKs) 
+managed in AWS KMS (Manual) ............................................................................................ 126 
+5.4 Cluster Networking ....................................................................................................................... 128 
+5.4.1 Restrict Access to the Control Plane Endpoint (Automated) ......................................... 129 
+5.4.2 Ensure clusters are created with Private Endpoint Enabled and Public Access Disabled 
+(Automated) ............................................................................................................................. 132 
+5.4.3 Ensure clusters are created with Private Nodes (Automated) ....................................... 134 
+5.4.4 Ensure Network Policy is Enabled and set as appropriate (Automated) ....................... 136 
+5.4.5 Encrypt traffic to HTTPS load balancers with TLS certificates (Manual) ....................... 138 
+5.5 Authentication and Authorization ............................................................................................... 139 
+5.5.1 Manage Kubernetes RBAC users with AWS IAM Authenticator for Kubernetes or 
+Upgrade to AWS CLI v1.16.156 or greater (Manual) .............................................................. 140 
+Appendix: Summary Table .......................................................................................... 142 
+Appendix: CIS Controls v7 IG 1 Mapped Recommendations ................................. 147 
+Appendix: CIS Controls v7 IG 2 Mapped Recommendations ................................. 149 
+Appendix: CIS Controls v7 IG 3 Mapped Recommendations ................................. 152 
+Appendix: CIS Controls v7 Unmapped Recommendations .................................... 155 
+Appendix: CIS Controls v8 IG 1 Mapped Recommendations ................................. 156 
+Appendix: CIS Controls v8 IG 2 Mapped Recommendations ................................. 158 
+Appendix: CIS Controls v8 IG 3 Mapped Recommendations ................................. 161 
+Appendix: CIS Controls v8 Unmapped Recommendations .................................... 164 
+Appendix: Change History .......................................................................................... 165 
+ 
+ 
+  
+Page 5 
+Internal Only - General 
+Overview 
+All CIS Benchmarks™ (Benchmarks) focus on technical configuration settings used to 
+maintain and/or increase the security of the addressed technology, and they should be 
+used in conjunction with other essential cyber hygiene tasks like: 
+• Monitoring the base operating system and applications for vulnerabilities and 
+quickly updating with the latest security patches. 
+• End-point protection (Antivirus software, Endpoint Detection and Response 
+(EDR), etc.). 
+• Logging and monitoring user and system activity. 
+In the end, the Benchmarks are designed to be a key component of a comprehensive 
+cybersecurity program.  
+Important Usage Information 
+All Benchmarks are available free for non-commercial use from the CIS Website. They 
+can be used to manually assess and remediate systems and applications. In lieu of 
+manual assessment and remediation, there are several tools available to assist with 
+assessment: 
+• CIS Configuration Assessment Tool (CIS-CAT® Pro Assessor) 
+• CIS Benchmarks™ Certified 3rd Party Tooling 
+These tools make the hardening process much more scalable for large numbers of 
+systems and applications.  
+NOTE:  Some tooling focuses only on the Benchmark Recommendations that can 
+be fully automated (skipping ones marked Manual). It is important that ALL 
+Recommendations (Automated and Manual) be addressed since all are 
+important for properly securing systems and are typically in scope for 
+audits.  
+Key Stakeholders 
+Cybersecurity is a collaborative effort, and cross functional cooperation is imperative 
+within an organization to discuss, test, and deploy Benchmarks in an effective and 
+efficient way. The Benchmarks are developed to be best practice configuration 
+guidelines applicable to a wide range of use cases. In some organizations, exceptions 
+to specific Recommendations will be needed, and this team should work to prioritize the 
+problematic Recommendations based on several factors like risk, time, cost, and labor. 
+These exceptions should be properly categorized and documented for auditing 
+purposes. 
+Page 6 
+Internal Only - General 
+ 
+Apply the Correct Version of a Benchmark 
+Benchmarks are developed and tested for a specific set of products and versions and 
+applying an incorrect Benchmark to a system can cause the resulting pass/fail score to 
+be incorrect. This is due to the assessment of settings that do not apply to the target 
+systems. To assure the correct Benchmark is being assessed:  
+• Deploy the Benchmark applicable to the way settings are managed in the 
+environment: An example of this is the Microsoft Windows family of 
+Benchmarks, which have separate Benchmarks for Group Policy, Intune, and 
+Stand-alone systems based upon how system management is deployed. 
+Applying the wrong Benchmark in this case will give invalid results. 
+• Use the most recent version of a Benchmark: This is true for all Benchmarks, 
+but especially true for cloud technologies. Cloud technologies change frequently 
+and using an older version of a Benchmark may have invalid methods for 
+auditing and remediation. 
+Exceptions 
+The guidance items in the Benchmarks are called recommendations and not 
+requirements, and exceptions to some of them are expected and acceptable. The 
+Benchmarks strive to be a secure baseline, or starting point, for a specific technology, 
+with known issues identified during Benchmark development are documented in the 
+Impact section of each Recommendation. In addition, organizational, system specific 
+requirements, or local site policy may require changes as well, or an exception to a 
+Recommendation or group of Recommendations (e.g. A Benchmark could Recommend 
+that a Web server not be installed on the system, but if a system's primary purpose is to 
+function as a Webserver, there should be a documented exception to this 
+Recommendation for that specific server). 
+In the end, exceptions to some Benchmark Recommendations are common and 
+acceptable, and should be handled as follows: 
+• The reasons for the exception should be reviewed cross-functionally and be well 
+documented for audit purposes. 
+• A plan should be developed for mitigating, or eliminating, the exception in the 
+future, if applicable. 
+• If the organization decides to accept the risk of this exception (not work toward 
+mitigation or elimination), this should be documented for audit purposes. 
+It is the responsibility of the organization to determine their overall security policy, and 
+which settings are applicable to their unique needs based on the overall risk profile for 
+the organization. 
+Page 7 
+Internal Only - General 
+Remediation 
 
 Respond ONLY with the YAML output. Begin your response with 'element1:' — do not write any text before the YAML.
 
@@ -340,7 +1630,117 @@ few_shot
 
 *LLM Output*
 element1:
-  name: "Control Plane Components"
+  name: "Worker Node Configuration Files"
+  requirements:
+    - "Ensure that the kubeconfig file permissions are set to 644 or more restrictive"
+    - "Ensure that the kubelet kubeconfig file ownership is set to root:root"
+    - "Ensure that the kubelet configuration file has permissions set to 644 or more restrictive"
+    - "Ensure that the kubelet configuration file ownership is set to root:root"
+  details:
+    - "Ensure that the kubeconfig file permissions are set to 644 or more restrictive"
+    - "Ensure that the kubelet kubeconfig file ownership is set to root:root"
+    - "Ensure that the kubelet configuration file has permissions set to 644 or more restrictive"
+    - "Ensure that the kubelet configuration file ownership is set to root:root"
+  related_elements:
+    - "Worker Node Configuration Files"
+    - "Kubelet"
+    - "Anonymous Auth"
+    - "Kubelet Configuration"
+    - "kubeconfig"
+
+
+---CHUNK---
+
+element1:
+  name: "Establish Secure Configurations"
+  requirements:
+    - "Ensure that the cluster has at least one active policy control mechanism in place"
+    - "Ensure that the default namespace is not used"
+
+
+---CHUNK---
+
+element1:
+  name: "Anonymous Auth is Not Enabled"
+  requirements:
+    - "Disable anonymous requests to the Kubelet server."
+
+
+---CHUNK---
+
+element1:
+  name: "Ensure that the --streaming-connection-idle-timeout argument is not set to 0"
+  requirements:
+    - "Do not disable timeouts on streaming connections."
+
+
+---CHUNK---
+
+element1:
+  name: "Worker Node Configuration Files"
+  requirements:
+    - "Ensure that the kubeconfig file permissions are set to 644 or more restrictive"
+    - "Ensure that the kubelet kubeconfig file ownership is set to root:root"
+    - "Ensure that the kubelet kubeconfig file is configured to use the correct kubeconfig file"
+  element2:
+    name: "Kubelet"
+    requirements:
+      - "Ensure that the Anonymous Auth is Not Enabled"
+  element3:
+    name: "Pod Security Standards"
+    requirements:
+      - "Ensure that the cluster has at least one active policy control mechanism in place"
+      - "Ensure that the default namespace is not used"
+  element4:
+    name: "Logging"
+    requirements:
+      - "Enable audit Logs"
+      - "Audit Method 1: SSH to the relevant node: Run the following command on each node to find the Kubelet process: ps -ef | grep kubelet"
+      - "Audit Method 2: If using the api configz endpoint consider searching for the status of "streamingConnectionIdleTimeout":"4h0m
+
+---CHUNK---
+
+element1:
+  name: "Cluster Access Manager API to streamline and enhance the management of access controls within EKS clusters"
+  requirements:
+    - "Leverages AWS IAM's centralized management and auditing capabilities"
+    - "Integrates with AWS CloudTrail for audit trails"
+    - "Supports a more dynamic and secure model for assigning permissions to pods"
+    - "Aligns with AWS’s roadmap and best practices for EKS"
+
+
+---CHUNK---
+
+element1:
+  name: "Internal Only - General"
+  requirements:
+    - "Ensure that all users with administrative account access use a dedicated or secondary account for elevated activities. This account should only be used for administrative activities and not internet browsing, email, or similar activities."
+    - "Minimize the admission of containers with allowPrivilegeEscalation (Automated)"
+    - "Do not generally permit containers to be run with the hostNetwork flag set to true."
+    - "Minimize the admission of containers with hostIPC flag set to true."
+    - "Do not generally permit containers to be run with the hostNetwork flag set to true."
+    - "Minimize the admission of containers with hostNetwork flag set to true."
+    - "Do not generally permit containers to be run with the hostNetwork flag set to true."
+    - "Minimize the admission of containers with hostIPC flag set to true."
+    - "Minimize the admission of containers with allowPrivilegeEscalation (Automated)"
+    - "Do not generally permit containers to be run with the hostNetwork flag set to true."
+    - "Do not generally permit containers to be run with the hostNetwork flag set to true."
+
+
+---CHUNK---
+
+element1:
+  name: "Internal Only - General"
+  requirements:
+    - "Establish Secure Configurations"
+    - "Ensure Image Vulnerability Scanning using Amazon ECR"
+    - "Use Standard Hardening Configuration Templates for Application Infrastructure"
+
+
+---CHUNK---
+
+element1:
+  name: "Worker Node Configuration Files"
   requirements:
     - "Ensure that the kubeconfig file permissions are set to 644 or more restrictive"
     - "Ensure that the kubelet kubeconfig file ownership is set to root:root"
@@ -349,23 +1749,83 @@ element2:
   requirements:
     - "Ensure that the Anonymous Auth is Not Enabled"
 element3:
-  name: "Kubelet Configuration"
-  requirements:
-    - "Ensure that the kubelet configuration file has permissions set to 644 or more restrictive"
-    - "Ensure that the kubelet configuration file ownership is set to root:root"
-element4:
   name: "Logging"
   requirements:
     - "Enable audit Logs"
-element5:
+element4:
   name: "Pod Security Standards"
   requirements:
     - "Ensure that the cluster has at least one active policy control mechanism in place"
     - "Ensure that the default namespace is not used"
-element6:
-  name: "RBAC and Service Accounts"
+element5:
+  name: "AWS ECR Describe-Repositories"
   requirements:
-    - "Ensure that the cluster-admin role is only used where required"
+    - "Remediation: To utilize AWS ECR for Image Scanning please follow the steps below:"
+    - "To create a repository configured for scan on push (AWS CLI)"
+    - "To edit the settings of an existing repository (AWS CLI)"
+    - "Use the following steps to start a manual image scan using the AWS Management Console."
+
+---CHUNK---
+
+element1:
+  name: "Authentication and Authorization"
+  requirements:
+    - "Manage Kubernetes RBAC users with AWS IAMAuthenticator for Kubernetes or Upgrade to AWS CLI v1.16.156 or greater (Manual)"
+    - "Ensure that all users with administrative account access use a dedicated or secondary account for elevated activities. This account should only be used for administrative activities and not internet browsing, email, or similar activities."
+
+
+---CHUNK---
+
+element1:
+  name: "Worker Node Configuration Files"
+  requirements:
+    - "Ensure that the kubeconfig file permissions are set to 644 or more restrictive"
+    - "Ensure that the kubelet kubeconfig file ownership is set to root:root"
+  element2:
+    name: "Kubelet"
+    requirements:
+      - "Ensure that the Anonymous Auth is Not Enabled"
+      - "Ensure that the --authorization-mode argument is not set to AlwaysAllow"
+      - "Ensure that a Client CA File is Configured"
+      - "Ensure that the --read-only-port is disabled"
+  element3:
+    name: "Kubelet"
+    requirements:
+      - "Ensure that the Anonymous Auth is Not Enabled"
+      - "Ensure that the --authorization-mode argument is not set to AlwaysAllow"
+      - "Ensure that a Client CA File is Configured"
+      - "Ensure that the --read-only-port is disabled"
+  element4:
+    name: "Kubelet"
+    requirements:
+      - "Ensure that the Anonymous Auth is Not Enabled"
+      - "Ensure that
+
+---CHUNK---
+
+element1:
+  name: "Worker Node Configuration Files"
+  requirements:
+    - "Ensure that the kubeconfig file permissions are set to 644 or more restrictive"
+    - "Ensure that the kubelet kubeconfig file ownership is set to root:root"
+    - "Ensure that the kubelet configuration file has permissions set to 644 or more restrictive"
+element2:
+  name: "Kubelet"
+  requirements:
+    - "Ensure that the Anonymous Auth is Not Enabled"
+element3:
+  name: "Container Registries"
+  requirements:
+    - "Minimize the admission of root containers"
+    - "Minimize the admission of containers wishing to share the host process ID namespace"
+    - "Minimize the admission of containers wishing to share the host IPC namespace"
+    - "Minimize the admission of containers wishing to share the host network namespace"
+    - "Minimize the admission of containers with allowPrivilegeEscalation"
+element4:
+  name: "Service Account Tokens"
+  requirements:
+    - "Ensure that the --read-only-port is disabled"
+    - "Ensure that the --streaming-connection-idle-
 
 ======================================================================
 
@@ -393,27 +1853,317 @@ element2:
     - "<requirement text>"
 
 DOCUMENT TEXT:
-1 Control Plane Components ................................................................................................ 12 2 Control Plane Configuration .............................................................................................. 13 2.1 Logging .......................................................................................................................................... 14 2.1.1 Enable audit Logs (Manual) ................................................................................................................ 15 3 Worker Nodes ...................................................................................................................... 17 3.1 Worker Node Configuration Files ................................................................................................ 19 3.1.1 Ensure that the kubeconfig file permissions are set to 644 or more restrictive (Manual) ................... 20 3.1.2 Ensure that the kubelet kubeconfig file ownership is set to root:root (Manual) .................................. 22 3.1.3 Ensure that the kubelet configuration file has permissions set to 644 or more restrictive (Manual) ... 24 3.1.4 Ensure that the kubelet configuration file ownership is set to root:root (Manual) ............................... 26 3.2 Kubelet ........................................................................................................................................... 28 3.2.1 Ensure that the Anonymous Auth is Not Enabled (Automated) .......................................................... 29 
+CIS Amazon Elastic Kubernetes Service (EKS) Benchmark v1.2.0 - 11-23-2022   
+Page 1 
+Terms of Use Please see the below link for our current terms of use: https://www.cisecurity.org/cis-securesuite/cis-securesuite-membership-terms-of-use/ 
+Page 2 
+Table of Contents Terms of Use .................................................................................................................. 1 Table of Contents ........................................................................................................... 2 Overview ......................................................................................................................... 5 Intended Audience ................................................................................................................... 5 Consensus Guidance .............................................................................................................. 6 Typographical Conventions .................................................................................................... 7 Recommendation Definitions ....................................................................................... 8 Title ............................................................................................................................................ 8 Assessment Status .................................................................................................................. 8 Automated ............................................................................................................................................. 8 Manual .................................................................................................................................................... 8 Profile ........................................................................................................................................ 8 Description ............................................................................................................................... 8 Rationale Statement ................................................................................................................. 8 Impact Statement ..................................................................................................................... 9 Audit Procedure ....................................................................................................................... 9 Remediation Procedure ........................................................................................................... 9 Default Value ............................................................................................................................ 9 References ................................................................................................................................ 9 CIS Critical Security Controls® (CIS Controls®) .................................................................... 9 Additional Information ............................................................................................................. 9 Profile Definitions .................................................................................................................. 10 Acknowledgements ............................................................................................................... 11 Recommendations ....................................................................................................... 12 1 Control Plane Components ................................................................................................ 12 2 Control Plane Configuration .............................................................................................. 13 2.1 Logging .......................................................................................................................................... 14 2.1.1 Enable audit Logs (Manual) ................................................................................................................ 15 3 Worker Nodes ...................................................................................................................... 17 3.1 Worker Node Configuration Files ................................................................................................ 19 3.1.1 Ensure that the kubeconfig file permissions are set to 644 or more restrictive (Manual) ................... 20 3.1.2 Ensure that the kubelet kubeconfig file ownership is set to root:root (Manual) .................................. 22 3.1.3 Ensure that the kubelet configuration file has permissions set to 644 or more restrictive (Manual) ... 24 3.1.4 Ensure that the kubelet configuration file ownership is set to root:root (Manual) ............................... 26 3.2 Kubelet ........................................................................................................................................... 28 3.2.1 Ensure that the Anonymous Auth is Not Enabled (Automated) .......................................................... 29 
 Page 3 
-3.2.2 Ensure that the --authorization-mode argument is not set to AlwaysAllow (Automated) .................... 33 3.2.3 Ensure that a Client CA File is Configured (Manual) .......................................................................... 37 3.2.4 Ensure that the --read-only-port is disabled (Manual) ........................................................................ 40 3.2.5 Ensure that the --streaming-connection-idle-timeout argument is not set to 0 (Automated) .............. 42 3.2.6 Ensure that the --protect-kernel-defaults argument is set to true (Automated) .................................. 45 3.2.7 Ensure that the --make-iptables-util-chains argument is set to true (Automated) .............................. 48 3.2.8 Ensure that the --hostname-override argument is not set (Manual) ................................................... 51 3.2.9 Ensure that the --eventRecordQPS argument is set to 0 or a level which ensures appropriate event capture (Automated) .................................................................................................................................... 53 3.2.10 Ensure that the --rotate-certificates argument is not present or is set to true (Manual) ................... 56 3.2.11 Ensure that the RotateKubeletServerCertificate argument is set to true (Automated) ..................... 58 3.3 Container Optimized OS ............................................................................................................... 61 3.3.1 Prefer using a container-optimized OS when possible (Manual) ........................................................ 62 4 Policies ................................................................................................................................. 64 4.1 RBAC and Service Accounts ....................................................................................................... 65 4.1.1 Ensure that the cluster-admin role is only used where required (Manual) ......................................... 66 4.1.2 Minimize access to secrets (Manual) ................................................................................................. 68 4.1.3 Minimize wildcard use in Roles and ClusterRoles (Manual) ............................................................... 70 4.1.4 Minimize access to create pods (Manual) .......................................................................................... 72 4.1.5 Ensure that default service accounts are not actively used. (Manual) ............................................... 74 4.1.6 Ensure that Service Account Tokens are only mounted where necessary (Manual) ......................... 76 4.1.7 Avoid use of system:masters group (Manual) .................................................................................... 78 4.1.8 Limit use of the Bind, Impersonate and Escalate permissions in the Kubernetes
-
-[... truncated ...]
+3.2.2 Ensure that the --authorization-mode argument is not set to AlwaysAllow (Automated) .................... 33 3.2.3 Ensure that a Client CA File is Configured (Manual) .......................................................................... 37 3.2.4 Ensure that the --read-only-port is disabled (Manual) ........................................................................ 40 3.2.5 Ensure that the --streaming-connection-idle-timeout argument is not set to 0 (Automated) .............. 42 3.2.6 Ensure that the --protect-kernel-defaults argument is set to true (Automated) .................................. 45 3.2.7 Ensure that the --make-iptables-util-chains argument is set to true (Automated) .............................. 48 3.2.8 Ensure that the --hostname-override argument is not set (Manual) ................................................... 51 3.2.9 Ensure that the --eventRecordQPS argument is set to 0 or a level which ensures appropriate event capture (Automated) .................................................................................................................................... 53 3.2.10 Ensure that the --rotate-certificates argument is not present or is set to true (Manual) ................... 56 3.2.11 Ensure that the RotateKubeletServerCertificate argument is set to true (Automated) ..................... 58 3.3 Container Optimized OS ............................................................................................................... 61 3.3.1 Prefer using a container-optimized OS when possible (Manual) ........................................................ 62 4 Policies ................................................................................................................................. 64 4.1 RBAC and Service Accounts ....................................................................................................... 65 4.1.1 Ensure that the cluster-admin role is only used where required (Manual) ......................................... 66 4.1.2 Minimize access to secrets (Manual) ................................................................................................. 68 4.1.3 Minimize wildcard use in Roles and ClusterRoles (Manual) ............................................................... 70 4.1.4 Minimize access to create pods (Manual) .......................................................................................... 72 4.1.5 Ensure that default service accounts are not actively used. (Manual) ............................................... 74 4.1.6 Ensure that Service Account Tokens are only mounted where necessary (Manual) ......................... 76 4.1.7 Avoid use of system:masters group (Manual) .................................................................................... 78 4.1.8 Limit use of the Bind, Impersonate and Escalate permissions in the Kubernetes cluster (Manual) ... 80 4.2 Pod Security Policies .................................................................................................................... 82 4.2.1 Minimize the admission of privileged containers (Automated) ........................................................... 83 4.2.2 Minimize the admission of containers wishing to share the host process ID namespace (Automated) ..................................................................................................................................................................... 86 4.2.3 Minimize the admission of containers wishing to share the host IPC namespace (Automated) ........ 88 4.2.4 Minimize the admission of containers wishing to share the host network namespace (Automated) .. 90 4.2.5 Minimize the admission of containers with allowPrivilegeEscalation (Automated) ............................. 92 4.2.6 Minimize the admission of root containers (Automated) ..................................................................... 94 4.2.7 Minimize the admission of containers with added capabilities (Manual) ............................................ 96 4.2.8 Minimize the admission of containers with capabilities assigned (Automated) .................................. 98 4.3 CNI Plugin .................................................................................................................................... 100 4.3.1 Ensure CNI plugin supports network policies. (Manual) ................................................................... 101 4.3.2 Ensure that all Namespaces have Network Policies defined (Manual) ............................................ 103 4.4 Secrets Management .................................................................................................................. 105 4.4.1 Prefer using secrets as files over secrets as environment variables (Manual) ................................. 106 4.4.2 Consider external secret storage (Manual) ...................................................................................... 108 4.5 Extensible Admission Control ................................................................................................... 109 4.6 General Policies .......................................................................................................................... 110 4.6.1 Create administrative boundaries between resources using namespaces (Manual) ....................... 111 4.6.2 Apply Security Context to Your Pods and Containers (Manual) ....................................................... 113 4.6.3 The default namespace should not be used (Manual) ..................................................................... 116 5 Managed services ............................................................................................................. 117 5.1 Image Registry and Image Scanning ........................................................................................ 118 5.1.1 Ensure Image Vulnerability Scanning using Amazon ECR image scanning or a third party provider (Manual) .................................................................................................................................................... 119 5.1.2 Minimize user access to Amazon ECR (Manual) ............................................................................. 122 5.1.3 Minimize cluster access to read-only for Amazon ECR (Manual) .................................................... 125 5.1.4 Minimize Container Registries to only those approved (Manual) ..................................................... 127 
+Page 4 
+5.2 Identity and Access Management (IAM) ................................................................................... 129 5.2.1 Prefer using dedicated EKS Service Accounts (Manual) ................................................................. 130 5.3 AWS EKS Key Management Service ......................................................................................... 132 5.3.1 Ensure Kubernetes Secrets are encrypted using Customer Master Keys (CMKs) managed in AWS KMS (Manual) ............................................................................................................................................ 133 5.4 Cluster Networking ..................................................................................................................... 135 5.4.1 Restrict Access to the Control Plane Endpoint (Manual) .................................................................. 136 5.4.2 Ensure clusters are created with Private Endpoint Enabled and Public Access Disabled (Manual) 139 5.4.3 Ensure clusters are created with Private Nodes (Manual) ............................................................... 141 5.4.4 Ensure Network Policy is Enabled and set as appropriate (Manual) ................................................ 142 5.4.5 Encrypt traffic to HTTPS load balancers with TLS certificates (Manual) .......................................... 144 5.5 Authentication and Authorization ............................................................................................. 145 5.5.1 Manage Kubernetes RBAC users with AWS IAM Authenticator for Kubernetes (Manual) .............. 146 5.6 Other Cluster Configurations ..................................................................................................... 148 5.6.1 Consider Fargate for running untrusted workloads (Manual) ........................................................... 149 Appendix: Summary Table ........................................................................................ 151 Appendix: CIS Controls v7 IG 1 Mapped Recommendations ................................ 156 Appendix: CIS Controls v7 IG 2 Mapped Recommendations ................................ 158 Appendix: CIS Controls v7 IG 3 Mapped Recommendations ................................ 161 Appendix: CIS Controls v7 Unmapped Recommendations ................................... 164 Appendix: CIS Controls v8 IG 1 Mapped Recommendations ................................ 165 Appendix: CIS Controls v8 IG 2 Mapped Recommendations ................................ 167 Appendix: CIS Controls v8 IG 3 Mapped Recommendations ................................ 170 Appendix: CIS Controls v8 Unmapped Recommendations ................................... 173 Appendix: Change History ........................................................................................ 174 	 
+Page 5 
+Overview All CIS Benchmarks focus on technical configuration settings used to maintain and/or increase the security of the addressed technology, and they should be used in conjunction with other essential cyber hygiene tasks like: • Monitoring the base operating system for vulnerabilities and quickly updating with the latest security patches  • Monitoring applications and libraries for vulnerabilities and quickly updating with the latest security patches In the end, the CIS Benchmarks are designed as a key component of a comprehensive cybersecurity program.   This document provides prescriptive guidance for running Amazon Elastic Kubernetes Service (EKS) following recommended security controls. This benchmark only includes controls which can be modified by an end user of Amazon EKS. To obtain the latest version of this guide, please visit www.cisecurity.org. If you have questions, comments, or have identified ways to improve this guide, please write us at support@cisecurity.org.  Intended Audience This document is intended for cluster administrators, security specialists, auditors, and any personnel who plan to develop, deploy, assess, or secure solutions that incorporate Amazon EKS using managed and self-managed nodes. Customers using Amazon EKS on AWS Fargate are not responsible for node management. Hence, this document is not scoped for Amazon EKS on AWS Fargate customers.    
+Page 6 
+Consensus Guidance This CIS Benchmark was created using a consensus review process comprised of a global community of subject matter experts. The process combines real world experience with data-based information to create technology specific guidance to assist users to secure their environments. Consensus participants provide perspective from a diverse set of backgrounds including consulting, software development, audit and compliance, security research, operations, government, and legal.  Each CIS Benchmark undergoes two phases of consensus review. The first phase occurs during initial Benchmark development. During this phase, subject matter experts convene to discuss, create, and test working drafts of the Benchmark. This discussion occurs until consensus has been reached on Benchmark recommendations. The second phase begins after the Benchmark has been published. During this phase, all feedback provided by the Internet community is reviewed by the consensus team for incorporation in the Benchmark. If you are interested in participating in the consensus process, please visit https://workbench.cisecurity.org/.   
+Page 7 
+Typographical Conventions The following typographical conventions are used throughout this guide: Convention Meaning 
+Stylized Monospace font Used for blocks of code, command, and script examples. Text should be interpreted exactly as presented. Monospace font Used for inline code, commands, or examples. Text should be interpreted exactly as presented.  <italic font in brackets> Italic texts set in angle brackets denote a variable requiring substitution for a real value. Italic font Used to denote the title of a book, article, or other publication. Note Additional information or caveats 
+Page 8 
+Recommendation Definitions The following defines the various components included in a CIS recommendation as applicable.  If any of the components are not applicable it will be noted or the component will not be included in the recommendation.    Title Concise description for the recommendation's intended configuration.  Assessment Status An assessment status is included for every recommendation. The assessment status indicates whether the given recommendation can be automated or requires manual steps to implement. Both statuses are equally important and are determined and supported as defined below:  Automated Represents recommendations for which assessment of a technical control can be fully automated and validated to a pass/fail state. Recommendations will include the necessary information to implement automation. Manual Represents recommendations for which assessment of a technical control cannot be fully automated and requires all or some manual steps to validate that the configured state is set as expected. The expected state can vary depending on the environment. Profile A collection of recommendations for securing a technology or a supporting platform. Most benchmarks include at least a Level 1 and Level 2 Profile. Level 2 extends Level 1 recommendations and is not a standalone profile. The Profile Definitions section in the benchmark provides the definitions as they pertain to the recommendations included for the technology.  Description Detailed information pertaining to the setting with which the recommendation is concerned. In some cases, the description will include the recommended value. Rationale Statement Detailed reasoning for the recommendation to provide the user a clear and concise understanding on the importance of the recommendation. 
+Page 9 
 
 *Prompt Type*
 chain_of_thought
 
 *LLM Output*
+```yaml
 element1:
-  name: Control Plane Components
+  name: "Kubelet"
   requirements:
-    - 3.1.1 Ensure that the cluster-admin role is only used where required (Manual)
-    - 3.1.2 Minimize access to secrets (Manual)
-    - 3.1.3 Minimize wildcard use in Roles and ClusterRoles (Manual)
-    - 3.1.4 Minimize access to create pods (Manual)
-    - 4.1.5 Ensure that default service accounts are not actively used. (Manual)
-    - 4.1.6 Ensure that Service Account Tokens are only mounted where necessary (Manual)
-    - 4.1.7 Avoid use of the Bind, Impersonate and Escalate permissions in the Kubernetes
+    - "Ensure that the kubeconfig file permissions are set to 644 or more restrictive (Manual)"
+    - "Ensure that the kubelet kubeconfig file ownership is set to root:root (Manual)"
+    - "Ensure that the kubelet configuration file has permissions set to 644 or more restrictive (Manual)"
+  parent: "Kubelet"
 
+element2:
+  name: "Control Plane Configuration"
+  requirements:
+    - "Ensure that the cluster-admin role is only used where required (Manual)"
+    - "Minimize access to secrets (Manual)"
+    - "Minimize wildcard use in Roles and ClusterRoles (Manual)"
+    - "Minimize access to create pods (Manual)"
+    - "Ensure that default service accounts are not actively used (Manual)"
+    - "Create administrative boundaries between resources using namespaces (Manual)"
+  parent: "Control Plane Configuration"
+
+element3:
+  name: "Worker Node Configuration"
+  requirements:
+    - "Ensure that the kubelet config file has permissions set to 644 or more restrictive (Manual)"
+    
+
+---CHUNK---
+
+```yaml
+element1:
+  name: "Kubelet Configuration"
+  requirements:
+    - "Ensure that the kubelet configuration file has permissions set to 644 or more restrictive (Manual)"
+    - "Ensure that the kubelet configuration file ownership is set to root:root (Manual)"
+    - "Ensure that the kubelet configuration file has permissions set to 644 or more restrictive (Manual)"
+    - "Ensure that the kubelet configuration file has permissions set to 644 or more restrictive (Manual)"
+element2:
+  name: "Kubelet Command Line Arguments"
+  requirements:
+    - "Check for the existence of command line arguments as well as configuration file entries when auditing Kubelet configuration."
+    - "First, SSH to each node and execute the following command to find the Kubelet process: ps -ef | grep kubelet The output of the above command provides details of the active Kubelet process, from which we can see the command line arguments provided to the process."
+```
+
+---CHUNK---
+
+element1:
+  name: "Kubelet"
+  requirements:
+    - "Ensure that the Anonymous Auth is Not Enabled (Automated)"
+    - "Ensure that the Webhook Authentication is enabled"
+    - "Ensure that the Client CA File is Configured"
+    - "Ensure that the Read-Only Port is Disabled"
+element2:
+  name: "Kubelet Configuration"
+  requirements:
+    - "Verify that Anonymous Authentication is not enabled"
+    - "Verify that Webhook Authentication is enabled"
+    - "Verify that the Client CA File is Configured"
+    - "Verify that the Read-Only Port is Disabled"
+element3:
+  name: "Kubelet Service Configuration"
+  requirements:
+    - "Ensure that the `--read-only-port` is disabled"
+    - "Ensure that the `--read-only-port` is set to 0"
+    - "Ensure that the `--read-only-port` argument exists and is set to 0"
+element4:
+  name: "Kubelet Service Configuration"
+  requirements:
+    - "Ensure that the `--read-only-port` argument
+
+---CHUNK---
+
+element1:
+  name: "Kubelet Configuration"
+  requirements:
+    - "Ensure that the --eventRecordQPS argument is set to 0 or a level which ensures appropriate event capture"
+    - "Secure Network Management and Communication Protocols"
+    - "Use secure network management and communication protocols (e.g., 802.1X, Wi-Fi Protected Access 2 (WPA2) Enterprise or greater)"
+    - "Use secure network management and communication protocols (e.g., 802.1X, Wi-Fi Protected Access 2 (WPA2) Enterprise or greater)"
+    - "Ensure that the --protect-kernel-defaults argument is set to true"
+    - "Securely Manage Network Infrastructure"
+    - "Implement Automated Configuration Monitoring Systems"
+    - "Ensure that the --hostname-override argument is not set"
+    - "Securely Manage Network Infrastructure"
+    - "Ensure that the --eventRecordQPS argument is set to 0 or a level which ensures appropriate event capture"
+    - "Securely Manage Network Infrastructure"
+    - "Ensure that the --protect-kernel-defaults argument is set to true"
+
+---CHUNK---
+
+```yaml
+element1:
+  name: "System Configuration"
+  requirements:
+    - "Ensure that the cluster-admin role is only used where required"
+    - "Restrict administrator privileges to dedicated administrator accounts"
+    - "Minimize wildcard use in Roles and ClusterRoles"
+    - "Establish and maintain a secure configuration process"
+    - "Use unique passwords for all enterprise assets"
+    - "Ensure that the Kubernetes API stores secrets, which may be service account tokens for the Kubernetes API or credentials used by workloads in the cluster"
+  tags:
+    - "Security"
+    - "Kubernetes"
+    - "RBAC"
+    - "Secrets"
+    - "Configuration"
+
+element2:
+  name: "Container Optimization"
+  requirements:
+    - "Use a container-optimized OS when possible"
+    - "Use standard, industry-recommended hardening configuration templates"
+    - "Minimize access to secrets"
+    - "Restrict administrator privileges to dedicated administrator accounts"
+    - "Minimize wildcard use in Roles and ClusterRoles"
+    - "Use unique passwords for all enterprise assets"
+    - "Ensure that the Kubernetes API stores secrets, which may be service
+
+---CHUNK---
+
+```yaml
+element1:
+  name: "Kubelet"
+  requirements:
+    - "Ensure that the Kubelet service account has the least privilege necessary for its tasks."
+    - "Restrict the use of privileged containers within the Kubelet."
+    - "Disable the hostPID flag in PodSecurityPolicies."
+  audit:
+    - "Review user accounts with privileged access to the Kubelet."
+    - "Check for unnecessary IPC namespaces in PodSecurityPolicies."
+  remediation:
+    - "Create a separate PSP for the Kubelet, restricting its privileges."
+    - "Configure the Kubelet to use a dedicated service account with minimal permissions."
+  references:
+    - "https://kubernetes.io/docs/concepts/policy/pod-security-policy/"
+    - "https://aws.github.io/aws-eks-best-practices/pods/#restrict-the-containers-that-can-run-as-privileged"
+```
+
+---CHUNK---
+
+```yaml
+element1:
+  name: "Kubelet"
+  requirements:
+    - "Ensure that the Kubelet is configured to allow access to the network namespace."
+    - "Restrict the Kubelet to only allow access to the network namespace."
+    - "Ensure that the Kubelet is configured to allow access to the cluster's storage namespace."
+    - "Restrict the Kubelet to only allow access to the cluster's storage namespace."
+element2:
+  name: "Pod Security Standards"
+  requirements:
+    - "Ensure that all users with administrative account access use a dedicated or secondary account for elevated activities."
+    - "Restrict administrator privileges to dedicated administrator accounts on enterprise assets."
+    - "Minimize the admission of containers wishing to share the host network namespace (Automated)."
+    - "Restrict administrator privileges to dedicated administrator accounts on enterprise assets."
+element3:
+  name: "Pod Security Standards"
+  requirements:
+    - "Minimize the admission of containers with allowPrivilegeEscalation (Automated)."
+    - "Restrict administrator privileges to dedicated administrator accounts on enterprise assets."
+    - "Minimize the admission of root containers (Automated)."
+
+---CHUNK---
+
+element1:
+  name: "Safeguard"
+  requirements:
+    - "Ensure that sensitive information is encrypted at rest using a tool that requires a secondary authentication mechanism not integrated into the operating system."
+    - "Establish and maintain dedicated computing resources for all administrative tasks or tasks requiring administrative access."
+    - "Restrict administrator privileges to dedicated administrator accounts on enterprise assets."
+    - "Restrict user access to Amazon ECR, limiting interaction with build images to only authorized personnel and service accounts."
+    - "Perform automated vulnerability scans of internal enterprise assets using a SCAP-compliant vulnerability scanning tool."
+    - "Run the below command and review the namespaces created in the cluster. kubectl get namespaces Ensure that these namespaces are the ones you need and are adequately administered as per your requirements."
+    - "Perform authenticated vulnerability scanning with agents running locally on each system, using a SCAP-compliant vulnerability scanning tool."
+    - "Restrict user access to Amazon ECR, limiting interaction with build images to only authorized personnel and service accounts."
+    - "Run the below command and review the namespaces created in the cluster. kubectl get namespaces Ensure that these namespaces are the ones you need and are adequately administered as per your requirements."
+    -
+
+---CHUNK---
+
+```yaml
+element1:
+  name: "Kubelet"
+  requirements:
+    - "Restrict Administrator Privileges to Dedicated Administrator Accounts"
+    - "Minimize Cluster Access to Read-Only for Amazon ECR"
+    - "Ensure the Use of Dedicated Administrative Accounts"
+    - "Minimize Container Registries to only those approved (Manual) Profile Applicability"
+    - "Restrict Administrator Privileges to Dedicated Administrator Accounts"
+    - "Ensure the Use of Dedicated Administrative Accounts"
+    - "Minimize Container Registries to only those approved (Manual) Profile Applicability"
+    - "Restrict Administrator Privileges to Dedicated Administrator Accounts"
+    - "Ensure the Use of Dedicated Administrative Accounts"
+    - "Minimize Container Registries to only those approved (Manual) Profile Applicability"
+    - "Restrict Administrator Privileges to Dedicated Administrator Accounts"
+    - "Ensure the Use of Dedicated Administrative Accounts"
+    - "Minimize Container Registries to only those approved (Manual) Profile Applicability"
+    - "Restrict Administrator Privileges to Dedicated Administrator Accounts"
+    - "Ensure the Use of Dedicated Administrative Accounts"
+    - "Minimize Container Registries to only those approved (Manual) Profile Applicability"
+
+
+---CHUNK---
+
+element1:
+  name: "Kubelet"
+  requirements:
+    - "Ensure that the kubelet is configured to enable audit logs."
+    - "Ensure that the kubelet is configured to allow access to the cluster's network."
+    - "Ensure that the kubelet is configured to use a secure authentication method."
+    - "Ensure that the kubelet is configured to use a secure network connection."
+  element2:
+    name: "Logging"
+    requirements:
+      - "Enable audit logging on the kubelet."
+      - "Configure the kubelet to collect and analyze logs."
+      - "Ensure that logs are stored securely."
+    element3:
+      name: "Pod Security Standards"
+      requirements:
+        - "Implement Pod Security Standards to enhance cluster security."
+        - "Use Pod Security Standards to prevent privileged container access."
+        - "Ensure that all pods are configured to use a secure network connection."
+  element4:
+    name: "Firewall"
+    requirements:
+      - "Implement a firewall on servers."
+      - "Configure a firewall to restrict access to the cluster."
+      - "Ensure that firewall rules are properly configured
+
+---CHUNK---
+
+element1:
+  name: "Kubelet"
+  requirements:
+    - "Ensure proper container image scanning is implemented."
+    - "Validate container image vulnerabilities are addressed."
+    - "Monitor container image updates and ensure security patches are applied."
+  element2:
+    name: "Logging"
+    requirements:
+      - "Enable centralized logging for container activity."
+      - "Configure log aggregation and analysis for security events."
+      - "Ensure logs are preserved and accessible for investigation."
+  element3:
+    name: "Pod Security Standards"
+    requirements:
+      - "Implement Pod Security Standards to limit privileged containers."
+      - "Enforce least privilege for container access."
+      - "Regularly review and update Pod Security Standards."
+  element4:
+    name: "Network Policy"
+    requirements:
+      - "Enable Network Policies to control network traffic between pods."
+      - "Restrict network access based on security requirements."
+      - "Monitor Network Policy enforcement."
+  element5:
+    name: "Security Context"
+    requirements:
+      - "Use a security context to define the privileges of containers."
+      - "Restrict access to AWS E
+
+---CHUNK---
+
+```yaml
+element1:
+  name: "Kubelet"
+  requirements:
+    - "Ensure that the Kubelet is configured to properly handle privileged containers."
+    - "Implement a process for validating container privileges before allowing them."
+    - "Review and update the Kubelet configuration to reflect the latest security best practices."
+element2:
+  name: "PSP has allowedCapabilities Set by Default"
+  requirements:
+    - "Disable the default PSP allowedCapabilities Set."
+    - "Verify that the PSP allowedCapabilities Set is properly configured and does not expose unnecessary capabilities."
+    - "Review the PSP configuration to ensure it aligns with security policies."
+element3:
+  name: "Recommendation 4.2.7 combined with 4.2.9"
+  requirements:
+    - "Apply the recommended combination of PSP version 4.2.7 and 4.2.9."
+    - "Test the impact of this combination on container security."
+element4:
+  name: "Recommendation 5.4.2 updated remediation process"
+  requirements:
+    - "Update the remediation process to reflect the latest security recommendations."
+    - "Ensure the remediation
 
 ======================================================================
 
@@ -441,6 +2191,58 @@ element2:
     - "<requirement text>"
 
 DOCUMENT TEXT:
+ 
+Internal Only - General 
+CIS Amazon Elastic 
+Kubernetes Service (EKS) 
+Benchmark 
+v1.6.0 - 12-23-2024 
+  
+Page 1 
+Internal Only - General 
+Terms of Use 
+Please see the below link for our current terms of use: 
+https://www.cisecurity.org/cis-securesuite/cis-securesuite-membership-terms-of-use/ 
+ 
+For information on referencing and/or citing CIS Benchmarks in 3rd party documentation 
+(including using portions of Benchmark Recommendations) please contact CIS Legal 
+(CISLegal@cisecurity.org) and request guidance on copyright usage.  
+NOTE:  It is NEVER acceptable to host a CIS Benchmark in ANY format (PDF, etc.) 
+on a 3rd party (non-CIS owned) site. 
+Page 2 
+Internal Only - General 
+Table of Contents 
+Terms of Use ..................................................................................................................... 1 
+Table of Contents ............................................................................................................. 2 
+Overview ............................................................................................................................ 5 
+Important Usage Information .................................................................................................... 5 
+Key Stakeholders.................................................................................................................................... 5 
+Apply the Correct Version of a Benchmark ......................................................................................... 6 
+Exceptions ............................................................................................................................................... 6 
+Remediation ............................................................................................................................................ 7 
+Summary.................................................................................................................................................. 7 
+Target Technology Details ........................................................................................................ 8 
+Intended Audience ..................................................................................................................... 8 
+Consensus Guidance ................................................................................................................. 9 
+Typographical Conventions .................................................................................................... 10 
+Recommendation Definitions ....................................................................................... 11 
+Title ............................................................................................................................................. 11 
+Assessment Status .................................................................................................................. 11 
+Automated ............................................................................................................................................. 11 
+Manual.................................................................................................................................................... 11 
+Profile ......................................................................................................................................... 11 
+Description ................................................................................................................................ 11 
+Rationale Statement ................................................................................................................. 11 
+Impact Statement...................................................................................................................... 12 
+Audit Procedure ........................................................................................................................ 12 
+Remediation Procedure ........................................................................................................... 12 
+Default Value ............................................................................................................................. 12 
+References ................................................................................................................................ 12 
+CIS Critical Security Controls® (CIS Controls®) .................................................................... 12 
+Additional Information ............................................................................................................. 12 
+Profile Definitions ..................................................................................................................... 13 
+Acknowledgements .................................................................................................................. 14 
+Recommendations ......................................................................................................... 15 
 1 Control Plane Components .................................................................................................. 15 
 2 Control Plane Configuration ................................................................................................ 15 
 2.1 Logging ............................................................................................................................................ 16 
@@ -480,9 +2282,140 @@ appropriate event capture (Automated)...........................................
 4.1.7 Cluster Access Manager API to streamline and enhance the management of access 
 controls within EKS clusters (Automated) ................................................................................. 77 
 4.1.8 Limit use of the Bind, Impersonate and Escalate permissions in the Kubernetes cluster 
-(Manual) ........................................................................................................................
-
-[... truncated ...]
+(Manual) ..................................................................................................................................... 81 
+4.2 Pod Security Standards ................................................................................................................. 83 
+4.2.1 Minimize the admission of privileged containers (Automated) ......................................... 84 
+4.2.2 Minimize the admission of containers wishing to share the host process ID namespace 
+(Automated) ............................................................................................................................... 87 
+4.2.3 Minimize the admission of containers wishing to share the host IPC namespace 
+(Automated) ............................................................................................................................... 89 
+4.2.4 Minimize the admission of containers wishing to share the host network namespace 
+(Automated) ............................................................................................................................... 91 
+4.2.5 Minimize the admission of containers with allowPrivilegeEscalation (Automated) .......... 93 
+4.3 CNI Plugin ........................................................................................................................................ 96 
+4.3.1 Ensure CNI plugin supports network policies. (Manual) .................................................. 97 
+4.3.2 Ensure that all Namespaces have Network Policies defined (Automated) ...................... 99 
+4.4 Secrets Management .................................................................................................................... 101 
+4.4.1 Prefer using secrets as files over secrets as environment variables (Automated) ........ 102 
+4.4.2 Consider external secret storage (Manual) .................................................................... 104 
+4.5 General Policies ............................................................................................................................ 106 
+4.5.1 Create administrative boundaries between resources using namespaces (Manual) .... 107 
+4.5.2 The default namespace should not be used (Automated) ............................................. 109 
+5 Managed services ............................................................................................................... 110 
+5.1 Image Registry and Image Scanning.......................................................................................... 111 
+5.1.1 Ensure Image Vulnerability Scanning using Amazon ECR image scanning or a third 
+party provider (Automated) ...................................................................................................... 112 
+Page 4 
+Internal Only - General 
+5.1.2 Minimize user access to Amazon ECR (Manual) ........................................................... 115 
+5.1.3 Minimize cluster access to read-only for Amazon ECR (Manual) .................................. 118 
+5.1.4 Minimize Container Registries to only those approved (Manual) .................................. 120 
+5.2 Identity and Access Management (IAM)..................................................................................... 122 
+5.2.1 Prefer using dedicated EKS Service Accounts (Automated) ......................................... 123 
+5.3 AWS EKS Key Management Service .......................................................................................... 125 
+5.3.1 Ensure Kubernetes Secrets are encrypted using Customer Master Keys (CMKs) 
+managed in AWS KMS (Manual) ............................................................................................ 126 
+5.4 Cluster Networking ....................................................................................................................... 128 
+5.4.1 Restrict Access to the Control Plane Endpoint (Automated) ......................................... 129 
+5.4.2 Ensure clusters are created with Private Endpoint Enabled and Public Access Disabled 
+(Automated) ............................................................................................................................. 132 
+5.4.3 Ensure clusters are created with Private Nodes (Automated) ....................................... 134 
+5.4.4 Ensure Network Policy is Enabled and set as appropriate (Automated) ....................... 136 
+5.4.5 Encrypt traffic to HTTPS load balancers with TLS certificates (Manual) ....................... 138 
+5.5 Authentication and Authorization ............................................................................................... 139 
+5.5.1 Manage Kubernetes RBAC users with AWS IAM Authenticator for Kubernetes or 
+Upgrade to AWS CLI v1.16.156 or greater (Manual) .............................................................. 140 
+Appendix: Summary Table .......................................................................................... 142 
+Appendix: CIS Controls v7 IG 1 Mapped Recommendations ................................. 147 
+Appendix: CIS Controls v7 IG 2 Mapped Recommendations ................................. 149 
+Appendix: CIS Controls v7 IG 3 Mapped Recommendations ................................. 152 
+Appendix: CIS Controls v7 Unmapped Recommendations .................................... 155 
+Appendix: CIS Controls v8 IG 1 Mapped Recommendations ................................. 156 
+Appendix: CIS Controls v8 IG 2 Mapped Recommendations ................................. 158 
+Appendix: CIS Controls v8 IG 3 Mapped Recommendations ................................. 161 
+Appendix: CIS Controls v8 Unmapped Recommendations .................................... 164 
+Appendix: Change History .......................................................................................... 165 
+ 
+ 
+  
+Page 5 
+Internal Only - General 
+Overview 
+All CIS Benchmarks™ (Benchmarks) focus on technical configuration settings used to 
+maintain and/or increase the security of the addressed technology, and they should be 
+used in conjunction with other essential cyber hygiene tasks like: 
+• Monitoring the base operating system and applications for vulnerabilities and 
+quickly updating with the latest security patches. 
+• End-point protection (Antivirus software, Endpoint Detection and Response 
+(EDR), etc.). 
+• Logging and monitoring user and system activity. 
+In the end, the Benchmarks are designed to be a key component of a comprehensive 
+cybersecurity program.  
+Important Usage Information 
+All Benchmarks are available free for non-commercial use from the CIS Website. They 
+can be used to manually assess and remediate systems and applications. In lieu of 
+manual assessment and remediation, there are several tools available to assist with 
+assessment: 
+• CIS Configuration Assessment Tool (CIS-CAT® Pro Assessor) 
+• CIS Benchmarks™ Certified 3rd Party Tooling 
+These tools make the hardening process much more scalable for large numbers of 
+systems and applications.  
+NOTE:  Some tooling focuses only on the Benchmark Recommendations that can 
+be fully automated (skipping ones marked Manual). It is important that ALL 
+Recommendations (Automated and Manual) be addressed since all are 
+important for properly securing systems and are typically in scope for 
+audits.  
+Key Stakeholders 
+Cybersecurity is a collaborative effort, and cross functional cooperation is imperative 
+within an organization to discuss, test, and deploy Benchmarks in an effective and 
+efficient way. The Benchmarks are developed to be best practice configuration 
+guidelines applicable to a wide range of use cases. In some organizations, exceptions 
+to specific Recommendations will be needed, and this team should work to prioritize the 
+problematic Recommendations based on several factors like risk, time, cost, and labor. 
+These exceptions should be properly categorized and documented for auditing 
+purposes. 
+Page 6 
+Internal Only - General 
+ 
+Apply the Correct Version of a Benchmark 
+Benchmarks are developed and tested for a specific set of products and versions and 
+applying an incorrect Benchmark to a system can cause the resulting pass/fail score to 
+be incorrect. This is due to the assessment of settings that do not apply to the target 
+systems. To assure the correct Benchmark is being assessed:  
+• Deploy the Benchmark applicable to the way settings are managed in the 
+environment: An example of this is the Microsoft Windows family of 
+Benchmarks, which have separate Benchmarks for Group Policy, Intune, and 
+Stand-alone systems based upon how system management is deployed. 
+Applying the wrong Benchmark in this case will give invalid results. 
+• Use the most recent version of a Benchmark: This is true for all Benchmarks, 
+but especially true for cloud technologies. Cloud technologies change frequently 
+and using an older version of a Benchmark may have invalid methods for 
+auditing and remediation. 
+Exceptions 
+The guidance items in the Benchmarks are called recommendations and not 
+requirements, and exceptions to some of them are expected and acceptable. The 
+Benchmarks strive to be a secure baseline, or starting point, for a specific technology, 
+with known issues identified during Benchmark development are documented in the 
+Impact section of each Recommendation. In addition, organizational, system specific 
+requirements, or local site policy may require changes as well, or an exception to a 
+Recommendation or group of Recommendations (e.g. A Benchmark could Recommend 
+that a Web server not be installed on the system, but if a system's primary purpose is to 
+function as a Webserver, there should be a documented exception to this 
+Recommendation for that specific server). 
+In the end, exceptions to some Benchmark Recommendations are common and 
+acceptable, and should be handled as follows: 
+• The reasons for the exception should be reviewed cross-functionally and be well 
+documented for audit purposes. 
+• A plan should be developed for mitigating, or eliminating, the exception in the 
+future, if applicable. 
+• If the organization decides to accept the risk of this exception (not work toward 
+mitigation or elimination), this should be documented for audit purposes. 
+It is the responsibility of the organization to determine their overall security policy, and 
+which settings are applicable to their unique needs based on the overall risk profile for 
+the organization. 
+Page 7 
+Internal Only - General 
+Remediation 
 
 *Prompt Type*
 chain_of_thought
@@ -490,19 +2423,248 @@ chain_of_thought
 *LLM Output*
 ```yaml
 element1:
-  name: Control Plane Components
+  name: CIS Amazon Elastic Kubernetes Service (EKS) Benchmark
   requirements:
-    - 3.1.1 Ensure that the kubeconfig file permissions are set to 644 or more restrictive
-    - 3.1.2 Ensure that the kubelet kubeconfig file ownership is set to root:root
-    - 3.1.3 Ensure that the kubelet configuration file has permissions set to 644 or more restrictive
-    - 3.1.4 Ensure that the kubelet configuration file ownership is set to root:root
-    - 3.2.1 Ensure that the Anonymous Auth is Not Enabled
-    - 3.2.2 Ensure that the --authorization-mode argument is not set to AlwaysAllow
-    - 3.2.3 Ensure that a Client CA File is Configured
-    - 3.2.4 Ensure that the --read-only-port is disabled
-    - 3.2.5 Ensure that the --streaming-connection-idle-timeout argument is not set to 0
-    - 3.2.6 Ensure that the --make-iptables-util-chains argument is set to true
-    - 3.2.
+    - Ensure that the cluster-admin role is only used where required
+    - Minimize access to Amazon ECR image scanning or a third party provider
+    - Minimize user access to Amazon ECR
+    - Ensure Network Policy is Enabled and set as appropriate
+    - Encrypt traffic to HTTPS load balancers with TLS certificates
+  impact: "Enhances EKS security posture by controlling access and network configurations."
+element2:
+  name: CIS Amazon Elastic Kubernetes Service (EKS) Logging
+  requirements:
+    - Enable audit Logs (Automated)
+    - Ensure audit logs are collected and managed (Manual)
+    - Minimize wildcard use in Roles and ClusterRoles
+    - Minimize access to create pods
+  impact: "Improves EKS logging practices for auditing and incident response."
+element3:
+  name: CIS Amazon Elastic Kubernetes Service (EKS) Pod Security Standards
+  requirements:
+    - Minimize the admission of privileged containers
+    - Minimize the admission of containers wishing to share the host process ID namespace
+    - Minimize the admission of containers wishing to share the host IPC namespace
+
+
+---CHUNK---
+
+element1:
+  name: "Kubelet"
+  requirements:
+    - "Ensure that the Kubelet is configured to collect audit logs."
+    - "Verify that audit logs are being exported to a centralized logging system."
+    - "Confirm that audit logs are being monitored and managed according to the enterprise’s audit log management process."
+element2:
+  name: "Logging"
+  requirements:
+    - "Enable audit logging on the Kubelet."
+    - "Configure audit logging to be collected and sent to a centralized logging system."
+    - "Ensure audit logs are being monitored and managed according to the enterprise’s audit log management process."
+element3:
+  name: "Pod Security Standards"
+  requirements:
+    - "Implement Pod Security Standards to enhance the security of Kubernetes pods."
+    - "Configure pod security contexts to restrict the actions pods can perform."
+    - "Enforce role-based access control (RBAC) to limit user access to resources."
+element4:
+  name: "Logging"
+  requirements:
+    - "Ensure proper logging of all events within the cluster."
+    - "Collect and store logs for auditing and analysis purposes
+
+---CHUNK---
+
+element1:
+  name: "Kubelet Configuration"
+  requirements:
+    - "Ensure that the Anonymous Auth is Not Enabled"
+    - "Verify that the Kubeconfig file has permissions of 644 or more restrictive"
+    - "Audit Method 1: Kubelets can accept configuration via a configuration file and in some cases via command line arguments"
+element2:
+  name: "Kubelet Configuration"
+  requirements:
+    - "Audit Method 2: Verify that Anonymous Authentication is not enabled"
+    - "Audit Method 2: Verify that the Kubeconfig file has permissions of 644 or more restrictive"
+    - "Audit Method 2: Verify that the Kubeconfig file has permissions of 644 or more restrictive"
+element3:
+  name: "Kubelet Configuration"
+  requirements:
+    - "Audit Method 2: Verify that Anonymous Authentication is not enabled"
+    - "Audit Method 2: Verify that the Kubeconfig file has permissions of 644 or more restrictive"
+    - "Audit Method 2: Verify that the Kubeconfig file has permissions of 644 or more
+
+---CHUNK---
+
+element1:
+  name: "Kubelet Configuration"
+  requirements:
+    - "Ensure that Anonymous Authentication is not enabled"
+    - "Ensure that Webhook Authentication is enabled"
+    - "Ensure that the Authorization Mode is set to WebHook"
+    - "Ensure that a client certificate authority file is configured"
+    - "Ensure that the --streaming-connection-idle-timeout argument is not set to 0"
+element2:
+  name: "Kubelet Configuration Parameters"
+  requirements:
+    - "Verify that the --config argument is not set to AlwaysAllow"
+    - "Verify that the --authorization-mode argument is not set to AlwaysAllow"
+    - "Verify that the --read-only-port argument is not set to 0"
+    - "Verify that the --streaming-connection-idle-timeout argument is not set to 0"
+element3:
+  name: "Kubelet Configuration File"
+  requirements:
+    - "Verify that the --config argument is not set to 0"
+    - "Verify that the --config file is present"
+    - "Verify that the --config file contains the location of the
+
+---CHUNK---
+
+element1:
+  name: ensure that such streaming connections are timed out after serving legitimate use
+  requirements:
+    - ensure that such streaming connections are timed out after serving legitimate use cases.
+  audit:
+    Audit Method 1:
+      First, SSH to the relevant node:
+      Run the following command on each node to find the Kubelet process:
+      ps -ef | grep kubelet
+      If the command line for the process includes the argument streaming-connection-
+      idle-timeout verify that it is not set to 0.
+      If the streaming-connection-idle-timeout argument is not present in the output of 
+      the above command, refer instead to the config argument that specifies the location of 
+      the Kubelet config file, e.g., --config /etc/kubernetes/kubelet/kubelet-
+      config.json.
+      Open the Kubelet config file:
+      Page 51 
+  audit:
+    Audit Method 2:
+      If using the api configz endpoint consider searching for the status of 
+      "streamingConnectionIdleTimeout":"4h0m0s" by extracting the live configuration 
+      from
+
+---CHUNK---
+
+```yaml
+element1:
+  name: "Cluster Access Manager API"
+  requirements:
+    - "Use the Cluster Access Manager API for managing access control."
+    - "Replace aws-auth ConfigMap for managing RBAC and service accounts."
+    - "Improve scalability and operational efficiency of access control."
+    - "Enhance visibility, auditing, and compliance."
+    - "Align with AWS best practices for EKS."
+  description: |
+    The document recommends transitioning from the aws-auth ConfigMap to the Cluster Access Manager API for managing Kubernetes access control. This offers benefits in scalability, operational efficiency, and improved security.
+  references:
+    - "https://kubernetes.io/docs/tasks/configure-pod-container/configure-service-
+    account/"
+    - "https://aws.github.io/aws-eks-best-practices/iam/#disable-auto-mounting-of-
+    service-account-tokens"
+    - "https://kubernetes.io/docs/tasks/configure-pod-container/configure-service-
+    account/"
+  risk: "Low - potential for misconfiguration if not implemented correctly."
+  mitigation: "
+
+---CHUNK---
+
+1:
+  name: "Kubelet"
+  requirements:
+    - "Ensure that the Kubelet agent is running on all nodes in the cluster."
+    - "Configure the Kubelet to monitor the cluster's resource utilization."
+    - "Implement a mechanism for logging the Kubelet's activity."
+    - "Ensure that the Kubelet is configured to use a secure authentication method."
+  audit:
+    - "Review the Kubelet logs for suspicious activity."
+    - "Check the Kubelet logs for resource exhaustion or other issues."
+  remedyation:
+    - "Investigate any anomalies in the Kubelet logs."
+    - "Adjust the Kubelet configuration as needed."
+
+
+---CHUNK---
+
+ாரு answer:
+```yaml
+element1:
+  name: "IG 3"
+  requirements:
+    - "Restrict administrator privileges to dedicated administrator accounts"
+    - "Ensure that all users with administrative account access use a dedicated or secondary account for elevated activities."
+    - "Minimize the admission of containers with allowPrivilegeEscalation (Automated)"
+    - "Perform application updates on enterprise assets through automated patch management on a monthly, or more frequent, basis."
+    - "Establish and maintain dedicated computing resources for all administrative tasks or tasks requiring administrative access."
+element2:
+  name: "IG 2"
+  requirements:
+    - "Ensure that all users with administrative account access use a dedicated or secondary account for elevated activities."
+    - "Ensure that all users with administrative account access use a dedicated or secondary account for elevated activities."
+    - "Ensure that all users with administrative account access use a dedicated or secondary account for elevated activities."
+element3:
+  name: "IG 1"
+  requirements:
+    - "Restrict administrator privileges to dedicated administrator accounts"
+    - "Ensure that all users with administrative account access use a dedicated or secondary account for elevated activities."
+
+
+---CHUNK---
+
+ாரு.
+
+---CHUNK---
+
+ாரு only.
+
+---CHUNK---
+
+This is perfect.
+
+
+---CHUNK---
+
+ Krisp, here’s the YAML representation of the CIS Benchmark document analysis, extracting the Key Data Elements (KDEs) as requested:
+
+```yaml
+element1:
+  name: Client CA File is Configured
+  requirements:
+    - Disabled
+    - Not set
+element2:
+  name: --streaming-connection-idle-timeout
+  requirements:
+    - Not set
+element3:
+  name: --make-iptables-util-chains
+  requirements:
+    - Not set
+element4:
+  name: --eventRecordQPS
+  requirements:
+    - Not set
+element5:
+  name: --rotate-certificates
+  requirements:
+    - Not set
+element6:
+  name: --read-only-port
+  requirements:
+    - Disabled
+element7:
+  name: --stream-connection-idle-timeout
+  requirements:
+    - Not set
+element8:
+  name: --make-iptables-util-chains
+  requirements:
+    - Not set
+element9:
+  name: --eventRecordQPS
+  requirements:
+    - Not set
+element10:
+  name
 
 ======================================================================
 

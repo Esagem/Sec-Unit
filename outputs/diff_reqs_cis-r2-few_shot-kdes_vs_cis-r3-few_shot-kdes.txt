@@ -1,1 +1,31 @@
-NO DIFFERENCES IN REGARDS TO ELEMENT REQUIREMENTS
+3.2.4 Ensure that the --read-only-port is disabled,ABSENT-IN-cis-r3-few_shot-kdes,PRESENT-IN-cis-r2-few_shot-kdes,NA
+Authentication and Authorization,ABSENT-IN-cis-r3-few_shot-kdes,PRESENT-IN-cis-r2-few_shot-kdes,NA
+Cluster Access Manager API,ABSENT-IN-cis-r3-few_shot-kdes,PRESENT-IN-cis-r2-few_shot-kdes,NA
+AWS EKS Key Management Service,ABSENT-IN-cis-r2-few_shot-kdes,PRESENT-IN-cis-r3-few_shot-kdes,NA
+Host Network Namespace,ABSENT-IN-cis-r2-few_shot-kdes,PRESENT-IN-cis-r3-few_shot-kdes,NA
+Image Scanning,ABSENT-IN-cis-r2-few_shot-kdes,PRESENT-IN-cis-r3-few_shot-kdes,NA
+Logging,ABSENT-IN-cis-r2-few_shot-kdes,PRESENT-IN-cis-r3-few_shot-kdes,NA
+Anonymous Auth is Not Enabled,ABSENT-IN-cis-r3-few_shot-kdes,PRESENT-IN-cis-r2-few_shot-kdes,Enable audit Logs
+Anonymous Auth is Not Enabled,ABSENT-IN-cis-r3-few_shot-kdes,PRESENT-IN-cis-r2-few_shot-kdes,Ensure that the kubeconfig file permissions are set to 644 or more restrictive
+Anonymous Auth is Not Enabled,ABSENT-IN-cis-r3-few_shot-kdes,PRESENT-IN-cis-r2-few_shot-kdes,Ensure that the kubelet kubeconfig file ownership is set to root:root
+Internal Only - General,ABSENT-IN-cis-r3-few_shot-kdes,PRESENT-IN-cis-r2-few_shot-kdes,Do not generally permit containers to be run with the hostNetwork flag set to true.
+Internal Only - General,ABSENT-IN-cis-r3-few_shot-kdes,PRESENT-IN-cis-r2-few_shot-kdes,Ensure Image Vulnerability Scanning using Amazon ECR
+Internal Only - General,ABSENT-IN-cis-r3-few_shot-kdes,PRESENT-IN-cis-r2-few_shot-kdes,Ensure that all users with administrative account access use a dedicated or secondary account for elevated activities. This account should only be used for administrative activities and not internet browsing, email, or similar activities.
+Internal Only - General,ABSENT-IN-cis-r3-few_shot-kdes,PRESENT-IN-cis-r2-few_shot-kdes,Establish Secure Configurations
+Internal Only - General,ABSENT-IN-cis-r3-few_shot-kdes,PRESENT-IN-cis-r2-few_shot-kdes,Minimize the admission of containers with allowPrivilegeEscalation
+Internal Only - General,ABSENT-IN-cis-r3-few_shot-kdes,PRESENT-IN-cis-r2-few_shot-kdes,Use Standard Hardening Configuration Templates for Application Infrastructure
+Internal Only - General,ABSENT-IN-cis-r2-few_shot-kdes,PRESENT-IN-cis-r3-few_shot-kdes,Configure the Cluster Service Account with Storage Object Viewer Role to only allow read-only access to Amazon EKS APIs
+Internal Only - General,ABSENT-IN-cis-r2-few_shot-kdes,PRESENT-IN-cis-r3-few_shot-kdes,Establish and Maintain Dedicated Computing Resources for All Administrative Work
+Internal Only - General,ABSENT-IN-cis-r2-few_shot-kdes,PRESENT-IN-cis-r3-few_shot-kdes,Minimize user access to Amazon ECR
+Internal Only - General,ABSENT-IN-cis-r2-few_shot-kdes,PRESENT-IN-cis-r3-few_shot-kdes,Only allow access to authorized cloud storage or email providers.
+Kubelet,ABSENT-IN-cis-r3-few_shot-kdes,PRESENT-IN-cis-r2-few_shot-kdes,Ensure that the kubelet is configured to use a valid kubeconfig file
+Worker Node Configuration Files,ABSENT-IN-cis-r3-few_shot-kdes,PRESENT-IN-cis-r2-few_shot-kdes,Ensure that the kubelet kubeconfig file permissions are set to 644 or more restrictive
+Worker Node Configuration Files,ABSENT-IN-cis-r2-few_shot-kdes,PRESENT-IN-cis-r3-few_shot-kdes,Enable audit Logs
+Worker Node Configuration Files,ABSENT-IN-cis-r2-few_shot-kdes,PRESENT-IN-cis-r3-few_shot-kdes,Ensure that such streaming connections are timed out after serving legitimate use
+Worker Node Configuration Files,ABSENT-IN-cis-r2-few_shot-kdes,PRESENT-IN-cis-r3-few_shot-kdes,Ensure that the --make-iptables-util-chains argument is set to true
+Worker Node Configuration Files,ABSENT-IN-cis-r2-few_shot-kdes,PRESENT-IN-cis-r3-few_shot-kdes,Ensure that the --rotate-kubelet-server-certificate argument is set to true
+Worker Node Configuration Files,ABSENT-IN-cis-r2-few_shot-kdes,PRESENT-IN-cis-r3-few_shot-kdes,Ensure that the RotateKubeletServerCertificate argument is set to true
+Worker Node Configuration Files,ABSENT-IN-cis-r2-few_shot-kdes,PRESENT-IN-cis-r3-few_shot-kdes,Ensure that the cluster has at least one active policy control mechanism in place
+Worker Node Configuration Files,ABSENT-IN-cis-r2-few_shot-kdes,PRESENT-IN-cis-r3-few_shot-kdes,Ensure that the default namespace is not used
+Worker Node Configuration Files,ABSENT-IN-cis-r2-few_shot-kdes,PRESENT-IN-cis-r3-few_shot-kdes,Ensure that the kubelet service file /etc/systemd/system/kubelet.service.d/10-kubelet-args.conf does not set --streaming-connection-idle-timeout argument because it would override the Kubelet config file.
+Worker Node Configuration Files,ABSENT-IN-cis-r2-few_shot-kdes,PRESENT-IN-cis-r3-few_shot-kdes,Ensure that the use of dedicated administrative accounts is disabled

@@ -1,0 +1,14 @@
+element1:
+  name: Control Plane Components
+  requirements:
+  - Ensure that the kubeconfig file permissions are set to 644 or more restrictive
+  - Ensure that the kubelet kubeconfig file ownership is set to root:root
+element2:
+  name: Kubelet
+  requirements:
+  - Ensure that the Anonymous Auth is Not Enabled
+element3:
+  name: Worker Nodes
+  requirements:
+  - Ensure that the kubeconfig file permissions are set to 644 or more restrictive
+  - Ensure that the kubelet kubeconfig file ownership is set to root:root

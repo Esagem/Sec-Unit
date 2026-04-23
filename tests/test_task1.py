@@ -322,5 +322,81 @@ class TestElementNameValidation(unittest.TestCase):
         self.assertIn("Kubelet", names)
 
 
+class TestChunkDocument(unittest.TestCase):
+    """_chunk_document must cover the entire document — not truncate it."""
+
+    def test_short_document_returns_single_chunk(self):
+        from task1.extractor import _chunk_document
+        text = "3.2.1 Ensure anonymous auth is disabled\n"
+        chunks = _chunk_document(text, max_chars=20000)
+        self.assertEqual(len(chunks), 1)
+        self.assertEqual(chunks[0], text)
+
+    def test_long_document_is_fully_covered(self):
+        """Every character of the input must appear in at least one chunk."""
+        from task1.extractor import _chunk_document
+        # Build a realistic multi-section body ~60k chars
+        lines = []
+        for section in range(1, 7):
+            lines.append(f"{section} Section {section}")
+            for sub in range(1, 30):
+                lines.append(f"{section}.{sub}.1 Ensure that something important is configured correctly for item {sub}")
+                lines.append("Rationale: " + ("x " * 80))
+                lines.append("Remediation: " + ("y " * 80))
+        text = "\n".join(lines)
+        self.assertGreater(len(text), 50000)
+
+        chunks = _chunk_document(text, max_chars=15000, overlap_chars=500)
+        self.assertGreater(len(chunks), 1, "long doc must split into multiple chunks")
+
+        # Every chunk respects the cap
+        for c in chunks:
+            self.assertLessEqual(len(c), 15000)
+
+        # Joining chunks (accounting for overlap) covers the full document —
+        # the simplest correctness check: content from the last section must
+        # appear in some chunk.
+        last_section_marker = "Section 6"
+        self.assertTrue(
+            any(last_section_marker in c for c in chunks),
+            "content from the end of the document must appear in a chunk",
+        )
+
+        # Content from the middle must also appear
+        mid_marker = "Section 3"
+        self.assertTrue(any(mid_marker in c for c in chunks))
+
+    def test_chunks_overlap_for_continuity(self):
+        """Adjacent chunks should share some tail/head content so controls
+        spanning a boundary appear intact in at least one chunk."""
+        from task1.extractor import _chunk_document
+        text = "A" * 30000
+        chunks = _chunk_document(text, max_chars=10000, overlap_chars=500)
+        self.assertGreaterEqual(len(chunks), 3)
+        # End of chunk[0] should share a suffix with start of chunk[1]
+        overlap = chunks[0][-500:]
+        self.assertIn(overlap[:100], chunks[1])
+
+
+class TestMergeKdeDicts(unittest.TestCase):
+    """_merge_kde_dicts must union requirements across chunks by element name."""
+
+    def test_same_name_across_chunks_is_merged(self):
+        from task1.extractor import _merge_kde_dicts
+        chunk_a = {
+            "element1": {"name": "Kubelet", "requirements": ["Ensure anonymous auth is disabled"]},
+        }
+        chunk_b = {
+            "element1": {"name": "Kubelet", "requirements": ["Ensure read-only port is disabled"]},
+            "element2": {"name": "Logging", "requirements": ["Enable audit logs"]},
+        }
+        merged = _merge_kde_dicts([chunk_a, chunk_b])
+        names = [v["name"] for v in merged.values()]
+        self.assertEqual(sorted(names), ["Kubelet", "Logging"])
+        kubelet = next(v for v in merged.values() if v["name"] == "Kubelet")
+        self.assertIn("Ensure anonymous auth is disabled", kubelet["requirements"])
+        self.assertIn("Ensure read-only port is disabled", kubelet["requirements"])
+
+
 if __name__ == "__main__":
     unittest.main()

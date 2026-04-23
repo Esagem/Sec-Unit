@@ -1,0 +1,5 @@
+element1:
+  name: Logging
+  requirements:
+  - Enable audit Logs
+  - Ensure audit logs are collected and managed

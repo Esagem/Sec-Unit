@@ -1,1 +1,16 @@
-Control Plane Components
+Amazon ECR Identity-Based Policies
+EphemeralContainers
+IAM Authenticator
+IAM Identity-Based Policies
+Image Scanning
+Kernel Configuration
+Kubelet Configuration
+Kubelet Configuration File
+Kubelet Configuration File Permissions
+Kubelet Service Configuration
+Kubernetes Cluster
+Network Security
+PSP has allowedCapabilities Set by Default
+Safeguard
+Security Context
+explicitly require API server access

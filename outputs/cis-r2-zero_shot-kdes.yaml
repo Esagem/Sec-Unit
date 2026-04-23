@@ -3,12 +3,86 @@ element1:
   requirements:
   - Enable audit Logs
   - Ensure audit logs are collected and managed
-element2:
-  name: Worker Nodes
-  requirements:
-  - Ensure that the kubeconfig file permissions are set to 644 or more restrictive
-  - Ensure that the kubelet kubeconfig file ownership is set to root:root
+  - Ensure that the kubelet kubeconfig file permissions are set to 644 or more restrictive
   - Ensure that the kubelet configuration file has permissions set to 644 or more
     restrictive
   - Ensure that the kubelet configuration file ownership is set to root:root
-  - Ensure that the kube
+  - Ensure that the --streaming-connection-idle-timeout argument is not set to 0
+  - Ensure that the --make-iptables-util-chains argument is set to true
+  - Ensure that the --eventRecordQPS argument is set to 0 or a level which ensures
+    appropriate event capture
+  - Ensure that the --rotate-certificates argument is not present or is set to true
+  - Minimize user access to Amazon ECR image scanning or a third party provider
+  - Minimize access to secrets as files over secrets as environment variables
+  - Enable Detailed Logging
+  - Configure logging to a centralized system.
+  - Enable detailed audit trails.
+  - Kubernetes 1.23+ Cluster Access Manager API
+element2:
+  name: Audit Logs
+  requirements:
+  - Enable audit Logs
+  - Ensure audit logs are collected and managed
+  - Enable Detailed Logging
+element3:
+  name: Anonymous Auth
+  requirements:
+  - Disable anonymous requests to the Kubelet server.
+  - Rely on authentication to authorize access and disallow anonymous requests.
+element4:
+  name: Kubelet Configuration
+  requirements:
+  - Verify that Anonymous Authentication is not enabled.
+  - Review the running configuration of a Kubelet via the /configz endpoint of the
+    Kubernetes API.
+  - Ensure Kubelet is configured with appropriate settings.
+  - Verify the Kubelet configuration file is valid.
+element5:
+  name: Network Policies
+  requirements:
+  - Implement network policies to restrict traffic.
+  - Define rules for network access.
+  - Pod Security Admission
+element6:
+  name: Cluster Access Manager API
+  requirements:
+  - Ensure that all users with administrative account access uses a dedicated or secondary
+    account for elevated activities. This account should only be used for administrative
+    activities and not internet browsing, email, or similar activities.
+  - Minimize access to secrets
+  - Restrict Administrator Privileges to Dedicated Administrator Accounts on enterprise
+    assets. Conduct general computing activities, such as internet browsing, email,
+    and productivity suite use, from the user’s primary, non-privileged account.
+  - Ensure that default service accounts are not actively used.
+  - Uninstall or disable unnecessary services on enterprise assets and software.
+  - Ensure that Service Account Tokens are only mounted where necessary
+  - Cluster Access Manager API to streamline and enhance the management of access
+    controls within EKS clusters
+element7:
+  name: Pod Identity
+  requirements:
+  - IAM Roles for Service Accounts (IRSA)
+  - Pod Identity feature
+element8:
+  name: Secure Pods
+  requirements:
+  - Pod Security Admission
+  - Least Privilege Principle
+element9:
+  name: Amazon ECR Identity-Based Policies
+  requirements:
+  - Restrict user access to Amazon ECR to only authorized personnel and service accounts.
+  - Minimize cluster access to read-only for Amazon ECR
+element10:
+  name: Amazon ECR Resource-Based Policies
+  requirements:
+  - Use approved container registries.
+  - Allowlist authorized software.
+  - Ensure the use of dedicated administrative accounts.
+  - Use technical controls, such as application allowlisting, to ensure that only
+    authorized software can execute or be accessed.
+  - Reassess bi-annually, or more frequently.
+  - Only allow access to authorized cloud storage or email providers.
+  - Establish policies and procedures that outline how ECR registries will be approved,
+    maintained, and monitored.
+  - Implement access controls to ensure that only approved ECR registries are

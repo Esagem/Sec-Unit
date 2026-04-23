@@ -1,4 +1,25 @@
-Control Plane Configuration,ABSENT-IN-cis-r4-few_shot-kdes,PRESENT-IN-cis-r1-few_shot-kdes,NA
-Kubelet,ABSENT-IN-cis-r1-few_shot-kdes,PRESENT-IN-cis-r4-few_shot-kdes,NA
-Control Plane Components,ABSENT-IN-cis-r4-few_shot-kdes,PRESENT-IN-cis-r1-few_shot-kdes,Ensure that the kubelet configuration file has permissions set to 644 or more restrictive
-Control Plane Components,ABSENT-IN-cis-r4-few_shot-kdes,PRESENT-IN-cis-r1-few_shot-kdes,Ensure that the kubelet configuration file ownership is set to root:root
+Change Default Passwords,ABSENT-IN-cis-r4-few_shot-kdes,PRESENT-IN-cis-r1-few_shot-kdes,NA
+Container Optimized OS,ABSENT-IN-cis-r4-few_shot-kdes,PRESENT-IN-cis-r1-few_shot-kdes,NA
+Extensible Admission Control,ABSENT-IN-cis-r4-few_shot-kdes,PRESENT-IN-cis-r1-few_shot-kdes,NA
+Kubernetes API,ABSENT-IN-cis-r4-few_shot-kdes,PRESENT-IN-cis-r1-few_shot-kdes,NA
+Secrets Management,ABSENT-IN-cis-r4-few_shot-kdes,PRESENT-IN-cis-r1-few_shot-kdes,NA
+Server-Side Encryption,ABSENT-IN-cis-r4-few_shot-kdes,PRESENT-IN-cis-r1-few_shot-kdes,NA
+CIS Controls: Controls Version Control IG 1 IG 2 IG 3,ABSENT-IN-cis-r1-few_shot-kdes,PRESENT-IN-cis-r4-few_shot-kdes,NA
+CNI Plugin,ABSENT-IN-cis-r1-few_shot-kdes,PRESENT-IN-cis-r4-few_shot-kdes,NA
+Implement and Manage a Firewall on Servers,ABSENT-IN-cis-r1-few_shot-kdes,PRESENT-IN-cis-r4-few_shot-kdes,NA
+Internal Only - General,ABSENT-IN-cis-r1-few_shot-kdes,PRESENT-IN-cis-r4-few_shot-kdes,NA
+Service Account Tokens,ABSENT-IN-cis-r1-few_shot-kdes,PRESENT-IN-cis-r4-few_shot-kdes,NA
+Kubelet,ABSENT-IN-cis-r4-few_shot-kdes,PRESENT-IN-cis-r1-few_shot-kdes,Ensure that the kubelet configuration file has permissions set to 644 or more restrictive
+Kubelet,ABSENT-IN-cis-r4-few_shot-kdes,PRESENT-IN-cis-r1-few_shot-kdes,Ensure that the kubelet kubeconfig file permissions are set to 644 or more restrictive
+Kubelet,ABSENT-IN-cis-r1-few_shot-kdes,PRESENT-IN-cis-r4-few_shot-kdes,Ensure that the --authorization-mode argument is not set to AlwaysAllow
+Kubelet,ABSENT-IN-cis-r1-few_shot-kdes,PRESENT-IN-cis-r4-few_shot-kdes,Ensure that the --default-namespace is not used
+Logging,ABSENT-IN-cis-r4-few_shot-kdes,PRESENT-IN-cis-r1-few_shot-kdes,Ensure that the cluster has at least one active policy control mechanism in place
+Logging,ABSENT-IN-cis-r4-few_shot-kdes,PRESENT-IN-cis-r1-few_shot-kdes,Ensure that the default namespace is not used
+Logging,ABSENT-IN-cis-r1-few_shot-kdes,PRESENT-IN-cis-r4-few_shot-kdes,Collect Audit Logs
+Logging,ABSENT-IN-cis-r1-few_shot-kdes,PRESENT-IN-cis-r4-few_shot-kdes,Enable Detailed Logging
+Logging,ABSENT-IN-cis-r1-few_shot-kdes,PRESENT-IN-cis-r4-few_shot-kdes,Enable System Logging
+Logging,ABSENT-IN-cis-r1-few_shot-kdes,PRESENT-IN-cis-r4-few_shot-kdes,Establish and Maintain an Audit Log Management Process
+Logging,ABSENT-IN-cis-r1-few_shot-kdes,PRESENT-IN-cis-r4-few_shot-kdes,Verify that the audit logs are being collected and managed
+Pod Security Standards,ABSENT-IN-cis-r4-few_shot-kdes,PRESENT-IN-cis-r1-few_shot-kdes,Use secure network management and communication protocols (e.g., 802.1X, Wi-Fi Protected Access 2 (WPA2) Enterprise or greater)
+Worker Node Configuration Files,ABSENT-IN-cis-r4-few_shot-kdes,PRESENT-IN-cis-r1-few_shot-kdes,Minimize the admission of containers wishing to share the host IPC namespace
+Worker Node Configuration Files,ABSENT-IN-cis-r1-few_shot-kdes,PRESENT-IN-cis-r4-few_shot-kdes,Ensure that the kubelet configuration file has permissions set to 644 or more restrictive

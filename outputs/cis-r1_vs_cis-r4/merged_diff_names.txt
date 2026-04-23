@@ -1,1 +1,6 @@
-NO DIFFERENCES IN REGARDS TO ELEMENT NAMES
+CNI Plugin
+Extensible Admission Control
+Internal Only - General
+Kubelet Configuration
+Kubernetes API
+Secrets Management

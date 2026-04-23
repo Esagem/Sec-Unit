@@ -1,3 +1,64 @@
-Control Plane Components,ABSENT-IN-cis-r3-zero_shot-kdes,PRESENT-IN-cis-r1-zero_shot-kdes,NA
-Logging,ABSENT-IN-cis-r1-zero_shot-kdes,PRESENT-IN-cis-r3-zero_shot-kdes,NA
-Worker Nodes,ABSENT-IN-cis-r1-zero_shot-kdes,PRESENT-IN-cis-r3-zero_shot-kdes,NA
+Create Administrative Boundaries,ABSENT-IN-cis-r3-zero_shot-kdes,PRESENT-IN-cis-r1-zero_shot-kdes,NA
+Encryption at Rest,ABSENT-IN-cis-r3-zero_shot-kdes,PRESENT-IN-cis-r1-zero_shot-kdes,NA
+Extensible Admission Control,ABSENT-IN-cis-r3-zero_shot-kdes,PRESENT-IN-cis-r1-zero_shot-kdes,NA
+General Policies,ABSENT-IN-cis-r3-zero_shot-kdes,PRESENT-IN-cis-r1-zero_shot-kdes,NA
+IAM Authenticator for Kubernetes,ABSENT-IN-cis-r3-zero_shot-kdes,PRESENT-IN-cis-r1-zero_shot-kdes,NA
+Kubelet Configuration,ABSENT-IN-cis-r3-zero_shot-kdes,PRESENT-IN-cis-r1-zero_shot-kdes,NA
+Kubelet Event Record Policy,ABSENT-IN-cis-r3-zero_shot-kdes,PRESENT-IN-cis-r1-zero_shot-kdes,NA
+Kubernetes API,ABSENT-IN-cis-r3-zero_shot-kdes,PRESENT-IN-cis-r1-zero_shot-kdes,NA
+Manage Network Boundaries,ABSENT-IN-cis-r3-zero_shot-kdes,PRESENT-IN-cis-r1-zero_shot-kdes,NA
+Policies,ABSENT-IN-cis-r3-zero_shot-kdes,PRESENT-IN-cis-r1-zero_shot-kdes,NA
+RBAC and Service Accounts,ABSENT-IN-cis-r3-zero_shot-kdes,PRESENT-IN-cis-r1-zero_shot-kdes,NA
+Worker Node Configuration,ABSENT-IN-cis-r3-zero_shot-kdes,PRESENT-IN-cis-r1-zero_shot-kdes,NA
+aws eks update-cluster-config,ABSENT-IN-cis-r3-zero_shot-kdes,PRESENT-IN-cis-r1-zero_shot-kdes,NA
+Anonymous Auth,ABSENT-IN-cis-r1-zero_shot-kdes,PRESENT-IN-cis-r3-zero_shot-kdes,NA
+Cluster Access Manager API,ABSENT-IN-cis-r1-zero_shot-kdes,PRESENT-IN-cis-r3-zero_shot-kdes,NA
+Container Registry Access,ABSENT-IN-cis-r1-zero_shot-kdes,PRESENT-IN-cis-r3-zero_shot-kdes,NA
+IAM Roles,ABSENT-IN-cis-r1-zero_shot-kdes,PRESENT-IN-cis-r3-zero_shot-kdes,NA
+Image Scanning,ABSENT-IN-cis-r1-zero_shot-kdes,PRESENT-IN-cis-r3-zero_shot-kdes,NA
+Monitoring,ABSENT-IN-cis-r1-zero_shot-kdes,PRESENT-IN-cis-r3-zero_shot-kdes,NA
+Pod Identity,ABSENT-IN-cis-r1-zero_shot-kdes,PRESENT-IN-cis-r3-zero_shot-kdes,NA
+Secure Secrets,ABSENT-IN-cis-r1-zero_shot-kdes,PRESENT-IN-cis-r3-zero_shot-kdes,NA
+Security Context,ABSENT-IN-cis-r1-zero_shot-kdes,PRESENT-IN-cis-r3-zero_shot-kdes,NA
+kubeconfig file permissions,ABSENT-IN-cis-r1-zero_shot-kdes,PRESENT-IN-cis-r3-zero_shot-kdes,NA
+Control Plane Configuration,ABSENT-IN-cis-r3-zero_shot-kdes,PRESENT-IN-cis-r1-zero_shot-kdes,Configure data access control lists
+Control Plane Configuration,ABSENT-IN-cis-r3-zero_shot-kdes,PRESENT-IN-cis-r1-zero_shot-kdes,Enable audit logs
+Control Plane Configuration,ABSENT-IN-cis-r3-zero_shot-kdes,PRESENT-IN-cis-r1-zero_shot-kdes,Ensure that all options are set to 'Enabled'
+Control Plane Configuration,ABSENT-IN-cis-r3-zero_shot-kdes,PRESENT-IN-cis-r1-zero_shot-kdes,Ensure that all options are toggled to 'Enabled'
+Control Plane Configuration,ABSENT-IN-cis-r3-zero_shot-kdes,PRESENT-IN-cis-r1-zero_shot-kdes,Ensure that the kubelet configuration file has permissions set to '644'
+Control Plane Configuration,ABSENT-IN-cis-r3-zero_shot-kdes,PRESENT-IN-cis-r1-zero_shot-kdes,Ensure that the kubelet configuration file ownership is set to 'root:root'
+Control Plane Configuration,ABSENT-IN-cis-r1-zero_shot-kdes,PRESENT-IN-cis-r3-zero_shot-kdes,Enable audit logging for Kubernetes components
+Control Plane Configuration,ABSENT-IN-cis-r1-zero_shot-kdes,PRESENT-IN-cis-r3-zero_shot-kdes,Ensure audit logs are being collected and sent to a centralized logging system
+Control Plane Configuration,ABSENT-IN-cis-r1-zero_shot-kdes,PRESENT-IN-cis-r3-zero_shot-kdes,Ensure audit logs are collected and managed
+Control Plane Configuration,ABSENT-IN-cis-r1-zero_shot-kdes,PRESENT-IN-cis-r3-zero_shot-kdes,Verify that the audit logs are being monitored and managed according to the enterprise’s audit log management process.
+Logging,ABSENT-IN-cis-r3-zero_shot-kdes,PRESENT-IN-cis-r1-zero_shot-kdes,Minimize the admission of containers wishing to share the host IPC namespace
+Logging,ABSENT-IN-cis-r3-zero_shot-kdes,PRESENT-IN-cis-r1-zero_shot-kdes,Minimize the admission of containers wishing to share the host network namespace
+Logging,ABSENT-IN-cis-r3-zero_shot-kdes,PRESENT-IN-cis-r1-zero_shot-kdes,Minimize the admission of containers wishing to share the host process ID namespace
+Logging,ABSENT-IN-cis-r3-zero_shot-kdes,PRESENT-IN-cis-r1-zero_shot-kdes,Minimize the admission of containers with allowPrivilegeEscalation
+Logging,ABSENT-IN-cis-r3-zero_shot-kdes,PRESENT-IN-cis-r1-zero_shot-kdes,Minimize the admission of root containers
+Logging,ABSENT-IN-cis-r1-zero_shot-kdes,PRESENT-IN-cis-r3-zero_shot-kdes,Audit logs enabled
+Logging,ABSENT-IN-cis-r1-zero_shot-kdes,PRESENT-IN-cis-r3-zero_shot-kdes,Configure Logging Levels
+Logging,ABSENT-IN-cis-r1-zero_shot-kdes,PRESENT-IN-cis-r3-zero_shot-kdes,Enable Detailed Logging
+Logging,ABSENT-IN-cis-r1-zero_shot-kdes,PRESENT-IN-cis-r3-zero_shot-kdes,Enable audit Logs
+Logging,ABSENT-IN-cis-r1-zero_shot-kdes,PRESENT-IN-cis-r3-zero_shot-kdes,Ensure audit logs are collected and managed
+Logging,ABSENT-IN-cis-r1-zero_shot-kdes,PRESENT-IN-cis-r3-zero_shot-kdes,Ensure that all logs are properly collected and stored.
+Logging,ABSENT-IN-cis-r1-zero_shot-kdes,PRESENT-IN-cis-r3-zero_shot-kdes,Ensure that the kubelet configuration file has permissions set to 644 or more restrictive
+Logging,ABSENT-IN-cis-r1-zero_shot-kdes,PRESENT-IN-cis-r3-zero_shot-kdes,Ensure that the kubelet configuration file ownership is set to root:root
+Logging,ABSENT-IN-cis-r1-zero_shot-kdes,PRESENT-IN-cis-r3-zero_shot-kdes,Ensure that the kubelet kubeconfig file ownership is set to root:root
+Logging,ABSENT-IN-cis-r1-zero_shot-kdes,PRESENT-IN-cis-r3-zero_shot-kdes,Implement Centralized Logging
+Logging,ABSENT-IN-cis-r1-zero_shot-kdes,PRESENT-IN-cis-r3-zero_shot-kdes,Implement a logging strategy for all components.
+Logging,ABSENT-IN-cis-r1-zero_shot-kdes,PRESENT-IN-cis-r3-zero_shot-kdes,Logging agent enabled
+Logging,ABSENT-IN-cis-r1-zero_shot-kdes,PRESENT-IN-cis-r3-zero_shot-kdes,Metrics collection enabled
+Logging,ABSENT-IN-cis-r1-zero_shot-kdes,PRESENT-IN-cis-r3-zero_shot-kdes,Secure Logging Data
+Network Policies,ABSENT-IN-cis-r3-zero_shot-kdes,PRESENT-IN-cis-r1-zero_shot-kdes,Consider external secret storage
+Network Policies,ABSENT-IN-cis-r3-zero_shot-kdes,PRESENT-IN-cis-r1-zero_shot-kdes,Ensure Network Policy is Enabled and set as appropriate
+Network Policies,ABSENT-IN-cis-r3-zero_shot-kdes,PRESENT-IN-cis-r1-zero_shot-kdes,Ensure that all Namespaces have Network Policies defined
+Network Policies,ABSENT-IN-cis-r3-zero_shot-kdes,PRESENT-IN-cis-r1-zero_shot-kdes,Prefer using secrets as files over secrets as environment variables
+Network Policies,ABSENT-IN-cis-r1-zero_shot-kdes,PRESENT-IN-cis-r3-zero_shot-kdes,Control Traffic Flow
+Network Policies,ABSENT-IN-cis-r1-zero_shot-kdes,PRESENT-IN-cis-r3-zero_shot-kdes,Define Network Segmentation
+Network Policies,ABSENT-IN-cis-r1-zero_shot-kdes,PRESENT-IN-cis-r3-zero_shot-kdes,Ensure Network Security
+Network Policies,ABSENT-IN-cis-r1-zero_shot-kdes,PRESENT-IN-cis-r3-zero_shot-kdes,Implement Security Rules
+Network Policies,ABSENT-IN-cis-r1-zero_shot-kdes,PRESENT-IN-cis-r3-zero_shot-kdes,Implement network policies to control traffic flow.
+Network Policies,ABSENT-IN-cis-r1-zero_shot-kdes,PRESENT-IN-cis-r3-zero_shot-kdes,Network Policies enabled
+Network Policies,ABSENT-IN-cis-r1-zero_shot-kdes,PRESENT-IN-cis-r3-zero_shot-kdes,Pod Network Policy enforcement
+Network Policies,ABSENT-IN-cis-r1-zero_shot-kdes,PRESENT-IN-cis-r3-zero_shot-kdes,Use a network policy engine to enforce access controls.

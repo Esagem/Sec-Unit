@@ -1,14 +1,109 @@
 element1:
-  name: Control Plane Components
+  name: CIS Amazon Elastic Kubernetes Service (EKS) Benchmark
   requirements:
-  - Ensure that the kubeconfig file permissions are set to 644 or more restrictive
-  - Ensure that the kubelet kubeconfig file ownership is set to root:root
-  - Ensure that the kubelet configuration file has permissions set to 644 or more
-    restrictive
-  - Ensure that the kubelet configuration file ownership is set to root:root
+  - Ensure CNI plugin supports network policies.
+  - Ensure that all Namespaces have Network Policies defined.
+  - Ensure Network Policy is Enabled and set as appropriate.
+  - Ensure Cluster Access Manager API to streamline and enhance the management of
+    access controls within EKS clusters.
+element2:
+  name: Kubelet
+  requirements:
+  - Enable detailed logging for all components.
+  - Implement audit logging for API server.
+  - Ensure that all components are configured to collect and manage audit logs.
+  - 'Native Support in Kubernetes Versions: Starting from Kubernetes 1.23, the Cluster
+    Access Manager API is fully supported and designed to replace the aws-auth ConfigMap
+    method.'
+  - 'Modern Approach for Pod Identity: When combined with IAM Roles for Service Accounts
+    (IRSA) or the new Pod Identity feature, the API supports a more dynamic and secure
+    model for assigning permissions to pods, making it easier to implement least-privilege
+    access.'
+  - Ensure Image Scanning is Enabled
+  - Configure Cluster Security
+  - Implement Automated Vulnerability Scanning
+  - Establish and maintain dedicated computing resources, either physically or logically
+    separated, for all administrative tasks or tasks requiring administrative access.
+  - Ensure that all users with administrative account access use a dedicated or secondary
+    account for elevated activities.
+  - Encrypt sensitive data at rest on servers, applications, and databases containing
+    sensitive data.
+element3:
+  name: Logging
+  requirements:
+  - Enable audit logging for Kubernetes components.
+  - Ensure that local logging is enabled on all systems and networking devices.
+  - Configure logging to include detailed information.
+  - Enable CloudWatch Logs
+  - Configure Audit Logging
+  - Monitor Security Events
+element4:
+  name: Pod Security Standards
+  requirements:
+  - Implement Pod Security Standards for all new deployments.
+  - Review and update existing deployments to ensure compliance.
+  - Conduct regular audits of deployed pods.
+  - Implement Least Privilege Access
+  - Use Role-Based Access Control (RBAC)
+  - Restrict Container Image Permissions
+element5:
+  name: Security Configuration
+  requirements:
+  - Establish and maintain an audit log management process.
+  - Review and update documentation annually.
+  - Ensure that all components are configured to collect and manage audit logs.
+element6:
+  name: Kubelet Configuration
+  requirements:
   - Ensure that the Anonymous Auth is Not Enabled
-  - Ensure that the --authorization-mode argument is not set to AlwaysAllow
-  - Ensure that a Client CA File is Configured
-  - Ensure that the --read-only-port is disabled
+  - Verify that the Kubeconfig file has permissions of 644 or more restrictive
+  - Ensure that the Kubeconfig file has permissions of 644 or more restrictive
+  - Verify that the Anonymous Auth is not enabled
+  - Ensure that Anonymous Authentication is not enabled
+  - Ensure that Webhook Authentication is enabled
+  - Ensure that the Authorization Mode is set to WebHook
   - Ensure that the --streaming-connection-idle-timeout argument is not set to 0
-  - Ensure that the --make-iptables-util-chains argument is set to true
+element7:
+  name: Kubelet Configuration Parameters
+  requirements:
+  - Ensure that the --config argument is not set to AlwaysAllow
+  - Ensure that the --config argument is not set to Automated
+  - Ensure that the --config argument is not set to 0
+element8:
+  name: Kubelet Configuration File
+  requirements:
+  - Verify that the --config argument is not set to 0
+element9:
+  name: Cluster Access Manager API
+  requirements:
+  - Implement access policies through the Cluster Access Manager API.
+  - Replace the aws-auth ConfigMap with the Cluster Access Manager API.
+  - Leverage AWS CloudTrail for auditing and traceability.
+  - Support Pod Identity features with the Cluster Access Manager API.
+element11:
+  name: Pod Security Standards (PSS)
+  requirements:
+  - Minimize the admission of containers wishing to share the host IPC namespace (Automated).
+  - Restrict Administrator Privileges to Dedicated Administrator Accounts on Enterprise
+    Assets.
+  - Ensure that all users with administrative account access use a dedicated or secondary
+    account for elevated activities.
+element12:
+  name: Implement and Manage a Firewall on Servers
+  requirements:
+  - Implement and manage a firewall on servers, where supported.
+element13:
+  name: Version Control IG
+  requirements:
+  - Restrict Administrator Privileges
+  - Restrict User Access to Build Images
+  - Configure Cluster Service Account
+element14:
+  name: AWS EKS Key Management Service
+  requirements:
+  - This section contains recommendations relating to using AWS EKS Key Management.
+  - Restrict access to the Kubernetes API from outside the node network if it is not
+    required.
+  - Enable Endpoint Private Access to restrict access to the Kubernetes API server
+    to only authorized IPs.
+  - Restrict access to the control plane endpoint to only authorized IPs.

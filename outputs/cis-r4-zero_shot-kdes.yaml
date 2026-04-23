@@ -1,16 +1,149 @@
 element1:
-  name: Control Plane Components
+  name: Amazon EKS Control Plane Logging
   requirements:
   - Enable audit Logs
-  - Ensure audit logs are collected and managed
-  - Ensure that the kubelet kubeconfig file ownership is set to root:root
-  - Ensure that the kubelet configuration file has permissions set to 644 or more
-    restrictive
-  - Ensure that the kubelet configuration file ownership is set to root:root
-  - Ensure that the cluster-admin role is only used where required
-  - Minimize access to secrets
-  - Minimize wildcard use in Roles and ClusterRoles
-  - Minimize access to create pods
-  - Ensure that default service accounts are not actively used.
-  - Limit use of the Bind, Impersonate and Escalate permissions in the Kubernetes
-    cluster
+  - Establish and Maintain an Audit Log Management Process
+  - Collect Audit Logs
+  - Enable Detailed Logging
+  - Activate audit logging
+  - Enable system logging
+  - Enable local logging
+  - Enable detailed logging
+element2:
+  name: Logging
+  requirements:
+  - Ensure that audit logs are collected and managed
+  - Ensure that local logging has been enabled on all systems and networking devices
+  - Verify that the audit logs are being monitored and managed
+  - Ensure that the audit logs are forwarded to a centralized logging system
+  - Ensure that the audit logs are being collected and sent to a centralized logging
+    system
+  - Ensure that the audit logs are being monitored and managed
+  - Ensure that the audit logs are being forwarded to a centralized logging system
+  - Ensure that the audit logs are being
+  - Enable logging for all pods and nodes
+  - Configure log levels (DEBUG, INFO, WARNING, ERROR, CRITICAL)
+  - Implement centralized logging solution
+  - Secure log data
+  - Ensure proper logging of all events.
+  - Implement centralized logging for auditing.
+  - Enable structured logging for easier analysis.
+element3:
+  name: Internal Only - General
+  requirements:
+  - Disable anonymous requests to the Kubelet server.
+  - Enable Kubelet certificate authentication.
+  - Verify that Anonymous Authentication is not enabled.
+  - Verify that Webhook Authentication is enabled.
+  - Verify that the Authorization Mode is set to Webhook.
+  - Ensure that the Anonymous Auth is Not Enabled
+  - '{''References'': ''1. https://kubernetes.io/docs/concepts/security/rbac-good-practices/#configure-service-account/''}'
+  - '{''References'': ''2. https://www.eksworkshop.com/docs/security/cluster-access-management/understanding''}'
+  - '{''References'': ''1. https://kubernetes.io/docs/concepts/security/rbac-good-practices/#access-to-proxy-subresource-of-nodes''}'
+  - '{''References'': ''2. https://kubernetes.io/docs/reference/access-authn-authz/kubelet-authn-authz/#kubelet-authorization''}'
+  - '{''References'': ''1. https://kubernetes.io/docs/concepts/security/rbac-good''}'
+  - Disable access to the Kubernetes API from outside the node network if it is not
+    required.
+  - Configure the EKS cluster endpoint to be private.
+  - Enable Private Nodes
+  - Disable public IP addresses for cluster nodes
+  - Ensure only network ports, protocols, and services listening on a system with
+    validated business needs.
+  - Encrypt traffic to HTTPS load balancers with TLS certificates.
+  - Ensure that the kubeconfig file permissions are set to 644 or more restrictive.
+element4:
+  name: RotateKubeletServerCertificate
+  requirements:
+  - Enable kubelet server certificate rotation.
+  - Ensure that kubelet receives a serving certificate after bootstrapping its client
+    credentials.
+element5:
+  name: RotateKubeletClientCertificate
+  requirements:
+  - Enable kubelet client certificate rotation.
+  - Ensure that kubelet receives a serving certificate after bootstrapping its client
+    credentials.
+element6:
+  name: Audit Method 1
+  requirements:
+  - First, SSH to each node
+  - '{''Run the following command on each node to find the Kubelet process'': ''ps
+    -ef | grep kubelet''}'
+  - Verify that it is set to true
+  - Check the Kubelet config file
+  - Review the output of the command
+element7:
+  name: Audit Method 2
+  requirements:
+  - If modifying the Kubelet config file, edit the kubelet-config.json file
+  - Additionally, ensure that the kubelet service file /etc/systemd/system/kubelet.service.d/10-kubelet-args.conf
+    does not set the --rotate-kubelet-server-certificate executable argument to false
+    because this would override the Kubelet config file.
+element8:
+  name: Explicitly require API server access
+  requirements:
+  - '{''Default Value'': ''By default, all pods get a service account token mounted
+    in them.''}'
+element9:
+  name: Network Policies
+  requirements:
+  - Implement Network Policies.
+  - Implement and manage a firewall on servers.
+  - Restrict Access to the Control Plane Endpoint.
+  - Ensure CNI plugin supports network policies.
+  - Ensure that all Namespaces have Network Policies defined.
+  - Ensure that CNI plugin supports network policies.
+element10:
+  name: Pod Security Policy
+  requirements:
+  - Implement Pod Security Policy.
+  - Restrict administrator privileges to dedicated administrator accounts.
+  - Implement user workloads with restrictions.
+element11:
+  name: Container Security
+  requirements:
+  - Implement container security.
+  - Ensure CNI plugin supports network policies.
+element12:
+  name: Firewall on Servers
+  requirements:
+  - Implement and manage a firewall on servers
+  - Segment the network based on sensitivity
+  - Enable firewall filtering between VLANs
+element13:
+  name: Segment the Network Based on Sensitivity
+  requirements:
+  - Segment the network based on the label or classification level of the information
+    stored on the servers
+  - Locate all sensitive information on separated Virtual Local Area Networks (VLANs)
+  - Enable firewall filtering between VLANs
+element14:
+  name: Firewall
+  requirements:
+  - Enforce and update network-based URL filters
+  - Ensure network-based URL filters limit an enterprise asset from connecting to
+    potentially malicious or unapproved websites.
+element15:
+  name: CNI Plugin
+  requirements:
+  - Ensure CNI plugin supports network policies.
+  - Ensure that all Namespaces have Network Policies defined.
+  - Ensure that CNI plugin supports network policies.
+element16:
+  name: Secrets Management
+  requirements:
+  - Prefer using secrets as files over secrets as environment variables.
+  - Consider external secret storage.
+element17:
+  name: Kubernetes Secrets
+  requirements:
+  - Prefer using secrets as files over secrets as environment variables.
+  - Consider external secret storage.
+element18:
+  name: Customer Master Keys
+  requirements:
+  - Restrict Access to the Control Plane Endpoint
+  - Ensure clusters are created with Private Endpoint Enabled
+  - Ensure clusters are created with Private Nodes
+  - Ensure AmazonEKSNetworkingPolicy is Enabled
+  - Encrypt traffic to HTTPS load balancers with TLS certificates

@@ -1,10 +1,101 @@
 element1:
-  name: Control Plane Components
+  name: Kubelet Configuration
+  requirements:
+  - Ensure that the kubelet configuration file has permissions set to 644 or more
+    restrictive
+  - Check for the existence of command line arguments when auditing Kubelet configuration
+  - Verify that the Kubelet process is running via `ps -ef | grep kubelet`
+  - Ensure that the Anonymous Auth is Not Enabled
+  - Ensure that the Webhook Authentication is enabled
+  - Ensure that the Authorization Mode is set to WebHook
+  - Ensure that the ReadOnlyPort is disabled
+  - Ensure that the Kubelet certificate is configured
+  - Set eventRecordQPS to 5
+  - Ensure --make-iptables-util-chains is not set
+  - Ensure --hostname-override is not set
+  - Ensure --eventRecordQPS is set
+element2:
+  name: Kubelet Configuration File
+  requirements:
+  - Ensure that the kubelet configuration file has permissions set to 644 or more
+    restrictive
+  - Verify that the Kubelet process is running via `ps -ef | grep kubelet`
+element3:
+  name: Kubelet Configuration File Permissions
+  requirements:
+  - Ensure that the kubelet configuration file has permissions set to 644 or more
+    restrictive
+element4:
+  name: Kubelet Service Configuration
+  requirements:
+  - Verify that the --config argument overrides its counterpart in the configuration
+    file
+  - Ensure that the Kubelet service file is accessible via sudo less
+element5:
+  name: Network Security
+  requirements:
+  - Use secure network management and communication protocols
+  - Implement automated configuration monitoring systems
+  - Securely manage network infrastructure
+  - Ensure --hostname-override is not set
+element6:
+  name: Kernel Configuration
+  requirements:
+  - Use standard, industry-recommended hardening configuration templates
+  - Ensure --eventRecordQPS is set
+  - Ensure --hostname-override is not set
+element7:
+  name: Kubernetes Cluster
   requirements:
   - Ensure that the cluster-admin role is only used where required
-  - Minimize access to secrets
+  - Restrict administrator privileges to dedicated administrator accounts
   - Minimize wildcard use in Roles and ClusterRoles
-  - Minimize access to create pods
-  - Ensure that default service accounts are not actively used.
-  - Ensure that Service Account Tokens are only mounted where necessary
-  - Avoid use of the Bind, Impersonate and Escalate permissions in the Kubernetes
+  - Establish and Maintain a Secure Configuration Process
+  - Use Unique Passwords
+element8:
+  name: Kubelet
+  requirements:
+  - Ensure that the Kubelet pod has a strong security posture
+  - Restrict access to the Kubelet pod to only authorized users and services
+  - Implement a least privilege approach for the Kubelet
+  - Ensure that the Kubelet is configured to properly manage the cluster network.
+  - Ensure that the Kubelet is configured to properly manage the cluster's security
+    policies.
+  - Ensure that the Kubelet is configured to properly manage the cluster's resource
+    limits.
+  - Ensure that the kubelet configuration file has permissions set to 644 or more
+    restrictive
+  - Ensure that the kubelet kubeconfig file ownership is set to root:root
+  - Ensure that the Kubelet service is configured to correctly handle pod security
+    standards.
+  - Verify that the Kubelet service is configured to correctly handle pod security
+    standards.
+element9:
+  name: Safeguard
+  requirements:
+  - Ensure sensitive information is encrypted at rest
+  - Establish and maintain dedicated computing resources for all administrative tasks
+  - Restrict administrator privileges to dedicated administrator accounts
+element10:
+  name: Image Scanning
+  requirements:
+  - Scan images being deployed to Amazon EKS for vulnerabilities
+  - Perform authenticated vulnerability scanning using SCAP-compliant tools
+  - Perform automated vulnerability scanning of internal enterprise assets
+element11:
+  name: IAM Identity-Based Policies
+  requirements:
+  - Restrict user access to Amazon ECR based on IAM identity-based policies
+element12:
+  name: Amazon ECR Identity-Based Policies
+  requirements:
+  - Specify allowed or denied actions and resources
+  - Specify conditions under which actions are allowed or denied
+element13:
+  name: Security Context
+  requirements:
+  - The default namespace should not be used
+element14:
+  name: PSP has allowedCapabilities Set by Default
+  requirements:
+  - Ensure that the PSP has allowedCapabilities Set by Default.

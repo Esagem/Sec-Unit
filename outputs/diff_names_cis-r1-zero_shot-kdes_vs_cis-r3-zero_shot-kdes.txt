@@ -1,3 +1,23 @@
-Control Plane Components
-Logging
-Worker Nodes
+Anonymous Auth
+Cluster Access Manager API
+Container Registry Access
+Create Administrative Boundaries
+Encryption at Rest
+Extensible Admission Control
+General Policies
+IAM Authenticator for Kubernetes
+IAM Roles
+Image Scanning
+Kubelet Configuration
+Kubelet Event Record Policy
+Kubernetes API
+Manage Network Boundaries
+Monitoring
+Pod Identity
+Policies
+RBAC and Service Accounts
+Secure Secrets
+Security Context
+Worker Node Configuration
+aws eks update-cluster-config
+kubeconfig file permissions

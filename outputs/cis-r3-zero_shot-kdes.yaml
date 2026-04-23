@@ -3,11 +3,96 @@ element1:
   requirements:
   - Enable audit Logs
   - Ensure audit logs are collected and managed
-element2:
-  name: Worker Nodes
-  requirements:
-  - Ensure that the kubeconfig file permissions are set to 644 or more restrictive
+  - Enable Detailed Logging
+  - Ensure that all logs are properly collected and stored.
+  - Implement a logging strategy for all components.
+  - Logging agent enabled
+  - Metrics collection enabled
+  - Audit logs enabled
+  - Configure Logging Levels
+  - Implement Centralized Logging
+  - Secure Logging Data
   - Ensure that the kubelet kubeconfig file ownership is set to root:root
   - Ensure that the kubelet configuration file has permissions set to 644 or more
     restrictive
   - Ensure that the kubelet configuration file ownership is set to root:root
+element2:
+  name: Control Plane Configuration
+  requirements:
+  - Enable audit logging for Kubernetes components
+  - Ensure audit logs are being collected and sent to a centralized logging system
+  - Verify that the audit logs are being monitored and managed according to the enterprise’s
+    audit log management process.
+  - Ensure audit logs are collected and managed
+element3:
+  name: Anonymous Auth
+  requirements:
+  - Disable anonymous requests to the Kubelet server.
+element4:
+  name: Network Policies
+  requirements:
+  - Implement network policies to control traffic flow.
+  - Use a network policy engine to enforce access controls.
+  - Network Policies enabled
+  - Pod Network Policy enforcement
+  - Define Network Segmentation
+  - Implement Security Rules
+  - Control Traffic Flow
+  - Ensure Network Security
+element5:
+  name: Monitoring
+  requirements:
+  - Implement monitoring to track the health of the system.
+  - Monitor the Kubelet process for issues.
+element6:
+  name: Cluster Access Manager API
+  requirements:
+  - Ensure that the cluster-admin role is only used where and when needed.
+  - Ensure that all users with administrative account access use a dedicated or secondary
+    account for elevated activities.
+  - Restrict administrator privileges to dedicated administrator accounts on enterprise
+    assets.
+  - Minimize access to secrets
+  - Ensure that default service accounts are not actively used.
+  - Ensure that Service Account Tokens are only mounted where necessary.
+  - Uninstall or disable unnecessary services on enterprise assets and software.
+  - Cluster Access Manager API to streamline and enhance the management of access
+    controls within EKS clusters.
+element7:
+  name: Pod Identity
+  requirements:
+  - IAM Roles for Service Accounts (IRSA)
+  - Pod Identity feature enabled
+element8:
+  name: Secure Secrets
+  requirements:
+  - Kubernetes Secrets enabled
+  - Secret scanning enabled
+element9:
+  name: Security Context
+  requirements:
+  - Security Context Policy enabled
+  - Pod Security Admission enabled
+element10:
+  name: Image Scanning
+  requirements:
+  - Enable Image Scanning
+  - Configure Scanning Rules
+  - Monitor Scan Results
+  - Maintain Scan Logs
+element11:
+  name: Container Registry Access
+  requirements:
+  - Restrict Registry Access
+  - Use Dedicated Credentials
+  - Monitor Registry Usage
+element12:
+  name: IAM Roles
+  requirements:
+  - Use Dedicated IAM Roles
+  - Enforce Least Privilege
+  - Monitor IAM Permissions
+element13:
+  name: kubeconfig file permissions
+  requirements:
+  - 644 or more restrictive

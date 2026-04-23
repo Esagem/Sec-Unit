@@ -1,2 +1,6 @@
-Logging
-Worker Nodes
+AWS EKS Key Management Service
+Cluster Access Manager API
+Extensible Admission Control
+Image Scanning
+Kubernetes API
+Security Context

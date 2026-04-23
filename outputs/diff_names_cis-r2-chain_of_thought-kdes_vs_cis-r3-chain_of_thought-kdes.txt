@@ -1,1 +1,10 @@
-NO DIFFERENCES IN REGARDS TO ELEMENT NAMES
+CIS Amazon Elastic Kubernetes Service (EKS) Benchmark
+Cluster Access Manager API
+General
+Implement and Manage a Firewall on Servers
+Kubelet Configuration File
+Kubelet Configuration Parameters
+Kubelet Service Configuration
+Networking
+Security Configuration
+Version Control IG

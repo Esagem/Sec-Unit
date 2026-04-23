@@ -1,7 +1,13 @@
-Control Plane Configuration
-Kubelet
-Kubelet Configuration
-Logging
-Pod Security Standards
-RBAC and Service Accounts
-Worker Nodes
+AWS EKS Key Management Service
+Anonymous Auth is Not Enabled
+Change Default Passwords
+Container Optimized OS
+Establish Secure Configurations
+Extensible Admission Control
+Host Network Namespace
+Image Scanning
+Internal Only - General
+Kubernetes API
+Secrets Management
+Server-Side Encryption
+Streaming Connection Idle Timeout

@@ -1,0 +1,17 @@
+element1:
+  name: Control Plane Components
+  requirements:
+  - Ensure that the cluster-admin role is only used where required
+  - Minimize access to secrets
+  - Minimize wildcard use in Roles and ClusterRoles
+  - Minimize access to create pods
+  - Ensure that default service accounts are not actively used.
+  - Ensure that Service Account Tokens are only mounted where necessary
+  - Avoid use of the Bind, Impersonate and Escalate permissions in the Kubernetes
+element2:
+  name: Worker Nodes
+  requirements:
+  - Ensure that the Anonymous Auth is Not Enabled
+  - Ensure that the --authorization-mode argument is not set to AlwaysAllow
+  - Ensure that a Client CA File is Configured
+  - Ensure that the --

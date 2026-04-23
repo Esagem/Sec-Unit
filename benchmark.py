@@ -87,22 +87,26 @@ def bench_task1_llm(results: dict):
 
     t1, t2 = load_documents(pdf1, pdf2)
     messages_list = []
-    job_meta = []
+    # (doc_name, prompt_type, representative_prompt_text, [indices into messages_list])
+    job_meta: list[tuple[str, str, str, list[int]]] = []
     for pt in PROMPT_TYPES:
         for doc_name, text in [("cis-r1", t1), ("cis-r2", t2)]:
-            m, p = build_messages(text, pt)
-            messages_list.append(m)
-            job_meta.append((doc_name, pt, p))
+            chunk_msgs = build_messages(text, pt)
+            indices = []
+            for m, _ in chunk_msgs:
+                indices.append(len(messages_list))
+                messages_list.append(m)
+            job_meta.append((doc_name, pt, chunk_msgs[0][1], indices))
 
     os.makedirs(BENCH_DIR, exist_ok=True)
-    with timer("inference × 6 prompts (batched)", results):
+    with timer(f"inference × {len(messages_list)} chunks (batched)", results):
         outputs = pipe(messages_list, batch_size=6 if device == "cuda" else 1)
 
     with timer("YAML serialization × 6", results):
-        for i, (doc, pt, prompt_text) in enumerate(job_meta):
-            raw = outputs[i][0]["generated_text"][-1]["content"]
+        for doc, pt, prompt_text, indices in job_meta:
+            raws = [outputs[i][0]["generated_text"][-1]["content"] for i in indices]
             save_kde_result(
-                raw_response=raw, prompt_text=prompt_text, prompt_type=pt,
+                raw_response=raws, prompt_text=prompt_text, prompt_type=pt,
                 doc_name=f"{doc}-{pt}", output_dir=BENCH_DIR,
             )
 

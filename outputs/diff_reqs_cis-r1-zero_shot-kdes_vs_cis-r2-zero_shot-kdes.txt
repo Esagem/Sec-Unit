@@ -1,3 +1,59 @@
-Control Plane Components,ABSENT-IN-cis-r2-zero_shot-kdes,PRESENT-IN-cis-r1-zero_shot-kdes,NA
-Logging,ABSENT-IN-cis-r1-zero_shot-kdes,PRESENT-IN-cis-r2-zero_shot-kdes,NA
-Worker Nodes,ABSENT-IN-cis-r1-zero_shot-kdes,PRESENT-IN-cis-r2-zero_shot-kdes,NA
+Control Plane Configuration,ABSENT-IN-cis-r2-zero_shot-kdes,PRESENT-IN-cis-r1-zero_shot-kdes,NA
+Create Administrative Boundaries,ABSENT-IN-cis-r2-zero_shot-kdes,PRESENT-IN-cis-r1-zero_shot-kdes,NA
+Encryption at Rest,ABSENT-IN-cis-r2-zero_shot-kdes,PRESENT-IN-cis-r1-zero_shot-kdes,NA
+Extensible Admission Control,ABSENT-IN-cis-r2-zero_shot-kdes,PRESENT-IN-cis-r1-zero_shot-kdes,NA
+General Policies,ABSENT-IN-cis-r2-zero_shot-kdes,PRESENT-IN-cis-r1-zero_shot-kdes,NA
+IAM Authenticator for Kubernetes,ABSENT-IN-cis-r2-zero_shot-kdes,PRESENT-IN-cis-r1-zero_shot-kdes,NA
+Kubelet Event Record Policy,ABSENT-IN-cis-r2-zero_shot-kdes,PRESENT-IN-cis-r1-zero_shot-kdes,NA
+Kubernetes API,ABSENT-IN-cis-r2-zero_shot-kdes,PRESENT-IN-cis-r1-zero_shot-kdes,NA
+Manage Network Boundaries,ABSENT-IN-cis-r2-zero_shot-kdes,PRESENT-IN-cis-r1-zero_shot-kdes,NA
+Policies,ABSENT-IN-cis-r2-zero_shot-kdes,PRESENT-IN-cis-r1-zero_shot-kdes,NA
+RBAC and Service Accounts,ABSENT-IN-cis-r2-zero_shot-kdes,PRESENT-IN-cis-r1-zero_shot-kdes,NA
+Worker Node Configuration,ABSENT-IN-cis-r2-zero_shot-kdes,PRESENT-IN-cis-r1-zero_shot-kdes,NA
+aws eks update-cluster-config,ABSENT-IN-cis-r2-zero_shot-kdes,PRESENT-IN-cis-r1-zero_shot-kdes,NA
+Amazon ECR Identity-Based Policies,ABSENT-IN-cis-r1-zero_shot-kdes,PRESENT-IN-cis-r2-zero_shot-kdes,NA
+Amazon ECR Resource-Based Policies,ABSENT-IN-cis-r1-zero_shot-kdes,PRESENT-IN-cis-r2-zero_shot-kdes,NA
+Anonymous Auth,ABSENT-IN-cis-r1-zero_shot-kdes,PRESENT-IN-cis-r2-zero_shot-kdes,NA
+Audit Logs,ABSENT-IN-cis-r1-zero_shot-kdes,PRESENT-IN-cis-r2-zero_shot-kdes,NA
+Cluster Access Manager API,ABSENT-IN-cis-r1-zero_shot-kdes,PRESENT-IN-cis-r2-zero_shot-kdes,NA
+Pod Identity,ABSENT-IN-cis-r1-zero_shot-kdes,PRESENT-IN-cis-r2-zero_shot-kdes,NA
+Secure Pods,ABSENT-IN-cis-r1-zero_shot-kdes,PRESENT-IN-cis-r2-zero_shot-kdes,NA
+Kubelet Configuration,ABSENT-IN-cis-r2-zero_shot-kdes,PRESENT-IN-cis-r1-zero_shot-kdes,Apply Security Context to Your Pods and Containers
+Kubelet Configuration,ABSENT-IN-cis-r2-zero_shot-kdes,PRESENT-IN-cis-r1-zero_shot-kdes,Create administrative boundaries between resources using namespaces
+Kubelet Configuration,ABSENT-IN-cis-r2-zero_shot-kdes,PRESENT-IN-cis-r1-zero_shot-kdes,Ensure only approved ports, protocols and services are running
+Kubelet Configuration,ABSENT-IN-cis-r2-zero_shot-kdes,PRESENT-IN-cis-r1-zero_shot-kdes,Implement Kubelet config file validation
+Kubelet Configuration,ABSENT-IN-cis-r2-zero_shot-kdes,PRESENT-IN-cis-r1-zero_shot-kdes,Minimize user access to Amazon ECR
+Kubelet Configuration,ABSENT-IN-cis-r2-zero_shot-kdes,PRESENT-IN-cis-r1-zero_shot-kdes,Secure Network Management
+Kubelet Configuration,ABSENT-IN-cis-r2-zero_shot-kdes,PRESENT-IN-cis-r1-zero_shot-kdes,The default namespace should not be used
+Kubelet Configuration,ABSENT-IN-cis-r2-zero_shot-kdes,PRESENT-IN-cis-r1-zero_shot-kdes,Use secure network protocols
+Kubelet Configuration,ABSENT-IN-cis-r1-zero_shot-kdes,PRESENT-IN-cis-r2-zero_shot-kdes,Ensure Kubelet is configured with appropriate settings.
+Kubelet Configuration,ABSENT-IN-cis-r1-zero_shot-kdes,PRESENT-IN-cis-r2-zero_shot-kdes,Review the running configuration of a Kubelet via the /configz endpoint of the Kubernetes API.
+Kubelet Configuration,ABSENT-IN-cis-r1-zero_shot-kdes,PRESENT-IN-cis-r2-zero_shot-kdes,Verify that Anonymous Authentication is not enabled.
+Kubelet Configuration,ABSENT-IN-cis-r1-zero_shot-kdes,PRESENT-IN-cis-r2-zero_shot-kdes,Verify the Kubelet configuration file is valid.
+Logging,ABSENT-IN-cis-r2-zero_shot-kdes,PRESENT-IN-cis-r1-zero_shot-kdes,Minimize the admission of containers wishing to share the host IPC namespace
+Logging,ABSENT-IN-cis-r2-zero_shot-kdes,PRESENT-IN-cis-r1-zero_shot-kdes,Minimize the admission of containers wishing to share the host network namespace
+Logging,ABSENT-IN-cis-r2-zero_shot-kdes,PRESENT-IN-cis-r1-zero_shot-kdes,Minimize the admission of containers wishing to share the host process ID namespace
+Logging,ABSENT-IN-cis-r2-zero_shot-kdes,PRESENT-IN-cis-r1-zero_shot-kdes,Minimize the admission of containers with allowPrivilegeEscalation
+Logging,ABSENT-IN-cis-r2-zero_shot-kdes,PRESENT-IN-cis-r1-zero_shot-kdes,Minimize the admission of root containers
+Logging,ABSENT-IN-cis-r1-zero_shot-kdes,PRESENT-IN-cis-r2-zero_shot-kdes,Configure logging to a centralized system.
+Logging,ABSENT-IN-cis-r1-zero_shot-kdes,PRESENT-IN-cis-r2-zero_shot-kdes,Enable Detailed Logging
+Logging,ABSENT-IN-cis-r1-zero_shot-kdes,PRESENT-IN-cis-r2-zero_shot-kdes,Enable audit Logs
+Logging,ABSENT-IN-cis-r1-zero_shot-kdes,PRESENT-IN-cis-r2-zero_shot-kdes,Enable detailed audit trails.
+Logging,ABSENT-IN-cis-r1-zero_shot-kdes,PRESENT-IN-cis-r2-zero_shot-kdes,Ensure audit logs are collected and managed
+Logging,ABSENT-IN-cis-r1-zero_shot-kdes,PRESENT-IN-cis-r2-zero_shot-kdes,Ensure that the --eventRecordQPS argument is set to 0 or a level which ensures appropriate event capture
+Logging,ABSENT-IN-cis-r1-zero_shot-kdes,PRESENT-IN-cis-r2-zero_shot-kdes,Ensure that the --make-iptables-util-chains argument is set to true
+Logging,ABSENT-IN-cis-r1-zero_shot-kdes,PRESENT-IN-cis-r2-zero_shot-kdes,Ensure that the --rotate-certificates argument is not present or is set to true
+Logging,ABSENT-IN-cis-r1-zero_shot-kdes,PRESENT-IN-cis-r2-zero_shot-kdes,Ensure that the --streaming-connection-idle-timeout argument is not set to 0
+Logging,ABSENT-IN-cis-r1-zero_shot-kdes,PRESENT-IN-cis-r2-zero_shot-kdes,Ensure that the kubelet configuration file has permissions set to 644 or more restrictive
+Logging,ABSENT-IN-cis-r1-zero_shot-kdes,PRESENT-IN-cis-r2-zero_shot-kdes,Ensure that the kubelet configuration file ownership is set to root:root
+Logging,ABSENT-IN-cis-r1-zero_shot-kdes,PRESENT-IN-cis-r2-zero_shot-kdes,Ensure that the kubelet kubeconfig file permissions are set to 644 or more restrictive
+Logging,ABSENT-IN-cis-r1-zero_shot-kdes,PRESENT-IN-cis-r2-zero_shot-kdes,Kubernetes 1.23+ Cluster Access Manager API
+Logging,ABSENT-IN-cis-r1-zero_shot-kdes,PRESENT-IN-cis-r2-zero_shot-kdes,Minimize access to secrets as files over secrets as environment variables
+Logging,ABSENT-IN-cis-r1-zero_shot-kdes,PRESENT-IN-cis-r2-zero_shot-kdes,Minimize user access to Amazon ECR image scanning or a third party provider
+Network Policies,ABSENT-IN-cis-r2-zero_shot-kdes,PRESENT-IN-cis-r1-zero_shot-kdes,Consider external secret storage
+Network Policies,ABSENT-IN-cis-r2-zero_shot-kdes,PRESENT-IN-cis-r1-zero_shot-kdes,Ensure Network Policy is Enabled and set as appropriate
+Network Policies,ABSENT-IN-cis-r2-zero_shot-kdes,PRESENT-IN-cis-r1-zero_shot-kdes,Ensure that all Namespaces have Network Policies defined
+Network Policies,ABSENT-IN-cis-r2-zero_shot-kdes,PRESENT-IN-cis-r1-zero_shot-kdes,Prefer using secrets as files over secrets as environment variables
+Network Policies,ABSENT-IN-cis-r1-zero_shot-kdes,PRESENT-IN-cis-r2-zero_shot-kdes,Define rules for network access.
+Network Policies,ABSENT-IN-cis-r1-zero_shot-kdes,PRESENT-IN-cis-r2-zero_shot-kdes,Implement network policies to restrict traffic.
+Network Policies,ABSENT-IN-cis-r1-zero_shot-kdes,PRESENT-IN-cis-r2-zero_shot-kdes,Pod Security Admission

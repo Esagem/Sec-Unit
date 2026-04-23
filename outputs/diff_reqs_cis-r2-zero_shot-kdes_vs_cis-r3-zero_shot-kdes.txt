@@ -1,1 +1,51 @@
-Worker Nodes,ABSENT-IN-cis-r3-zero_shot-kdes,PRESENT-IN-cis-r2-zero_shot-kdes,Ensure that the kube
+Amazon ECR Identity-Based Policies,ABSENT-IN-cis-r3-zero_shot-kdes,PRESENT-IN-cis-r2-zero_shot-kdes,NA
+Amazon ECR Resource-Based Policies,ABSENT-IN-cis-r3-zero_shot-kdes,PRESENT-IN-cis-r2-zero_shot-kdes,NA
+Audit Logs,ABSENT-IN-cis-r3-zero_shot-kdes,PRESENT-IN-cis-r2-zero_shot-kdes,NA
+Kubelet Configuration,ABSENT-IN-cis-r3-zero_shot-kdes,PRESENT-IN-cis-r2-zero_shot-kdes,NA
+Secure Pods,ABSENT-IN-cis-r3-zero_shot-kdes,PRESENT-IN-cis-r2-zero_shot-kdes,NA
+Container Registry Access,ABSENT-IN-cis-r2-zero_shot-kdes,PRESENT-IN-cis-r3-zero_shot-kdes,NA
+Control Plane Configuration,ABSENT-IN-cis-r2-zero_shot-kdes,PRESENT-IN-cis-r3-zero_shot-kdes,NA
+IAM Roles,ABSENT-IN-cis-r2-zero_shot-kdes,PRESENT-IN-cis-r3-zero_shot-kdes,NA
+Image Scanning,ABSENT-IN-cis-r2-zero_shot-kdes,PRESENT-IN-cis-r3-zero_shot-kdes,NA
+Monitoring,ABSENT-IN-cis-r2-zero_shot-kdes,PRESENT-IN-cis-r3-zero_shot-kdes,NA
+Secure Secrets,ABSENT-IN-cis-r2-zero_shot-kdes,PRESENT-IN-cis-r3-zero_shot-kdes,NA
+Security Context,ABSENT-IN-cis-r2-zero_shot-kdes,PRESENT-IN-cis-r3-zero_shot-kdes,NA
+kubeconfig file permissions,ABSENT-IN-cis-r2-zero_shot-kdes,PRESENT-IN-cis-r3-zero_shot-kdes,NA
+Anonymous Auth,ABSENT-IN-cis-r3-zero_shot-kdes,PRESENT-IN-cis-r2-zero_shot-kdes,Rely on authentication to authorize access and disallow anonymous requests.
+Cluster Access Manager API,ABSENT-IN-cis-r3-zero_shot-kdes,PRESENT-IN-cis-r2-zero_shot-kdes,Ensure that all users with administrative account access uses a dedicated or secondary account for elevated activities. This account should only be used for administrative activities and not internet browsing, email, or similar activities.
+Cluster Access Manager API,ABSENT-IN-cis-r3-zero_shot-kdes,PRESENT-IN-cis-r2-zero_shot-kdes,Restrict Administrator Privileges to Dedicated Administrator Accounts on enterprise assets. Conduct general computing activities, such as internet browsing, email, and productivity suite use, from the user’s primary, non-privileged account.
+Cluster Access Manager API,ABSENT-IN-cis-r2-zero_shot-kdes,PRESENT-IN-cis-r3-zero_shot-kdes,Ensure that all users with administrative account access use a dedicated or secondary account for elevated activities.
+Cluster Access Manager API,ABSENT-IN-cis-r2-zero_shot-kdes,PRESENT-IN-cis-r3-zero_shot-kdes,Ensure that the cluster-admin role is only used where and when needed.
+Cluster Access Manager API,ABSENT-IN-cis-r2-zero_shot-kdes,PRESENT-IN-cis-r3-zero_shot-kdes,Restrict administrator privileges to dedicated administrator accounts on enterprise assets.
+Logging,ABSENT-IN-cis-r3-zero_shot-kdes,PRESENT-IN-cis-r2-zero_shot-kdes,Configure logging to a centralized system.
+Logging,ABSENT-IN-cis-r3-zero_shot-kdes,PRESENT-IN-cis-r2-zero_shot-kdes,Enable detailed audit trails.
+Logging,ABSENT-IN-cis-r3-zero_shot-kdes,PRESENT-IN-cis-r2-zero_shot-kdes,Ensure that the --eventRecordQPS argument is set to 0 or a level which ensures appropriate event capture
+Logging,ABSENT-IN-cis-r3-zero_shot-kdes,PRESENT-IN-cis-r2-zero_shot-kdes,Ensure that the --make-iptables-util-chains argument is set to true
+Logging,ABSENT-IN-cis-r3-zero_shot-kdes,PRESENT-IN-cis-r2-zero_shot-kdes,Ensure that the --rotate-certificates argument is not present or is set to true
+Logging,ABSENT-IN-cis-r3-zero_shot-kdes,PRESENT-IN-cis-r2-zero_shot-kdes,Ensure that the --streaming-connection-idle-timeout argument is not set to 0
+Logging,ABSENT-IN-cis-r3-zero_shot-kdes,PRESENT-IN-cis-r2-zero_shot-kdes,Ensure that the kubelet kubeconfig file permissions are set to 644 or more restrictive
+Logging,ABSENT-IN-cis-r3-zero_shot-kdes,PRESENT-IN-cis-r2-zero_shot-kdes,Kubernetes 1.23+ Cluster Access Manager API
+Logging,ABSENT-IN-cis-r3-zero_shot-kdes,PRESENT-IN-cis-r2-zero_shot-kdes,Minimize access to secrets as files over secrets as environment variables
+Logging,ABSENT-IN-cis-r3-zero_shot-kdes,PRESENT-IN-cis-r2-zero_shot-kdes,Minimize user access to Amazon ECR image scanning or a third party provider
+Logging,ABSENT-IN-cis-r2-zero_shot-kdes,PRESENT-IN-cis-r3-zero_shot-kdes,Audit logs enabled
+Logging,ABSENT-IN-cis-r2-zero_shot-kdes,PRESENT-IN-cis-r3-zero_shot-kdes,Configure Logging Levels
+Logging,ABSENT-IN-cis-r2-zero_shot-kdes,PRESENT-IN-cis-r3-zero_shot-kdes,Ensure that all logs are properly collected and stored.
+Logging,ABSENT-IN-cis-r2-zero_shot-kdes,PRESENT-IN-cis-r3-zero_shot-kdes,Ensure that the kubelet kubeconfig file ownership is set to root:root
+Logging,ABSENT-IN-cis-r2-zero_shot-kdes,PRESENT-IN-cis-r3-zero_shot-kdes,Implement Centralized Logging
+Logging,ABSENT-IN-cis-r2-zero_shot-kdes,PRESENT-IN-cis-r3-zero_shot-kdes,Implement a logging strategy for all components.
+Logging,ABSENT-IN-cis-r2-zero_shot-kdes,PRESENT-IN-cis-r3-zero_shot-kdes,Logging agent enabled
+Logging,ABSENT-IN-cis-r2-zero_shot-kdes,PRESENT-IN-cis-r3-zero_shot-kdes,Metrics collection enabled
+Logging,ABSENT-IN-cis-r2-zero_shot-kdes,PRESENT-IN-cis-r3-zero_shot-kdes,Secure Logging Data
+Network Policies,ABSENT-IN-cis-r3-zero_shot-kdes,PRESENT-IN-cis-r2-zero_shot-kdes,Define rules for network access.
+Network Policies,ABSENT-IN-cis-r3-zero_shot-kdes,PRESENT-IN-cis-r2-zero_shot-kdes,Implement network policies to restrict traffic.
+Network Policies,ABSENT-IN-cis-r3-zero_shot-kdes,PRESENT-IN-cis-r2-zero_shot-kdes,Pod Security Admission
+Network Policies,ABSENT-IN-cis-r2-zero_shot-kdes,PRESENT-IN-cis-r3-zero_shot-kdes,Control Traffic Flow
+Network Policies,ABSENT-IN-cis-r2-zero_shot-kdes,PRESENT-IN-cis-r3-zero_shot-kdes,Define Network Segmentation
+Network Policies,ABSENT-IN-cis-r2-zero_shot-kdes,PRESENT-IN-cis-r3-zero_shot-kdes,Ensure Network Security
+Network Policies,ABSENT-IN-cis-r2-zero_shot-kdes,PRESENT-IN-cis-r3-zero_shot-kdes,Implement Security Rules
+Network Policies,ABSENT-IN-cis-r2-zero_shot-kdes,PRESENT-IN-cis-r3-zero_shot-kdes,Implement network policies to control traffic flow.
+Network Policies,ABSENT-IN-cis-r2-zero_shot-kdes,PRESENT-IN-cis-r3-zero_shot-kdes,Network Policies enabled
+Network Policies,ABSENT-IN-cis-r2-zero_shot-kdes,PRESENT-IN-cis-r3-zero_shot-kdes,Pod Network Policy enforcement
+Network Policies,ABSENT-IN-cis-r2-zero_shot-kdes,PRESENT-IN-cis-r3-zero_shot-kdes,Use a network policy engine to enforce access controls.
+Pod Identity,ABSENT-IN-cis-r3-zero_shot-kdes,PRESENT-IN-cis-r2-zero_shot-kdes,Pod Identity feature
+Pod Identity,ABSENT-IN-cis-r2-zero_shot-kdes,PRESENT-IN-cis-r3-zero_shot-kdes,Pod Identity feature enabled

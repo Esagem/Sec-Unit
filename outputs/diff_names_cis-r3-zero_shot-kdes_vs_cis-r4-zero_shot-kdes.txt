@@ -1,3 +1,27 @@
-Control Plane Components
-Logging
-Worker Nodes
+Amazon EKS Control Plane Logging
+Anonymous Auth
+Audit Method 1
+Audit Method 2
+CNI Plugin
+Cluster Access Manager API
+Container Registry Access
+Container Security
+Control Plane Configuration
+Customer Master Keys
+Explicitly require API server access
+Firewall
+Firewall on Servers
+IAM Roles
+Image Scanning
+Internal Only - General
+Kubernetes Secrets
+Monitoring
+Pod Identity
+Pod Security Policy
+RotateKubeletClientCertificate
+RotateKubeletServerCertificate
+Secrets Management
+Secure Secrets
+Security Context
+Segment the Network Based on Sensitivity
+kubeconfig file permissions

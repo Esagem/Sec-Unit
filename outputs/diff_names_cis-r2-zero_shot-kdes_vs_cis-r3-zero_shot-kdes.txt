@@ -1,1 +1,13 @@
-NO DIFFERENCES IN REGARDS TO ELEMENT NAMES
+Amazon ECR Identity-Based Policies
+Amazon ECR Resource-Based Policies
+Audit Logs
+Container Registry Access
+Control Plane Configuration
+IAM Roles
+Image Scanning
+Kubelet Configuration
+Monitoring
+Secure Pods
+Secure Secrets
+Security Context
+kubeconfig file permissions

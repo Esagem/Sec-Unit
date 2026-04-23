@@ -1,1 +1,15 @@
-Control Plane Components
+AWS EKS Key Management Service
+CIS Amazon Elastic Kubernetes Service (EKS) Benchmark
+Cluster Access Manager API
+EphemeralContainers
+IAM Authenticator
+Implement and Manage a Firewall on Servers
+Kubelet Configuration
+Kubelet Configuration File
+Kubelet Configuration Parameters
+Logging
+Pod Security Standards
+Pod Security Standards (PSS)
+Security Configuration
+Version Control IG
+explicitly require API server access

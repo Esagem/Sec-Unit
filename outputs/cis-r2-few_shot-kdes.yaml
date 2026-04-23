@@ -1,28 +1,67 @@
 element1:
-  name: Control Plane Components
+  name: Worker Node Configuration Files
   requirements:
   - Ensure that the kubeconfig file permissions are set to 644 or more restrictive
   - Ensure that the kubelet kubeconfig file ownership is set to root:root
-element2:
-  name: Kubelet
-  requirements:
-  - Ensure that the Anonymous Auth is Not Enabled
-element3:
-  name: Kubelet Configuration
-  requirements:
   - Ensure that the kubelet configuration file has permissions set to 644 or more
     restrictive
   - Ensure that the kubelet configuration file ownership is set to root:root
-element4:
-  name: Logging
+  - Ensure that the kubelet kubeconfig file permissions are set to 644 or more restrictive
+element2:
+  name: Establish Secure Configurations
   requirements:
+  - Ensure that the cluster has at least one active policy control mechanism in place
+  - Ensure that the default namespace is not used
+element3:
+  name: Anonymous Auth is Not Enabled
+  requirements:
+  - Ensure that the kubeconfig file permissions are set to 644 or more restrictive
+  - Ensure that the kubelet kubeconfig file ownership is set to root:root
   - Enable audit Logs
+  - Ensure that the cluster has at least one active policy control mechanism in place
+  - Ensure that the default namespace is not used
+element4:
+  name: Streaming Connection Idle Timeout
+  requirements:
+  - Do not disable timeouts on streaming connections.
+  - Ensure that you are protected against Denial-of-Service attacks, inactive connections,
+    and running out of ephemeral ports.
 element5:
+  name: Kubelet
+  requirements:
+  - Ensure that the Anonymous Auth is Not Enabled
+  - Ensure that the kubelet is configured to use a valid kubeconfig file
+element6:
   name: Pod Security Standards
   requirements:
   - Ensure that the cluster has at least one active policy control mechanism in place
   - Ensure that the default namespace is not used
-element6:
-  name: RBAC and Service Accounts
+element7:
+  name: Cluster Access Manager API
   requirements:
-  - Ensure that the cluster-admin role is only used where required
+  - Leverages AWS IAM's centralized management and auditing capabilities
+  - Supports integration with AWS CloudTrail for audit trails
+  - Provides a more scalable and resilient solution for access control
+  - Aligns with AWS's roadmap and best practices for EKS
+element8:
+  name: Internal Only - General
+  requirements:
+  - Ensure that all users with administrative account access use a dedicated or secondary
+    account for elevated activities. This account should only be used for administrative
+    activities and not internet browsing, email, or similar activities.
+  - Do not generally permit containers to be run with the hostNetwork flag set to
+    true.
+  - Minimize the admission of containers with allowPrivilegeEscalation
+  - Establish Secure Configurations
+  - Ensure Image Vulnerability Scanning using Amazon ECR
+  - Use Standard Hardening Configuration Templates for Application Infrastructure
+element9:
+  name: Authentication and Authorization
+  requirements:
+  - Manage Kubernetes RBAC users with AWS IAMAuthenticator for Kubernetes
+  - Upgrade to AWS CLI v1.16.156 or greater
+element10:
+  name: 3.2.4 Ensure that the --read-only-port is disabled
+  requirements:
+  - Ensure that the --stream-connection-idle-timeout argument is not set to 0
+  - Ensure that the --make-iptables-util-chains argument is not set to true

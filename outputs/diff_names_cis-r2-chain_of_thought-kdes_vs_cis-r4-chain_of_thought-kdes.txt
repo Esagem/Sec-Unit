@@ -1,1 +1,11 @@
-Control Plane Components
+AWS EKS Key Management Service
+EphemeralContainers
+General
+IAM Authenticator
+Kubelet Configuration
+Kubelet Service Configuration
+Logging
+Networking
+Pod Security Standards
+Pod Security Standards (PSS)
+explicitly require API server access

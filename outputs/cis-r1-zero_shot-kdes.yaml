@@ -1,16 +1,105 @@
 element1:
-  name: Control Plane Components
+  name: Control Plane Configuration
   requirements:
-  - Enable audit Logs
-  - Ensure that the kubeconfig file permissions are set to 644 or more restrictive
-  - Ensure that the kubelet kubeconfig file ownership is set to root:root
-  - Ensure that the kubelet configuration file has permissions set to 644 or more
-    restrictive
-  - Ensure that the kubelet configuration file ownership is set to root:root
-  - Ensure that the --authorization-mode argument is not set to AlwaysAllow
-  - Ensure that the --read-only-port is disabled
-  - Ensure that the --streaming-connection-idle-timeout argument is not set to 0
-  - Ensure that the --protect-kernel-defaults argument is set to true
-  - Ensure that the --make-iptables-util-chains argument is set to true
-  - Ensure that the --hostname-override argument is not set
-  - Ensure that the --eventRecordQPS argument is set to 0
+  - Enable audit logs
+  - Ensure that all options are toggled to 'Enabled'
+  - Ensure that all options are set to 'Enabled'
+  - Configure data access control lists
+  - Ensure that the kubelet configuration file has permissions set to '644'
+  - Ensure that the kubelet configuration file ownership is set to 'root:root'
+element2:
+  name: Worker Node Configuration
+  requirements:
+  - Ensure that the kubeconfig file permissions are set to '644'
+  - Ensure that the kubeconfig file has permissions set to '644'
+  - Ensure that the kubelet configuration file has permissions set to '644'
+  - Ensure that the kubelet configuration file has permissions
+element3:
+  name: Kubelet Event Record Policy
+  requirements:
+  - Set eventRecordQPS to 0 or a suitable level
+  - Ensure event capture is enabled
+element4:
+  name: Kubelet Configuration
+  requirements:
+  - Secure Network Management
+  - Use secure network protocols
+  - Ensure only approved ports, protocols and services are running
+  - Implement Kubelet config file validation
+  - Create administrative boundaries between resources using namespaces
+  - Apply Security Context to Your Pods and Containers
+  - The default namespace should not be used
+  - Minimize user access to Amazon ECR
+element5:
+  name: RBAC and Service Accounts
+  requirements:
+  - Ensure that the cluster-admin role is only used where required
+  - Restrict administrator privileges to dedicated administrator accounts on enterprise
+    assets
+  - Minimize access to secrets to system components
+element6:
+  name: Kubernetes API
+  requirements:
+  - Minimize wildcard use in Roles and ClusterRoles
+  - Establish and Maintain a Secure Configuration Process
+  - Use Unique Passwords
+  - Use Unique Passwords Where Multi-Factor Authentication is not supported
+element7:
+  name: Policies
+  requirements:
+  - Establish and Maintain a Secure Configuration Process
+  - Minimize access to secrets to system components
+  - Minimize wildcard use in Roles and ClusterRoles
+  - Use Unique Passwords
+  - Use Unique Passwords Where Multi-Factor Authentication is not supported
+element8:
+  name: Encryption at Rest
+  requirements:
+  - Encrypt Sensitive Information at Rest
+  - Encrypt All Sensitive Information at Rest using a tool that requires a secondary
+    authentication mechanism not integrated into the operating system, in order to
+    access the information.
+element9:
+  name: Extensible Admission Control
+  requirements:
+  - Use namespaces to isolate your Kubernetes objects.
+element10:
+  name: General Policies
+  requirements:
+  - Establish and Maintain Dedicated Computing Resources for All Administrative Work.
+element11:
+  name: Manage Network Boundaries
+  requirements:
+  - Use namespaces to isolate your Kubernetes objects.
+element12:
+  name: Create Administrative Boundaries
+  requirements:
+  - Use namespaces to isolate your Kubernetes objects.
+  - Use namespaces to isolate
+element13:
+  name: aws eks update-cluster-config
+  requirements:
+  - Implement and Manage a Firewall on Servers
+  - Ensure Only Approved Ports, Protocols and Services Are Running
+  - Ensure That Only Network Ports, Protocols and Services Are Running
+  - Ensure That Only
+element14:
+  name: Logging
+  requirements:
+  - Minimize the admission of containers with allowPrivilegeEscalation
+  - Minimize the admission of containers wishing to share the host process ID namespace
+  - Minimize the admission of containers wishing to share the host IPC namespace
+  - Minimize the admission of containers wishing to share the host network namespace
+  - Minimize the admission of root containers
+element15:
+  name: Network Policies
+  requirements:
+  - Ensure Network Policy is Enabled and set as appropriate
+  - Ensure that all Namespaces have Network Policies defined
+  - Prefer using secrets as files over secrets as environment variables
+  - Consider external secret storage
+element16:
+  name: IAM Authenticator for Kubernetes
+  requirements:
+  - Ensure CNI plugin supports network policies
+  - Ensure that all Namespaces have Network Policies defined

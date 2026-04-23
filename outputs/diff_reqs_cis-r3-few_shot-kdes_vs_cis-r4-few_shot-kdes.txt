@@ -1,5 +1,35 @@
-Kubelet Configuration,ABSENT-IN-cis-r4-few_shot-kdes,PRESENT-IN-cis-r3-few_shot-kdes,NA
-Logging,ABSENT-IN-cis-r4-few_shot-kdes,PRESENT-IN-cis-r3-few_shot-kdes,NA
-Pod Security Standards,ABSENT-IN-cis-r4-few_shot-kdes,PRESENT-IN-cis-r3-few_shot-kdes,NA
-RBAC and Service Accounts,ABSENT-IN-cis-r4-few_shot-kdes,PRESENT-IN-cis-r3-few_shot-kdes,NA
-Worker Nodes,ABSENT-IN-cis-r3-few_shot-kdes,PRESENT-IN-cis-r4-few_shot-kdes,NA
+AWS EKS Key Management Service,ABSENT-IN-cis-r4-few_shot-kdes,PRESENT-IN-cis-r3-few_shot-kdes,NA
+Anonymous Auth is Not Enabled,ABSENT-IN-cis-r4-few_shot-kdes,PRESENT-IN-cis-r3-few_shot-kdes,NA
+Establish Secure Configurations,ABSENT-IN-cis-r4-few_shot-kdes,PRESENT-IN-cis-r3-few_shot-kdes,NA
+Host Network Namespace,ABSENT-IN-cis-r4-few_shot-kdes,PRESENT-IN-cis-r3-few_shot-kdes,NA
+Image Scanning,ABSENT-IN-cis-r4-few_shot-kdes,PRESENT-IN-cis-r3-few_shot-kdes,NA
+Streaming Connection Idle Timeout,ABSENT-IN-cis-r4-few_shot-kdes,PRESENT-IN-cis-r3-few_shot-kdes,NA
+CIS Controls: Controls Version Control IG 1 IG 2 IG 3,ABSENT-IN-cis-r3-few_shot-kdes,PRESENT-IN-cis-r4-few_shot-kdes,NA
+CNI Plugin,ABSENT-IN-cis-r3-few_shot-kdes,PRESENT-IN-cis-r4-few_shot-kdes,NA
+Implement and Manage a Firewall on Servers,ABSENT-IN-cis-r3-few_shot-kdes,PRESENT-IN-cis-r4-few_shot-kdes,NA
+Service Account Tokens,ABSENT-IN-cis-r3-few_shot-kdes,PRESENT-IN-cis-r4-few_shot-kdes,NA
+Internal Only - General,ABSENT-IN-cis-r4-few_shot-kdes,PRESENT-IN-cis-r3-few_shot-kdes,Configure the Cluster Service Account with Storage Object Viewer Role to only allow read-only access to Amazon EKS APIs
+Internal Only - General,ABSENT-IN-cis-r4-few_shot-kdes,PRESENT-IN-cis-r3-few_shot-kdes,Establish and Maintain Dedicated Computing Resources for All Administrative Work
+Internal Only - General,ABSENT-IN-cis-r4-few_shot-kdes,PRESENT-IN-cis-r3-few_shot-kdes,Minimize user access to Amazon ECR
+Internal Only - General,ABSENT-IN-cis-r4-few_shot-kdes,PRESENT-IN-cis-r3-few_shot-kdes,Only allow access to authorized cloud storage or email providers.
+Internal Only - General,ABSENT-IN-cis-r3-few_shot-kdes,PRESENT-IN-cis-r4-few_shot-kdes,Ensure that the EKS cluster endpoint is private
+Internal Only - General,ABSENT-IN-cis-r3-few_shot-kdes,PRESENT-IN-cis-r4-few_shot-kdes,Ensure that the cluster endpoint is configured with CIDR blocks
+Internal Only - General,ABSENT-IN-cis-r3-few_shot-kdes,PRESENT-IN-cis-r4-few_shot-kdes,Ensure that the cluster endpoint is specified
+Kubelet,ABSENT-IN-cis-r3-few_shot-kdes,PRESENT-IN-cis-r4-few_shot-kdes,Ensure that the --authorization-mode argument is not set to AlwaysAllow
+Kubelet,ABSENT-IN-cis-r3-few_shot-kdes,PRESENT-IN-cis-r4-few_shot-kdes,Ensure that the --default-namespace is not used
+Logging,ABSENT-IN-cis-r3-few_shot-kdes,PRESENT-IN-cis-r4-few_shot-kdes,Collect Audit Logs
+Logging,ABSENT-IN-cis-r3-few_shot-kdes,PRESENT-IN-cis-r4-few_shot-kdes,Enable Detailed Logging
+Logging,ABSENT-IN-cis-r3-few_shot-kdes,PRESENT-IN-cis-r4-few_shot-kdes,Enable System Logging
+Logging,ABSENT-IN-cis-r3-few_shot-kdes,PRESENT-IN-cis-r4-few_shot-kdes,Establish and Maintain an Audit Log Management Process
+Logging,ABSENT-IN-cis-r3-few_shot-kdes,PRESENT-IN-cis-r4-few_shot-kdes,Verify that the audit logs are being collected and managed
+Worker Node Configuration Files,ABSENT-IN-cis-r4-few_shot-kdes,PRESENT-IN-cis-r3-few_shot-kdes,Enable audit Logs
+Worker Node Configuration Files,ABSENT-IN-cis-r4-few_shot-kdes,PRESENT-IN-cis-r3-few_shot-kdes,Ensure that such streaming connections are timed out after serving legitimate use
+Worker Node Configuration Files,ABSENT-IN-cis-r4-few_shot-kdes,PRESENT-IN-cis-r3-few_shot-kdes,Ensure that the --make-iptables-util-chains argument is set to true
+Worker Node Configuration Files,ABSENT-IN-cis-r4-few_shot-kdes,PRESENT-IN-cis-r3-few_shot-kdes,Ensure that the --rotate-kubelet-server-certificate argument is set to true
+Worker Node Configuration Files,ABSENT-IN-cis-r4-few_shot-kdes,PRESENT-IN-cis-r3-few_shot-kdes,Ensure that the RotateKubeletServerCertificate argument is set to true
+Worker Node Configuration Files,ABSENT-IN-cis-r4-few_shot-kdes,PRESENT-IN-cis-r3-few_shot-kdes,Ensure that the cluster has at least one active policy control mechanism in place
+Worker Node Configuration Files,ABSENT-IN-cis-r4-few_shot-kdes,PRESENT-IN-cis-r3-few_shot-kdes,Ensure that the default namespace is not used
+Worker Node Configuration Files,ABSENT-IN-cis-r4-few_shot-kdes,PRESENT-IN-cis-r3-few_shot-kdes,Ensure that the kubelet configuration file ownership is set to root:root
+Worker Node Configuration Files,ABSENT-IN-cis-r4-few_shot-kdes,PRESENT-IN-cis-r3-few_shot-kdes,Ensure that the kubelet service file /etc/systemd/system/kubelet.service.d/10-kubelet-args.conf does not set --streaming-connection-idle-timeout argument because it would override the Kubelet config file.
+Worker Node Configuration Files,ABSENT-IN-cis-r4-few_shot-kdes,PRESENT-IN-cis-r3-few_shot-kdes,Ensure that the use of dedicated administrative accounts is disabled
+Worker Node Configuration Files,ABSENT-IN-cis-r3-few_shot-kdes,PRESENT-IN-cis-r4-few_shot-kdes,Ensure that the kubelet configuration file permissions are set to 644 or more restrictive

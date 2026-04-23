@@ -126,6 +126,48 @@ Each document is processed with three prompt types defined in `PROMPT.md`:
 | `few_shot` | Two worked examples provided before the document |
 | `chain_of_thought` | Step-by-step reasoning before final YAML output |
 
+## Output Layout
+
+For each input pair `(docA, docB)` the pipeline generates **six YAML files**
+— one per `(document × prompt_type)` combination — because Task 1 requires all
+three prompt strategies:
+
+```
+outputs/
+  cis-r1-zero_shot-kdes.yaml
+  cis-r1-few_shot-kdes.yaml
+  cis-r1-chain_of_thought-kdes.yaml
+  cis-r2-zero_shot-kdes.yaml
+  cis-r2-few_shot-kdes.yaml
+  cis-r2-chain_of_thought-kdes.yaml
+```
+
+Every filename includes the source document name, satisfying the spec's
+"file names of the two YAML files include the names of the two input
+documents" requirement; the prompt-type suffix disambiguates the three
+strategies. Task 2 produces matching per-prompt-type diff files, and Task 3
+merges the three prompt types via a consensus filter (a difference must
+appear in ≥ 2 prompt types to drive Kubescape selection) before emitting
+one CSV per combo under `outputs/<docA>_vs_<docB>/`.
+
+## Document Chunking
+
+CIS Benchmark PDFs are 200–230k characters — far beyond Gemma-3-1B's practical
+context for a single call. Each document is split into overlapping ~20k-char
+chunks (tunable via `SEC_UNIT_CHUNK_CHARS` / `SEC_UNIT_CHUNK_OVERLAP` env
+vars), every chunk is prompted independently, and the resulting KDEs are
+merged by element name — same-name elements have their requirements unioned
+across chunks. This is what lets the pipeline surface KDEs from every
+section of the benchmark, not just the first few pages.
+
+## GitHub Actions Trigger
+
+The assignment specifies running tests "every time a user types `git status`"
+with `git commit` as a permitted alternative. Because GitHub Actions cannot
+observe local `git status` calls, the workflow at `.github/workflows/tests.yml`
+runs on `push` and `pull_request` — every commit pushed to any branch, and
+every PR, triggers the full test suite.
+
 ## Project Structure
 
 ```

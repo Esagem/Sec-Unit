@@ -1,5 +1,24 @@
-Kubelet Configuration,ABSENT-IN-cis-r4-few_shot-kdes,PRESENT-IN-cis-r2-few_shot-kdes,NA
-Logging,ABSENT-IN-cis-r4-few_shot-kdes,PRESENT-IN-cis-r2-few_shot-kdes,NA
-Pod Security Standards,ABSENT-IN-cis-r4-few_shot-kdes,PRESENT-IN-cis-r2-few_shot-kdes,NA
-RBAC and Service Accounts,ABSENT-IN-cis-r4-few_shot-kdes,PRESENT-IN-cis-r2-few_shot-kdes,NA
-Worker Nodes,ABSENT-IN-cis-r2-few_shot-kdes,PRESENT-IN-cis-r4-few_shot-kdes,NA
+3.2.4 Ensure that the --read-only-port is disabled,ABSENT-IN-cis-r4-few_shot-kdes,PRESENT-IN-cis-r2-few_shot-kdes,NA
+Anonymous Auth is Not Enabled,ABSENT-IN-cis-r4-few_shot-kdes,PRESENT-IN-cis-r2-few_shot-kdes,NA
+Authentication and Authorization,ABSENT-IN-cis-r4-few_shot-kdes,PRESENT-IN-cis-r2-few_shot-kdes,NA
+Cluster Access Manager API,ABSENT-IN-cis-r4-few_shot-kdes,PRESENT-IN-cis-r2-few_shot-kdes,NA
+Establish Secure Configurations,ABSENT-IN-cis-r4-few_shot-kdes,PRESENT-IN-cis-r2-few_shot-kdes,NA
+Streaming Connection Idle Timeout,ABSENT-IN-cis-r4-few_shot-kdes,PRESENT-IN-cis-r2-few_shot-kdes,NA
+CIS Controls: Controls Version Control IG 1 IG 2 IG 3,ABSENT-IN-cis-r2-few_shot-kdes,PRESENT-IN-cis-r4-few_shot-kdes,NA
+CNI Plugin,ABSENT-IN-cis-r2-few_shot-kdes,PRESENT-IN-cis-r4-few_shot-kdes,NA
+Implement and Manage a Firewall on Servers,ABSENT-IN-cis-r2-few_shot-kdes,PRESENT-IN-cis-r4-few_shot-kdes,NA
+Logging,ABSENT-IN-cis-r2-few_shot-kdes,PRESENT-IN-cis-r4-few_shot-kdes,NA
+Service Account Tokens,ABSENT-IN-cis-r2-few_shot-kdes,PRESENT-IN-cis-r4-few_shot-kdes,NA
+Internal Only - General,ABSENT-IN-cis-r4-few_shot-kdes,PRESENT-IN-cis-r2-few_shot-kdes,Do not generally permit containers to be run with the hostNetwork flag set to true.
+Internal Only - General,ABSENT-IN-cis-r4-few_shot-kdes,PRESENT-IN-cis-r2-few_shot-kdes,Ensure Image Vulnerability Scanning using Amazon ECR
+Internal Only - General,ABSENT-IN-cis-r4-few_shot-kdes,PRESENT-IN-cis-r2-few_shot-kdes,Ensure that all users with administrative account access use a dedicated or secondary account for elevated activities. This account should only be used for administrative activities and not internet browsing, email, or similar activities.
+Internal Only - General,ABSENT-IN-cis-r4-few_shot-kdes,PRESENT-IN-cis-r2-few_shot-kdes,Establish Secure Configurations
+Internal Only - General,ABSENT-IN-cis-r4-few_shot-kdes,PRESENT-IN-cis-r2-few_shot-kdes,Minimize the admission of containers with allowPrivilegeEscalation
+Internal Only - General,ABSENT-IN-cis-r4-few_shot-kdes,PRESENT-IN-cis-r2-few_shot-kdes,Use Standard Hardening Configuration Templates for Application Infrastructure
+Internal Only - General,ABSENT-IN-cis-r2-few_shot-kdes,PRESENT-IN-cis-r4-few_shot-kdes,Ensure that the EKS cluster endpoint is private
+Internal Only - General,ABSENT-IN-cis-r2-few_shot-kdes,PRESENT-IN-cis-r4-few_shot-kdes,Ensure that the cluster endpoint is configured with CIDR blocks
+Internal Only - General,ABSENT-IN-cis-r2-few_shot-kdes,PRESENT-IN-cis-r4-few_shot-kdes,Ensure that the cluster endpoint is specified
+Kubelet,ABSENT-IN-cis-r4-few_shot-kdes,PRESENT-IN-cis-r2-few_shot-kdes,Ensure that the kubelet is configured to use a valid kubeconfig file
+Kubelet,ABSENT-IN-cis-r2-few_shot-kdes,PRESENT-IN-cis-r4-few_shot-kdes,Ensure that the --authorization-mode argument is not set to AlwaysAllow
+Kubelet,ABSENT-IN-cis-r2-few_shot-kdes,PRESENT-IN-cis-r4-few_shot-kdes,Ensure that the --default-namespace is not used
+Worker Node Configuration Files,ABSENT-IN-cis-r4-few_shot-kdes,PRESENT-IN-cis-r2-few_shot-kdes,Ensure that the kubelet configuration file ownership is set to root:root

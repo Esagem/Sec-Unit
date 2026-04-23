@@ -1,28 +1,75 @@
 element1:
-  name: Control Plane Components
+  name: Establish Secure Configurations
+  requirements:
+  - Ensure that the cluster has at least one active policy control mechanism in place
+  - Ensure that the default namespace is not used
+element2:
+  name: Anonymous Auth is Not Enabled
+  requirements:
+  - Ensure that the cluster has at least one active policy control mechanism in place
+  - Ensure that the default namespace is not used
+element3:
+  name: Streaming Connection Idle Timeout
+  requirements:
+  - Do not disable timeouts on streaming connections.
+  - Ensure that you are protected against Denial-of-Service attacks, inactive connections,
+    and running out of ephemeral ports.
+element4:
+  name: Worker Node Configuration Files
   requirements:
   - Ensure that the kubeconfig file permissions are set to 644 or more restrictive
   - Ensure that the kubelet kubeconfig file ownership is set to root:root
-element2:
-  name: Kubelet
-  requirements:
-  - Ensure that the Anonymous Auth is Not Enabled
-element3:
-  name: Kubelet Configuration
-  requirements:
+  - Enable audit Logs
+  - Ensure that the cluster has at least one active policy control mechanism in place
+  - Ensure that the default namespace is not used
+  - Ensure that such streaming connections are timed out after serving legitimate
+    use
+  - Ensure that the --make-iptables-util-chains argument is set to true
+  - Ensure that the --rotate-kubelet-server-certificate argument is set to true
+  - Ensure that the RotateKubeletServerCertificate argument is set to true
+  - Ensure that the kubelet service file /etc/systemd/system/kubelet.service.d/10-kubelet-args.conf
+    does not set --streaming-connection-idle-timeout argument because it would override
+    the Kubelet config file.
+  - Ensure that the use of dedicated administrative accounts is disabled
   - Ensure that the kubelet configuration file has permissions set to 644 or more
     restrictive
   - Ensure that the kubelet configuration file ownership is set to root:root
-element4:
+element5:
+  name: Host Network Namespace
+  requirements:
+  - Do not generally permit containers to be run with the hostNetwork flag set to
+    true.
+element6:
+  name: Image Scanning
+  requirements:
+  - Scan images being deployed to Amazon EKS for vulnerabilities.
+  - Assign a priority to vulnerabilities.
+  - Ensure that Amazon ECR supports image scanning for major versions of Amazon Linux,
+    Amazon Linux 2, Debian, Ubuntu, CentOS, Oracle Linux, Alpine, and RHEL Linux distributions.
+element7:
+  name: Kubelet
+  requirements:
+  - Ensure that the Anonymous Auth is Not Enabled
+element8:
   name: Logging
   requirements:
   - Enable audit Logs
-element5:
+element9:
   name: Pod Security Standards
   requirements:
   - Ensure that the cluster has at least one active policy control mechanism in place
   - Ensure that the default namespace is not used
-element6:
-  name: RBAC and Service Accounts
+element10:
+  name: Internal Only - General
   requirements:
-  - Ensure that the cluster-admin role is only used where required
+  - Minimize user access to Amazon ECR
+  - Configure the Cluster Service Account with Storage Object Viewer Role to only
+    allow read-only access to Amazon EKS APIs
+  - Only allow access to authorized cloud storage or email providers.
+  - Establish and Maintain Dedicated Computing Resources for All Administrative Work
+element11:
+  name: AWS EKS Key Management Service
+  requirements:
+  - This section contains recommendations relating to using AWS EKS Key Management
+  - Ensure the cluster has at least one active policy control mechanism in place
+  - Ensure that the default namespace is not used

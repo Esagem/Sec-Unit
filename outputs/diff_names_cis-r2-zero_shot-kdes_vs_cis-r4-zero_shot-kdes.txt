@@ -1,3 +1,24 @@
-Control Plane Components
-Logging
-Worker Nodes
+Amazon ECR Identity-Based Policies
+Amazon ECR Resource-Based Policies
+Amazon EKS Control Plane Logging
+Anonymous Auth
+Audit Logs
+Audit Method 1
+Audit Method 2
+CNI Plugin
+Cluster Access Manager API
+Container Security
+Customer Master Keys
+Explicitly require API server access
+Firewall
+Firewall on Servers
+Internal Only - General
+Kubelet Configuration
+Kubernetes Secrets
+Pod Identity
+Pod Security Policy
+RotateKubeletClientCertificate
+RotateKubeletServerCertificate
+Secrets Management
+Secure Pods
+Segment the Network Based on Sensitivity

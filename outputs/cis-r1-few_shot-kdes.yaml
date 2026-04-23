@@ -1,19 +1,70 @@
 element1:
-  name: Control Plane Components
+  name: Kubelet
   requirements:
-  - Ensure that the kubeconfig file permissions are set to 644 or more restrictive
-  - Ensure that the kubelet kubeconfig file ownership is set to root:root
+  - Ensure that the Anonymous Auth is Not Enabled
+  - Ensure that the kubelet kubeconfig file permissions are set to 644 or more restrictive
   - Ensure that the kubelet configuration file has permissions set to 644 or more
     restrictive
-  - Ensure that the kubelet configuration file ownership is set to root:root
 element2:
-  name: Control Plane Configuration
+  name: Pod Security Standards
+  requirements:
+  - Ensure that the cluster has at least one active policy control mechanism in place
+  - Ensure that the default namespace is not used
+  - Use secure network management and communication protocols (e.g., 802.1X, Wi-Fi
+    Protected Access 2 (WPA2) Enterprise or greater)
+element3:
+  name: Change Default Passwords
+  requirements:
+  - Change Default Passwords
+  - Disable Read-Only Port
+element4:
+  name: Logging
   requirements:
   - Enable audit Logs
   - Ensure that the cluster has at least one active policy control mechanism in place
   - Ensure that the default namespace is not used
-element3:
-  name: Worker Nodes
+element5:
+  name: Kubernetes API
+  requirements:
+  - Minimize wildcard use in Roles and ClusterRoles
+  - Use unique passwords for all enterprise assets
+  - Use a container-optimized OS when possible
+  - Restrict administrator privileges to dedicated administrator accounts
+  - Establish and maintain a secure configuration process
+  - Minimize access to secrets
+  - Use a dedicated administrative account
+  - Use a separate account for administrative tasks
+element6:
+  name: Worker Node Configuration Files
   requirements:
   - Ensure that the kubeconfig file permissions are set to 644 or more restrictive
   - Ensure that the kubelet kubeconfig file ownership is set to root:root
+  - Minimize the admission of containers wishing to share the host IPC namespace
+  - Ensure that the kubelet configuration file permissions are set to 644 or more
+    restrictive
+element7:
+  name: Secrets Management
+  requirements:
+  - Consider external secret storage and management systems, instead of using Kubernetes
+    Secrets directly
+  - Encrypt sensitive data at rest on servers, applications, and databases containing
+    sensitive data.
+element8:
+  name: Server-Side Encryption
+  requirements:
+  - Ensure that the kubeconfig file permissions are set to 644 or more restrictive
+  - Ensure that the kubelet kubeconfig file ownership is set to root:root
+  - Encrypt Sensitive Information at Rest
+  - Encrypt all sensitive information at rest using a tool that requires a secondary
+    authentication mechanism not integrated into the operating system, in order to
+    access the information.
+element9:
+  name: Extensible Admission Control
+  requirements:
+  - Use namespaces to isolate your Kubernetes objects.
+  - Ensure that these namespaces are the ones you need and are adequately administered
+    as per your requirements.
+element10:
+  name: Container Optimized OS
+  requirements:
+  - Prefer using a container-optimized OS when possible
