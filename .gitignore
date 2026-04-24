@@ -6,3 +6,10 @@ __pycache__/
 build/
 dist/
 sec-unit.spec
+outputs/
+outputs_pre_chunk/
+venv/
+*.log
+*.csv
+*.txt
+.DS_Store

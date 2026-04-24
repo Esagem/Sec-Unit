@@ -8,6 +8,22 @@ Usage:
     python main.py <pdf1> <pdf2>           # Single pair
     python main.py --all                   # All 9 combinations
     python main.py --task1 <pdf1> <pdf2>   # Task 1 only
+
+AI Usage Statement:
+We JT Nesbitt, Eli Musselwhite, and Christo Payne would like to acknowledge the use of ChatGPT and Claude,
+language models developed by OpenAI and Anthropic, in preparation of this assignment. They were used in
+the creation of code specifically in the design and implementation of various
+components of this project, including debugging code, refining logic, improving
+structure, and clarifying concepts related to the CIS Benchmark pipline, document
+processing, and Kubescape integration.
+
+AI tools were also used to help interpret error messages, suggest optimizations
+and provide guidance on overall system design. 
+
+Final design was reviewed, tested, and refined by the authors. All work 
+submitted represents our understanding of the project. 
+
+
 """
 
 import argparse
